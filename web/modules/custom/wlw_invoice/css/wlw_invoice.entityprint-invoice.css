@@ -1,0 +1,161 @@
+/**
+ * @file: styling for commerce-invoice.html.twig.
+ */
+.page {
+  font-family: arial,sans-serif;
+  font-size: 12px;
+}
+
+/**************/
+/*** HEADER ***/
+/**************/
+div.invoice-header {
+  padding: 20px 0;
+  position: relative;
+  top: 60px;
+  width: 100%;
+}
+
+.logo {
+  width: 200px;
+  position: absolute;
+  right: 17px;
+}
+.invoice-greeting {
+  margin-top: 110px;
+}
+.invoice-message-bottom {
+  margin-top: 0px;
+}
+/* Letter Text size */
+.invoice-greeting,
+.invoice-message-bottom {
+  font-size: 14px;
+}
+.blue-text {
+  color: #044b9b;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+.small  {
+  font-size: 12px;
+}
+
+
+table {
+  border-spacing: 0;
+}
+table td {
+  vertical-align: top;
+}
+table.fullwidth {
+  width: 100%;
+}
+table.invoice-table {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: 0;
+}
+table.date-table {
+  margin-top: 40px;
+}
+table.invoice-table td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  white-space: nowrap;
+}
+table.invoice-table tr td:first-child {
+  background: #eee;
+}
+div.billing-information h3 {
+  margin: 0 0 10px 0;
+}
+div.billing-information p.address {
+  margin: 0;
+}
+div.invoice-items-container {
+  padding: 30px 0;
+}
+table.invoice-items {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+  margin: 0;
+  width: 100%;
+}
+table.invoice-items th {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+table.invoice-items th.right {
+  text-align: right;
+}
+table.invoice-items th.center {
+  text-align: center;
+}
+table.invoice-items td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+div.invoice-totals-container table.table-container {
+  height: 150px;
+}
+div.invoice-totals-container table tr {
+  text-align: right;
+}
+tr.invoice-total {
+  font-weight: bold;
+  font-size: 12px;
+}
+div.invoice-payment-terms {
+  margin-top: 16px;
+}
+
+/* FOOTER */
+.invoice-footer {
+  color: #777;
+}
+.invoice-footer-line {
+  position: absolute;
+  bottom: 79px;
+  left: 0;
+  width: 703px;
+  height: 1px;
+  border-top: 1px solid #aaa;
+  z-index: 10;
+}
+.invoice-footer-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 70px;
+}
+.invoice-footer-center {
+  position: absolute;
+  bottom: 0;
+  left: 230px;
+  width: 150px;
+  height: 70px;
+}
+.invoice-footer-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 215px;
+  height: 70px;
+}
+.credit-title {
+  font-size: 16px;
+  font-weight: bold;
+}

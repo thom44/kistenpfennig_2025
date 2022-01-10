@@ -1,0 +1,4 @@
+services:
+  wlw_order_mail_log.mail_logger:
+    class: Drupal\wlw_order_mail_log\MailLogger
+    arguments: ['@database']

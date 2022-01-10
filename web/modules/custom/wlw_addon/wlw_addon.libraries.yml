@@ -1,0 +1,3 @@
+price_calc:
+  js:
+    js/price_calc.js: {}

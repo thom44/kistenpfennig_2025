@@ -1,0 +1,8 @@
+name: WLW Product List
+type: module
+description: 'Provides a List of products and courses.'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_product

@@ -1,0 +1,36 @@
+<?php
+/**
+ * @file: A module which provides a debit payment gateway.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wlw_sepa_payment_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.wlw_sepa_payment':
+      $output = '';
+      $output .= '<h3>' . t('Provided Functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Provides Commerce integration for the Debit (SEPA Lastschrift) Gateway.') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('Dependent Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Go to <a href="/admin/commerce/config/payment-gateways">Payment Configuration</a> and configure the payment gateway.');
+      $output .= '</ol>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function wlw_sepa_payment_form_commerce_checkout_flow_multistep_default_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Attaches the iban field library here, because in ShippingAddressCheckoutPane
+  // not working.
+  $form['#attached']['library'][] = 'wlw_sepa_payment/iban-field';
+}

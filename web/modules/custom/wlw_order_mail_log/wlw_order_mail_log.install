@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function wlw_order_mail_log_schema() {
+
+  $schema = [];
+
+  $schema['wlw_order_mail_log'] = [
+    'description' => 'The base table for wlw order mail logging.',
+    'fields' => [
+      'log_id' => [
+        'description' => 'The primary identifier for a logging.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'order_id' => [
+        'description' => 'The current order id.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'email_to' => [
+        'description' => 'The receipt email address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'email_bcc' => [
+        'description' => 'The bcc address.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'email_from' => [
+        'description' => 'The email from.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'subject' => [
+        'description' => 'The email subject.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'email_key' => [
+        'description' => 'The mailsystem key.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'time' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'description' => 'Timestamp for when email was transmitted.',
+      ],
+    ],
+    'indexes' => [
+      'order_id' => [
+        'order_id',
+      ],
+    ],
+    'primary key' => [
+      'log_id',
+    ],
+  ];
+  return $schema;
+}

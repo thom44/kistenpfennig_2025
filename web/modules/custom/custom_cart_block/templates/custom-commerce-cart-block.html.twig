@@ -1,0 +1,14 @@
+<div{{ attributes}}>
+  <div class="wlw-cart-block">
+    <a class="wlw-cart-block__link" href="{{ url }}">
+      {% if count %}
+        <div class="wlw-cart-block__text">
+          <span class="wlw-cart-block__count">{{ count }}</span>
+          <span class="divider"> | </span>
+          <span class="wlw-cart-block__total">{{ total }}</span>
+        </div>
+      {% endif %}
+      <span class="wlw-cart-block__icon">{{ icon }}</span>
+    </a>
+  </div>
+</div>

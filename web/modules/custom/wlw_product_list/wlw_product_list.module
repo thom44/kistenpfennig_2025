@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file A module which provides a List of products and courses.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+/**
+ * Implements hook_help().
+ */
+function wlw_product_list_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.wlw_product_list':
+      $output = '';
+      $output .= '<h3>' . t('Provided Functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('Dependent Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('');
+      $output .= '</ol>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wlw_product_list_theme($existing, $type, $theme, $path) {
+  $templates = $path . '/templates';
+
+  $return = [
+    'product_list' => [
+      'template' => 'product-list',
+      'path' => $templates,
+      'variables' => [
+        'product_list' => NULL,
+        'category' => NULL,
+      ],
+    ],
+    'product_list_page' => [
+      'template' => 'product-list-page',
+      'path' => $templates,
+      'variables' => [
+        'label' => NULL,
+      ],
+    ],
+  ];
+  return $return;
+}
+

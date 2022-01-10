@@ -1,0 +1,9 @@
+name: WLW Order Token
+type: module
+description: 'Provides missing token in commerce_order token group.'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - token:token
+  - commerce:commerce_order
+  - commerce_invoice:commerce_invoice

@@ -1,0 +1,3 @@
+price_calc:
+  js:
+    js/course_price_calc.js: {}

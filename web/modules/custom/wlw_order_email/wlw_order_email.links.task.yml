@@ -1,0 +1,5 @@
+git entity.commerce_order.emails:
+  route_name: entity.commerce_order.reminder_emails
+  base_route: entity.commerce_order.canonical
+  title: Emails
+  weight: 10

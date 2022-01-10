@@ -1,0 +1,9 @@
+name: Custom Product
+type: module
+description: 'Provides extra functionality for products'
+package: Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_product
+  - commerce:commerce_cart

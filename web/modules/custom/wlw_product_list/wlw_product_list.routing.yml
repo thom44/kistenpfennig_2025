@@ -1,0 +1,10 @@
+wlw_product_list.product_list_controller:
+  path: '/shop/kategorie/{category}'
+  defaults:
+    _controller: '\Drupal\wlw_product_list\Controller\ProductListController::page'
+  requirements:
+    _permission: 'access content'
+wlw_product_list.refresh_list:
+  path: '/ajax/shop/kategorien'
+  defaults:
+    _form: \Drupal\wlw_product_list\Form\ProductListForm

@@ -1,0 +1,4 @@
+services:
+  wlw_order_token.order_token_provider:
+    class: Drupal\wlw_order_token\OrderTokenProvider
+    arguments: ['@config.factory', '@entity_type.manager', '@renderer', '@token', '@commerce_order.order_total_summary']

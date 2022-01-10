@@ -1,0 +1,8 @@
+name: WLW Cart
+type: module
+description: 'Provides extra functionality for WLW cart'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_cart

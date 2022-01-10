@@ -1,0 +1,3 @@
+profile_data_copying:
+  js:
+    js/profile-data-copying.js: {}

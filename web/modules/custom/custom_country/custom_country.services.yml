@@ -1,0 +1,6 @@
+services:
+  custom_country.available_country_list_subscriber:
+    class: Drupal\custom_country\EventSubscriber\AvailableCountryListSubscriber
+    arguments: []
+    tags:
+      - { name: event_subscriber, priority: 100 }

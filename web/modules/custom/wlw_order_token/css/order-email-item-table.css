@@ -1,0 +1,69 @@
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+table {
+  border-spacing: 0;
+}
+table td {
+  vertical-align: top;
+}
+table.fullwidth {
+  width: 100%;
+}
+table.order-table {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: 0;
+}
+table.date-table {
+  margin-top: 40px;
+}
+table.order-table td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  white-space: nowrap;
+}
+table.order-table tr td:first-child {
+  background: #eee;
+}
+div.billing-information h3 {
+  margin: 0 0 10px 0;
+}
+div.billing-information p.address {
+  margin: 0;
+}
+div.order-items-container {
+  padding: 30px 0;
+}
+table.order-items {
+  border: 1px solid #cccccc;
+  border-collapse: collapse;
+  margin: 0;
+  width: 100%;
+}
+table.order-items th {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+table.order-items th.right {
+  text-align: right;
+}
+table.order-items th.center {
+  text-align: center;
+}
+table.order-items td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+div.order-totals-container table tr {
+  text-align: right;
+}
+tr.order-total {
+  font-weight: bold;
+  font-size: 12px;
+}

@@ -1,0 +1,59 @@
+<div id="wlw-product-list">
+<h1 class="wlw-product-list_category">{{ category }}</h1>
+
+<div class="wlw-product-list row">
+
+    {% block product_list %}
+
+        {% for product_item in product_list %}
+
+            <div class="col-lg-4 col-sm-6 col-12">
+              <div id="wlw-product-item-{{ product_item.id }}" class="wlw-product-item wlw-product-item-{{ product_item.id }}">
+                <a href="{{ product_item.path }}">
+
+                    <div class="wlw-product-list_image">
+                      {% if product_item.overlay %}
+                        <span class="wlw-product-list_overlay">
+                          {%  if product_item.font_awesome %}
+                            <i class="{{ product_item.font_awesome }} fa-xs"></i>
+                          {% endif %}
+                          <span class="overlay-text">{{ product_item.overlay }}</span>
+                          </span>
+                      {% endif %}
+                        {% if product_item.image %}
+                            {{ product_item.image }}
+                        {% endif %}
+                    </div>
+
+                    <div class="wlw-product-list_title">
+                        {% if product_item.title %}
+                            {{ product_item.title }}
+                        {% endif %}
+                    </div>
+
+                    <div class="wlw-product-list_desc">
+                        {% if product_item.body %}
+                            {{ product_item.body }}
+                        {% endif %}
+                    </div>
+
+                    <div class="wlw-product-list_availability">
+                        {% if product_item.availability %}
+                            {{ product_item.availability }}
+                        {% endif %}
+                    </div>
+
+                    <div class="wlw-product-list_price">
+                        {% if product_item.price %}
+                            {{ product_item.price }}
+                        {% endif %}
+                    </div>
+
+                </a>
+            </div>
+            </div>
+
+        {% endfor %}
+    {% endblock %}
+    </div>
+</div>

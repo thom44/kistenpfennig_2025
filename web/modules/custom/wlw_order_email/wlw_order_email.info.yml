@@ -1,0 +1,8 @@
+name: WLW Order Emails
+type: module
+description: 'Profides some order related emails sending over the user interface.'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce_order
+  - wlw_invoice:wlw_invoice

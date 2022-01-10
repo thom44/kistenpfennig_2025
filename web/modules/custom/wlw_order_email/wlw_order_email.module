@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file A Module which profides some order related emails sending over the user interface.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wlw_order_email_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.wlw_order_email':
+      $output = '';
+      $output .= '<h3>' . t('Provided Functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Provides a new tab "Email" in orders where you can send emails to the customer.') . '</li>';
+      $output .= '<li>' . t('/admin/commerce/orders/{order_id}/reminder-emails') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('Dependent Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('<a href="/admin/commerce/email">Email configuration</a>');
+      $output .= '</ol>';
+      return $output;
+  }
+}

@@ -1,0 +1,7 @@
+wlw_sepa_payment.commerce_payment_gateway.plugin.sepa_payment:
+  type: commerce_payment_gateway_configuration
+  mapping:
+    instructions:
+      type: text_format
+      label: 'Payment instructions'
+      translatable: true

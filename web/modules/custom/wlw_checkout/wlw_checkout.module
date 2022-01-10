@@ -1,0 +1,99 @@
+<?php
+/**
+ * @file A module which provides extra functionality for WLW checkout.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function wlw_checkout_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.wlw_checkout':
+      $output = '';
+      $output .= '<h3>' . t('Provided Functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Provides a custom checkout pane "Shipping infos".') . '</li>';
+      $output .= '<li>' . t('Provides a custom checkout pane "Confirmation".') . '</li>';
+      $output .= '<li>' . t('Provides a custom checkout pane "Persönliche Anmerkungen".') . '</li>';
+      $output .= '<li>' . t('Renders a file link (Term: Vertragsunterlagen Kurs) from the ordered courses as a list to the checkout page.') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('Dependent Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Configure the Checkout Pane in <a href="/admin/commerce/config/checkout-flows" target="_blank">Checkout flows</a>.') . '<br>@note: Checkout panes wich implements viewMode "checkout" are only one of them enabled, otherwise they would be douple displayed.</be></li>';
+      $output .= '<li>' . t('Configure OrderType form display on the viewMode <a href="/admin/commerce/config/order-types/default/edit/form-display/checkout" target="_blank">Checkout</a>.') . '</li>';
+      $output .= '</ol>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *   Renders the to the course product referenced taxonomy_term (Vertragsunterlagen Kurs)
+ *   pdf-file as link to the checkout page after field_contract_confirm #description.
+ */
+function wlw_checkout_form_commerce_checkout_flow_multistep_default_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  if (isset($form['wlw_order_message_checkout_pane']['field_contract_confirm']['widget']['value']['#description'])) {
+
+    // @var $processed_fids array The file ids already processed.
+    $processed_fids = [];
+    // @var $list array The render array list items.
+    $list = [];
+
+    $widget_desc = $form['wlw_order_message_checkout_pane']['field_contract_confirm']['widget']['value']['#description'];
+
+    $renderer = \Drupal::service('renderer');
+
+    // Gets the order object form the form.
+    $build_info = $form_state->getBuildInfo();
+    $objects = $build_info['callback_object'];
+
+    if ($order = $objects->getOrder()) {
+
+      $contract_files_service = \Drupal::service('wlw_contract.contract_files');
+      $contracts = $contract_files_service->collectContractsFromOrder($order);
+
+      foreach ($contracts as $contract) {
+
+        $uri = $contract['file_std_class']->uri;
+
+        // Transforms the uri to an uri object.
+        /** @var string $url The real Url. */
+        $url = file_create_url($uri);
+        // Creates url object out of real url.
+        /** @var \Drupal\Core\Url $url_object */
+        $url_object = Url::fromUri($url);
+
+        // Creates renderable link from Url object.
+        /** @var \Drupal\Core\Link $link */
+        $link = Link::fromTextAndUrl($contract['name'],$url_object);
+        /** @var \Drupal\Core\GeneratedLink $renderable_link */
+        $renderable_link = $link->toString();
+
+        // Prepares render array and render the link, to get the link
+        // html through the list render process.
+        $render = [
+          '#markup' => $renderable_link,
+        ];
+
+        $list[] = $renderer->render($render);
+      }
+
+      // Renders the contract links as list.
+      $render_list = [
+        '#theme' => 'item_list',
+        '#items' => $list,
+      ];
+      $list_markup = $renderer->render($render_list);
+
+      // Attaches the contract list to the field description.
+      $form['wlw_order_message_checkout_pane']['field_contract_confirm']['widget']['value']['#description'] = $widget_desc . $list_markup;
+    }
+  }
+}

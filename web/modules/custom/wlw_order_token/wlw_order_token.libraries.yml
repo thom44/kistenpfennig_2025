@@ -1,0 +1,7 @@
+# Can not attache library to hook theme. No other way tho
+# render library in email template, as directly putting styles to the template.
+#order-item-table:
+#  version: VERSION
+#  css:
+#    theme:
+#      css/order-email-item-table.css: {}

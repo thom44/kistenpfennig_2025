@@ -1,0 +1,17 @@
+<?php
+
+/**
+* Implements hook_theme().
+*/
+function wlw_order_token_theme($existing, $type, $theme, $path) {
+  return [
+    'order_email_item_table' => [
+    'variables' => [
+      'order_entity' => NULL,
+      'totals' => NULL,
+      'order_items_data' => NULL,
+    ],
+      'template' => 'order-email-item-table',
+    ],
+  ];
+}

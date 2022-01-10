@@ -1,0 +1,210 @@
+{#
+/**
+ * @file
+ * Template for the PDF invoice.
+ *
+ * Available variables:
+ * - invoice_entity: The invoice entity.
+ * - billing_information: The billing information.
+ * - totals: An array of invoice totals values with the following keys:
+ *   - subtotal: The invoice subtotal price.
+ *   - adjustments: An array of adjustment totals:
+ *     - type: The adjustment type.
+ *     - label: The adjustment label.
+ *     - total: The adjustment total price.
+ *     - weight: The adjustment weight, taken from the adjustment type.
+ *   - total: The invoice total price.
+ *
+ * For invoice order items table implemented over token.
+ * @see \Drupal\wlw_order_token\
+ *
+ * @ingroup themeable
+ */
+#}
+{% set due_date = invoice_entity.getDueDateTime %}
+{% if (logo_url) %}
+  <img class="logo" src="{{ logo_url }}"/>
+{% endif %}
+<div class="invoice-header">
+  <table class="table-container fullwidth">
+    <tr>
+      <td>
+        {% if (invoice.billing_information) %}
+          <div class="billing-information">
+            <div class="blue-text">{{ 'WLW - Würzburger Straße 59 - 96049 Bamberg' }}</div>
+            {{ invoice.billing_information }}
+          </div>
+        {% endif %}
+      </td>
+      <td>
+        <table class="invoice-table date-table">
+          <tbody>
+          <tr>
+            <td>{{ 'Rechnung Nr.:'|t }}</td>
+            <td>{{ invoice_entity.getInvoiceNumber }}</td>
+          </tr>
+
+          {% if (invoice_entity.getInvoiceDateTime) %}
+          <tr>
+            <td>{{ 'Rechnungdatum:'|t }}</td>
+            <td>{{ invoice_entity.getInvoiceDateTime|format_date('datum_kurz') }}</td>
+          </tr>
+          {% endif %}
+
+          {% if (order_entity.getCreatedTime) %}
+          <tr>
+            <td>{{ 'Bestelldatum:'|t }}</td>
+            <td>{{ order_entity.getCreatedTime|format_date('datum_kurz') }}</td>
+          </tr>
+          {% endif %}
+
+          <tr>
+            <td>{{ 'Bestellnummer:'|t }}</td>
+            <td>{{ order_entity.getOrderNumber }}</td>
+          </tr>
+
+          {% if (due_date) %}
+            <tr>
+              <td>{{ 'Due date'|t }}</td>
+              <td>{{ due_date|format_date('datum_kurz') }}</td>
+            </tr>
+          {% endif %}
+
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="invoice-greeting">
+  {% if (credit.title) %}
+    <div class="credit-title">
+      {{ credit.title }} {{ invoice_entity.getInvoiceNumber }}
+    </div>
+  {% endif %}
+  <p>{{ invoice.salutation }},<br>
+  <br>
+  {{ invoice.message.top }}</p>
+</div>
+<div class="invoice-items-container">
+  <table class="invoice-items">
+    <thead>
+    <tr>
+      <th>{{ 'Produkt'|t }}</th>
+      <th class="center">{{ 'Anzahl'|t }}</th>
+      <th class="right">{{ 'Netto'|t }}</th>
+      <th class="right">{{ 'USt'|t }}</th>
+      <th class="right">{{ '%-Satz'|t }}</th>
+      <th class="right">{{ 'Brutto'|t }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% block invoice_items_data %}
+      {% for invoice_item in invoice_items_data %}
+        <tr>
+          <td>{{ invoice_item.item.label }} {{ invoice_item.getDescription }}</td>
+          <td class="center">
+            {{ invoice_item.item.getQuantity|number_format }}
+          </td>
+          <td class="right">
+            {{ invoice_item.net_amount|commerce_price_format }}
+          </td>
+          <td class="right">
+            {{ invoice_item.tax_amount|commerce_price_format }}
+          </td>
+          <td class="right">
+            {{ invoice_item.tax_rate|number_format }}
+          </td>
+          <td class="right">
+            {{ invoice_item.item.getTotalPrice|commerce_price_format }}
+          </td>
+        </tr>
+      {% endfor %}
+    {% endblock %}
+    </tbody>
+  </table>
+</div>
+<div class="invoice-totals-container">
+  <table class="table-container fullwidth">
+    <tr>
+      <td>
+        <table class="invoice-table total-table">
+          <tbody>
+          <tr>
+            <td>
+              {{ 'Zwischensumme Brutto'|t }}
+            </td>
+            <td>
+              {{ totals.subtotal|commerce_price_format }}
+            </td>
+          </tr>
+          {% for adjustment in totals.adjustments %}
+            <tr>
+              <td>
+                {{ adjustment.label }}
+              </td>
+              <td>
+                {{ adjustment.total|commerce_price_format }}
+              </td>
+            </tr>
+          {% endfor %}
+          <tr class="invoice-total">
+            <td>
+              {{ 'Rechnungsbetrag'|t }}
+            </td>
+            <td>
+              {{ invoice_entity.getTotalPrice|commerce_price_format }}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+{% if (payment_terms) %}
+  <div class="invoice-payment-terms">
+    {{ payment_terms }}
+  </div>
+{% endif %}
+<div class="invoice-message-bottom">
+  <p>
+    {% if (credit.message.bottom) %}
+      {{ credit.message.bottom }}
+    {% endif %}
+
+    {% if (invoice.message.bottom) %}
+      {{ invoice.message.bottom }}
+
+      {% if (invoice_entity.getInvoiceDateTime) %}
+        {{ invoice_entity.getInvoiceDateTime|format_date('datum_kurz') }}
+      {% endif %}
+
+      {{ invoice.message.post }}
+    {% endif %}
+  </p>
+  <p>
+    {{ 'Mit freundlichen Grüßen'|t }}<br>
+    {{ 'Ihr WLW-Bamberg'|t }}
+  </p>
+</div>
+
+<div class="invoice-footer-line">&nbsp;</div>
+<div class="invoice-footer invoice-footer-left">
+  <b>WLW</b><br>
+  Würzburger Str. 59<br>
+  96049 Bamberg
+</div>
+<div class="invoice-footer invoice-footer-center">
+  Tel.: 0951 700 66 - 0<br>
+  Fax: 0951 700 66 - 16<br>
+  info@wlw-bamberg.de<br>
+  www.wlw-bamberg.de
+</div>
+<div class="invoice-footer invoice-footer-right">
+  <span class="left">Liga Bank</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="right">BIC: GENODEF1MO5</span><br>
+  <span class="left">IBAN:</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="right">DE30 7509 0300 0009 0000 20</span><br>
+  <span class="left">USt-ID-Nr.:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="right">DE 230011367</span><br>
+  <div class="small">Leistungszeitpunkt entspricht Rechnungsdatum</div>
+</div>
+

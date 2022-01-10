@@ -1,0 +1,8 @@
+name: WLW Add-On
+type: module
+description: 'Provides Field Formatter and an AddToCartForm for Add-On products.'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
+  - commerce:commerce_product

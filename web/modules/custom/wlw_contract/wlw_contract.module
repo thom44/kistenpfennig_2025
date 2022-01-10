@@ -1,0 +1,4 @@
+<?php
+/**
+ * @file A module which provides a helper service for course contracts.
+ */

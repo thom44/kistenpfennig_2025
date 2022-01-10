@@ -1,0 +1,14 @@
+name: WLW Invoice
+type: module
+description: 'Provides extra functionality for commerce_invoice'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce_invoice:commerce_invoice
+  - entity_print:entity_print
+
+# CSS for pdf invoice and credit commerce-invoice.html.twig.
+# the library key must exact be the same.
+entity_print:
+  commerce_invoice:
+    all: 'wlw_invoice/entity-print-styling'

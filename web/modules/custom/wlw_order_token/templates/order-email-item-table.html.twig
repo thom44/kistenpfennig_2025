@@ -1,0 +1,172 @@
+{#
+  Library is not attached to email.
+  {{ attach_library('order-item-table') }}
+#}
+<style>
+  body, td, th, p, div, h3 {
+    font-size: 12px;
+  }
+  .center {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+  .left {
+    text-align: left;
+  }
+  table {
+    border-spacing: 0;
+  }
+  table td {
+    vertical-align: top;
+  }
+  table.fullwidth {
+    width: 100%;
+  }
+  /* Address table set class in body field
+    admin/commerce/config/emails
+   */
+  table.address-table {
+    border: 1px solid #ccc;
+    width: 400px;
+  }
+  table.address-table th {
+    background: #eee;
+    padding: 5px;
+    width: 50%;
+  }
+  table.address-table td {
+    padding: 5px;
+    width: 50%;
+  }
+
+  table.order-table {
+    position: relative;
+    right: 0;
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  table.order-table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    white-space: nowrap;
+  }
+  table.order-table tr td.adjustments-label {
+    background: #eee;
+  }
+  table.order-table tr td.adjustments-value {
+    width: 110px;
+  }
+  div.billing-information h3 {
+    margin: 0 0 10px 0;
+  }
+  div.order-items-container {
+    padding: 30px 0;
+  }
+  table.order-items {
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    margin: 0;
+    width: 100%;
+  }
+  table.order-items th {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  table.order-items th.right {
+    text-align: right;
+  }
+  table.order-items th.center {
+    text-align: center;
+  }
+  table.order-items td {
+    border: 1px solid #ccc;
+    padding: 8px;
+  }
+  div.order-totals-container table tr {
+    text-align: right;
+  }
+  tr.order-total {
+    font-weight: bold;
+  }
+</style>
+<div class="order-items-container">
+  <table class="order-items">
+    <thead>
+    <tr>
+      <th class="left">{{ 'Produkt'|t }}</th>
+      <th class="center">{{ 'Anzahl'|t }}</th>
+      <th class="right">{{ 'Netto'|t }}</th>
+      <th class="right">{{ 'USt'|t }}</th>
+      <th class="right">{{ '%-Satz'|t }}</th>
+      <th class="right">{{ 'Brutto'|t }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% block order_items_data %}
+      {% for order_item in order_items_data %}
+        <tr>
+          <td>{{ order_item.item.label }} {{ order_item.getDescription }}</td>
+          <td class="center">
+            {{ order_item.item.getQuantity|number_format }}
+          </td>
+          <td class="right">
+            {{ order_item.net_amount|commerce_price_format }}
+          </td>
+          <td class="right">
+            {{ order_item.tax_amount|commerce_price_format }}
+          </td>
+          <td class="right">
+            {{ order_item.tax_rate|number_format }}
+          </td>
+          <td class="right">
+            {{ order_item.item.getTotalPrice|commerce_price_format }}
+          </td>
+        </tr>
+      {% endfor %}
+    {% endblock %}
+    </tbody>
+  </table>
+</div>
+<div class="order-totals-container">
+  <table class="table-container fullwidth">
+    <tr>
+      <td>
+        <table class="order-table">
+          <tbody>
+          <tr>
+            <td class="adjustments-label">
+              {{ 'Zwischensumme Brutto'|t }}
+            </td>
+            <td class="adjustments-value">
+              {{ order_entity.getSubtotalPrice|commerce_price_format }}
+            </td>
+          </tr>
+          {% for adjustment in totals.adjustments %}
+            <tr>
+              <td class="adjustments-label">
+                {{ adjustment.label }}
+              </td>
+              <td class="adjustments-value">
+                {{ adjustment.total|commerce_price_format }}
+              </td>
+            </tr>
+          {% endfor %}
+          <tr class="order-total">
+            <td class="adjustments-label">
+              {{ 'Rechnungsbetrag'|t }}
+            </td>
+            <td class="adjustments-value">
+              {{ order_entity.getTotalPrice|commerce_price_format }}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
