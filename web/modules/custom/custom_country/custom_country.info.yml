@@ -1,7 +1,7 @@
 name: custom Country
 type: module
 description: 'EventSubscriber to limit available countries in address field.'
-package: Shop
+package: Custom Shop
 core_version_requirement: ^8 || ^9
 dependencies:
   - address:address

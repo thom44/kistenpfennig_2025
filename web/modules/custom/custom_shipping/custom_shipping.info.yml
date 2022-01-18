@@ -1,7 +1,7 @@
 name: Custom Shipping
 type: module
 description: 'Provides shipping fixes.'
-package: Custom
+package: Custom Shop
 core_version_requirement: ^8 || ^9
 dependencies:
   - commerce:commerce
