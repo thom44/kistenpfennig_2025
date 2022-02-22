@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d709b22689c7dbd186fdcff12e2bd200",
+    "content-hash": "ba8ab60c2fb6005a4dfd473214101ed4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3947,6 +3947,62 @@
             "homepage": "https://www.drupal.org/project/reroute_email",
             "support": {
                 "source": "https://git.drupalcode.org/project/reroute_email"
+            }
+        },
+        {
+            "name": "drupal/save_edit",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/save_edit.git",
+                "reference": "8.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/save_edit-8.x-1.3.zip",
+                "reference": "8.x-1.3",
+                "shasum": "31ae8cd740a815c8fbd94af6c818a3803dbedec3"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.3",
+                    "datestamp": "1582834963",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "NitinSP",
+                    "homepage": "https://www.drupal.org/user/2198938"
+                },
+                {
+                    "name": "himerus",
+                    "homepage": "https://www.drupal.org/user/159141"
+                },
+                {
+                    "name": "q__nt_n",
+                    "homepage": "https://www.drupal.org/user/3512064"
+                }
+            ],
+            "description": "Gives a 'Save & Edit' button on node pages.",
+            "homepage": "https://www.drupal.org/project/save_edit",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/save_edit",
+                "issues": "http://drupal.org/project/issues/save_edit"
             }
         },
         {
