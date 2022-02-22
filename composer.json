@@ -36,6 +36,7 @@
         "drupal/redirect": "^1.7",
         "drupal/reroute_email": "^2.1",
         "drupal/xmlsitemap": "^1.1",
+        "drupal/save_edit": "^1.3",
         "drush/drush": "^11.0"
     },
     "conflict": {
