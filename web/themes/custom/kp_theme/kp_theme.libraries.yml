@@ -29,3 +29,7 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+fonts:
+  css:
+    theme:
+      'https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600&display=swap rel=stylesheet': {type: external}

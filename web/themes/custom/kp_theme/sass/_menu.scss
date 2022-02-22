@@ -1,0 +1,13 @@
+.menu--main {
+  width: 100%;
+  ul.navbar-nav {
+    justify-content: space-around;
+    li {
+      font-size: 18px;
+      a {
+        color: #3D415C;
+        text-transform: uppercase;
+        }
+      }
+    }
+  }

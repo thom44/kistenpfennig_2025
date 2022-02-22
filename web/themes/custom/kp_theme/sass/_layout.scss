@@ -1,0 +1,57 @@
+
+body {
+  padding: 40px 0 0 0;
+  background-image: url(../graphics/wall-01.jpg);
+  font-family: Hind, sans-serif;
+  font-size: 17px;
+  }
+
+ol.breadcrumb {
+  margin: 0;
+  }
+
+.main-content {
+  .section {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    h3 {
+      font-size: 24px;
+      font-weight: 300;
+      }
+    }
+  }
+
+body.page-node-6 {
+  .main-content {
+    .section {
+      .content {
+        max-width: 70%;
+        margin: auto;
+        .field--name-field-image img {
+          max-width: 100%;
+          height: auto;
+          }
+        }
+      }
+    }
+  }
+
+.block-system-main-block {
+  padding-bottom: 50px;
+  }
+
+.site-footer {
+  padding: 0;
+  .site-footer__bottom {
+    margin-top: 0;
+    }
+  .menu--footer {
+    background-color: transparent;
+    }
+  }
+
+.alert {
+  margin-bottom: 0;
+  border-radius: 0;
+  }

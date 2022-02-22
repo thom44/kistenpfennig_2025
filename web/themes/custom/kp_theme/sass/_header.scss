@@ -1,0 +1,17 @@
+#navbar-top.navbar {
+  padding: 0;
+  text-align: center;
+  display: block;
+  background-image: url('../graphics/karo-kachel.jpg');
+  .navbar-brand {
+    padding: 0;
+    }
+  a.navbar-brand {
+    display: block;
+    margin: auto;
+    img {
+      max-width: 250px;
+      height: auto;
+      }
+    }
+  }
