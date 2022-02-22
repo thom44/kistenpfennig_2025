@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file A module which provides custom checkout panes.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+
+/**
+ * Implements hook_help().
+ */
+function wlw_checkout_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.wlw_checkout':
+      $output = '';
+      $output .= '<h3>' . t('Provided Functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Provides a custom checkout panes".') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('Dependent Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Configure the Checkout Pane in <a href="/admin/commerce/config/checkout-flows" target="_blank">Checkout flows</a>.') . '<br>@note: Checkout panes wich implements viewMode "checkout" are only one of them enabled, otherwise they would be douple displayed.</be></li>';
+      $output .= '<li>' . t('Configure OrderType form display on the viewMode <a href="/admin/commerce/config/order-types/default/edit/form-display/checkout" target="_blank">Checkout</a>.') . '</li>';
+      $output .= '</ol>';
+      return $output;
+  }
+}
+
