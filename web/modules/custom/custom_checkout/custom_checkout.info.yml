@@ -1,0 +1,7 @@
+name: Custom Checkout
+type: module
+description: 'Provides custom checkout panes.'
+package: WLW Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
