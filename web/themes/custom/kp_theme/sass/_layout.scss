@@ -12,6 +12,7 @@ ol.breadcrumb {
 
 .main-content {
   .section {
+    padding-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
@@ -22,17 +23,29 @@ ol.breadcrumb {
     }
   }
 
-body.page-node-6 {
+body.page-node-6,
+body.page-node-7 {
   .main-content {
     .section {
       .content {
-        max-width: 70%;
+        max-width: 80%;
         margin: auto;
         .field--name-field-image img {
           max-width: 100%;
           height: auto;
           }
         }
+      }
+    }
+  }
+
+.region-headerbanner {
+  .block {
+    max-height: 350px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
       }
     }
   }

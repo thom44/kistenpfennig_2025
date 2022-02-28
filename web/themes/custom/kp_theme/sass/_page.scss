@@ -1,12 +1,23 @@
 
 h1.title {
-  font-size: 26px;
+  font-size: 27px;
+  margin-bottom: 0;
   }
 
 .node__content {
+  margin-top: 0;
   h3 {
     text-transform: uppercase;
     font-size: 24px;
     margin-bottom: 1em;
     }
+  .field--name-body {
+    h2 {
+      font-size: 27px;
+      }
+    }
+  }
+
+.field--name-field-geodata {
+  max-width: 50%;
   }
