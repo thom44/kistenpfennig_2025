@@ -2,6 +2,7 @@
 h1.title {
   font-size: 27px;
   margin-bottom: 0;
+  text-align: center;
   }
 
 .node__content {
@@ -18,6 +19,24 @@ h1.title {
     }
   }
 
-.field--name-field-geodata {
-  max-width: 50%;
+
+.filiale-left {
+  text-align: center;
+  .field--name-field-filialbild {
+    img {
+      max-width: 100%;
+      height: auto;
+      }
+    }
+  .field--name-field-plz-ort {
+    margin-bottom: 20px;
+    }
   }
+
+
+
+/*
+.field--name-field-geodata {
+  padding-left: 20px;
+  }
+*/
