@@ -1,19 +1,19 @@
 services:
-  custom_product.add_to_cart_subscriber:
-    class: Drupal\custom_product\EventSubscriber\AddToCartSubscriber
-    arguments: ['@entity_type.manager','@commerce_cart.cart_manager']
-    tags:
-      - { name: event_subscriber, priority: 100 }
-  custom_product.quantity_limiter:
-    class: Drupal\custom_product\EventSubscriber\CartQuantityLimiter
-    arguments: ['@entity_type.manager','@commerce_cart.cart_manager','@messenger']
-    tags:
-      - { name: event_subscriber, priority: 101 }
-  custom_product.remove_from_cart_subscriber:
-    class: Drupal\custom_product\EventSubscriber\RemoveFromCartSubscriber
-    arguments: ['@commerce_cart.cart_manager','@messenger']
-    tags:
-      - { name: event_subscriber, priority: 100 }
+#  custom_product.add_to_cart_subscriber:
+#    class: Drupal\custom_product\EventSubscriber\AddToCartSubscriber
+#    arguments: ['@entity_type.manager','@commerce_cart.cart_manager']
+#    tags:
+#      - { name: event_subscriber, priority: 100 }
+#  custom_product.quantity_limiter:
+#    class: Drupal\custom_product\EventSubscriber\CartQuantityLimiter
+#    arguments: ['@entity_type.manager','@commerce_cart.cart_manager','@messenger']
+#    tags:
+#      - { name: event_subscriber, priority: 101 }
+#  custom_product.remove_from_cart_subscriber:
+#    class: Drupal\custom_product\EventSubscriber\RemoveFromCartSubscriber
+#    arguments: ['@commerce_cart.cart_manager','@messenger']
+#    tags:
+#      - { name: event_subscriber, priority: 100 }
   custom_product.price_formatter_helper:
     class: Drupal\custom_product\PriceFormatterHelper
     arguments: ['@entity_type.manager','@renderer','@config.factory']
