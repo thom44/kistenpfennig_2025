@@ -7,6 +7,13 @@ global-styling:
       css/global.css: {}
       css/colors.css: {}
       css/media.css: {}
+      fontawesome/css/all.min.css: {}
+      fontawesome/css/fontawesome.min.css: {}
+      fontawesome/css/brands.min.css: {}
+      fontawesome/css/regular.min.css: {}
+      fontawesome/css/svg-with-js.min.css: {}
+      fontawesome/css/solid.min.css: {}
+      fontawesome/css/v4-shims.min.css: {}
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -49 }
