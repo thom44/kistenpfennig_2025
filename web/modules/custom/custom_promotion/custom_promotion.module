@@ -13,7 +13,7 @@ function custom_promotion_form_commerce_checkout_flow_multistep_default_alter(&$
   if($form['#step_id'] === 'order_information') {
 
     $input = $form_state->getUserInput();
-    $coupon_code = trim($input['sidebar']['coupon_redemption']['form']['code']);
+    $coupon_code = $input['sidebar']['coupon_redemption']['form']['code'];
 
     if ($coupon_code) {
 
@@ -27,7 +27,7 @@ function custom_promotion_form_commerce_checkout_flow_multistep_default_alter(&$
 
         foreach ($coupons as $coupon) {
 
-          if ($coupon_code == $coupon->getCode()) {
+          if (trim($coupon_code) == trim($coupon->getCode())) {
 
             $promotion_name = $promotion->get('display_name')
               ->getValue()[0]['value'];
