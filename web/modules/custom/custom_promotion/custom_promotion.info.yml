@@ -1,0 +1,8 @@
+name: Custom Promotion
+type: module
+description: 'Provides extra funcionallity for commerce_promotions.'
+package: Custom Shop
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce
+  - commerce_promotion:commerce_promotion
