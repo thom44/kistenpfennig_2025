@@ -38,3 +38,14 @@
 .node .field--type-image {
   margin: 0 !important;
   }
+
+.paragraph--type--training-2 {
+  .field--name-field-training-image {
+    max-width: 100%;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+      height: auto;
+      }
+    }
+  }
