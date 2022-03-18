@@ -50,14 +50,14 @@
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
 
-      <div class="training">
+      <div class="row">
         {% if content.field_training_image %}
-          <div class="test">{{ content.field_training_image }}</div>
+          <div class="col-md-4 offset-md-2">{{ content.field_training_image }}</div>
         {% endif %}
         {% if content.field_training_description %}
-          <div class="test">{{ content.field_training_description }}</div>
+          <div class="col-md-4 col-md-push-2">{{ content.field_training_description }}</div>
         {% endif %}
-      </div>
+      </div><!-- /.row -->
     {% endblock %}
   </div>
 {% endblock paragraph %}

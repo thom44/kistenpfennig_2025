@@ -52,12 +52,12 @@
 
       <div class="row">
         {% if content.field_training_description %}
-          <div class="col-md-6 offset-md-1">{{ content.field_training_description }}</div>
+          <div class="col-md-4 offset-md-2">{{ content.field_training_description }}</div>
         {% endif %}
         {% if content.field_training_image %}
-          <div class="col-md-4 col-md-push-1">{{ content.field_training_image }}</div>
+          <div class="col-md-4 col-md-push-2">{{ content.field_training_image }}</div>
         {% endif %}
-      </div><!-- /.training -->
+      </div><!-- /.row -->
     {% endblock %}
   </div>
 {% endblock paragraph %}
