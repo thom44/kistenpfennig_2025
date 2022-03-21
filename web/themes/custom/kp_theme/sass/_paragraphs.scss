@@ -38,3 +38,22 @@
 .node .field--type-image {
   margin: 0 !important;
   }
+
+.paragraph--type--training,
+.paragraph--type--training-2 {
+  margin-bottom: 30px;
+  .field--name-field-training-image {
+    max-width: 100%;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+      height: auto;
+      }
+    }
+  }
+
+.paragraph--type--training-2 {
+  .field--name-field-training-description {
+    text-align: right;
+    }
+  }

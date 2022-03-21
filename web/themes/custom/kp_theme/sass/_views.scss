@@ -1,0 +1,21 @@
+
+.view-filialuebersicht {
+  .views-row {
+    margin-bottom: 40px;
+    .views-field-field-filialbild {
+      margin-bottom: 15px;
+      .field-content {
+        overflow: hidden;
+        max-height: 183px;
+        img {
+          max-width: 100%;
+          height: auto;
+          }
+        }
+      }
+      .views-field-field-plz-ort,
+      .views-field-field-strasse {
+        text-align: center;
+        }
+    }
+  }

@@ -1,4 +1,28 @@
 
+@media screen and (max-width: 1399px) {
+  .view-filialuebersicht {
+    .views-row {
+      .views-field-field-filialbild {
+        .field-content {
+          max-height: 154px;
+          }
+        }
+      }
+    }
+  }
+
+@media screen and (max-width: 1199px) {
+  .view-filialuebersicht {
+    .views-row {
+      .views-field-field-filialbild {
+        .field-content {
+          max-height: 127px;
+          }
+        }
+      }
+    }
+  }
+
 /* Responsive layout - makes a two column-layout instead of four columns */
   @media screen and (max-width: 800px) {
   .sort-container .sort-col {
@@ -24,5 +48,23 @@
       -ms-flex: 100%;
       flex: 100%;
       max-width: 100%;
+    }
+  }
+
+
+@media screen and (max-width: 575px) {
+  .view-filialuebersicht {
+    .views-row {
+      .views-field-field-filialbild {
+        .field-content {
+          max-height: 100%;
+          img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            }
+          }
+        }
+      }
     }
   }
