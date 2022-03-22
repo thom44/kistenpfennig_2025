@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\wlw_workflow\EventSubscriber;
+namespace Drupal\custom_workflow\EventSubscriber;
 
 use Drupal\state_machine\Event\WorkflowTransitionEvent;
 use Drupal\wlw_invoice\Mail\OrderInvoiceMailInterface;

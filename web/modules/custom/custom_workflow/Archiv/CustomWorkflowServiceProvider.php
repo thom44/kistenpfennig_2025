@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\wlw_workflow;
+namespace Drupal\custom_workflow;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
@@ -8,7 +8,7 @@ use Drupal\Core\DependencyInjection\ServiceProviderBase;
 /**
  * Removes existing event subscribers.
  */
-class WlwWorkflowServiceProvider extends ServiceProviderBase {
+class CustomWorkflowServiceProvider extends ServiceProviderBase {
 
   /**
    * {@inheritdoc}

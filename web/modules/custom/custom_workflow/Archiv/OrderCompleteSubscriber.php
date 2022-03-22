@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\wlw_workflow\EventSubscriber;
+namespace Drupal\custom_workflow\EventSubscriber;
 
 use Drupal\commerce_order\Event\OrderEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

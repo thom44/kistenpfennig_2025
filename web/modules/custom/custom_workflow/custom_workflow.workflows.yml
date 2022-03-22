@@ -1,0 +1,26 @@
+custom order_fulfillment:
+  id: custom_order_fulfillment
+  group: commerce_order
+  label: 'KP Fulfillment'
+  states:
+    draft:
+      label: Draft
+    fulfillment:
+      label: Fulfillment
+    completed:
+      label: Completed
+    canceled:
+      label: Canceled
+  transitions:
+    place:
+      label: 'Place order'
+      from: [draft, canceled]
+      to: fulfillment
+    fulfill:
+      label: 'Fulfill order'
+      from: [fulfillment, canceled]
+      to: completed
+    cancel:
+      label: 'Cancel order'
+      from: [draft, fulfillment, completed]
+      to: canceled

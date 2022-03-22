@@ -33,7 +33,7 @@ function wlw_workflow_help($route_name, RouteMatchInterface $route_match) {
  */
 function wlw_workflow_theme($existing, $type, $theme, $path) {
   return [
-    'wlw_workflow_order_receipt' => [
+    'custom_workflow_order_receipt' => [
       'variables' => [
         'message' => NULL,
       ],

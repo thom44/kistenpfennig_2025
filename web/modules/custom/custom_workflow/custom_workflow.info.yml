@@ -1,9 +1,9 @@
-name: WLW Workflow
+name: Custom Workflow
 type: module
 description: 'Provides order workflow states, transitions and actions. (uninstall this module will delete order_type default with all fields!)'
-package: WLW Shop
+package: Custom Shop
 core_version_requirement: ^8 || ^9
 dependencies:
   - commerce:commerce
-  - wlw_invoice:wlw_invoice
-  - wlw_contract:wlw_contract
+#  - wlw_invoice:wlw_invoice
+#  - wlw_contract:wlw_contract

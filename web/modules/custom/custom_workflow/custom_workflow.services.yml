@@ -1,0 +1,35 @@
+services:
+#  custom_workflow.order_receipt_subscriber:
+#    class: Drupal\custom_workflow\EventSubscriber\DefaultOrderReceiptSubscriber
+#    arguments: ['@entity_type.manager', '@wlw_order_token.order_token_provider', '@commerce.mail_handler', '@messenger', '@wlw_order_mail_log.mail_logger']
+#    tags:
+#      - { name: 'event_subscriber' }
+
+#  custom_workflow.course_order_receipt_subscriber:
+#    class: Drupal\custom_workflow\EventSubscriber\CourseOrderReceiptSubscriber
+#    arguments: ['@entity_type.manager', '@wlw_order_token.order_token_provider', '@commerce.mail_handler', '@messenger', '@wlw_order_mail_log.mail_logger', '@wlw_contract.contract_files']
+#    tags:
+#      - { name: 'event_subscriber' }
+
+#  custom_workflow.order_invoice_subscriber:
+#    class: Drupal\custom_workflow\EventSubscriber\DefaultOrderInvoiceSubscriber
+#    arguments: ['@wlw_invoice.order_invoice_mail']
+#    tags:
+#      - { name: 'event_subscriber' }
+#
+#  custom_workflow.order_save_subscriber:
+#    class: Drupal\custom_workflow\EventSubscriber\OrderSaveSubscriber
+#    arguments: ['@entity_type.manager', '@database']
+#    tags:
+#      - { name: event_subscriber }
+
+#  custom_workflow.order_complete_subscriber:
+#    class: Drupal\custom_workflow\EventSubscriber\OrderCompleteSubscriber
+#    arguments: ['@request_stack']
+#    tags:
+#      - { name: event_subscriber, priority: -100  }
+#  custom_workflow.checkout_complete_redirect:
+#    class: Drupal\custom_workflow\EventSubscriber\CheckoutCompleteRedirect
+#    arguments: ['@entity_type.manager', '@messenger', '@commerce_checkout.checkout_order_manager', '@form_builder', '@renderer']
+#    tags:
+#      - { name: event_subscriber }
