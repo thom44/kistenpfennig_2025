@@ -17,7 +17,7 @@ custom order_fulfillment:
     place:
       label: 'Place order'
       from: [draft, canceled]
-      to: fulfillment
+      to: validation
     validate:
       label: 'Validate order'
       from: [validation, canceled]
