@@ -1,0 +1,75 @@
+id: optiback_import_product_variation
+status: true
+migration_tags:
+  - optiback_import
+source:
+  plugin: optiback_import_csv
+  path: 'artikel_'
+  # offset first row 0 - is header.
+  header_offset: 0
+  # Column delimiter. Comma (,) by default.
+  # delimiter: '\t' - not working addend in plugin.
+  # Field enclosure. Double quotation marks (") by default.
+  #enclosure: ''
+  ids:
+    - SKU
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: SKU
+      label: 'Artikel-Nr.'
+    1:
+      name: artikel_kurz
+      label: 'Artikel-Kurzbezeichnung'
+    3:
+      name: brutto_price
+      label: 'Preis inkl. Mwst'
+process:
+  sku: SKU
+  title: artikel_kurz
+  # Zuordnung von Variation zu Product in
+  # commerce_product_variation_field_data.product_id
+  # Erst bei 2. Migration kann die Zuordnung zum Produkt eingetragen werden.
+  product_id:
+    plugin: migration_lookup
+    migration: optiback_import_product
+    source: SKU
+  uid:
+    -
+      plugin: default_value
+      default_value: 1
+  status:
+    -
+      plugin: default_value
+      default_value: 0
+  type:
+    plugin: default_value
+    default_value: default
+  price/number:
+    plugin: optiback_price_format
+    source: brutto_price
+  price/currency_code:
+    plugin: default_value
+    default_value: EUR
+#  weight/number:
+#    -
+#      plugin: default_value
+#      source: Weight
+#      default_value: oz
+#  weight/unit:
+#    -
+#      plugin: default_value
+#      source: WeightUnit
+#      default_value: oz
+destination:
+  plugin: 'entity:commerce_product_variation'
+  default_bundle: default
+#migration_dependencies:
+#  required:
+#    - commerce_examples_product_attribute_color
+#    - commerce_examples_product_attribute_size

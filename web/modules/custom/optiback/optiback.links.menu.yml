@@ -1,0 +1,6 @@
+optiback.administration:
+  title: 'Optiback'
+  description: 'Optiback run export/import.'
+  parent: commerce.admin_commerce
+  route_name: optiback.administration
+  weight: 100

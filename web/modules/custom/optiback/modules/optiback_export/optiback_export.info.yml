@@ -1,0 +1,8 @@
+name: Optiback Export
+type: module
+description: 'Optiback Export Schnittstelle.'
+package: Optiback
+core_version_requirement: ^8 || ^9
+dependencies:
+  - optiback:optiback
+  - commerce:commerce

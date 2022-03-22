@@ -1,0 +1,8 @@
+name: User Invoice
+type: module
+description: 'Provides a user subpage with optiback imported invoices.'
+package: Optiback
+core_version_requirement: ^8 || ^9
+dependencies:
+  - optiback:optiback
+  - commerce:commerce

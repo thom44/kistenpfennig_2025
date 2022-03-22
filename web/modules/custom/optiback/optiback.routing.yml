@@ -1,0 +1,7 @@
+optiback.administration:
+  path: '/admin/commerce/optiback'
+  defaults:
+    _form: '\Drupal\optiback\Form\RunProcessForm'
+    _title: 'Optiback Schnittstelle'
+  requirements:
+    _permission: 'run optiback process'

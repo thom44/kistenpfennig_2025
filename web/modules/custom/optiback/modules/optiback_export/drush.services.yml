@@ -1,0 +1,6 @@
+services:
+  optiback_export.commands:
+    class: \Drupal\optiback_export\Commands\DrushExportOrder
+    arguments: ['@optiback_export.run_export']
+    tags:
+      - { name: drush.command }

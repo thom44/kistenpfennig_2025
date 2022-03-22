@@ -1,0 +1,75 @@
+id: optiback_import_product
+status: true
+migration_tags:
+  - optiback_import
+source:
+  plugin: optiback_import_csv
+  path: 'artikel_'
+  # offset first row 0 - is header.
+  header_offset: 0
+  # Column delimiter. Comma (,) by default.
+  # delimiter: '\t' - not working addend in plugin.
+  # Field enclosure. Double quotation marks (") by default.
+  #enclosure: ''
+  ids:
+    - SKU
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: SKU
+      label: 'Artikel-Nr.'
+    1:
+      name: artikel_kurz
+      label: 'Artikel-Kurzbezeichnung'
+process:
+  title: artikel_kurz
+  # Anlegen der Zuordnung der ProduktVariation in
+  # commerce_product__variations.product_id
+  # Damit wird der Datensatz erzeugt.
+  variations:
+    plugin: migration_lookup
+    migration: optiback_import_product_variation
+    source: SKU
+  uid:
+    -
+      plugin: default_value
+      default_value: 1
+  status:
+    -
+      plugin: default_value
+      default_value: 0
+  # Use store 1 as the default store.
+  stores/target_id:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: default
+  # Create default image data.
+#  field_product_image/target_id:
+#    plugin: default_value
+#    default_value: 181
+#  field_product_image/alt:
+#    plugin: default_value
+#    default_value: 'Kistenpfennig Backwaren'
+#  field_product_image/title:
+#      plugin: default_value
+#      default_value: 'Kistenpfennig Backwaren'
+#  field_product_image/width:
+#      plugin: default_value
+#      default_value: 1200
+#  field_product_image/height:
+#     plugin: default_value
+#     default_value: 1200
+
+destination:
+  plugin: 'entity:commerce_product'
+  default_bundle: default
+#migration_dependencies:
+#  required:
+#    - optiback_import_product_variation

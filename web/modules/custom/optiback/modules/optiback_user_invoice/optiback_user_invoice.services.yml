@@ -1,0 +1,5 @@
+services:
+  optiback_user_invoice.user.list:
+    class: Drupal\optiback_user_invoice\UserInvoiceController
+    arguments: []
+#'@entity_type.manager','@path.alias_manager','@wlw_product.price_formatter_helper','@database','@language_manager','@renderer'
