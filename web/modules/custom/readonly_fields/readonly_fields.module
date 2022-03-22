@@ -1,0 +1,20 @@
+<?php
+/**
+ * @file: A module which provides a interface to optiback.
+ * E-Mail: obtiback@wp11130752.server-he.de
+ */
+
+/**
+ * Implements_hook_form_FORM_ID_alter().
+ */
+function readonly_fields_form_commerce_product_default_edit_form_alter(&$form, &$form_state, $form_id) {
+  // Sets product fields to readonly.
+  // The fields are filled with optiback import migration.
+  $form['body']['#disabled'] = TRUE;
+  $form['shops']['#disabled'] = TRUE;
+  $form['field_shop_category']['#disabled'] = TRUE;
+  $form['field_sort']['#disabled'] = TRUE;
+  $form['title']['#disabled'] = TRUE;
+  // Sets all product_variation fields to readonly.
+  $form['variations']['#disabled'] = TRUE;
+}
