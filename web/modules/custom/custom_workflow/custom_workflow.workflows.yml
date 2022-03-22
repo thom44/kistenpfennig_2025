@@ -16,11 +16,11 @@ custom order_fulfillment:
   transitions:
     place:
       label: 'Place order'
-      from: [draft, canceled]
+      from: [draft, canceled, completed]
       to: validation
     validate:
       label: 'Validate order'
-      from: [validation, canceled]
+      from: [validation, canceled, completed]
       to: fulfillment
     fulfill:
       label: 'Fulfill order'
