@@ -1,0 +1,8 @@
+services:
+  optiback_export.run_export:
+    class: \Drupal\optiback_export\RunExport
+    arguments: ['@optiback_export.optiback_order_export']
+  optiback_export.optiback_order_export:
+    class: \Drupal\optiback_export\OptibackOrderExport
+    arguments: ['@entity_type.manager','@commerce.mail_handler','@messenger']
+

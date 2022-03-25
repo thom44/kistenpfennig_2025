@@ -1,0 +1,12 @@
+optiback_user_invoice.account.invoices:
+  path: '/user/{uid}/rechnungen'
+  defaults:
+    _controller: '\Drupal\optiback_user_invoice\Controller\UserInvoiceController::page'
+  requirements:
+    _permission: 'access content'
+optiback_user_invoice.invoice.download:
+  path: '/user/{uid}/rechnung/{order_id}'
+  defaults:
+    _controller: '\Drupal\optiback_user_invoice\Controller\PrivateFileDownload::download'
+  requirements:
+    _permission: 'access content'

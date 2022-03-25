@@ -1,0 +1,19 @@
+<?php
+/**
+ * @file: A module which provides a interface to optiback.
+ * E-Mail: obtiback@wp11130752.server-he.de
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function optiback_theme($existing, $type, $theme, $path) {
+  return [
+    'optiback_email_wrapper' => [
+      'variables' => [
+        'message' => NULL,
+      ],
+    ],
+  ];
+}
+

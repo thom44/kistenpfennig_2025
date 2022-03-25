@@ -1,0 +1,11 @@
+name: Optiback Import
+type: module
+description: 'Optiback Import Schnittstelle.'
+package: Optiback
+core_version_requirement: ^8 || ^9
+dependencies:
+  - optiback:optiback
+  - commerce:commerce
+  - commerce_migrate:commerce_migrate
+  - migrate_tools:migrate_tools
+  - commerce_migrate_commerce:commerce_migrate_commerce

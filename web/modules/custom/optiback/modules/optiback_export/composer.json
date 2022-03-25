@@ -1,0 +1,17 @@
+{
+    "name": "drupal/optiback_export",
+    "description": "A Drush command for commerce order export.",
+    "type": "drupal-module",
+    "autoload": {
+        "psr-4": {
+            "Drupal\\optiback_export\\": "src/"
+        }
+    },
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^9"
+            }
+        }
+    }
+}

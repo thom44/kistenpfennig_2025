@@ -1,0 +1,7 @@
+name: Readonly Fields
+type: module
+description: 'Set product fields to readonly.'
+package: Custom
+core_version_requirement: ^8 || ^9
+dependencies:
+  - commerce:commerce

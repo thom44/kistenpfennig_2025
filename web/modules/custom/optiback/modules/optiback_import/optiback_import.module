@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file: A module which provides a interface to optiback.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function optiback_import_uninstall() {
+  Drupal::configFactory()->getEditable('optiback_import.source.schema')->delete();
+
+}

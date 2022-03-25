@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file: A module which manage wlw workflows.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function wlw_workflow_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.wlw_workflow':
+      $output = '';
+      $output .= '<h3>' . t('Provided Functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Sends order receipt email with pdf-invoice attachment.') . '</li>';
+      $output .= '<li>' . t('Resets commerce_order__field_block_email to unchecked.') . '</li>';
+      $output .= '<li>' . t('Redirects to 2. order-type order if exists.') . '</li>';
+      $output .= '<li>' . t('Shows order complete message instead of order complete page on double order.') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('Dependent Configuration') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('');
+      $output .= '</ol>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function wlw_workflow_theme($existing, $type, $theme, $path) {
+  return [
+    'custom_workflow_order_receipt' => [
+      'variables' => [
+        'message' => NULL,
+      ],
+    ],
+  ];
+}

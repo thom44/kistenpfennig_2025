@@ -63,6 +63,11 @@ class CustomConfirmationPane extends CheckoutPaneBase {
   public function validatePaneForm(array &$pane_form, FormStateInterface $form_state, array &$complete_form) {
     $form_display = EntityFormDisplay::collectRenderDisplay($this->order, 'custom_confirmation');
     $form_display->extractFormValues($this->order, $pane_form, $form_state);
+
+    // Dirty bugfix for missing order number. Otherwise validation breaks.
+    $this->order->set('order_number',$this->order->id());
+    $this->order->save();
+
     $form_display->validateFormValues($this->order, $pane_form, $form_state);
   }
 
