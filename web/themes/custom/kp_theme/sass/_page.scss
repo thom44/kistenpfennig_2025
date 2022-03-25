@@ -1,4 +1,10 @@
 
+
+.main-wrap {
+  max-width: 1296px;
+  margin-left: 12px;
+  }
+
 h1.title {
   font-size: 27px;
   margin-bottom: 0;
@@ -33,7 +39,8 @@ h1.title {
     }
   }
 
-.page-node-33 {
+.page-node-33,
+.page-node-34 {
   .field--name-body,
   .paragraph--type--simple-text {
     margin: auto auto 30px auto;
