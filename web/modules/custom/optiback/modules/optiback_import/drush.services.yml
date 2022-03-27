@@ -1,0 +1,11 @@
+services:
+  optiback_import.commands.invoice:
+    class: \Drupal\optiback_import\Commands\DrushInvoiceImport
+    arguments: ['@optiback_import.process_invoice']
+    tags:
+      - { name: drush.command }
+  optiback_import.commands.tracking_number:
+    class: \Drupal\optiback_import\Commands\DrushTrackinigNumberImport
+    arguments: ['@optiback_import.process_tracking_number']
+    tags:
+      - { name: drush.command }

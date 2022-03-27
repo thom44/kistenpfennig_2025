@@ -1,0 +1,7 @@
+custom_mail_ui.email_configuration:
+  path: 'admin/structure/email'
+  defaults:
+    _form: '\Drupal\custom_mail_ui\Form\MailUiForm'
+    _title: 'Shop E-Mails'
+  requirements:
+    _permission: 'access administration pages'

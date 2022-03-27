@@ -1,0 +1,4 @@
+services:
+  custom_mail_ui.mail_helper:
+    class: Drupal\custom_mail_ui\MailHelper
+    arguments: ['@config.factory', '@token', '@commerce.mail_handler']
