@@ -1,5 +1,8 @@
 
 @media screen and (max-width: 1399px) {
+  #main {
+    max-width: 1116px;
+    }
   .view-filialuebersicht {
     .views-row {
       .views-field-field-filialbild {
@@ -12,6 +15,9 @@
   }
 
 @media screen and (max-width: 1199px) {
+  #main {
+    max-width: 936px;
+    }
   .view-filialuebersicht {
     .views-row {
       .views-field-field-filialbild {
@@ -20,6 +26,25 @@
           }
         }
       }
+    }
+  }
+
+@media screen and (max-width: 991px) {
+  #main {
+    max-width: 696px;
+    }
+  }
+
+@media screen and (max-width: 767px) {
+  #main {
+    max-width: 516px;
+    }
+  }
+
+@media screen and (max-width: 575px) {
+  body {
+    background-image: none;
+    background-color: #e7e6e6;
     }
   }
 
@@ -39,8 +64,8 @@
         }
       }
     }
-
   }
+
 
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {

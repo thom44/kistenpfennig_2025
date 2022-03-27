@@ -1,7 +1,7 @@
 
 
 
-  $kpgrau: #e7e6e6;
+$kpgrau: #e7e6e6;
 
 /* ---------- Color Module Styles ----------- */
 
@@ -29,10 +29,10 @@ body {
   background-color: #055a8e;
 }
 
-.main-content .section,
+/* .main-content > .section, */
+#main,
 #navbar-main,
-.navigation,
-.block {
+.navigation {
   background-color: $kpgrau;
   }
 
@@ -64,9 +64,8 @@ a:active,
 }
 
 .sidebar .block {
-  background-color: #f6f6f2;
-  border-color: #f9f9f9;
-}
+
+  }
 
 .btn-primary {
   background-color: #007bff;
@@ -79,8 +78,8 @@ a:active,
 }
 
 .site-footer {
-  background: #292929;
-}
+  background-color: #d4021d;
+  }
 
 .region-header,
 .region-header a,
@@ -95,7 +94,7 @@ a:active,
 }
 
 .region-headerbanner .block {
-  background-color: transparent; 
+  background-color: transparent;
   }
 
 /* ---------- Color Form ----------- */
