@@ -28,7 +28,7 @@ ol.breadcrumb {
     padding-left: 15px;
     padding-right: 15px;
     h3 {
-      font-size: 24px;
+      font-size: 1.8rem;
       font-weight: 300;
       }
     }
@@ -100,6 +100,39 @@ body.node--type-filiale {
     }
   .menu--footer {
     background-color: transparent;
+    text-align: right;
+    ul.navbar-nav {
+      display: inline-block;
+      li {
+        float: left;
+        margin-right: 20px;
+        &:nth-child(1) a {
+          margin-top: 10px;
+          width: 29px;
+          height: 29px;
+          text-indent: 9999px;
+          display: inline-block;
+          background-image: url('../graphics/insta-btn.png');
+          background-repeat: no-repeat;
+          }
+        &:nth-child(2) a {
+          margin-top: 10px;
+          width: 29px;
+          height: 29px;
+          text-indent: 9999px;
+          display: inline-block;
+          background-image: url('../graphics/fb-btn.png');
+          background-repeat: no-repeat;
+          }
+        a {
+          color: white;
+          font-size: 16px;
+          display: block;
+          line-height: 50px;
+          padding-top: 0;
+          }
+        }
+      }
     }
   }
 
