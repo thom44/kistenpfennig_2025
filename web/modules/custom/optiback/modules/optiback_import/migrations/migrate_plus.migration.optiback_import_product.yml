@@ -4,6 +4,7 @@ migration_tags:
   - optiback_import
 source:
   plugin: optiback_import_csv
+  # Path prefix {prefix}{YYYYMMDD}.csv.
   path: 'artikel_'
   # offset first row 0 - is header.
   header_offset: 0
@@ -26,6 +27,136 @@ source:
     1:
       name: artikel_kurz
       label: 'Artikel-Kurzbezeichnung'
+    2:
+      name: artikel_bez_1
+      label: 'Bezeichnung 1'
+    3:
+      name: artikel_bez_2
+      label: 'Bezeichnung 2'
+    4:
+      name: ean_nummer
+      label: 'EAN-Nummer'
+    5:
+      name: gruppe_nr
+      label: 'Artikelgrp.-Nr.'
+    6:
+      name: gruppe_name
+      label: 'Artikelgrp.-Bez.'
+    7:
+      name: warengrp_nr
+      label: 'Warengrp.-Nr'
+    8:
+      name: warengrp_name
+      label: 'Warengrp.- Bez'
+    9:
+      name: bestellgrp_nr
+      label: 'Bestellgruppen-Nr.'
+    10:
+      name: bestellgrp_name
+      label: 'Bestellgruppen-Bez.'
+    11:
+      name: listenrang
+      label: 'Listenrang'
+    12:
+      name: vertriebs_einheit
+      label: 'Vertriebs-Einheit'
+    13:
+      name: verpackung_einheit
+      label: 'Verpackung-Einheit'
+    14:
+      name: vertr_einheiten_zwang
+      label: 'Vertr.-Einheiten-Zwang'
+    15:
+      name: masseinheit_bestellung
+      label: 'Maßeinheit (Bestellung)'
+    16:
+      name: preiseinheit
+      label: 'Preiseinheit'
+    17:
+      name: preis_inkl
+      label: 'Preis inkl. Mwst'
+    18:
+      name: preis_excl
+      label: 'Preis excl. Mwst'
+    19:
+      name: mwst_satz
+      label: 'MwSt.-Satz'
+    20:
+      name: stueckgewicht
+      label: 'Stückgewicht'
+    21:
+      name: alg_soja
+      label: 'Allergen Soja '
+    22:
+      name: alg_eier
+      label: 'Allergen Eier'
+    23:
+      name: alg_fisch
+      label: 'Allergen Fisch'
+    24:
+      name: alg_milchpr
+      label: 'Allergen Milchprodukte'
+    25:
+      name: alg_lupinen
+      label: 'Allergen Lupinen'
+    26:
+      name: alg_sellerie
+      label: 'Allergen Sellerie'
+    27:
+      name: alg_gluten
+      label: 'Allergen Gluten'
+    28:
+      name: alg_senf
+      label: 'Allergen Senf'
+    29:
+      name: alg_erdnuesse
+      label: 'Allergen Erdnüsse'
+    30:
+      name: alg_weichtiere
+      label: 'Allergen Weichtiere'
+    31:
+      name: alg_schalenfruechte
+      label: 'Allergen Schalenfrüchte'
+    32:
+      name: alg_sulfite
+      label: 'Allergen Sulfite'
+    33:
+      name: alg_krebstiere
+      label: 'Allergen Krebstiere'
+    34:
+      name: alg_sesamsamen
+      label: 'Allergen Sesamsamen'
+    35:
+      name: nw_kcal
+      label: 'Nährwert Kcal'
+    36:
+      name: nw_energy_kj
+      label: 'Nährwert Energy KJ'
+    37:
+      name: nw_fett
+      label: 'Nährwert Fett'
+    38:
+      name: nw_fettsauren
+      label: 'Nährwert Fettsäuren'
+    39:
+      name: nw_kohlenhydrate
+      label: 'Nährwert Kohlenhydrate'
+    40:
+      name: nw_zucker
+      label: 'Nährwert Zucker'
+    41:
+      name: nw_eiweiss
+      label: 'Nährwert Eiweiß'
+    42:
+      name: nw_ballaststoffe
+      label: 'Nährwert Ballaststoffe'
+    43:
+      name: nw_salt
+      label: 'Nährwert Salz'
+    44:
+      name: nw_wasser
+      label: 'Nährwert Wasser'
+
 process:
   title: artikel_kurz
   # Anlegen der Zuordnung der ProduktVariation in
@@ -42,34 +173,54 @@ process:
   status:
     -
       plugin: default_value
-      default_value: 0
-  # Use store 1 as the default store.
+      default_value: 1
   stores/target_id:
     plugin: default_value
     default_value: 1
   type:
     plugin: default_value
     default_value: default
-  # Create default image data.
-#  field_product_image/target_id:
-#    plugin: default_value
-#    default_value: 181
-#  field_product_image/alt:
-#    plugin: default_value
-#    default_value: 'Kistenpfennig Backwaren'
-#  field_product_image/title:
-#      plugin: default_value
-#      default_value: 'Kistenpfennig Backwaren'
-#  field_product_image/width:
-#      plugin: default_value
-#      default_value: 1200
-#  field_product_image/height:
-#     plugin: default_value
-#     default_value: 1200
 
+  field_sort:
+    -
+      plugin: process_field_sort
+      source: listenrang
+
+  # Sets taxonoy reference to the warengruppen number (Optiback).
+  field_shop_category:
+    -
+      plugin: process_shop_cat
+      source: warengrp_nr
+
+  # Example data for body.
+  # @todo: add real data.
+  body/value:
+    -
+      plugin: concat
+      source:
+        - alg_soja
+        - alg_eier
+        - alg_fisch
+      delimiter: ', '
+  body/format:
+    plugin: default_value
+    default_value: full_html
+
+#field_summary:
+#    -
+#      plugin: concat
+#      source:
+#        - summary_1
+#        - summary_2
+#        - summary_3
+#      delimiter: ','
+#    -
+#      plugin: explode
+#      limit: 100
+#      delimiter: ','
 destination:
   plugin: 'entity:commerce_product'
   default_bundle: default
-#migration_dependencies:
-#  required:
-#    - optiback_import_product_variation
+migration_dependencies:
+  required:
+    - optiback_import_product_variation

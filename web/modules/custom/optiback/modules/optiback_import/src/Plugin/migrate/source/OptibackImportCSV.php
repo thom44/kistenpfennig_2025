@@ -7,6 +7,8 @@ use Drupal\Component\Utility\NestedArray;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\source\SourcePluginBase;
 use League\Csv\Reader;
+use Drupal\optiback\ObtibackConfigInterface;
+
 
 /**
  * Source for CSV files.
@@ -91,13 +93,6 @@ use League\Csv\Reader;
 class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterface {
 
   /**
-   * The csv import directory.
-   *
-   * @var String $importDir
-   */
-  protected $importDir = '../../optiback/data/out';
-
-  /**
    * {@inheritdoc}
    *
    * @throws \InvalidArgumentException
@@ -116,7 +111,7 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
 
       $files = array_diff(scandir($this->importDir), array('.', '..'));
 
-      foreach ($files as $key => $file) {
+      foreach ($files as $file) {
         if (strpos($file, $this->configuration['path']) !== FALSE) {
           $artikel_files[] = $file;
         }
@@ -127,7 +122,8 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
 
       // Creates the relative filepath from Drupal root.
       // ../../optiback/data/out/artikel_20220317.csv
-      $csv_filepath = $this->importDir . '/' . $artikel_files[0];
+      // We import only the newest file with key 0.
+      $csv_filepath = ObtibackConfigInterface::OPTIBACK_OUT . '/' . $artikel_files[0];
 
       // Saves the dynamic created filepath.
       $configuration['path'] = $csv_filepath;

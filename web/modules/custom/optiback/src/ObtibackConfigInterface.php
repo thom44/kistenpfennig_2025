@@ -3,9 +3,29 @@
 namespace Drupal\optiback;
 
 /**
- * Provides an interface for mymodule constants.
+ * Provides an interface for optiback constants.
  */
 interface ObtibackConfigInterface {
+
+  /**
+   * The db user.
+   */
+  const DB_USER = 'root';
+
+  /**
+   * The db user.
+   */
+  const DB_NAME = 'kd_kistenpfennig_d9';
+
+  /**
+   * The db user.
+   */
+  const DB_PWD = 'root';
+
+  /**
+   * The path to drush.
+   */
+  const DRUSH = 'drush';
 
   /**
    * The relative path to the optiback directory.
@@ -72,4 +92,13 @@ interface ObtibackConfigInterface {
      */
   const EMAIL_BCC = 'root@licht.local';
 
+  /**
+   * The Drupal tax_rate key.
+   */
+  const DRUPAL_TAX_DE_19 = 'default|cb66c91d-1ac6-4e64-9a9f-af14f1b8dcf1';
+
+  /**
+   * The Drupal tax_rate key.
+   */
+  const DRUPAL_TAX_DE_7 = 'default|9b0ae25c-0e66-41bd-b54a-6c6411869634';
 }
