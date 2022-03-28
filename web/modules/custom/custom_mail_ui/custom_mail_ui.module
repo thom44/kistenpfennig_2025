@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file: A module which provides a UI to configrure emails text with tokens.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function custom_mail_ui_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    case 'help.page.custom_mail_ui':
+      $output = '';
+      $output .= '<h3>' . t('Provided functionality') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Provides configureabel email text') . '</li>';
+      $output .= '<li>' . t('<a href="/admin/structure/email">/admin/structure/email.</a>') . '</li>';
+      $output .= '</ol>';
+      $output .= '<h3>' . t('To Add new configureable email do the following:') . '</h3>';
+      $output .= '<ol>';
+      $output .= '<li>' . t('Add new config entity yaml file to config/install') . '</li>';
+      $output .= '<li>' . t('Add key and title to Form/MailUiForm.php class to the property $emailKeys.') . '</li>';
+      $output .= '<li>' . t('Load the new configuration entity using configuration management or reinstall module.') . '</li>';
+      $output .= '</ol>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function custom_mail_ui_theme($existing, $type, $theme, $path) {
+  return [
+    'custom_mail_ui_email_wrapper' => [
+      'variables' => [
+        'message' => NULL,
+      ],
+    ],
+  ];
+}

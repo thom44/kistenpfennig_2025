@@ -9,3 +9,4 @@ dependencies:
   - commerce_migrate:commerce_migrate
   - migrate_tools:migrate_tools
   - commerce_migrate_commerce:commerce_migrate_commerce
+  - custom_mail_ui:custom_mail_ui

@@ -1,7 +1,7 @@
-name: WLW Order Token
+name: Custom Order Token
 type: module
 description: 'Provides missing token in commerce_order token group.'
-package: WLW Shop
+package: Custom Shop
 core_version_requirement: ^8 || ^9
 dependencies:
   - token:token

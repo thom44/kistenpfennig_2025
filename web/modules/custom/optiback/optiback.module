@@ -1,6 +1,10 @@
 <?php
 /**
  * @file: A module which provides a interface to optiback.
+ *
+ * For module global settings
+ * @see optiback/OptibackInterface;
+ *
  * E-Mail: obtiback@wp11130752.server-he.de
  */
 
@@ -17,3 +21,21 @@ function optiback_theme($existing, $type, $theme, $path) {
   ];
 }
 
+
+/**
+ * Implements hook_mail().
+ *
+ * Implementation is needed to get it to mailsystem ui.
+ */
+function optiback_mail($key, &$message, $params) {
+
+  switch ($key) {
+    case 'optiback_export':
+
+      $message['from'] = $params['from'];
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      $message['params']['attachments'] = $params['attachments'];
+      break;
+  }
+}

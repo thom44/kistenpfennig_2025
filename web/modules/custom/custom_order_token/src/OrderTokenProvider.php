@@ -1,5 +1,5 @@
 <?php
-namespace Drupal\wlw_order_token;
+namespace Drupal\custom_order_token;
 
 use Drupal\commerce_price\Price;
 use Drupal\commerce_order\OrderTotalSummaryInterface;
@@ -11,7 +11,6 @@ use Drupal\Core\Utility\Token;
 use Drupal\group\Entity\Group;
 use Drupal\user\UserInterface;
 use Drupal\commerce_order\Entity\OrderInterface;
-use Drupal\taxonomy\Entity\Term;
 
 class OrderTokenProvider {
 
@@ -133,95 +132,6 @@ class OrderTokenProvider {
     $data['from'] = $from_email;
 
     return $data;
-  }
-
-  /**
-   * Generates a list with assigned groups to the product variations.
-   *
-   * @param \Drupal\commerce_order\Entity\OrderInterface $order
-   *
-   * @return string
-   *    A list of assigned groups.
-   */
-  public function getAssignedProductVariationGroups(OrderInterface $order) {
-
-    $gids = [];
-    $group_list = [];
-    $product_ids = [];
-    $markup = '';
-
-    $order_items = $order->getItems();
-
-    foreach ($order_items as $order_item) {
-
-      $purchased_entity = $order_item->getPurchasedEntity();
-
-      // Collect distinct product ids of the order.
-      $product_id = $purchased_entity->get('product_id')->getValue()[0]['target_id'];
-      $product_ids[$product_id] = $product_id;
-
-      // Process product variations with field_group.
-      if ($purchased_entity->hasField('field_group')) {
-
-        foreach ($purchased_entity->get('field_group') as $field_group) {
-          $gids[] = $field_group->getValue()['target_id'];
-        }
-      }
-    }
-
-    // Process products with field_group.
-    foreach ($product_ids as $product_id) {
-
-      $product = $this->entityTypeManager->getStorage('commerce_product')->load($product_id);
-
-      if ($product->hasField('field_group') && $product->get('field_group')[0]) {
-
-        foreach ($product->get('field_group') as $field_group) {
-          $gids[] = $field_group->getValue()['target_id'];
-        }
-      }
-    }
-
-    // Prepares list with group names.
-    foreach ($gids as $gid) {
-
-      // Skip -none- option
-      if (isset($gid) || $gid != '_none') {
-        $group = Group::load($gid);
-
-        // Gets reverenced parent term.
-        $fields = $group->getFields();
-        $field_media_parent = $fields['field_media_parent']->getValue();
-        if (
-          isset($field_media_parent[0]['target_id'])
-        &&
-          $tid = $field_media_parent[0]['target_id']
-        ) {
-          $group_list[$tid][$gid] = $group->label();
-        }
-      }
-    }
-
-    // We group the list with parent terms.
-    foreach ($group_list as $tid => $groups) {
-
-      // Creates an items list for each gid in one array.
-      $items = [];
-      foreach ($groups as $gid => $group) {
-        $items[] = $group;
-      }
-      $term = Term::load($tid);
-
-      $list[] = [
-        '#theme' => 'item_list',
-        '#title' => $term->get('name')->getValue()[0]['value'],
-        '#list_type' => 'ul',
-        '#items' => $items,
-        '#attributes' => ['class' => 'wlw-assigned-groups-list'],
-      ];
-    }
-
-    return $this->renderer->render($list);
   }
 
   /**
@@ -354,9 +264,13 @@ class OrderTokenProvider {
       '#order_entity' => $order,
       '#totals' => $totals,
       '#order_items_data' => $order_items_data,
-      '#attached' => ['library' => ['wlw_order_token/order-item-table']],
+      '#attached' => ['library' => ['custom_order_token/order-item-table']],
     ];
 
     return $this->renderer->render($output);
+  }
+
+  public function getTrackingNumber($order) {
+    return $order->get('field_tracking_number');
   }
 }

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 now=$(date +"%d_%m_%Y__%H_%M_%S")
-
 year=$(date +"%Y")
-echo $year
 
 DRUPAL_PATH="../../../../../"
 OPTIBACK_PATH="../../../../../../optiback"
@@ -22,6 +20,9 @@ tar -czf $OPTIBACK_PATH/backups/optiback-out-$now.tar.gz $OPTIBACK_PATH/data/out
 drush migrate:import optiback_import_product_variation 2>&1 | tee -a $logfile
 drush migrate:import optiback_import_product 2>&1 | tee -a $logfile
 #drush migrate:import optiback_import_product_variation 2>&1 | tee -a $logfile
+
+# Copy and process new invoices.
+drush copy_invoice
 
 # Debugging option: -mmin
 # Delet's all backup- and log-files which older then 30 days.

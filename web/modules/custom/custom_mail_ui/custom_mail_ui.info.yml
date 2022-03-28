@@ -1,0 +1,7 @@
+name: Custom Mail UI
+type: module
+description: 'Provides a UI to configure emails text with tokens.'
+package: Custom
+core_version_requirement: ^8 || ^9
+dependencies:
+  - token:token
