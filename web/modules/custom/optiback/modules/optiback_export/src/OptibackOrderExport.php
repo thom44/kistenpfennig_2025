@@ -12,21 +12,11 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\profile\Entity\Profile;
 use Drupal\optiback\ObtibackConfigInterface;
+use Drupal\optiback\OptibackLoggerInterface;
 
 class OptibackOrderExport {
 
   use StringTranslationTrait;
-
-  /**
-   * The email addresses.
-   *
-   * @var String $email
-   */
-  protected $email = [
-    'from' => 'thom@licht.local',
-    'to' => 'fritz@licht.local',
-    'bcc' => 'thom@licht.local'
-  ];
 
   /**
    * An instance of the entity type manager.
@@ -50,25 +40,31 @@ class OptibackOrderExport {
   protected $logger;
 
   /**
+   * The optiback logger service.
+   *
+   * @var \Drupal\optiback\OptibackLoggerInterface
+   */
+  protected $optibackLogger;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(
     EntityTypeManagerInterface $entityTypeManager,
     MailHelperInterface $mail_helper,
-    LoggerChannelFactoryInterface $logger
+    LoggerChannelFactoryInterface $logger,
+    OptibackLoggerInterface $optiback_logger
   ) {
     $this->entityTypeManager = $entityTypeManager;
     $this->mailHelper = $mail_helper;
     $this->logger = $logger;
+    $this->optibackLogger = $optiback_logger;
   }
 
   /**
    * Export a CSV of data.
-   *
-   * @param string $logfile
-   *  The logfile of the shellscript.
    */
-  public function export($logfile = '') {
+  public function export() {
 
     // First we remove all csv export files, to export only new ones.
     array_map('unlink', glob(ObtibackConfigInterface::OPTIBACK_IN . '/*.csv'));
@@ -140,6 +136,7 @@ class OptibackOrderExport {
       if (!$result) {
         $error = $this->t('The csv File :file could not be created.',[':file'=>$filename]);
       }
+
       foreach ($order->getItems() as $key => $order_item) {
 
         // Build Order Position data.
@@ -155,46 +152,18 @@ class OptibackOrderExport {
       $order->save();
     }
 
-
-    // This is the "magic" part of the code.  Once the data is built, we can
-    // return it as a response.
-    #$response = new Response();
-    // By setting these 2 header options, the browser will see the URL
-    // used by this Controller to return a CSV file called "article-report.csv".
-    #$response->headers->set('Content-Type', 'text/csv');
-    #$response->headers->set('Content-Disposition', 'attachment; filename="AuKopf_' . $order_id . '.csv"');
-    // This line physically adds the CSV data we created
-    #$response->setContent($csv_data);
-
-    if ($error == FALSE) {
+    if ($error) {
 
       $this->logger->get('optiback_export')->error($error);
 
-      // Email with attachment
-      // @see optiback_mail() and mailsystem|swiftmail UI.
-      $log_path = ObtibackConfigInterface::OPTIBACK_LOG . $logfile;
-
-      // Gets the prepared file std class for attachement.
-      $file = new \stdClass;
-      $file->uri = $log_path;
-      $file->filename = $logfile;
-      $file->filemime = 'text/plain';
+      $this->optibackLogger->addLog($error, 'error');
 
       $params = [
         'subject' => 'Drupal Optiback Export',
-        'body' => 'Fehler beim Drupal Export<br>' . $error,
-        'from' => ObtibackConfigInterface::EMAIL_FROM,
-        'bcc' => ObtibackConfigInterface::EMAIL_BCC,
-        'files' => [$file]
+        'body' => 'Fehler beim Drupal Export<br>',
       ];
 
-      $mail = $this->mailHelper->sendMail(
-        'optiback_export',
-        'optiback_export',
-        ObtibackConfigInterface::EMAIL_TO,
-        'de',
-        $params
-      );
+      $mail = $this->optibackLogger->sendMail($params);
 
       if ($mail) {
         $message = $this->t('The optiback export email was send to the site owner.');

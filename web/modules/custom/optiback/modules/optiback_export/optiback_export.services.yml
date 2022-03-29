@@ -1,8 +1,8 @@
 services:
   optiback_export.run_export:
     class: \Drupal\optiback_export\RunExport
-    arguments: ['@optiback_export.optiback_order_export']
+    arguments: ['@optiback_export.optiback_order_export','@optiback.helper','@optiback.logger','@logger.factory']
   optiback_export.optiback_order_export:
     class: \Drupal\optiback_export\OptibackOrderExport
-    arguments: ['@entity_type.manager','@custom_mail_ui.mail_helper','@logger.factory']
+    arguments: ['@entity_type.manager','@custom_mail_ui.mail_helper','@logger.factory','@optiback.logger']
 

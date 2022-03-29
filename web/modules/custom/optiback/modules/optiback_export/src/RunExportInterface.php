@@ -10,10 +10,11 @@ interface RunExportInterface {
   /**
    * Starts the export.
    *
-   * @param (optional) string $logfile
+   * @param (optional) string $env
+   *  The environment dev skips backups.
    *
    * @return boolish TRUE|FALSE
    */
-  public function run($logfile = '');
+  public function run($env = 'prod');
 
 }

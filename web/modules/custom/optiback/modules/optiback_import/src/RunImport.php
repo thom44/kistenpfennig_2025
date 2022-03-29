@@ -2,15 +2,18 @@
 
 namespace Drupal\optiback_import;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\optiback\ObtibackConfigInterface;
-use Drupal\optiback_import\ProcessInvoiceInterface;
-use Drupal\optiback_import\ProcessTrackingNumberInterface;
+use Drupal\optiback\OptibackHelperInterface;
+use Drupal\optiback\OptibackLoggerInterface;
 
 /**
  * Prepares complete formatted price with tax rate and label.
  */
 class RunImport implements RunImportInterface {
+
+  use StringTranslationTrait;
 
   /**
    * The process Invoice service.
@@ -26,105 +29,117 @@ class RunImport implements RunImportInterface {
    */
   protected $processTrackingNumber;
 
+  /**
+   * The optiback helper service.
+   *
+   * @var \Drupal\optiback\OptibackHelperInterface
+   */
+  protected $optibackHelper;
+
+  /**
+   * The optiback logger service.
+   *
+   * @var \Drupal\optiback\OptibackLoggerInterface
+   */
+  protected $optibackLogger;
+
+  /**
+   * The logger service.
+   *
+   * @var Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
+   */
+  protected $logger;
+
   public function __construct(
     ProcessInvoiceInterface $process_invoice,
-    ProcessTrackingNumberInterface $process_tracking_number
+    ProcessTrackingNumberInterface $process_tracking_number,
+    OptibackHelperInterface $optiback_helper,
+    OptibackLoggerInterface $optiback_logger,
+    LoggerChannelFactoryInterface $logger
   ) {
     $this->processInvoice = $process_invoice;
     $this->processTrackingNumber = $process_tracking_number;
-
+    $this->optibackHelper = $optiback_helper;
+    $this->optibackLogger = $optiback_logger;
+    $this->logger = $logger;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function run($logfile = '') {
+  public function run($env = 'prod', $options = ['product' => TRUE,'invoice' => TRUE,'tracking' => TRUE]) {
 
     // Here we run the complete import pipeline.
 
     $message = '';
 
-    $backup_dir = ObtibackConfigInterface::OPTIBACK_BAK;
-    $db_user = ObtibackConfigInterface::DB_USER;
-    $db_name = ObtibackConfigInterface::DB_NAME;
-    $db_pwd = ObtibackConfigInterface::DB_PWD;
     $drush = ObtibackConfigInterface::DRUSH;
 
-    // Run database backup.
-    $cmd = 'mysqldump -u ' . $db_user . ' -p' . $db_pwd . ' ' . $db_name . ' > ' . $backup_dir . '/' . $db_name . '_' . date("Y-m-d") . '.sql';
-
-    $message .= $this->shellExecWithError($cmd, 'The mysqldump failed.');
+    if ($env != 'dev') {
+      $message .= $this->optibackHelper->dbBackup();
+    }
 
     // Sets site in maintance mode.
     $cmd = $drush . ' state:set system.maintenance_mode 1';
 
-    $message .= $this->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
+    $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
 
-    // Sets all products to status 0 = unpublished.
-    // We use direct query for performance reason.
-    $query = \Drupal::database()->update('commerce_product_field_data');
-    $query->fields([
-      'status' => 0
-    ]);
-    $query->condition('status', 1);
-    #$query->execute();
 
-    /*
-     * The way per entityQuery.
-    $pids = \Drupal::entityQuery('commerce_product')->condition('status', 1)->execute();
-    $products = Product::loadMultiple($pids);
-    foreach ($products as $product) {
-      $product->status = 0;
-      $product->save();
+    if ($options['product']) {
+
+      // Sets all products to status 0 = unpublished.
+      // We use direct query for performance reason.
+      $query = \Drupal::database()->update('commerce_product_field_data');
+      $query->fields([
+        'status' => 0
+      ]);
+      $query->condition('status', 1);
+      $query->execute();
+
+      // Run product variation migration.
+      $cmd = $drush . ' migrate:import optiback_import_product_variation --update';
+
+      $message .= $this->optibackHelper->shellExecWithError($cmd, 'The migration optiback_import_product_variation failed.');
+
+      // Runs product migration.
+      $cmd = $drush . ' migrate:import optiback_import_product --update';
+
+      $message .= $this->optibackHelper->shellExecWithError($cmd, 'The migration optiback_import_product failed.');
+
     }
 
-    $pvids = \Drupal::entityQuery('commerce_product_variation')->condition('status', 1)->execute();
-    $product_variations = ProductVariation::loadMultiple($pvids);
-    foreach ($product_variations as $product_var) {
-      $product_var->status = 0;
-      $product_var->save();
+    if ($options['invoice']) {
+      // Copy and process new invoices.
+      $message .= $this->processInvoice->run();
     }
-    */
 
-    // Run product variation migration.
-    $cmd = $drush . ' migrate:import optiback_import_product_variation --update';
-
-    #$message .= $this->shellExecWithError($cmd, 'The migration optiback_import_product_variation failed.');
-
-    // Runs product migration.
-    $cmd = $drush . ' migrate:import optiback_import_product --update';
-
-    #$message .= $this->shellExecWithError($cmd, 'The migration optiback_import_product failed.');
-
-    // Copy and process new invoices.
-    #$message .= $this->processInvoice->run();
-
-    // Import tracking numbers.
-    #$message .= $this->processTrackingNumber->run();
+    if ($options['tracking']) {
+      // Import tracking numbers.
+      $message .= $this->processTrackingNumber->run();
+    }
 
     // Removes maintance mode.
     $cmd = $drush . ' state:set system.maintenance_mode 0';
 
-    $message .= $this->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
+    $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
 
-    return $message;
-  }
+    $this->optibackLogger->addLog($message, 'status');
 
-  /**
-   * {@inheritdoc}
-   */
-  protected function shellExecWithError($cmd, $message) {
+    $params = [
+      'subject' => 'Drupal Optiback Import',
+      'body' => 'Meldungen beim Drupal Import<br>' . $message,
+    ];
 
-    $result = exec($cmd);
+    $mail = $this->optibackLogger->sendMail($params);
 
-    if (
-      strpos($result,"error") !== FALSE
-      ||
-      strpos($result,"failed") !== FALSE
-    ) {
-      return $message . "\n". $result . "\n";
+    if ($mail) {
+      $message = $this->t('The optiback import email was send to the site owner.');
+      $this->logger->get('optiback_export')->error($message);
+    } else {
+      $message = $this->t('The optiback import email could not be send to the site owner.');
+      $this->logger->get('optiback_export')->error($message);
     }
 
-    return $result . "\n";
+    return $message;
   }
 }

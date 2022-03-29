@@ -1,9 +1,7 @@
 #!/bin/bash
 
 now=$(date +"%d_%m_%Y__%H_%M_%S")
-
 year=$(date +"%Y")
-echo $year
 
 DRUPAL_PATH="../../../../../"
 OPTIBACK_PATH="../../../../../../optiback"
@@ -11,11 +9,11 @@ OPTIBACK_PATH="../../../../../../optiback"
 LOG_DIR=logs
 
 # Create logfile.
-file=optiback-export-$now.log
+file=optiback-import-$now.log
 logfile=$OPTIBACK_PATH/$LOG_DIR/$file
 
-# Run drush command for export.
-drush run_export prod 2>&1 | tee -a $logfile
+# Run the complete import at once.
+drush run_import dev 2>&1 | tee -a $logfile
 
 drush send_log $file
 

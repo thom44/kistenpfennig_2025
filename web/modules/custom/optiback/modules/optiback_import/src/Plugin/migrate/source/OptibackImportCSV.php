@@ -109,13 +109,14 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
       // Creates dynamically the csv filepath
       $artikel_files = [];
 
-      $files = array_diff(scandir($this->importDir), array('.', '..'));
+      $files = array_diff(scandir(ObtibackConfigInterface::OPTIBACK_OUT), array('.', '..'));
 
       foreach ($files as $file) {
         if (strpos($file, $this->configuration['path']) !== FALSE) {
           $artikel_files[] = $file;
         }
       }
+
 
       // Sorts the array to get the newest artikel_{data}.csv in the folder.
       rsort($artikel_files);

@@ -1,0 +1,6 @@
+services:
+  optiback.commands.send_log:
+    class: \Drupal\optiback\Commands\DrushSendLog
+    arguments: ['@optiback.logger']
+    tags:
+      - { name: drush.command }

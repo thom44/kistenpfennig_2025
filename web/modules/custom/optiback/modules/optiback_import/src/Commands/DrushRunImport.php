@@ -29,14 +29,18 @@ class DrushRunImport extends DrushCommands {
   /**
    * Run's the complete import process.
    *
+   * @param string $env
+   *   The the environmant dev|prod
+   *
    * @command optiback_import:run_import
    * @aliases run_import
-   * @usage run_import
+   * @usage run_import --local
+   *   Run import on local mashine
    */
-  public function run() {
+  public function run($env = 'prod') {
 
     // Process invoices
-    $output = $this->runImport->run();
+    $output = $this->runImport->run($env);
 
     $this->output()->writeln($output);
   }

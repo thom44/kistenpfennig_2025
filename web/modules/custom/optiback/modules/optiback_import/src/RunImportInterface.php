@@ -10,10 +10,13 @@ interface RunImportInterface {
   /**
    * Starts the import.
    *
-   * @param (optional) string $logfile
+   * @param (optional) boolean $env
+   *  The environment dev skips backups.
+   * @param (optional) string $options
+   *  The options product|invoice|tracking.
    *
    * @return boolish TRUE|FALSE
    */
-  public function run($logfile = '');
+  public function run($env = 'prod', $options = []);
 
 }

@@ -4,6 +4,12 @@ namespace Drupal\optiback;
 
 /**
  * Provides an interface for optiback constants.
+ *
+ * @note: run on production:
+ * - install mailsystem, swiftmailer
+ * - add key to mailsystem for all emails.
+ * - update const for production database.
+ * - upload optiback folder.
  */
 interface ObtibackConfigInterface {
 

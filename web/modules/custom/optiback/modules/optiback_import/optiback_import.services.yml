@@ -7,4 +7,5 @@ services:
     arguments: ['@entity_type.manager','@logger.factory','@custom_order_token.order_token_provider','@custom_mail_ui.mail_helper']
   optiback_import.run_import:
     class: \Drupal\optiback_import\RunImport
-    arguments: ['@optiback_import.process_invoice','@optiback_import.process_tracking_number']
+    arguments: ['@optiback_import.process_invoice','@optiback_import.process_tracking_number','@optiback.helper','@optiback.logger','@logger.factory']
+

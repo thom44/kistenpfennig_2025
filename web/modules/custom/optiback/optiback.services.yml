@@ -1,0 +1,7 @@
+services:
+  optiback.helper:
+    class: Drupal\optiback\OptibackHelper
+    arguments: []
+  optiback.logger:
+    class: Drupal\optiback\OptibackLogger
+    arguments: ['@custom_mail_ui.mail_helper','@logger.factory']

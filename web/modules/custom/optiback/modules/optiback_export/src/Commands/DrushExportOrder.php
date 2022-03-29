@@ -29,24 +29,18 @@ class DrushExportOrder extends DrushCommands {
   /**
    * Run's a csv export of commerce orders.
    *
-   * @param string $logfile
-   *   The logfile of the import.
+   * @param string $env
+   *   The environment the command is executed. dev|prod
    *
-   * @command optiback_export:export
-   * @aliases optex
-   * @options test Whether or not an extra message should be displayed to the user.
-   * @usage optex --test
-   *   Display 'Hello Akanksha!' and a message.
+   * @command optiback_export:run_export
+   * @aliases run_export
+   * @usage run_export dev|prod
    */
-  public function export($logfile, $options = ['test' => FALSE]) {
-    if ($options['test']) {
-      // Test only code.
-      $this->output()->writeln('This is only a test run.');
-    }
-    else {
-      $out =  $this->runExport->run($logfile);
+  public function export($env = 'prod') {
+
+      $out =  $this->runExport->run($env);
+
       $this->output()->writeln('Export started.' . $out);
-    }
   }
 
 }
