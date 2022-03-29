@@ -19,10 +19,6 @@ ol.breadcrumb {
   }
 
 .main-content {
-  /*
-  max-width: 1296px;
-    margin-left: 12px;
-  */
   .section {
     padding-top: 50px;
     padding-left: 15px;
@@ -33,6 +29,28 @@ ol.breadcrumb {
       }
     }
   }
+
+.region-subheader {
+  &.row {
+    display: block;
+    }
+  text-align: right;
+  .block-block-content,
+  .content,
+  #block-customcartblock {
+    display: inline-block;
+    width: auto;
+    float: right;
+    }
+    &:after {
+      clear: both;
+      display: table;
+      content: ' ';
+      height: 1px;
+      line-height: 1px;
+    }
+  }
+
 
 body.page-node-6,
 body.page-node-7 {
