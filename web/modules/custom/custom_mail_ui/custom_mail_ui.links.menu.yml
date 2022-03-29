@@ -1,6 +1,7 @@
 custom_mail_ui.email:
   title: 'Emails'
   route_name: 'custom_mail_ui.email_configuration'
-  parent: 'system.admin_structure'
+#  parent: 'system.admin_structure'
+  parent: commerce.admin_commerce
   description: 'Configure your emails.'
   weight: 20
