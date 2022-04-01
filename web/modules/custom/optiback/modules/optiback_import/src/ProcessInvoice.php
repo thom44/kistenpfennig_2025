@@ -165,9 +165,45 @@ class ProcessInvoice implements ProcessInvoiceInterface {
 
         // Sets the flag to true, that we know the invoice is already processed.
         $order->set('field_invoice_imported',1);
+
         $res = $order->save();
+
         if ($res) {
           $message .= 'The order was successfully saved.';
+
+          if ($file) {
+
+            // @todo: send invoice to the customer.
+            // Sends a order is invoice notification to the customer.
+            $customer = $order->getCustomer();
+            // Retrieves the configurable email text.
+            $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('custom_mail_ui.commerce_order_shipping', $order, $customer);
+
+            $params = [
+              'subject' => $config['subject'],
+              'body' => $config['body'],
+              'from' => $config['from'],
+              'bcc' => $config['bcc'],
+            ];
+
+            $mail = $this->mailHelper->sendMail(
+              'custom_order_shipping',
+              'custom_order_shipping',
+              $order->getEmail(),
+              'de',
+              $params
+            );
+
+            if (!$mail) {
+              $message = $this->t('The invoice notification could not be send to the customer.');
+              $this->logger->get('optiback_import')->error($message);
+            }
+          } else {
+            $message = $this->t('The invoice notification could not be send, because invoice file is missing.');
+            $this->logger->get('optiback_import')->error($message);
+          }
+
+
         }
       }
     }

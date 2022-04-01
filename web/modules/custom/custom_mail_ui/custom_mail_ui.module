@@ -40,3 +40,21 @@ function custom_mail_ui_theme($existing, $type, $theme, $path) {
     ],
   ];
 }
+
+/**
+ * Implements hook_mail().
+ *
+ * Implementation is needed to get it to mailsystem ui.
+ */
+function custom_mail_ui_mail($key, &$message, $params) {
+
+  switch ($key) {
+    case 'custom_mail_ui':
+
+      $message['from'] = $params['from'];
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      $message['params']['attachments'] = $params['attachments'];
+      break;
+  }
+}

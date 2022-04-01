@@ -2,13 +2,12 @@
 
 namespace Drupal\custom_workflow\EventSubscriber;
 
-use Drupal\commerce\MailHandlerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Messenger\Messenger;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\state_machine\Event\WorkflowTransitionEvent;
-use Drupal\wlw_order_mail_log\MailLoggerInterface;
-use Drupal\wlw_order_token\OrderTokenProvider;
+use Drupal\custom_mail_ui\MailHelperInterface;
+use Drupal\custom_order_token\OrderTokenProvider;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -28,16 +27,16 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
   /**
    * The order token provider service.
    *
-   * @var \Drupal\wlw_order_token\OrderTokenProvider $orderTokenProvider
+   * @var \Drupal\custom_order_token\OrderTokenProvider $orderTokenProvider
    */
   protected $orderTokenProvider;
 
   /**
    * The mail handler.
    *
-   * @var \Drupal\commerce\MailHandlerInterface
+   * @var \Drupal\commerce\mailHelperInterface
    */
-  protected $mailHandler;
+  protected $mailHelper;
 
   /**
    * The messenger service.
@@ -47,31 +46,22 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
   protected $messenger;
 
   /**
-   * The MailLogger service.
-   *
-   * @var \Drupal\wlw_order_mail_log\MailLoggerInterface
-   */
-  protected $mailLogger;
-
-  /**
    * DefaultOrderReceiptSubscriber constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   * @param \Drupal\wlw_order_token\OrderTokenProvider $order_token_provider
-   * @param \Drupal\commerce\MailHandlerInterface $mail_handler
+   * @param \Drupal\custom_order_token\OrderTokenProvider $order_token_provider
+   * @param \Drupal\custom_mail_ui\mailHelperInterface $mail_handler
    * @param \Drupal\Core\Messenger\Messenger $messenger
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     OrderTokenProvider $order_token_provider,
-    MailHandlerInterface $mail_handler,
-    Messenger $messenger,
-    MailLoggerInterface $mail_logger) {
+    MailHelperInterface $mail_helper,
+    Messenger $messenger) {
     $this->entityTypeManager = $entity_type_manager;
     $this->orderTokenProvider = $order_token_provider;
-    $this->mailHandler = $mail_handler;
+    $this->mailHelper = $mail_helper;
     $this->messenger = $messenger;
-    $this->mailLogger = $mail_logger;
   }
 
   /**
@@ -100,7 +90,7 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
     }
 
     // Gets order checkbox value for not sending email to customer.
-    $block_email = $order->get('field_block_email')[0]->getValue()['value'];
+    //$block_email = $order->get('field_block_email')[0]->getValue()['value'];
 
     // Gets order type for order type configurations.
     $order_type_storage = $this->entityTypeManager->getStorage('commerce_order_type');
@@ -112,28 +102,26 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
       $customer = $order->getCustomer();
 
       // Retrieves the configurable email text.
-      $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('wlw_mail_ui.commerce_order_recipient', $order, $customer);
+      $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('custom_mail_ui.commerce_order_recipient', $order, $customer);
       /** @var \Drupal\commerce_order\Entity\OrderTypeInterface $order_type */
 
       $bcc = $config['bcc'] ? $config['bcc'] : $order_type->getReceiptBcc();
 
       $from = $config['from'] ? $config['from'] : $order->getStore()->getEmail();
 
-      $body = [
-        '#theme' => 'wlw_mail_ui_email_wrapper',
-        '#message' => $config['body'],
-      ];
-
       $params = [
-        'id' => 'wlw_order_default_receipt',
+        'id' => 'custom_order_default_receipt',
         'from' => $from,
         'bcc' => $bcc,
         'order' => $order,
+        'subject' => $config['subject'],
+        'body' => $config['body'],
       ];
 
       $to = $order->getEmail();
 
-      $mail = $this->mailHandler->sendMail($to, $config['subject'], $body, $params);
+      $mail = $this->mailHelper->sendMail('custom_workflow', 'custom_order_default_receipt', $to, 'de', $params);
+
       if ($mail) {
         $this->messenger->addStatus($this->t('The order receipt email was send to the user.'));
 

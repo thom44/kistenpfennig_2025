@@ -73,19 +73,20 @@ class RunImport implements RunImportInterface {
 
     $message = '';
 
-    $drush = ObtibackConfigInterface::DRUSH;
-
-    if ($env != 'dev') {
-      $message .= $this->optibackHelper->dbBackup();
+    if ($env == 'dev') {
+      $drush = ObtibackConfigInterface::DEV_DRUSH;
+    } else {
+      $drush = ObtibackConfigInterface::DRUSH;
     }
 
-    // Sets site in maintance mode.
-    $cmd = $drush . ' state:set system.maintenance_mode 1';
-
-    $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
-
+    $message .= $this->optibackHelper->dbBackup($env);
 
     if ($options['product']) {
+
+      // Sets site in maintance mode, only for migration.
+      $cmd = $drush . ' state:set system.maintenance_mode 1';
+
+      $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
 
       // Sets all products to status 0 = unpublished.
       // We use direct query for performance reason.
@@ -106,6 +107,11 @@ class RunImport implements RunImportInterface {
 
       $message .= $this->optibackHelper->shellExecWithError($cmd, 'The migration optiback_import_product failed.');
 
+      // Removes maintance mode.
+      $cmd = $drush . ' state:set system.maintenance_mode 0';
+
+      $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
+
     }
 
     if ($options['invoice']) {
@@ -118,11 +124,6 @@ class RunImport implements RunImportInterface {
       $message .= $this->processTrackingNumber->run();
     }
 
-    // Removes maintance mode.
-    $cmd = $drush . ' state:set system.maintenance_mode 0';
-
-    $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
-
     $this->optibackLogger->addLog($message, 'status');
 
     $params = [
@@ -134,10 +135,10 @@ class RunImport implements RunImportInterface {
 
     if ($mail) {
       $message = $this->t('The optiback import email was send to the site owner.');
-      $this->logger->get('optiback_export')->error($message);
+      $this->logger->get('optiback_import')->info($message);
     } else {
       $message = $this->t('The optiback import email could not be send to the site owner.');
-      $this->logger->get('optiback_export')->error($message);
+      $this->logger->get('optiback_import')->error($message);
     }
 
     return $message;

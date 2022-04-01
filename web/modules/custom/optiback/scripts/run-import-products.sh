@@ -3,8 +3,13 @@
 now=$(date +"%d_%m_%Y__%H_%M_%S")
 year=$(date +"%Y")
 
-DRUPAL_PATH="../../../../../"
-OPTIBACK_PATH="../../../../../../optiback"
+if [ "$1" == "--dev" ]; then
+  source dev.conf
+  option=dev
+else
+  source prod.conf
+  option=prod
+fi
 
 LOG_DIR=logs
 
@@ -12,10 +17,14 @@ LOG_DIR=logs
 file=optiback-import-$now.log
 logfile=$OPTIBACK_PATH/$LOG_DIR/$file
 
-# Run the complete import at once.
-drush run_import dev 2>&1 | tee -a $logfile
+echo "run-import-products.sh" 2>&1 | tee -a $logfile
+echo "Logfile = $logfile"
+echo "Drush path = $DRUSH" 2>&1 | tee -a $logfile
 
-drush send_log $file
+# Run the complete import at once.
+$DRUSH run_import $option product 2>&1 | tee -a $logfile
+
+$DRUSH send_log $file
 
 # Debugging option: -mmin
 # Delet's all log-files which older then 30 days.

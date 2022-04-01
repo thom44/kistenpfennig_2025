@@ -16,22 +16,42 @@ interface ObtibackConfigInterface {
   /**
    * The db user.
    */
-  const DB_USER = 'root';
+  const DB_USER = 'db11130752-d9';
 
   /**
    * The db user.
    */
-  const DB_NAME = 'kd_kistenpfennig_d9';
+  const DB_NAME = 'db11130752-d9';
 
   /**
    * The db user.
    */
-  const DB_PWD = 'root';
+  const DB_PWD = 'Um-73FtQ3193j';
 
   /**
    * The path to drush.
    */
-  const DRUSH = 'drush';
+  const DRUSH = 'php ~/www/kistenpfennig_d9/vendor/drush/drush/drush';
+
+  /**
+   * The db user.
+   */
+  const DEV_DB_USER = 'root';
+
+  /**
+   * The db user.
+   */
+  const DEV_DB_NAME = 'kd_kistenpfennig_d9';
+
+  /**
+   * The db user.
+   */
+  const DEV_DB_PWD = 'root';
+
+  /**
+   * The path to drush.
+   */
+  const DEV_DRUSH = 'drush';
 
   /**
    * The relative path to the optiback directory.

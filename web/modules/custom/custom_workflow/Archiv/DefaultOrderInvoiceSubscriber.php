@@ -14,13 +14,13 @@ class DefaultOrderInvoiceSubscriber implements EventSubscriberInterface {
   /**
    * The order invoice mail service.
    *
-   * @var \Drupal\wlw_invoice\Mail\OrderInvoiceMailInterface $orderInvoiceMail
+   * @var \Drupal\custom_invoice\Mail\OrderInvoiceMailInterface $orderInvoiceMail
    */
   protected $orderInvoiceMail;
 
   /**
    * DefaultOrderInvoiceSubscriber constructor.
-   * @param \Drupal\wlw_workflow\EventSubscriber\OrderInvoiceMail $order_invoice_mail
+   * @param \Drupal\custom_workflow\EventSubscriber\OrderInvoiceMail $order_invoice_mail
    */
   public function __construct(OrderInvoiceMailInterface $order_invoice_mail) {
     $this->orderInvoiceMail = $order_invoice_mail;

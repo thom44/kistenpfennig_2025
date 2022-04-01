@@ -2,6 +2,7 @@
 
 namespace Drupal\optiback\Commands;
 
+use Drupal\backup_migrate\Core\Translation\TranslatableTrait;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\optiback\OptibackLoggerInterface;
 use Drush\Commands\DrushCommands;
@@ -15,6 +16,8 @@ use Drush\Commands\DrushCommands;
  * @see https://www.axelerant.com/blog/how-to-write-custom-drush-9-commands-for-drupal-8
  */
 class DrushSendLog extends DrushCommands {
+
+  use TranslatableTrait;
 
   /**
    * The optiback logger service.
@@ -58,7 +61,7 @@ class DrushSendLog extends DrushCommands {
 
     if (!$mail) {
       $message = $this->t('The optiback log email could not be send to the site owner.');
-      $this->logger->get('optiback_export')->error($message);
+      #$this->logger->get('optiback_export')->error($message);
     }
   }
 

@@ -30,17 +30,38 @@ class DrushRunImport extends DrushCommands {
    * Run's the complete import process.
    *
    * @param string $env
-   *   The the environmant dev|prod
+   *  The the environmant dev|prod (Optional).
+   * @param bool $drush_option
+   *   The option for import product|invoice|tracking or NULL for all (Optional).
    *
    * @command optiback_import:run_import
    * @aliases run_import
-   * @usage run_import --local
+   * @usage run_import dev invoice
    *   Run import on local mashine
    */
-  public function run($env = 'prod') {
+  public function run($env = 'prod', $drush_option = NULL) {
 
-    // Process invoices
-    $output = $this->runImport->run($env);
+    // Sets all options to true.
+    $options = [
+      'product' => TRUE,
+      'invoice' => TRUE,
+      'tracking' => TRUE
+    ];
+
+    if ($drush_option !== NULL) {
+
+      foreach ($options as $key => $option) {
+        if ($key == $drush_option) {
+          // Sets selected option to true.
+          $options[$key] = TRUE;
+        } else {
+          // Sets others to false.
+          $options[$key] = FALSE;
+        }
+      }
+    }
+
+    $output = $this->runImport->run($env, $options);
 
     $this->output()->writeln($output);
   }

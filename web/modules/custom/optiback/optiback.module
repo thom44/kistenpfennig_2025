@@ -30,7 +30,7 @@ function optiback_theme($existing, $type, $theme, $path) {
 function optiback_mail($key, &$message, $params) {
 
   switch ($key) {
-    case 'optiback_export':
+    case 'optiback':
 
       $message['from'] = $params['from'];
       $message['subject'] = $params['subject'];

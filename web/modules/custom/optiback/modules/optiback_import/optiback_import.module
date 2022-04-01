@@ -10,3 +10,21 @@ function optiback_import_uninstall() {
   Drupal::configFactory()->getEditable('optiback_import.source.schema')->delete();
 
 }
+
+/**
+ * Implements hook_mail().
+ *
+ * Implementation is needed to get it to mailsystem ui.
+ */
+function optiback_import_mail($key, &$message, $params) {
+
+  switch ($key) {
+    case 'optiback_import':
+
+      $message['from'] = $params['from'];
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      $message['params']['attachments'] = $params['attachments'];
+      break;
+  }
+}

@@ -13,6 +13,11 @@ function custom_promotion_form_commerce_checkout_flow_multistep_default_alter(&$
   if($form['#step_id'] === 'order_information') {
 
     $input = $form_state->getUserInput();
+
+    if (!isset($input['sidebar']['coupon_redemption']['form']['code'])) {
+      return;
+    }
+
     $coupon_code = $input['sidebar']['coupon_redemption']['form']['code'];
 
     if ($coupon_code) {

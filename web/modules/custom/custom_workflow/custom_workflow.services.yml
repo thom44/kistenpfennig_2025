@@ -1,9 +1,9 @@
 services:
-#  custom_workflow.order_receipt_subscriber:
-#    class: Drupal\custom_workflow\EventSubscriber\DefaultOrderReceiptSubscriber
-#    arguments: ['@entity_type.manager', '@wlw_order_token.order_token_provider', '@commerce.mail_handler', '@messenger', '@wlw_order_mail_log.mail_logger']
-#    tags:
-#      - { name: 'event_subscriber' }
+  custom_workflow.order_receipt_subscriber:
+    class: Drupal\custom_workflow\EventSubscriber\DefaultOrderReceiptSubscriber
+    arguments: ['@entity_type.manager', '@custom_order_token.order_token_provider', '@custom_mail_ui.mail_helper', '@messenger']
+    tags:
+      - { name: 'event_subscriber' }
 
 #  custom_workflow.course_order_receipt_subscriber:
 #    class: Drupal\custom_workflow\EventSubscriber\CourseOrderReceiptSubscriber
