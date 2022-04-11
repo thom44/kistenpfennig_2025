@@ -2,6 +2,7 @@
 
 
 $kpgrau: #e7e6e6;
+$kpnav: #3D415C;
 
 /* ---------- Color Module Styles ----------- */
 
@@ -35,6 +36,11 @@ body {
 .navigation,
 .region-subheader {
   background-color: $kpgrau;
+  }
+
+.region-subheader a,
+.menu--shop-navigation a {
+  color: $kpnav;
   }
 
 a,
