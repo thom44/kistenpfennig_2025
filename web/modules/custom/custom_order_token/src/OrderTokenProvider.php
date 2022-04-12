@@ -180,17 +180,10 @@ class OrderTokenProvider {
    */
   public function getRenderedShippingAddress(OrderInterface $order) {
 
-    $field_shipping_profile = $order->get('field_shipping_profile');
-    if ($field_shipping_profile[0]) {
-      // Drupal\entity_reference_revisions\Plugin\Field\FieldType\EntityReferenceRevisionsItem
-      $profile_id = $field_shipping_profile[0]->getValue()['target_id'];
-      //$revision_id = $order->get('field_shipping_profile')[0]->getValue()['target_revision_id'];
-
-      $shipping_profile = $this->entityTypeManager->getStorage('profile')->load($profile_id);
-      if ($shipping_profile) {
-        $shipping_profile_view = $this->profileViewBuilder->view($shipping_profile);
-        return $this->renderer->render($shipping_profile_view);
-      }
+    $collected_profiles = $order->collectProfiles();
+    if ($shipping_profile = $collected_profiles['shipping']) {
+      $shipping_profile_view = $this->profileViewBuilder->view($shipping_profile);
+      return $this->renderer->render($shipping_profile_view);
     } else {
       return $this->t('Wie Rechnungsanschrift');
     }

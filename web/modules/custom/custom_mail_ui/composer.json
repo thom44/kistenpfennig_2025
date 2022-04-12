@@ -1,0 +1,9 @@
+{
+  "name": "drupal/custom_mail_ui",
+  "description": "Custom Mail UI",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "symfony/mailer": "^5.3.0"
+  }
+}

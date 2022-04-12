@@ -106,17 +106,17 @@ interface ObtibackConfigInterface {
   /**
    * The email addresses.
    */
-  const EMAIL_FROM = 'thom@licht.local';
+  const EMAIL_FROM = 'info@kistenpfennig.net';
 
   /**
    * The email addresses.
    */
-  const EMAIL_TO = 'fritz@licht.local';
+  const EMAIL_TO = 'thom@licht.local';
 
     /**
      * The email addresses.
      */
-  const EMAIL_BCC = 'root@licht.local';
+  const EMAIL_BCC = 'info@thomas-schuh.com';
 
   /**
    * The Drupal tax_rate key.

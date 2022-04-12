@@ -1,11 +1,9 @@
 <?php
 namespace Drupal\custom_mail_ui;
 
-use Drupal\commerce\MailHandler;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Mail\MailManagerInterface;
+use Drupal\Core\File\FileSystem;
 use Drupal\Core\Utility\Token;
-
 use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\Email;;
@@ -27,6 +25,13 @@ class MailHelper implements MailHelperInterface {
   protected $token;
 
   /**
+   * The file manager service.
+   *
+   * @var \Drupal\Core\File\FileSystem;
+   */
+  protected $fileSystem;
+
+  /**
    * MailHelper constructor.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    * @param \Drupal\Core\Utility\Token $token
@@ -34,10 +39,12 @@ class MailHelper implements MailHelperInterface {
    */
   public function __construct(
     ConfigFactoryInterface $config_factory,
-    Token $token
+    Token $token,
+    FileSystem $file_system
   ) {
     $this->configFactory = $config_factory;
     $this->token = $token;
+    $this->fileSystem = $file_system;
   }
 
   /**
@@ -91,12 +98,13 @@ class MailHelper implements MailHelperInterface {
     // We use direct symfony mailer until drupal/sympfony_mailer is stable.
     // @see: symfony/mailer/README.md
     // @see: https://symfony.com/doc/current/mailer.html
-    $transport = Transport::fromDsn('sendmail://default');
+    // native://default|sendmail://default|smtp://user:pass@smtp.example.com:25
+    $transport = Transport::fromDsn('native://default');
     $mailer = new Mailer($transport);
 
     $email = (new Email())
       ->to($to)
-      ->text($params['body'])
+      //->text($params['body'])
       ->html($params['body']);
 
     if (isset($params['subject']) && $params['subject']) {
@@ -120,10 +128,16 @@ class MailHelper implements MailHelperInterface {
     if (isset($params['priority']) && $params['priority']) {
       $email->priority($params['priority']);
     }
+
     foreach ($params['files'] as $file) {
-      $fileUri = $file->uri;
+      if ($file instanceof \Drupal\file\Entity\File) {
+        $uri = $file->getFileUri();
+        $file_path = $this->fileSystem->realpath($uri);
+      } else {
+        $file_path = $file->uri;
+      }
       // MimeType will be guessed.
-      $email->attachFromPath($fileUri);
+      $email->attachFromPath($file_path);
     }
 
     $mailer->send($email);
@@ -131,4 +145,5 @@ class MailHelper implements MailHelperInterface {
     // send() has no return value. If no Error we return true.
     return TRUE;
   }
+
 }

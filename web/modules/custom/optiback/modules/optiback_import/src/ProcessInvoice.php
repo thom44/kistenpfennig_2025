@@ -8,6 +8,8 @@ namespace Drupal\optiback_import;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\custom_mail_ui\MailHelperInterface;
+use Drupal\custom_order_token\OrderTokenProvider;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\file\Entity\File;
 use Drupal\Core\ProxyClass\File\MimeType\MimeTypeGuesser;
@@ -46,16 +48,34 @@ class ProcessInvoice implements ProcessInvoiceInterface {
    */
   protected $mimeTypeGuesser;
 
+  /**
+   * The order token provider service.
+   *
+   * @var \Drupal\custom_order_token\OrderTokenProvider;
+   */
+  protected $orderTokenProvider;
+
+  /**
+   * The mail helper.
+   *
+   * @var \Drupal\custom_mail_ui\MailHelperInterface
+   */
+  protected $mailHelper;
+
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     LoggerChannelFactoryInterface $logger,
     FileRepositoryInterface $file_repo,
-    MimeTypeGuesser $mime_type_guesser
+    MimeTypeGuesser $mime_type_guesser,
+    OrderTokenProvider $order_token_provider,
+    MailHelperInterface $mail_helper
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->logger = $logger;
     $this->fileRepo = $file_repo;
     $this->mimeTypeGuesser = $mime_type_guesser;
+    $this->orderTokenProvider = $order_token_provider;
+    $this->mailHelper = $mail_helper;
   }
 
   /**
@@ -177,13 +197,14 @@ class ProcessInvoice implements ProcessInvoiceInterface {
             // Sends a order is invoice notification to the customer.
             $customer = $order->getCustomer();
             // Retrieves the configurable email text.
-            $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('custom_mail_ui.commerce_order_shipping', $order, $customer);
+            $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('custom_mail_ui.commerce_order_invoice', $order, $customer);
 
             $params = [
               'subject' => $config['subject'],
               'body' => $config['body'],
               'from' => $config['from'],
               'bcc' => $config['bcc'],
+              'files' => [$file]
             ];
 
             $mail = $this->mailHelper->sendMail(

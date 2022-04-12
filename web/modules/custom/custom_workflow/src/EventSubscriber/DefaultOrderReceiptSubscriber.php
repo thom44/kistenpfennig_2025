@@ -124,16 +124,6 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
 
       if ($mail) {
         $this->messenger->addStatus($this->t('The order receipt email was send to the user.'));
-
-        // Saves order mail log.
-        $this->mailLogger->saveLogEntry([
-          'order_id' => $order->id(),
-          'email_to' => $to,
-          'subject' => $config['subject'],
-          'email_key' => $params['id'],
-          'email_from' => $from,
-          'email_bcc' => $bcc,
-        ]);
       } else {
         $this->messenger->addError($this->t('The order receipt email could not be send to the user.'));
       }
