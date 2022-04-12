@@ -104,6 +104,8 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
     $total = 0;
     $currency_code = '';
     $total_formatted = '';
+    $icon = 'cart-empty.svg';
+
     if (!empty($carts)) {
       foreach ($carts as $cart_id => $cart) {
         // Gets total price from each cart.
@@ -124,6 +126,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
         'currency_code' => $currency_code,
       ];
       $total_formatted = $this->priceFormatterHelper->getFormattedPriceByAmount($total_summery, FALSE);
+      $icon = 'cart.svg';
     }
 
     return [
@@ -133,7 +136,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
       '#theme' => 'custom_commerce_cart_block',
       '#icon' => [
         '#theme' => 'image',
-        '#uri' => drupal_get_path('module', 'custom_cart_block') . '/icons/cart.svg',
+        '#uri' => drupal_get_path('module', 'custom_cart_block') . '/icons/' . $icon,
         '#alt' => $this->t('Shopping cart'),
       ],
       '#count' => $count,
