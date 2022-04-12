@@ -133,7 +133,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
       '#theme' => 'custom_commerce_cart_block',
       '#icon' => [
         '#theme' => 'image',
-        '#uri' => drupal_get_path('module', 'commerce') . '/icons/ffffff/cart.png',
+        '#uri' => drupal_get_path('module', 'custom_cart_block') . '/icons/cart.svg',
         '#alt' => $this->t('Shopping cart'),
       ],
       '#count' => $count,
