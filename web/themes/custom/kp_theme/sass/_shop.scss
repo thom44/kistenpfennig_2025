@@ -48,7 +48,7 @@ body.path-shop {
     color: $kpnav;
     }
   input.button--add-to-cart {
-    background-color: #4AA200;
+    background-color: $kpgruen;
     border: none;
     }
   input.form-control {
@@ -64,5 +64,37 @@ body.path-shop {
       color: $kpnav;
       text-decoration: none;
       }
+    }
+  }
+
+.view-product-list {
+  .mb-3 {
+    margin-bottom: 0 !important;
+    }
+  .list-group-item {
+    background: none;
+    border: none;
+    }
+  .field--name-quantity {
+    display: inline;
+    margin: 0 !important;
+    float: left;
+    fieldset.js-form-type-number {
+      margin: 0;
+      padding: 0;
+      display: inline;
+      label {
+        display: none;
+        }
+      input.form-control {
+        display: inline;
+        width: auto;
+        max-width: 50px;
+        padding-right: 2px;
+        }
+      }
+    }
+    .form-actions {
+      display: inline;
     }
   }
