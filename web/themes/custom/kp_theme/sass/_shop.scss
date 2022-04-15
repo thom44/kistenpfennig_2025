@@ -52,12 +52,13 @@ body.path-shop {
     border: none;
     }
   input.form-control {
-    max-width: 200px;
+    max-width: 211px;
     }
   }
 
 .view-id-product_list {
   .views-field-title {
+    text-align: center;
     font-style: italic;
     font-size: 20px;
     a {
@@ -65,9 +66,15 @@ body.path-shop {
       text-decoration: none;
       }
     }
+  .views-field-price__number {
+    text-align: center;
+    }
   }
 
 .view-product-list {
+  .views-row {
+    margin-bottom: 30px;
+    }
   .mb-3 {
     margin-bottom: 0 !important;
     }
@@ -77,8 +84,11 @@ body.path-shop {
     }
   .field--name-quantity {
     display: inline;
-    margin: 0 !important;
+    margin: 0 10px 0 0;
     float: left;
+    .form-control {
+      border: none;
+      }
     fieldset.js-form-type-number {
       margin: 0;
       padding: 0;
@@ -89,12 +99,15 @@ body.path-shop {
       input.form-control {
         display: inline;
         width: auto;
-        max-width: 50px;
+        max-width: 60px;
         padding-right: 2px;
         }
       }
     }
     .form-actions {
       display: inline;
+    }
+  .field--type-commerce-price {
+    display: none;
     }
   }
