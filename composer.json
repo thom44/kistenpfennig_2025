@@ -31,6 +31,7 @@
         "drupal/core-recommended": "^9.2",
         "drupal/environment_indicator": "^4.0",
         "drupal/field_group": "^3.2",
+        "drupal/fotorama_gallery": "^3.0",
         "drupal/jquery_ui_accordion": "^1.1",
         "drupal/leaflet": "^2.1",
         "drupal/menu_link_attributes": "^1.2",
