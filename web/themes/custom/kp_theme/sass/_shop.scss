@@ -1,10 +1,62 @@
 
 @import "colors";
 
-body.path-shop {
+body.path-shop,
+body.path-product {
   h1.title {
     text-align: left;
     margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: 400;
+    }
+  }
+
+body.path-product {
+  .contextual-region::after {
+    clear: both;
+    display: table;
+    content: ' ';
+    }
+  .field--name-price {
+    margin-left: 30px;
+    .price-value {
+      font-size: 35px;
+      font-weight: 600;
+      display: block;
+      line-height: 35px;
+      }
+    .price-postfix {
+      font-size: 12px;
+      position: relative;
+      top: -5px;
+      }
+    }
+  .field--name-quantity {
+    margin-left: 30px;
+    }
+  }
+
+body.path-cart {
+  input.delete-order-item.btn {
+    background-color: white;
+    color: #333333;
+    display: inline-block;
+    border: 1px solid #333333;
+    width: auto;
+    border-radius: 1.25rem;
+    }
+  .view-commerce-cart-form {
+    .table>:not(:first-child) {
+      border: none;
+      }
+    .views-table {
+      th {
+        color: #333333;
+        }
+      thead > tr {
+        border-bottom: 1px solid white;
+        }
+      }
     }
   }
 
@@ -53,6 +105,7 @@ body.path-shop {
     }
   input.form-control {
     max-width: 211px;
+    border-radius: 1.25rem;
     }
   }
 
@@ -82,32 +135,46 @@ body.path-shop {
     background: none;
     border: none;
     }
-  .field--name-quantity {
+  .form-actions {
     display: inline;
-    margin: 0 10px 0 0;
-    float: left;
-    .form-control {
-      border: none;
-      }
-    fieldset.js-form-type-number {
-      margin: 0;
-      padding: 0;
-      display: inline;
-      label {
-        display: none;
-        }
-      input.form-control {
-        display: inline;
-        width: auto;
-        max-width: 60px;
-        padding-right: 2px;
-        }
-      }
-    }
-    .form-actions {
-      display: inline;
     }
   .field--type-commerce-price {
     display: none;
+    }
+  }
+
+.field--name-quantity {
+  display: inline;
+  margin: 0 8px 0 0;
+  float: left;
+  .form-control {
+    border: none;
+    }
+  fieldset.js-form-type-number {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    label {
+      display: none;
+      }
+    input.form-control {
+      display: inline;
+      width: auto;
+      max-width: 60px;
+      padding-right: 2px;
+      }
+    }
+  }
+
+.field--name-price {
+  display: inline-block;
+  }
+
+
+.fotorama {
+  display: inline-block;
+  float: left;
+  .fotorama__stage {
+    margin-bottom: 30px;
     }
   }
