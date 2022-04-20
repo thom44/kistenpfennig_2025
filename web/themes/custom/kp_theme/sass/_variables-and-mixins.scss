@@ -7,3 +7,27 @@ $baseFontSize: 16px;
 $bodyBGColor: #f7f7fa;
 $baseFontColor: #435a6b;
 */
+
+@import "colors";
+
+$radius: 1.25rem;
+
+@mixin form-elmnt-white {
+  display: inline-block;
+  border: none;
+  width: auto;
+  border-radius: $radius;
+  background-color: white;
+  color: #333333;
+  display: inline-block;
+  }
+
+@mixin form-elmnt-green {
+  display: inline-block;
+  border: none;
+  width: auto;
+  border-radius: $radius;
+  background-color: $kpgruen;
+  color: white;
+  display: inline-block;
+  }

@@ -1,5 +1,6 @@
 
 @import "colors";
+@import "variables-and-mixins";
 
 body.path-shop,
 body.path-product {
@@ -37,13 +38,9 @@ body.path-product {
   }
 
 body.path-cart {
-  input.delete-order-item.btn {
-    background-color: white;
-    color: #333333;
-    display: inline-block;
-    border: 1px solid #333333;
-    width: auto;
-    border-radius: 1.25rem;
+  input.delete-order-item.btn,
+  input.quantity-edit-input {
+    @include form-elmnt-white;
     }
   .view-commerce-cart-form {
     .table>:not(:first-child) {
@@ -55,6 +52,23 @@ body.path-cart {
         }
       thead > tr {
         border-bottom: 1px solid white;
+        }
+      .field--name-product-id {
+        a {
+          color: #333333;
+          &:hover {
+            text-decoration: none;
+            }
+          }
+        }
+      }
+    .form-actions {
+      text-align: center;
+      margin-top: 25px;
+      .form-submit {
+        @include form-elmnt-green;
+        margin-left: 20px;
+        min-width: 211px;
         }
       }
     }
@@ -106,6 +120,9 @@ body.path-cart {
   input.form-control {
     max-width: 211px;
     border-radius: 1.25rem;
+    }
+  input.form-number {
+    @include form-elmnt-white;
     }
   }
 
