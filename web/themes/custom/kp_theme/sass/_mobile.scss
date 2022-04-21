@@ -39,6 +39,27 @@
   #main {
     max-width: 516px;
     }
+  .fotorama {
+    margin-bottom: 30px;
+    .fotorama__stage {
+      margin-bottom: 10px;
+      }
+    }
+  .product-wrapper {
+    .field--name-price {
+      text-align: center;
+      width: 100%;
+      display: block;
+      }
+    }
+  .commerce-order-item-add-to-cart-form {
+    text-align: center;
+    .field--name-quantity {
+      float: none;
+      display: inline-block;
+      margin-bottom: 0 !important;
+      }
+    }
   }
 
 @media screen and (max-width: 575px) {

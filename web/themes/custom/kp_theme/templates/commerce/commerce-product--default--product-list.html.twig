@@ -26,12 +26,11 @@
 <article{{ attributes }}>
   {{ title_prefix }}
   {{ title_suffix }}
-  {# {{- product|without('variation_attributes') -}} #}
-  <div class="product-wrapper">
-  <div class="row">
+  {{- product|without('variation_attributes') -}}
+  {#
+  <div class="row" style="border: 3px solid fuchsia;">
     <div class="col-md-7">{{ product.field_product_image }}</div>
     <div class="col-md-5">{{ product|without('field_product_image') }}</div>
   </div>
-  </div>
-
+  #}
 </article>

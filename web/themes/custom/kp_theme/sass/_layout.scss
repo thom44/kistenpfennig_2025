@@ -31,16 +31,17 @@ ol.breadcrumb {
   }
 
 .region-subheader {
+  text-align: center;
   &.row {
     display: block;
     }
-  text-align: right;
+  /* text-align: right; */
   .block-block-content,
   .content,
   #block-customcartblock {
     display: inline-block;
     width: auto;
-    float: right;
+    /* float: right; */
     }
     &:after {
       clear: both;

@@ -19,7 +19,6 @@ body.path-product {
     content: ' ';
     }
   .field--name-price {
-    margin-left: 30px;
     .price-value {
       font-size: 35px;
       font-weight: 600;
@@ -33,7 +32,7 @@ body.path-product {
       }
     }
   .field--name-quantity {
-    margin-left: 30px;
+
     }
   }
 
@@ -171,6 +170,7 @@ body.path-cart {
     margin: 0;
     padding: 0;
     display: inline;
+    margin-bottom: -1rem !important;
     label {
       display: none;
       }
@@ -189,8 +189,6 @@ body.path-cart {
 
 
 .fotorama {
-  display: inline-block;
-  float: left;
   .fotorama__stage {
     margin-bottom: 30px;
     }
