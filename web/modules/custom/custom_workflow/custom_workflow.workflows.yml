@@ -7,6 +7,8 @@ custom order_fulfillment:
       label: Draft
     validation:
       label: Validation
+    paid:
+      label: Paid
     fulfillment:
       label: Fulfillment
     completed:
@@ -20,13 +22,17 @@ custom order_fulfillment:
       to: validation
     validate:
       label: 'Validate order'
-      from: [validation, canceled, completed]
+      from: [fulfillment, validation, canceled, completed]
+      to: paid
+    pay:
+      label: 'Pay order'
+      from: [paid, validation, canceled, completed]
       to: fulfillment
     fulfill:
       label: 'Fulfill order'
-      from: [fulfillment, canceled]
+      from: [paid, fulfillment, canceled]
       to: completed
     cancel:
       label: 'Cancel order'
-      from: [draft, fulfillment, validation, completed]
+      from: [draft, paid, fulfillment, validation, completed]
       to: canceled
