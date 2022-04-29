@@ -1,0 +1,4 @@
+<?php
+/**
+ * @fild: A module which provides a form in an views field, where the user can cancel his orders.
+ */
