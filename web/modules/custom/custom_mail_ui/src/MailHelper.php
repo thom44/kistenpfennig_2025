@@ -101,8 +101,8 @@ class MailHelper implements MailHelperInterface {
     // native://default|sendmail://default|smtp://user:pass@smtp.example.com:25
     // SMTP:
     // Host: kistenpfennig-net.mail.protection.outlook.com
-    #$transport = Transport::fromDsn('native://default');
-    $transport = Transport::fromDsn('sendmail://default');
+    $transport = Transport::fromDsn('native://default');
+    #$transport = Transport::fromDsn('sendmail://default');
     #$transport = Transport::fromDsn('smtp://info@thomas-schuh.com:L!1DsS3A41sE@smtp.1und1.de:587');
 
     $mailer = new Mailer($transport);
