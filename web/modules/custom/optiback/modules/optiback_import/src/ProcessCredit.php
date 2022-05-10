@@ -1,6 +1,6 @@
 <?php
 /**
- * @file: A class wich process the imported invoices.
+ * @file: A class wich process the imported credits.
  */
 
 namespace Drupal\optiback_import;
@@ -16,7 +16,7 @@ use Drupal\Core\ProxyClass\File\MimeType\MimeTypeGuesser;
 use Drupal\file\FileRepositoryInterface;
 
 
-class ProcessInvoice implements ProcessInvoiceInterface {
+class ProcessCredit implements ProcessCreditInterface {
 
   use StringTranslationTrait;
 
@@ -85,17 +85,11 @@ class ProcessInvoice implements ProcessInvoiceInterface {
 
     $message = '';
 
-    $invoices = array_diff(scandir(ObtibackConfigInterface::OPTIBACK_INVOICE), array('..', '.'));
+    $credits = array_diff(scandir(ObtibackConfigInterface::OPTIBACK_CREDIT), array('..', '.'));
 
-    foreach ($invoices as $invoice) {
+    foreach ($credits as $credit) {
 
-      $parts = explode("_", $invoice);
-
-      // Retrieves order_id from filename.
-      $order_id = $parts[0];
-
-      // Retrieves invoice number from filename.
-      $invoice_no = str_replace(".pdf","", $parts[1]);
+      $order_id = str_replace(".pdf","", $credit);
 
       if (is_numeric($order_id)) {
 
@@ -105,32 +99,27 @@ class ProcessInvoice implements ProcessInvoiceInterface {
           continue;
         }
 
-        // Checks if the invoice is already processed.
-        if ($field_invoice_imported = $order->get('field_invoice_imported')->getValue()) {
-          if ($field_invoice_imported[0]['value'] == 1) {
+        // Checks if the credit is already processed.
+        if ($field_credit_imported = $order->get('field_credit_imported')->getValue()) {
+          if ($field_credit_imported[0]['value'] == 1) {
             continue;
           }
         }
 
-        // Sets invoice number.
-        if ($invoice_no) {
-          $order->set('field_invoice_id',$invoice_no);
-        }
+        $prefix = ObtibackConfigInterface::CREDIT_PREFIX;
+        $source_path = ObtibackConfigInterface::OPTIBACK_CREDIT . '/' . $credit;
+        $dest_path = ObtibackConfigInterface::DRUPAL_CREDIT . '/' . $prefix . $credit;
+        $dest_uri = ObtibackConfigInterface::DRUPAL_CREDIT_URI . '/' . $prefix . $credit;
 
-        $prefix = ObtibackConfigInterface::INVOICE_PREFIX;
-        $source_path = ObtibackConfigInterface::OPTIBACK_INVOICE . '/' . $invoice;
-        $dest_path = ObtibackConfigInterface::DRUPAL_INVOICE . '/' . $prefix . $invoice;
-        $dest_uri = ObtibackConfigInterface::DRUPAL_INVOICE_URI . '/' . $prefix . $invoice;
-
-        // We backup old invoice if exists and move it.
+        // We backup old credit if exists and move it.
         //   This prevents file permission problem in drupal.
-        if ($field_invoice = $order->get('field_invoice')->getValue()) {
-          if ($fid = $field_invoice[0]['target_id']) {
+        if ($field_credit = $order->get('field_credit')->getValue()) {
+          if ($fid = $field_credit[0]['target_id']) {
             $old_file = $this->entityTypeManager->getStorage("file")->load($fid);
 
             $backup_file = $this->fileRepo->move(
               $old_file,
-              ObtibackConfigInterface::DRUPAL_INVOICE_URI . '/' . $prefix . $order_id . '_' . $fid . '.pdf');
+              ObtibackConfigInterface::DRUPAL_CREDIT_URI . '/' . $prefix . $order_id . '_' . $fid . '.pdf');
           }
         }
 
@@ -144,12 +133,12 @@ class ProcessInvoice implements ProcessInvoiceInterface {
 
         $cp_output = shell_exec($cp_cmd);
 
-        $message .= 'Copy invoices to private folder. ' . $cp_output;
+        $message .= 'Copy credits to private folder. ' . $cp_output;
 
         // Checks if the file was copied to the drupal private path.
         if (!file_exists($dest_path)) {
           $message .= $this->t('The file :file could not be copied to drupal private path. :log',[
-            ':file' => $prefix . $invoice,
+            ':file' => $prefix . $credit,
             ':log'  => $log,
           ]);
           $this->logger->get('optiback_import')->warning($message);
@@ -160,7 +149,7 @@ class ProcessInvoice implements ProcessInvoiceInterface {
         $uid = $order->getCustomer()->id();
         $values = [
           'uid' => $uid,
-          'filename' => $prefix . $invoice,
+          'filename' => $prefix . $credit,
           'filesize' => filesize($dest_path),
           'uri' => $dest_uri,
         ];
@@ -185,37 +174,41 @@ class ProcessInvoice implements ProcessInvoiceInterface {
         }
 
         // Adds file to the file field of the order.
-        $order->set('field_invoice' , [
+        $order->set('field_credit' , [
           'target_id' => $file->id(),
           'display'   => 1,
-          'description' => 'Rechnung'
+          'description' => 'Gutschrift'
         ]);
 
+
         $states = [
-          'fulfillment',
-          'completed',
           'canceled',
         ];
+
         $current_state = $order->getState()->getValue()['value'];
         if (!in_array($current_state, $states)) {
-          // Set the order to fulfillment.
-          $order->getState()->applyTransitionById('pay');
+          // Fulfills the order.
+          $order->getState()->applyTransitionById('cancel');
         }
 
-        // Sets the flag to true, that we know the invoice is already processed.
-        $order->set('field_invoice_imported',1);
+        // Sets the flag to true, that we know the credit is already processed.
+        $order->set('field_credit_imported',1);
 
         $res = $order->save();
 
         if ($res) {
+
+          // Remove the {order_id}_canceled.csv file.
+          array_map('unlink', glob(ObtibackConfigInterface::OPTIBACK_IN . '/' . ObtibackConfigInterface::OPTIBACK_CANCEL . '/' . $order_id . '_canceled.csv'));
+
           $message .= 'The order was successfully saved.';
 
           if ($file) {
 
-            // Sends a order is invoice notification to the customer.
+            // Sends a order is credit notification to the customer.
             $customer = $order->getCustomer();
             // Retrieves the configurable email text.
-            $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('custom_mail_ui.commerce_order_invoice', $order, $customer);
+            $config = $this->orderTokenProvider->getEmailConfigTokenReplaced('custom_mail_ui.commerce_order_credit', $order, $customer);
 
             $params = [
               'subject' => $config['subject'],
@@ -234,15 +227,13 @@ class ProcessInvoice implements ProcessInvoiceInterface {
             );
 
             if (!$mail) {
-              $message = $this->t('The invoice notification could not be send to the customer.');
+              $message = $this->t('The credit notification could not be send to the customer.');
               $this->logger->get('optiback_import')->error($message);
             }
           } else {
-            $message = $this->t('The invoice notification could not be send, because invoice file is missing.');
+            $message = $this->t('The credit notification could not be send, because credit file is missing.');
             $this->logger->get('optiback_import')->error($message);
           }
-
-
         }
       }
     }

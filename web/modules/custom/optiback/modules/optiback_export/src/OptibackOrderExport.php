@@ -107,11 +107,17 @@ class OptibackOrderExport {
       'Positions-Wert nach Rabatt',
     ];
 
+    $states = [
+      'paid',
+      'fulfillment',
+      'completed'
+    ];
+
     $orders = $this->entityTypeManager
       ->getStorage('commerce_order')
       ->loadByProperties(
         [
-          'state' => 'completed'
+          'state' => $states
         ]
       );
 

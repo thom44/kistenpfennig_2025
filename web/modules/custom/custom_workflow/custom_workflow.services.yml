@@ -4,6 +4,11 @@ services:
     arguments: ['@entity_type.manager', '@custom_order_token.order_token_provider', '@custom_mail_ui.mail_helper', '@messenger']
     tags:
       - { name: 'event_subscriber' }
+  custom_workflow.order_complete_subscriber:
+    class: Drupal\custom_workflow\EventSubscriber\OrderSetToPaidSubscriber
+    arguments: ['@request_stack']
+    tags:
+      - { name: event_subscriber, priority: -100  }
 
 #  custom_workflow.course_order_receipt_subscriber:
 #    class: Drupal\custom_workflow\EventSubscriber\CourseOrderReceiptSubscriber
@@ -22,12 +27,6 @@ services:
 #    arguments: ['@entity_type.manager', '@database']
 #    tags:
 #      - { name: event_subscriber }
-
-#  custom_workflow.order_complete_subscriber:
-#    class: Drupal\custom_workflow\EventSubscriber\OrderCompleteSubscriber
-#    arguments: ['@request_stack']
-#    tags:
-#      - { name: event_subscriber, priority: -100  }
 #  custom_workflow.checkout_complete_redirect:
 #    class: Drupal\custom_workflow\EventSubscriber\CheckoutCompleteRedirect
 #    arguments: ['@entity_type.manager', '@messenger', '@commerce_checkout.checkout_order_manager', '@form_builder', '@renderer']

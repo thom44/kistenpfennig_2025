@@ -70,7 +70,7 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
 
       $file_path = ObtibackConfigInterface::OPTIBACK_TRACKING . '/' . $tno_file;
 
-      $order_id = str_replace(".txt","", $tno_file);
+      $order_id = str_replace(".csv","", $tno_file);
 
       if (is_numeric($order_id)) {
 
@@ -114,8 +114,17 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
           }
         }
 
-        // Fulfills the order.
-        $order->setRefreshState('completed');
+        $states = [
+          'validation',
+          'paid',
+          'fulfillment',
+        ];
+
+        $current_state = $order->getState()->getValue()['value'];
+        if (in_array($current_state, $states)) {
+          // Fulfills the order.
+          $order->getState()->applyTransitionById('fulfill');
+        }
 
         // Sends a order is shipped notification to the customer.
         $customer = $order->getCustomer();

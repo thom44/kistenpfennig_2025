@@ -50,18 +50,28 @@ class RunImport implements RunImportInterface {
    */
   protected $logger;
 
+  /**
+   * The process Credit service.
+   *
+   * @var \Drupal\optiback_import\ProcessCreditInterface
+   */
+  protected $processCredit;
+
+
   public function __construct(
     ProcessInvoiceInterface $process_invoice,
     ProcessTrackingNumberInterface $process_tracking_number,
     OptibackHelperInterface $optiback_helper,
     OptibackLoggerInterface $optiback_logger,
-    LoggerChannelFactoryInterface $logger
+    LoggerChannelFactoryInterface $logger,
+    ProcessCreditInterface $process_credit
   ) {
     $this->processInvoice = $process_invoice;
     $this->processTrackingNumber = $process_tracking_number;
     $this->optibackHelper = $optiback_helper;
     $this->optibackLogger = $optiback_logger;
     $this->logger = $logger;
+    $this->processCredit = $process_credit;
   }
 
   /**
@@ -117,6 +127,9 @@ class RunImport implements RunImportInterface {
     if ($options['invoice']) {
       // Copy and process new invoices.
       $message .= $this->processInvoice->run();
+
+      // Copy and process new credits.
+      $message .= $this->processCredit->run();
     }
 
     if ($options['tracking']) {

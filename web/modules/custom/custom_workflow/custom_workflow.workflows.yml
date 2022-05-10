@@ -22,11 +22,11 @@ custom order_fulfillment:
       to: validation
     validate:
       label: 'Validate order'
-      from: [fulfillment, validation, canceled, completed]
+      from: [validation, canceled, completed]
       to: paid
     pay:
       label: 'Pay order'
-      from: [paid, validation, canceled, completed]
+      from: [draft, paid, validation, canceled, completed]
       to: fulfillment
     fulfill:
       label: 'Fulfill order'

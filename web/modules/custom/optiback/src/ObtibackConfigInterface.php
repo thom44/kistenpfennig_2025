@@ -31,7 +31,7 @@ interface ObtibackConfigInterface {
   /**
    * The path to drush.
    */
-  const DRUSH = 'php ~/www/kistenpfennig_d9/vendor/drush/drush/drush';
+  const DRUSH = 'php ../vendor/drush/drush/drush';
 
   /**
    * The db user.
@@ -86,7 +86,18 @@ interface ObtibackConfigInterface {
   /**
    * A prefix for moved pdf invoice filename.
    */
-  const OPTIBACK_TRACKING = ObtibackConfigInterface::OPTIBACK_OUT . '/tracking-number';
+  const OPTIBACK_TRACKING = ObtibackConfigInterface::OPTIBACK_OUT . '/fulfilled';
+
+  /**
+   * A prefix for moved pdf invoice filename.
+   */
+  const OPTIBACK_CREDIT = ObtibackConfigInterface::OPTIBACK_OUT . '/credit';
+
+  /**
+   * A prefix for exported order state subdirectory name.
+   * Without slash.
+   */
+  const OPTIBACK_CANCEL = 'state';
 
   /**
    * The relative path to the private drupal invoice dir.
@@ -102,6 +113,21 @@ interface ObtibackConfigInterface {
    * A prefix for moved pdf invoice filename.
    */
   const INVOICE_PREFIX = 'Rechnung_';
+
+  /**
+   * The relative path to the private drupal invoice dir.
+   */
+  const DRUPAL_CREDIT = '../private/account-credit';
+
+  /**
+   * The relative path to the private drupal invoice dir.
+   */
+  const DRUPAL_CREDIT_URI = 'private://account-credit';
+
+  /**
+   * A prefix for moved pdf invoice filename.
+   */
+  const CREDIT_PREFIX = 'Gutschrift_';
 
   /**
    * The email addresses.

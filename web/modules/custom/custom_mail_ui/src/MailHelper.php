@@ -99,7 +99,12 @@ class MailHelper implements MailHelperInterface {
     // @see: symfony/mailer/README.md
     // @see: https://symfony.com/doc/current/mailer.html
     // native://default|sendmail://default|smtp://user:pass@smtp.example.com:25
-    $transport = Transport::fromDsn('native://default');
+    // SMTP:
+    // Host: kistenpfennig-net.mail.protection.outlook.com
+    #$transport = Transport::fromDsn('native://default');
+    $transport = Transport::fromDsn('sendmail://default');
+    #$transport = Transport::fromDsn('smtp://info@thomas-schuh.com:L!1DsS3A41sE@smtp.1und1.de:587');
+
     $mailer = new Mailer($transport);
 
     $email = (new Email())
@@ -129,15 +134,17 @@ class MailHelper implements MailHelperInterface {
       $email->priority($params['priority']);
     }
 
-    foreach ($params['files'] as $file) {
-      if ($file instanceof \Drupal\file\Entity\File) {
-        $uri = $file->getFileUri();
-        $file_path = $this->fileSystem->realpath($uri);
-      } else {
-        $file_path = $file->uri;
+    if (isset($params['files'])) {
+      foreach ($params['files'] as $file) {
+        if ($file instanceof \Drupal\file\Entity\File) {
+          $uri = $file->getFileUri();
+          $file_path = $this->fileSystem->realpath($uri);
+        } else {
+          $file_path = $file->uri;
+        }
+        // MimeType will be guessed.
+        $email->attachFromPath($file_path);
       }
-      // MimeType will be guessed.
-      $email->attachFromPath($file_path);
     }
 
     $mailer->send($email);

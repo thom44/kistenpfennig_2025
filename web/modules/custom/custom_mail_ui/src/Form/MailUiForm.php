@@ -91,6 +91,9 @@ class MailUiForm extends ConfigFormBase {
       'custom_mail_ui.commerce_order_invoice' => [
         '#title' => $this->t('Rechnung'),
       ],
+      'custom_mail_ui.commerce_order_credit' => [
+        '#title' => $this->t('Gutschrift'),
+      ],
     ];
   }
 

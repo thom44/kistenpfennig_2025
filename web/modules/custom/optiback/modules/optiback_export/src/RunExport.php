@@ -23,6 +23,13 @@ class RunExport implements RunExportInterface {
   protected $optibackOrderExport;
 
   /**
+   * The run cancel order service.
+   *
+   * @var \Drupal\optiback_export\OptibackCancelOrder
+   */
+  protected $optibackCancelOrder;
+
+  /**
    * The optiback helper service.
    *
    * @var \Drupal\optiback\OptibackHelperInterface
@@ -50,12 +57,14 @@ class RunExport implements RunExportInterface {
     OptibackOrderExport $optiback_order_export,
     OptibackHelperInterface $optiback_helper,
     OptibackLoggerInterface $optiback_logger,
-    LoggerChannelFactoryInterface $logger
+    LoggerChannelFactoryInterface $logger,
+    OptibackCancelOrder $optiback_cancel_order
   ) {
     $this->optibackOrderExport = $optiback_order_export;
     $this->optibackHelper = $optiback_helper;
     $this->optibackLogger = $optiback_logger;
     $this->logger = $logger;
+    $this->optibackCancelOrder = $optiback_cancel_order;
   }
 
   /**
@@ -78,8 +87,11 @@ class RunExport implements RunExportInterface {
 
     $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
 
-    // Runs the import.
+    // Runs the export.
     $message .= $this->optibackOrderExport->export();
+
+    // Search for canceled orders and create {order_id}_calceled.csv
+    $message .= $this->optibackCancelOrder->cancelOrder();
 
     // Removes maintance mode.
     $cmd = $drush . ' state:set system.maintenance_mode 0';
@@ -96,10 +108,10 @@ class RunExport implements RunExportInterface {
     $mail = $this->optibackLogger->sendMail($params);
 
     if ($mail) {
-      $message = $this->t('The optiback import email was send to the site owner.');
+      $message = $this->t('The optiback export email was send to the site owner.');
       $this->logger->get('optiback_export')->error($message);
     } else {
-      $message = $this->t('The optiback import email could not be send to the site owner.');
+      $message = $this->t('The optiback export email could not be send to the site owner.');
       $this->logger->get('optiback_export')->error($message);
     }
 

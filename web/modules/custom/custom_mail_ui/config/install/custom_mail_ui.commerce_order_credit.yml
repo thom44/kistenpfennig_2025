@@ -1,0 +1,4 @@
+from_email: info@example.com
+bcc_email:
+email_subject: Ihre Gutschrift
+email_body: Email Text

@@ -2,10 +2,13 @@ services:
   optiback_import.process_invoice:
     class: Drupal\optiback_import\ProcessInvoice
     arguments: ['@entity_type.manager','@logger.factory','@file.repository','@file.mime_type.guesser','@custom_order_token.order_token_provider','@custom_mail_ui.mail_helper']
+  optiback_import.process_credit:
+    class: Drupal\optiback_import\ProcessCredit
+    arguments: ['@entity_type.manager','@logger.factory','@file.repository','@file.mime_type.guesser','@custom_order_token.order_token_provider','@custom_mail_ui.mail_helper']
   optiback_import.process_tracking_number:
     class: Drupal\optiback_import\ProcessTrackingNumber
     arguments: ['@entity_type.manager','@logger.factory','@custom_order_token.order_token_provider','@custom_mail_ui.mail_helper']
   optiback_import.run_import:
     class: \Drupal\optiback_import\RunImport
-    arguments: ['@optiback_import.process_invoice','@optiback_import.process_tracking_number','@optiback.helper','@optiback.logger','@logger.factory']
+    arguments: ['@optiback_import.process_invoice','@optiback_import.process_tracking_number','@optiback.helper','@optiback.logger','@logger.factory','@optiback_import.process_credit']
 

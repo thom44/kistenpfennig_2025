@@ -91,6 +91,7 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
 
     // Gets order checkbox value for not sending email to customer.
     //$block_email = $order->get('field_block_email')[0]->getValue()['value'];
+    // If we use it change this if ($order_type->shouldSendReceipt() && $block_email != 1) {
 
     // Gets order type for order type configurations.
     $order_type_storage = $this->entityTypeManager->getStorage('commerce_order_type');
@@ -98,7 +99,7 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
     $order_type = $order_type_storage->load($order->bundle());
 
     // Checks if email should be send.
-    if ($order_type->shouldSendReceipt() && $block_email != 1) {
+    if ($order_type->shouldSendReceipt()) {
       $customer = $order->getCustomer();
 
       // Retrieves the configurable email text.

@@ -39,19 +39,12 @@ class CancelOrderForm extends FormBase {
     $this->order = $order;
 
     $state = $order->getState()->getValue()['value'];
-    if ($state == 'canceled') {
-      #$form['header'] = [
-      #  '#type' => 'markup',
-      #  '#markup' => $this->t('Storniert'),
-      #];
-      return $form;
-    }
 
-    if ($state == 'completed') {
-      #$form['header'] = [
-      #  '#type' => 'markup',
-      #  '#markup' => $this->t('Versendet'),
-      #];
+    if ($state == 'canceled' || $state == 'completed') {
+      $form['header'] = [
+        '#type' => 'markup',
+        '#markup' => $this->t('Nicht mehr möglich'),
+      ];
       return $form;
     }
 
@@ -98,7 +91,7 @@ class CancelOrderForm extends FormBase {
     } else {
       $form['header'] = [
         '#type' => 'markup',
-        '#markup' => $this->t('In Produktion'),
+        '#markup' => $this->t('Nicht mehr möglich'),
       ];
     }
 
