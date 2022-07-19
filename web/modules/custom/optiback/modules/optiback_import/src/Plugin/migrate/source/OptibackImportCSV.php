@@ -4,14 +4,18 @@ namespace Drupal\optiback_import\Plugin\migrate\source;
 
 use Drupal\Component\Plugin\ConfigurableInterface;
 use Drupal\Component\Utility\NestedArray;
+use Drupal\migrate\MigrateSkipRowException;
+use Drupal\migrate\Plugin\MigrateIdMapInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\migrate\source\SourcePluginBase;
+use Drupal\migrate\Row;
 use League\Csv\Reader;
 use Drupal\optiback\ObtibackConfigInterface;
 
 
 /**
  * Source for CSV files.
+ * This class is overriden from the original.
  *
  * Available configuration options:
  * - path: Path to the  CSV file. File streams are supported.
@@ -174,6 +178,7 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     return [
       'path' => '',
       'ids' => [],
+      'info_art_to_process' => FALSE,
       'header_offset' => 0,
       'fields' => [],
       'delimiter' => ",",
@@ -310,4 +315,52 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     return Reader::createFromStream($csv);
   }
 
+  /**
+   * {@inheritdoc}
+   * We copied this from the base class and added a condition on row level.
+   */
+  public function prepareRow(Row $row) {
+    $result = TRUE;
+    try {
+      $result_hook = $this->getModuleHandler()->invokeAll('migrate_prepare_row', [$row, $this, $this->migration]);
+      $result_named_hook = $this->getModuleHandler()->invokeAll('migrate_' . $this->migration->id() . '_prepare_row', [$row, $this, $this->migration]);
+      // We will skip if any hook returned FALSE.
+      $skip = ($result_hook && in_array(FALSE, $result_hook)) || ($result_named_hook && in_array(FALSE, $result_named_hook));
+      $save_to_map = TRUE;
+    }
+    catch (MigrateSkipRowException $e) {
+      $skip = TRUE;
+      $save_to_map = $e->getSaveToMap();
+      if ($message = trim($e->getMessage())) {
+        $this->idMap->saveMessage($row->getSourceIdValues(), $message, MigrationInterface::MESSAGE_INFORMATIONAL);
+      }
+    }
+
+    // We compare the info-art value and skip if it not equal.
+    $info_art = $row->getSourceProperty('info_art');
+    $compare = $row->getSourceProperty('info_art_to_process');
+    if ($info_art != $compare) {
+      $result = FALSE;
+    }
+
+    // We're explicitly skipping this row - keep track in the map table.
+    if ($skip) {
+      // Make sure we replace any previous messages for this item with any
+      // new ones.
+      if ($save_to_map) {
+        $this->idMap->saveIdMapping($row, [], MigrateIdMapInterface::STATUS_IGNORED);
+        $this->currentRow = NULL;
+        $this->currentSourceIds = NULL;
+      }
+      $result = FALSE;
+    }
+    elseif ($this->trackChanges) {
+      // When tracking changed data, We want to quietly skip (rather than
+      // "ignore") rows with changes. The caller needs to make that decision,
+      // so we need to provide them with the necessary information (before and
+      // after hashes).
+      $row->rehash();
+    }
+    return $result;
+  }
 }

@@ -11,6 +11,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\custom_mail_ui\MailHelperInterface;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\custom_order_token\OrderTokenProvider;
+use Drupal\optiback\OptibackHelperInterface;
 
 
 class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
@@ -45,16 +46,25 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
    */
   protected $mailHelper;
 
+  /**
+   * The optiback helper service.
+   *
+   * @var \Drupal\optiback\OptibackHelperInterface
+   */
+  protected $optibackHelper;
+
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     LoggerChannelFactoryInterface $logger,
     OrderTokenProvider $order_token_provider,
-    MailHelperInterface $mail_helper
+    MailHelperInterface $mail_helper,
+    OptibackHelperInterface $optiback_helper
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->logger = $logger;
     $this->orderTokenProvider = $order_token_provider;
     $this->mailHelper = $mail_helper;
+    $this->optibackHelper = $optiback_helper;
   }
 
   /**
@@ -70,7 +80,9 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
 
       $file_path = ObtibackConfigInterface::OPTIBACK_TRACKING . '/' . $tno_file;
 
-      $order_id = str_replace(".csv","", $tno_file);
+      $file_part = str_replace("SEND_","", $tno_file);
+
+      $order_id = str_replace(".csv","", $file_part);
 
       if (is_numeric($order_id)) {
 
@@ -97,9 +109,13 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
           // If field_tracking_number is empty, we save it in the field.
 
           // Gets the tracking number from the file. Max length 255 characters.
-          $tracking_number = file_get_contents($file_path, false, null, 0, 255);
+
+          #$csv_content = file_get_contents($file_path, false, null, 0, 255);
+          $csv_content = $this->optibackHelper->csvToArray($file_path, "\t");
+          // @todo: get tracking number from csv content.
+          $sn = $csv_content[0]['Sendungsnummer'];
           // Cleanup.
-          $tracking_number = str_replace("\n","",trim($tracking_number));
+          $tracking_number = str_replace("\n","",trim($sn));
 
           $order->set('field_tracking_number', $tracking_number);
 

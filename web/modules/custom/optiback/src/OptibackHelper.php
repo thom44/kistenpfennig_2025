@@ -25,8 +25,19 @@ class OptibackHelper implements OptibackHelperInterface {
     // Run database backup.
     $cmd = 'mysqldump -u ' . $db_user . ' -p' . $db_pwd . ' ' . $db_name . ' > ' . $backup_dir . '/' . $db_name . '_' . date("Y-m-d") . '.sql';
 
-    $message .= $this->shellExecWithError($cmd, 'The mysqldump failed.');
+    return $this->shellExecWithError($cmd, 'The mysqldump failed.');
+  }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function dirBackup($directory, $name = '') {
+
+    $date = date("Y-m-d_H-i-s");
+
+    $cmd = 'tar -cf ' . ObtibackConfigInterface::OPTIBACK_BAK . $name .'-' . $date . '.tar.gz ' . $directory;
+
+    return $this->shellExecWithError($cmd, 'The backup from optiback/in directory failed.');
   }
 
   /**
@@ -34,10 +45,20 @@ class OptibackHelper implements OptibackHelperInterface {
    */
   public function backupCleanup() {
 
-    // Run database backup.
-    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '/*.tar.gz -mtime +8 -exec rm {} \;';
+    $message = '';
 
-    $message .= $this->shellExecWithError($cmd, 'The mysqldump failed.');
+    // Run database backup.
+    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '/*.sql -mtime +' . ObtibackConfigInterface::KEEP_BACKUP . ' -exec rm {} \;';
+
+    $message .= $this->shellExecWithError($cmd, 'The .sql backup cleanup failed.');
+
+
+    // Run directory backup.
+    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '/*.tar.gz -mtime +' . ObtibackConfigInterface::KEEP_BACKUP . ' -exec rm {} \;';
+
+    $message .= $this->shellExecWithError($cmd, 'The .tar.gz backup cleanup failed.');
+
+    return $message;
   }
 
   /**
@@ -56,6 +77,34 @@ class OptibackHelper implements OptibackHelperInterface {
     }
 
     return $result . "\n";
+  }
+
+  /**
+   * @param string $filename
+   * @param $delimiter
+   * @return array|false
+   */
+  public function csvToArray($filename='', $delimiter){
+
+    if(!file_exists($filename) || !is_readable($filename)) {
+      return FALSE;
+    }
+
+    $header = NULL;
+    $data = array();
+
+    if (($handle = fopen($filename, 'r')) !== FALSE ) {
+      while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE) {
+        if(!$header) {
+          $header = $row;
+        } else {
+          $data[] = array_combine($header, $row);
+        }
+      }
+      fclose($handle);
+    }
+
+    return $data;
   }
 }
 

@@ -15,6 +15,14 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class RunProcessForm extends FormBase {
 
   /**
+   * The environment tag.
+   *
+   * @var string $env
+   *   Possible values (dev|prod)
+   */
+  protected $env = 'dev';
+
+  /**
    * The messenger service.
    *
    * @var Drupal\Core\Messenger $messenger;
@@ -72,6 +80,16 @@ class RunProcessForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, OrderInterface $commerce_order = NULL) {
 
+    $active = array('prod' => t('Produktiv'), 'dev' => t('Entwicklung'));
+
+    $form['environment'] = array(
+      '#type' => 'radios',
+      '#title' => t('Server Umgebung'),
+      '#default_value' => 'prod',
+      '#options' => $active,
+      '#description' => t('Wird das Formular auf dem Entwicklungsserver oder dem Produktiven Server ausgeführt.'),
+    );
+
     $form['export']['header'] = array(
       '#type' => 'markup',
       '#markup' => '<h2>Bestellungen exportieren</h2>',
@@ -119,6 +137,10 @@ class RunProcessForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
 
     $input = $form_state->getUserInput();
+
+    // The environment prod|dev.
+    $env = $input['environment'];
+
     $options = [
       'product' => FALSE,
       'invoice' => FALSE,
@@ -137,13 +159,13 @@ class RunProcessForm extends FormBase {
         $options['tracking'] = TRUE;
       }
 
-      $this->runImport->run('prod', $options);
-      $this->messenger->addStatus('Der Import wurde gestartet.');
+      $message = $this->runImport->run($env, $options);
+      $this->messenger->addStatus('Der Import wurde gestartet. ' . $message);
     }
 
     if ($input['op'] == 'Export starten') {
-      $this->runExport->run('prod');
-      $this->messenger->addStatus('Der Export wurde gestartet.');
+      $message = $this->runExport->run($env);
+      $this->messenger->addStatus('Der Export wurde gestartet. ' . $message);
     }
 
   }

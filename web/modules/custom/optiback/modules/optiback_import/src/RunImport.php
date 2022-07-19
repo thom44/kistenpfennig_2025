@@ -83,6 +83,10 @@ class RunImport implements RunImportInterface {
 
     $message = '';
 
+    // Backup /in directory
+    $message .= $this->optibackHelper->dirBackup(ObtibackConfigInterface::OPTIBACK_OUT, 'OPTIBACK_OUT');
+
+
     if ($env == 'dev') {
       $drush = ObtibackConfigInterface::DEV_DRUSH;
     } else {
@@ -147,12 +151,14 @@ class RunImport implements RunImportInterface {
     $mail = $this->optibackLogger->sendMail($params);
 
     if ($mail) {
-      $message = $this->t('The optiback import email was send to the site owner.');
+      $message .= $this->t('The optiback import email was send to the site owner.');
       $this->logger->get('optiback_import')->info($message);
     } else {
-      $message = $this->t('The optiback import email could not be send to the site owner.');
+      $message .= $this->t('The optiback import email could not be send to the site owner.');
       $this->logger->get('optiback_import')->error($message);
     }
+
+    $message .= $this->optibackHelper->backupCleanup();
 
     return $message;
   }

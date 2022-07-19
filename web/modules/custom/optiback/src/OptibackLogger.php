@@ -80,7 +80,7 @@ class OptibackLogger implements OptibackLoggerInterface {
       'bcc' => ObtibackConfigInterface::EMAIL_BCC,
     ];
 
-    if ($params['files']) {
+    if (isset($params['files'])) {
       $parameter['files'] = $params['files'];
     }
 

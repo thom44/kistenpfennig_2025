@@ -72,9 +72,12 @@ class RunExport implements RunExportInterface {
    */
   public function run($env = 'prod') {
 
+    $message = '';
+
     // Here we run the complete export pipeline.
 
-    $message = '';
+    // Backup /in directory
+    $message .= $this->optibackHelper->dirBackup(ObtibackConfigInterface::OPTIBACK_IN, 'OPTIBACK_IN');
 
     $drush = ObtibackConfigInterface::DRUSH;
 
@@ -82,10 +85,9 @@ class RunExport implements RunExportInterface {
       $message .= $this->optibackHelper->dbBackup();
     }
 
-    // Sets site in maintance mode.
-    $cmd = $drush . ' state:set system.maintenance_mode 1';
-
-    $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
+    // Sets site in mainetance mode. - Skip this for now.
+    // $cmd = $drush . ' state:set system.maintenance_mode 1';
+    // $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
 
     // Runs the export.
     $message .= $this->optibackOrderExport->export();
@@ -94,9 +96,8 @@ class RunExport implements RunExportInterface {
     $message .= $this->optibackCancelOrder->cancelOrder();
 
     // Removes maintance mode.
-    $cmd = $drush . ' state:set system.maintenance_mode 0';
-
-    $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
+    // $cmd = $drush . ' state:set system.maintenance_mode 0';
+    // $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
 
     $this->optibackLogger->addLog($message, 'status');
 
@@ -108,12 +109,15 @@ class RunExport implements RunExportInterface {
     $mail = $this->optibackLogger->sendMail($params);
 
     if ($mail) {
-      $message = $this->t('The optiback export email was send to the site owner.');
-      $this->logger->get('optiback_export')->error($message);
+      $message .= $this->t('The optiback export email was send to the site owner.');
+      $this->logger->get('optiback_export')->info($message);
     } else {
-      $message = $this->t('The optiback export email could not be send to the site owner.');
+      $message .= $this->t('The optiback export email could not be send to the site owner.');
       $this->logger->get('optiback_export')->error($message);
     }
+
+
+    $message .= $this->optibackHelper->backupCleanup();
 
     return $message;
   }

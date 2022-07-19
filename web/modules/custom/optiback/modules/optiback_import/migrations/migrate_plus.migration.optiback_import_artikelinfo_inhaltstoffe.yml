@@ -1,0 +1,64 @@
+id: optiback_import_artikelinfo_inhaltstoffe
+label: 'Optiback Artikelinfo Inhaltstoffe'
+migration_tags:
+  - optiback_import
+source:
+  plugin: optiback_import_csv
+  # Path prefix {prefix}{YYYYMMDD}.csv.
+  path: 'artinfo_'
+  # offset first row 0 - is header.
+  header_offset: 0
+  # Column delimiter. Comma (,) by default.
+  # delimiter: '\t' - not working addend in plugin.
+  # Field enclosure. Double quotation marks (") by default.
+  #enclosure: ''
+  ids:
+    - SKU
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  info_art_to_process: 17
+  fields:
+    0:
+      name: SKU
+      label: 'Artikel-Nr.'
+    1:
+      name: sprache
+      label: 'Sprachkennzeichen'
+    2:
+      name: info_art
+      label: 'Info-Art.'
+    3:
+      name: text
+      label: 'Text'
+
+process:
+  # This is not used in field_value plugin.
+  #bundle:
+  #  plugin: default_value
+  #  default_value: zubehoer
+  # This is for field_value plugin which using entityTypeManager.
+  entity_type:
+    plugin: default_value
+    default_value: commerce_product
+  field_name:
+    plugin: default_value
+    default_value: field_ingredient
+  entity_id:
+    plugin: get_id_from_sku
+    source: SKU
+  value:
+    -
+      plugin: skip_on_empty
+      method: row
+      source: text
+
+destination:
+  plugin: field_value
+
+migration_dependencies:
+  required:
+    - optiback_import_product

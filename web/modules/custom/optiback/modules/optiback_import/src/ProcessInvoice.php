@@ -91,11 +91,15 @@ class ProcessInvoice implements ProcessInvoiceInterface {
 
       $parts = explode("_", $invoice);
 
+      if ($parts[0] != 'RG') {
+        return FALSE;
+      }
+
       // Retrieves order_id from filename.
-      $order_id = $parts[0];
+      $order_id = $parts[1];
 
       // Retrieves invoice number from filename.
-      $invoice_no = str_replace(".pdf","", $parts[1]);
+      $invoice_no = str_replace(".pdf","", $parts[3]);
 
       if (is_numeric($order_id)) {
 
@@ -148,9 +152,8 @@ class ProcessInvoice implements ProcessInvoiceInterface {
 
         // Checks if the file was copied to the drupal private path.
         if (!file_exists($dest_path)) {
-          $message .= $this->t('The file :file could not be copied to drupal private path. :log',[
-            ':file' => $prefix . $invoice,
-            ':log'  => $log,
+          $message .= $this->t('The file :file could not be copied to drupal private path.',[
+            ':file' => $prefix . $invoice
           ]);
           $this->logger->get('optiback_import')->warning($message);
           continue;

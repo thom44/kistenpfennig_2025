@@ -192,19 +192,110 @@ process:
       plugin: process_shop_cat
       source: warengrp_nr
 
-  # Example data for body.
-  # @todo: add real data.
-  body/value:
-    -
-      plugin: concat
-      source:
-        - alg_soja
-        - alg_eier
-        - alg_fisch
-      delimiter: ', '
-  body/format:
+  field_nutritive_value/0:
     plugin: default_value
-    default_value: full_html
+    default_value: 'Nährwert Kcal'
+  field_nutritive_value/1:
+    plugin: add_string
+    string: ' kcal'
+    source: nw_kcal
+
+  field_nutritive_value/2:
+    plugin: default_value
+    default_value: 'Nährwert Energy KJ'
+  field_nutritive_value/3:
+    plugin: add_string
+    string: ' kj'
+    source: nw_energy_kj
+
+  field_nutritive_value/4:
+    plugin: default_value
+    default_value: 'Nährwert Fett'
+  field_nutritive_value/5:
+    plugin: add_string
+    string: ' g'
+    source: nw_fett
+
+  field_nutritive_value/6:
+    plugin: default_value
+    default_value: 'Nährwert Fettsäuren'
+  field_nutritive_value/7:
+    plugin: add_string
+    string: ' g'
+    source: nw_fettsauren
+
+  field_nutritive_value/8:
+    plugin: default_value
+    default_value: 'Nährwert Kohlenhydrate'
+  field_nutritive_value/9:
+    plugin: add_string
+    string: ' g'
+    source: nw_kohlenhydrate
+
+  field_nutritive_value/10:
+    plugin: default_value
+    default_value: 'Nährwert Zucker'
+  field_nutritive_value/11:
+    plugin: add_string
+    string: ' g'
+    source: nw_zucker
+
+  field_nutritive_value/12:
+    plugin: default_value
+    default_value: 'Nährwert Eiweiß'
+  field_nutritive_value/13:
+    plugin: add_string
+    string: ' g'
+    source: nw_eiweiss
+
+  field_nutritive_value/14:
+    plugin: default_value
+    default_value: 'Nährwert Ballaststoffe'
+  field_nutritive_value/15:
+    plugin: add_string
+    string: ' g'
+    source: nw_ballaststoffe
+
+  field_nutritive_value/16:
+    plugin: default_value
+    default_value: 'Nährwert Salz'
+  field_nutritive_value/17:
+    plugin: add_string
+    string: ' g'
+    source: nw_salt
+
+  field_nutritive_value/18:
+    plugin: default_value
+    default_value: 'Nährwert Wasser'
+  field_nutritive_value/19:
+    plugin: add_string
+    string: ' g'
+    source: nw_wasser
+
+#  field_nutritive_value:
+#    -
+#      plugin: concat
+#      source:
+#        - 'Nährwert Kcal'
+#        - nw_kcal
+#        - 'Nährwert Energy KJ'
+#        - nw_energy_kj
+#        - 'Nährwert Fett'
+#        - nw_fett
+#        - 'Nährwert Fettsäuren'
+#        - nw_fettsauren
+#        - 'Nährwert Kohlenhydrate'
+#        - nw_kohlenhydrate
+#        - 'Nährwert Zucker'
+#        - nw_zucker
+#        - 'Nährwert Eiweiß'
+#        - nw_eiweiss
+#        - 'Nährwert Ballaststoffe'
+#        - nw_ballaststoffe
+#        - 'Nährwert Salz'
+#        - nw_salt
+#        - 'Nährwert Wasser'
+#        - nw_wasser
 
 #field_summary:
 #    -

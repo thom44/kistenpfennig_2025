@@ -67,7 +67,8 @@ class OptibackOrderExport {
   public function export() {
 
     // First we remove all csv export files, to export only new ones.
-    array_map('unlink', glob(ObtibackConfigInterface::OPTIBACK_IN . '/*.csv'));
+    // This is done by optiback.
+    //array_map('unlink', glob(ObtibackConfigInterface::OPTIBACK_IN . '/*.csv'));
 
     $error = FALSE;
 
@@ -95,6 +96,8 @@ class OptibackOrderExport {
       'RG -Adr. Land',
       'RG -Adr. PLZ',
       'RG -Adr. Ort',
+      'Zahlart',
+      'Zahlungs ID.'
     ];
 
     // The csv Position file header.
@@ -123,6 +126,9 @@ class OptibackOrderExport {
 
     foreach ($orders as $order) {
 
+      $data = [];
+      $pos_data = [];
+
       $export = $order->get('field_export')->getValue()[0]['value'];
 
       // Skip export if the order field_export is checked.
@@ -149,7 +155,7 @@ class OptibackOrderExport {
         $pos_data[] = $this->buildPositionRow($order_item);
       }
 
-      $pos_filename = $order_id . '.csv';
+      $pos_filename = 'AuPos_' . $order_id . '.csv';
       // Save file {oid}.csv file in "in" directory.
       $result = $this->createCsvFile($pos_header, $pos_data, $pos_filename);
       // Check field_export to prevent to export the order again.
@@ -199,7 +205,11 @@ class OptibackOrderExport {
   private function buildOrderRow(Order $order) {
 
    $adjustment_data = $this->getAdjustmentData($order);
-   $discount = $this->getDiscountData($order);
+   //$discount = $this->getDiscountData($order);
+
+    // @todo: Get payment data.
+    $payment = '';
+    $payment_id = 0;
 
    $profiles = $order->collectProfiles();
    if (isset($profiles['shipping'])) {
@@ -214,7 +224,7 @@ class OptibackOrderExport {
      'order_id'             => $order->id(),
      'shipping_cost'        => $adjustment_data['shipping_cost'], // float in EUR
      'porto_cost'           => 0, // Not available in Drupal Order.
-     'order_discount'       => $discount['percentage'], // Float in percentage
+     'order_discount'       => 0, // $discount['percentage'], // Float in percentage
      'shipping_salutation'  => $shipping['salutation'],
      'shipping_first_name'  => $shipping['first_name'],
      'shipping_last_name'   => $shipping['last_name'],
@@ -231,6 +241,8 @@ class OptibackOrderExport {
      'billing_country'      => $billing['country'],
      'billing_post_code'    => $billing['post_code'],
      'billing_city'         => $billing['city'],
+     'payment_gateway'      => $payment,
+     'payment_id'           => $payment_id,
    ];
 
    return $data;
@@ -276,15 +288,8 @@ class OptibackOrderExport {
 
     /*
      * Gets the product discount.
-
-    $store_id = 1;
-    $adjustment_types = array("promotion" => "promotion");
-    $commercePriceCalc = \Drupal::service('commerce_order.price_calculator');
-    $context = new Context(\Drupal::currentUser(),
-      \Drupal::entityTypeManager()->getStorage('commerce_store')->load($store_id));
-
-    $prices = $commercePriceCalc->calculate($product_variation, 1, $context, $adjustment_types);
     */
+    $discount = $this->getDiscountData($order_item);
 
     // The data key's not relevant. The order must fit to the header.
     $data = [
@@ -292,7 +297,7 @@ class OptibackOrderExport {
       'sku'       => $sku, // Optiback integer
       'quantity'  => number_format($quantity, 2, ',',''), // Optiback float
       'price'     => number_format($price, 3, ',',''), // Optiback float, 3 digit
-      'discount'  => 0, // Optiback float
+      'discount'  => number_format($discount['percentage'], 2, ',',''), // Optiback float
       'total' => number_format($total, 2, ',',''), // Optiback float, 2 digit
     ];
 
@@ -325,16 +330,14 @@ class OptibackOrderExport {
   }
 
   /**
-   * Gets discount data for AuKopf_.
+   * Gets discount data from order or order_item.
    *
-   * @todo: Check promotion condition and operation.
-   *   Order has only the coupon id attached. The calculation is not available
-   *   the order object. It is calculated on crating invoice.
    *
-   * @param \Drupal\commerce_order\Entity\Order $order
+   * @param \Drupal\commerce_order\Entity\OrderItem $entiy
+   *
    * @return int[]
    */
-  public function getDiscountData(Order $order) {
+  public function getDiscountData($entiy) {
 
     // Possible discount values.
     $data = [
@@ -342,22 +345,19 @@ class OptibackOrderExport {
       'amount' => 0,
     ];
 
-    $coupons = $order->get('coupons');
-
-    foreach ($coupons as $coupon) {
-
-      $coupon_obj = $coupon->get('entity')->getTarget()->getValue();
-
-      $promotion = Promotion::load($coupon_obj->getPromotionId());
-      $promotion_cfg = $promotion->getOffer()->getConfiguration();
-
-      //$discount_amount = $discount_amount + $promotion_cfg['percentage'];
-      $discount_percentage = $discount_percentage + $promotion_cfg['percentage'];
+    if (!$entiy instanceof Order && !$entiy instanceof OrderItem) {
+      return $data;
     }
 
-    // Sum of discount values.
-    //$data['amount'] = sprintf('%0.2f', $discount_amount * 100);
-    $percentage = $discount_percentage * 100;
+    $adjustments = $entiy->get('adjustments')->getValue();
+    foreach ($adjustments as $adjustment) {
+      $type = $adjustment['value']->getType();
+      if ($adjustment['value']->getType() == 'promotion') {
+        $percentage = $adjustment['value']->getPercentage() * 100;
+        //$amount = $adjustment['value']->getAmount();
+        //$discount = $amount->getNumber();
+      }
+    }
 
     $data['percentage'] = number_format($percentage, 2, ',','');
 
@@ -410,8 +410,8 @@ class OptibackOrderExport {
       if (isset($address['address_line1'])) {
         $data['street'] = $address['address_line1'];
       }
-      if (isset($address['address_line1'])) {
-        $data['company'] = $address['address_line1'];
+      if (isset($address['company'])) {
+        $data['company'] = $address['company'];
       }
     }
 
@@ -441,8 +441,7 @@ class OptibackOrderExport {
     $csv_data = stream_get_contents($handle);
 
     $result = file_put_contents(ObtibackConfigInterface::OPTIBACK_IN . '/' . $filename, $csv_data);
-    // Close the file handler since we don't need it anymore.  We are not storing
-    // this file anywhere in the filesystem.
+
     fclose($handle);
 
     return $result;
