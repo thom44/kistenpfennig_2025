@@ -93,7 +93,9 @@ class RunExport implements RunExportInterface {
     $message .= $this->optibackOrderExport->export();
 
     // Search for canceled orders and create {order_id}_calceled.csv
-    $message .= $this->optibackCancelOrder->cancelOrder();
+    // This is working but not in use for now.
+    // @see also Drupal\optiback_import\RunImport
+    // $message .= $this->optibackCancelOrder->cancelOrder();
 
     // Removes maintance mode.
     // $cmd = $drush . ' state:set system.maintenance_mode 0';

@@ -78,7 +78,17 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
       ->getStorage($entityType)
       ->load($entityId);
     $currentValue = $entity->get($fieldName)->getValue();
+
+    $long_field = [
+      'field_ingredient',
+      'field_allergene',
+      'body'
+      ];
+    if (in_array($fieldName,$long_field)) {
+      $currentValue[0]['format'] = 'full_html';
+    }
     $currentValue[0]['value'] = $value;
+
     $entity->get($fieldName)->setValue($currentValue);
 
     $entity->save();

@@ -82,6 +82,7 @@ class RunImport implements RunImportInterface {
     // Here we run the complete import pipeline.
 
     $message = '';
+    $migrations = [];
 
     // Backup /in directory
     $message .= $this->optibackHelper->dirBackup(ObtibackConfigInterface::OPTIBACK_OUT, 'OPTIBACK_OUT');
@@ -111,15 +112,24 @@ class RunImport implements RunImportInterface {
       $query->condition('status', 1);
       $query->execute();
 
-      // Run product variation migration.
-      $cmd = $drush . ' migrate:import optiback_import_product_variation --update';
+      $migrations = [
+        'optiback_import_product_variation',
+        'optiback_import_product',
+        'optiback_import_artikelinfo_title',
+        'optiback_import_artikelinfo_body',
+        'optiback_import_artikelinfo_header',
+        'optiback_import_artikelinfo_inhaltstoffe',
+        'optiback_import_artikelinfo_allergene',
+      ];
 
-      $message .= $this->optibackHelper->shellExecWithError($cmd, 'The migration optiback_import_product_variation failed.');
+      // Runs all migrations.
+      foreach ($migrations as $migration) {
+        // Runs product migration.
+        $cmd = $drush . ' migrate:import ' . $migration . ' --update';
 
-      // Runs product migration.
-      $cmd = $drush . ' migrate:import optiback_import_product --update';
+        $message .= $this->optibackHelper->shellExecWithError($cmd, 'The migration ' . $migration . ' failed.');
 
-      $message .= $this->optibackHelper->shellExecWithError($cmd, 'The migration optiback_import_product failed.');
+      }
 
       // Removes maintance mode.
       $cmd = $drush . ' state:set system.maintenance_mode 0';
@@ -133,7 +143,9 @@ class RunImport implements RunImportInterface {
       $message .= $this->processInvoice->run();
 
       // Copy and process new credits.
-      $message .= $this->processCredit->run();
+      // This is working but not in use for now.
+      // @see also Drupal\optiback_import\RunExport
+      // $message .= $this->processCredit->run();
     }
 
     if ($options['tracking']) {

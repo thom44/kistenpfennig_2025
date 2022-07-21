@@ -158,7 +158,7 @@ source:
       label: 'Nährwert Wasser'
 
 process:
-  title: artikel_kurz
+  title: SKU
   # Anlegen der Zuordnung der ProduktVariation in
   # commerce_product__variations.product_id
   # Damit wird der Datensatz erzeugt.
@@ -272,43 +272,6 @@ process:
     string: ' g'
     source: nw_wasser
 
-#  field_nutritive_value:
-#    -
-#      plugin: concat
-#      source:
-#        - 'Nährwert Kcal'
-#        - nw_kcal
-#        - 'Nährwert Energy KJ'
-#        - nw_energy_kj
-#        - 'Nährwert Fett'
-#        - nw_fett
-#        - 'Nährwert Fettsäuren'
-#        - nw_fettsauren
-#        - 'Nährwert Kohlenhydrate'
-#        - nw_kohlenhydrate
-#        - 'Nährwert Zucker'
-#        - nw_zucker
-#        - 'Nährwert Eiweiß'
-#        - nw_eiweiss
-#        - 'Nährwert Ballaststoffe'
-#        - nw_ballaststoffe
-#        - 'Nährwert Salz'
-#        - nw_salt
-#        - 'Nährwert Wasser'
-#        - nw_wasser
-
-#field_summary:
-#    -
-#      plugin: concat
-#      source:
-#        - summary_1
-#        - summary_2
-#        - summary_3
-#      delimiter: ','
-#    -
-#      plugin: explode
-#      limit: 100
-#      delimiter: ','
 destination:
   plugin: 'entity:commerce_product'
   default_bundle: default
