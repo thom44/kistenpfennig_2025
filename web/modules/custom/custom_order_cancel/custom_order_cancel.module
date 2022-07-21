@@ -2,3 +2,20 @@
 /**
  * @fild: A module which provides a form in an views field, where the user can cancel his orders.
  */
+/**
+ * Implements hook_mail().
+ *
+ * Implementation is needed to get it to mailsystem ui.
+ */
+function custom_order_cancel_mail($key, &$message, $params) {
+
+  switch ($key) {
+    case 'custom_order_cancel_notification':
+
+      $message['from'] = $params['from'];
+      $message['subject'] = $params['subject'];
+      $message['body'][] = $params['body'];
+      $message['params']['attachments'] = $params['attachments'];
+      break;
+  }
+}

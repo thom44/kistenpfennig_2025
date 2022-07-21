@@ -5,6 +5,8 @@ namespace Drupal\custom_order_cancel\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\custom_mail_ui\MailHelperInterface;
 
 /**
  * User Form to cancel own order.
@@ -21,6 +23,29 @@ class CancelOrderForm extends FormBase {
    * @var: Drupal\Commerce
    */
   protected $order;
+
+  /**
+   * The MailHelper service.
+   *
+   * @var \Drupal\custom_mail_ui\MailHelperInterface
+   */
+  protected $mailHelper;
+
+  /**
+   * {@inheritDoc}
+   */
+  public function __construct(MailHelperInterface $optiback_logger) {
+    $this->mailHelper = $optiback_logger;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('custom_mail_ui.mail_helper')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -105,6 +130,25 @@ class CancelOrderForm extends FormBase {
 
     $this->order->getState()->applyTransitionById('cancel');
     $this->order->save();
+
+    $order_id = $this->order->id();
+    $host = \Drupal::request()->getHost();
+
+    $to = 'thom@licht.local';
+
+    $message = 'Der Kunde hat die Bestellung ' . $order_id . ' storniert.<br>';
+    $message .= 'Zur Bestellung:<br>';
+    $message .= '<a href="http://' . $host . '/admin/commerce/orders/' . $order_id . '">http://' . $host . '/admin/commerce/orders/' . $order_id . '</a><br>';
+    $message .= '<br><br>Versendet von Drupal\custom_order_cancel\FormCancelOrderForm';
+
+    // Sends email to shop owner.
+    $params = [
+      'subject' => 'Bestellung ' . $order_id . ' wurde storniert',
+      'body' => $message,
+      'from' => 'info@kistenpfennig.net'
+    ];
+
+    $this->mailHelper->sendMail('custom_order_cancel', 'custom_order_cancel_notification', $to, 'de', $params);
 
     return $form;
   }
