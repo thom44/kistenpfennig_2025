@@ -36,6 +36,11 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+jshelpers:
+  js:
+    js/jshelpers.js: {}
+  dependencies:
+    - core/jquery
 fonts:
   css:
     theme:

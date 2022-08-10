@@ -193,3 +193,18 @@ body.path-cart {
     margin-bottom: 30px;
     }
   }
+
+.targetDiv {
+  display: none;
+  }
+
+#div1.targetDiv {
+  display: block;
+  }
+
+a.showSingle {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #cccccc;
+  padding: 2px 4px 2px 4px;
+  }

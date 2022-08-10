@@ -9,6 +9,7 @@ libraries:
   - kp_theme/bootstrap_cdn
   - kp_theme/global-styling
   - kp_theme/fonts
+  - kp_theme/jshelpers
 
 regions:
   top_header: 'Top header'

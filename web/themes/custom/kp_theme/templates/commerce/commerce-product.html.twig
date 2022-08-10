@@ -30,7 +30,19 @@
   <div class="product-wrapper">
   <div class="row">
     <div class="col-md-7">{{ product.field_product_image }}</div>
-    <div class="col-md-5">{{ product|without('field_product_image') }}</div>
+
+    <div style="border: 2px solid red;" class="col-md-5">
+    <div class="buttons">
+      <a  class="showSingle" target="1">Beschreibung</a>
+      <a  class="showSingle" target="2">Nährstoffe</a>
+    </div><!-- /.buttons -->
+
+      <div style="border: 2px solid maroon;" id="div1" class="targetDiv">{{ product|without('field_product_image','field_nutritive_value') }}</div>
+      <div style="border: 2px solid fuchsia;" id="div2" class="targetDiv">{{ product.field_nutritive_value }}</div>
+    </div>
+
+    <hr />
+    <!-- <div style="border: 2px solid red;" class="col-md-5"> --> {# {{ product|without('field_product_image') }} #} <!-- </div> -->
   </div>
   </div>
 
