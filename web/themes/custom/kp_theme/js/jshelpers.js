@@ -12,6 +12,10 @@
       $('.showSingle').click(function(){
             $('.targetDiv').hide();
             $('#div'+$(this).attr('target')).show();
+
+            $('.showSingle').removeClass('active');
+            $(this).toggleClass('active');
+
           });
 
 })(jQuery);
