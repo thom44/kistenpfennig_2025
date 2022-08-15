@@ -10,6 +10,52 @@ ol.breadcrumb {
   margin: 0;
   }
 
+
+.wlw-cart-block__icon {
+  margin-right: 10px;
+  img {
+    height: 30px;
+    width: auto;
+    }
+  }
+
+.block-custom-commerce-cart {
+  .wlw-cart-block__text {
+    height: 35px;
+    position: relative;
+    top: 7px;
+    span {
+      display: inline-block;
+      line-height: 35px;
+      }
+    }
+  }
+
+#profile-block-icon,
+#logout-block-icon
+ {
+  a {
+    span.icn {
+      text-indent: -9999px;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      }
+    }
+  }
+
+#profile-block-icon a span.icn {
+  background-image: url('../graphics/person-circle.svg');
+  }
+
+#logout-block-icon a span.icn {
+  background-image: url('../graphics/box-arrow-in-right.svg');
+  position: relative;
+  top: 4px;
+  }
+
 #page {
   padding-bottom: 100px;
   }

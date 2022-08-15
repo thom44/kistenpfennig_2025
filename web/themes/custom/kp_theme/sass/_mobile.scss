@@ -27,6 +27,9 @@
         }
       }
     }
+  .navbar-nav {
+    margin-left: 10px;
+    }
   }
 
 @media screen and (max-width: 991px) {
@@ -35,7 +38,7 @@
     }
   }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   #main {
     max-width: 516px;
     }

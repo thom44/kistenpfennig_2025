@@ -113,7 +113,7 @@ body.path-cart {
     color: $kpnav;
     }
   input.button--add-to-cart {
-    background-color: $kpgruen;
+    background-color: $dgrau;
     border: none;
     }
   input.form-control {
@@ -198,6 +198,16 @@ body.path-cart {
   display: none;
   border: 1px solid #c8b4a1;
   padding: 15px;
+  .field--name-field-header {
+    font-weight: bold;
+    }
+  .field--name-field-ingredient,
+  .field--name-field-allergene,
+  .field--name-field-nutritive-value  {
+    .field__label {
+      font-weight: bold;
+      }
+    }
   }
 
 #div1.targetDiv {
@@ -246,4 +256,33 @@ body.path-cart {
 
 .fotorama__arr {
   z-index: 1000;
+  }
+
+.commerce-checkout-flow-multistep-default {
+  margin-top: 20px;
+  }
+
+.layout-checkout-form {
+  h3 {
+    font-size: 24px !important;
+    font-weight: 400 !important;
+    line-height: 36px;
+    }
+  .view-commerce-checkout-order-summary {
+    margin-top: 24px;
+    }
+  .button--primary,
+  .js-form-submit {
+    max-width: 280px;
+    background-color: $dgrau !important;
+    border: none;
+    color: white;
+    font-weight: bold;
+    line-height: 30px;
+    }
+  .form-checkbox,
+  .form-radio {
+    background-color: $dgrau !important;
+    border-color: $dgrau !important;
+    }
   }
