@@ -32,6 +32,7 @@ interface MailHelperInterface {
    * @param $params
    * @return mixed
    */
-  public function sendMail($module = '', $key, $to, $langcode, $params);
+  public function sendMail($module, $key, $to, $langcode, $params);
+
 
 }
