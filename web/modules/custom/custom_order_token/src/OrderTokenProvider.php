@@ -212,7 +212,9 @@ class OrderTokenProvider {
 
       $purchased_entity = $order_item->getPurchasedEntity();
       //$variation_id = $purchased_entity->get('variation_id');
-      $field_tax_rate = $purchased_entity->get('field_tax_rate')[0]->getValue()['value'];
+      if (isset($purchased_entity->get('field_tax_rate')[0])) {
+        $field_tax_rate = $purchased_entity->get('field_tax_rate')[0]->getValue()['value'];
+      }
 
       // Retrieves tax_rate values from configuration object
       $tax = explode('|', $field_tax_rate);
