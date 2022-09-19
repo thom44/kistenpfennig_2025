@@ -36,9 +36,9 @@ class ProcessWeightNumber extends ProcessPluginBase {
       // Transfoms weight to float format decimal with dot.
       $value = str_replace(',', '.', $value);
       $d8_value = floatval($value);
-      $d8_value = number_format($value, 6,".","");
-      #$d8_value = floatval($d8_value);
-      #$d8_value = 5.55;
+      // Alternative #$d8_value = number_format($value, 6,".","");
+      //$d8_value = floatval($d8_value);
+      //$d8_value = 5.55;
     }
 
     return $d8_value;

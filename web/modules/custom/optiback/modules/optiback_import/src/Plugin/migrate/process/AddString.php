@@ -66,6 +66,8 @@ class AddString extends ProcessPluginBase {
     if (!empty($value)) {
       $string = $this->configuration['string'] ?? '';
       $d9_value = $value . $string;
+    } else {
+      $d9_value = '-';
     }
     return $d9_value;
   }

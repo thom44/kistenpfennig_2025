@@ -5,25 +5,26 @@ namespace Drupal\optiback_import\Plugin\migrate\process;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\Row;
+use Drupal\optiback\ObtibackConfigInterface;
 
 /**
  *
  * @code
  * process:
- *   field_unit:
+ *   field_tax:
  *     -
- *       plugin: process_custom_unit
- *       source: custom_unit
+ *       plugin: process_field_sort
+ *       source: custom_tax
  *
  * @endcode
  *
  * @see DrupalmigratePluginMigrateProcessInterface
  *
  * @MigrateProcessPlugin(
- *   id = "process_custom_unit"
+ *   id = "process_title"
  * )
  */
-class ProcessCustomUnit extends ProcessPluginBase {
+class ProcessTitle extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
@@ -32,18 +33,9 @@ class ProcessCustomUnit extends ProcessPluginBase {
 
     $d8_value = NULL;
 
-    // Left Optiback => Right Drupal.
-    $unit_map = [
-      'MB' => 'mg',
-      'LB' => 'lb',
-      'g'  => 'g',
-      'KG' => 'kg',
-      'OZ' => 'oz'
-    ];
-
     if (isset($value) && $value != NULL) {
-      if (isset($unit_map[$value])) {
-        $d8_value = $unit_map[$value];
+      if (is_numeric($value)) {
+        $d8_value = intval($value);
       }
     }
 

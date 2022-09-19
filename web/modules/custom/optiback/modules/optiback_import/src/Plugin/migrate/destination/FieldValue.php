@@ -87,7 +87,8 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
     if (in_array($fieldName,$long_field)) {
       $currentValue[0]['format'] = 'full_html';
     }
-    $currentValue[0]['value'] = $value;
+    // Encodes all characters in Value.
+    $currentValue[0]['value'] = utf8_encode($value);
 
     $entity->get($fieldName)->setValue($currentValue);
 

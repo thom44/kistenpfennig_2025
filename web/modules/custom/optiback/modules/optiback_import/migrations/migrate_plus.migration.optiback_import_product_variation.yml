@@ -61,10 +61,10 @@ source:
       name: vertriebs_einheit
       label: 'Vertriebs-Einheit'
     13:
-      name: verpackung_einheit
+      name: verpackung_einheit #VertrEhZwang
       label: 'Verpackung-Einheit'
     14:
-      name: vertr_einheiten_zwang
+      name: vertr_einheiten_zwang #MsEhBez
       label: 'Vertr.-Einheiten-Zwang'
     15:
       name: masseinheit_bestellung
@@ -196,6 +196,9 @@ process:
       plugin: process_tax_rate
       source: mwst_satz
 
+  # Field from physical product for commerce_shipping.
+  # This is not used in the moment. Will only be filled
+  # if masseinheit_bestellung = KG.
   weight/number:
     -
       plugin: process_weight_number
@@ -204,6 +207,16 @@ process:
     -
       plugin: process_custom_unit
       source: masseinheit_bestellung
+
+  # Extra field to save weight from optiback, even
+  # masseinheit_bestellung is ST (Stück)
+  field_optiback_weight:
+    -
+      plugin: process_weight_number
+      source: stueckgewicht
+
+  # Listfield with all possible values from optiback.
+  field_optiback_unit: masseinheit_bestellung
 
 destination:
   plugin: 'entity:commerce_product_variation'

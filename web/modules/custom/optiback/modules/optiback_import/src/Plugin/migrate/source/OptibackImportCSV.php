@@ -121,7 +121,6 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
         }
       }
 
-
       // Sorts the array to get the newest artikel_{data}.csv in the folder.
       rsort($artikel_files);
 
@@ -321,6 +320,24 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
    */
   public function prepareRow(Row $row) {
     $result = TRUE;
+
+    $items = [
+      'artikel_kurz',
+      'artikel_bez_1',
+      'artikel_bez_2',
+      'gruppe_name',
+      'warengrp_name',
+      'bestellgrp_name',
+      'verpackung_einheit'
+    ];
+
+    // Character encoding of the string fields.
+    foreach ($items as $item) {
+      $raw = $row->getSourceProperty($item);
+      $encoded = utf8_encode($raw);
+      $row->setSourceProperty($item, $encoded);
+    }
+
     try {
       $result_hook = $this->getModuleHandler()->invokeAll('migrate_prepare_row', [$row, $this, $this->migration]);
       $result_named_hook = $this->getModuleHandler()->invokeAll('migrate_' . $this->migration->id() . '_prepare_row', [$row, $this, $this->migration]);

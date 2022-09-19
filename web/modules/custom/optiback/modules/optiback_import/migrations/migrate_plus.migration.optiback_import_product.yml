@@ -181,10 +181,12 @@ process:
     plugin: default_value
     default_value: default
 
-  field_sort:
-    -
-      plugin: process_field_sort
-      source: listenrang
+  # Fehler: darf nur Ganzzahl enthalten.
+  # Bsp: 4,0000001002E+026
+  #field_sort:
+  #  -
+  #    plugin: process_field_sort
+  #    source: listenrang
 
   # Sets taxonoy reference to the warengruppen number (Optiback).
   field_shop_category:
