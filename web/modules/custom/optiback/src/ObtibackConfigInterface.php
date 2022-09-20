@@ -132,7 +132,7 @@ interface ObtibackConfigInterface {
   /**
    * The email addresses.
    */
-  const EMAIL_FROM = 'info@kistenpfennig.net';
+  const EMAIL_FROM = 'onlineshop@kistenpfennig.net';
 
   /**
    * The email address for error notification.

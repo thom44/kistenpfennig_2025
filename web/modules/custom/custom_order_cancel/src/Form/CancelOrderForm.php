@@ -145,7 +145,7 @@ class CancelOrderForm extends FormBase {
     $params = [
       'subject' => 'Bestellung ' . $order_id . ' wurde storniert',
       'body' => $message,
-      'from' => 'info@kistenpfennig.net'
+      'from' => $order->getStore()->getEmail(),
     ];
 
     $this->mailHelper->sendMail('custom_order_cancel', 'custom_order_cancel_notification', $to, 'de', $params);
