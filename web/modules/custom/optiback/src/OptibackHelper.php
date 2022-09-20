@@ -84,7 +84,7 @@ class OptibackHelper implements OptibackHelperInterface {
    * @param $delimiter
    * @return array|false
    */
-  public function csvToArray($filename='', $delimiter){
+  public function csvToArray($filename, $delimiter){
 
     if(!file_exists($filename) || !is_readable($filename)) {
       return FALSE;
