@@ -99,12 +99,13 @@ class MailHelper implements MailHelperInterface {
     // @see: symfony/mailer/README.md
     // @see: https://symfony.com/doc/current/mailer.html
     // native://default|sendmail://default|smtp://user:pass@smtp.example.com:25
+    // HE IP: 87.230.45.240
     // SMTP:
     // Host: kistenpfennig-net.mail.protection.outlook.com
     // Sendmail only working local.
     //$transport = Transport::fromDsn('sendmail://default');
     // Smtp only working on production server.
-    $transport = Transport::fromDsn('smtp://onlineshop@kistenpfennig.net:GcNxZzUWVTXgS62M@kistenpfennig-net.mail.protection.outlook.com:587');
+    $transport = Transport::fromDsn('smtp://onlineshop@kistenpfennig.net:GcNxZzUWVTXgS62M@smtp.office365.com:587');
 
     $mailer = new Mailer($transport);
 
