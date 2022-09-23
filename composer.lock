@@ -2345,37 +2345,37 @@
         },
         {
             "name": "drupal/commerce_product_tax",
-            "version": "1.0.0-rc4",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/commerce_product_tax.git",
-                "reference": "8.x-1.0-rc4"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce_product_tax-8.x-1.0-rc4.zip",
-                "reference": "8.x-1.0-rc4",
-                "shasum": "42a344d081b61e096be3d79937dbb8c0aeae28c2"
+                "url": "https://ftp.drupal.org/files/projects/commerce_product_tax-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "7589b3421af47290cfff93c5d32b2c987b35775c"
             },
             "require": {
                 "drupal/commerce": "^2.16 || ^3",
                 "drupal/commerce_tax": "*",
-                "drupal/core": "^8.7.7 || ^9"
+                "drupal/core": "^8.9 || ^9.3 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc4",
-                    "datestamp": "1635837397",
+                    "version": "8.x-1.0",
+                    "datestamp": "1663769805",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -2388,7 +2388,7 @@
                 }
             ],
             "description": "Provides a user interface for selecting applicable tax rates on the product variation.",
-            "homepage": "http://drupal.org/project/commerce_product_tax",
+            "homepage": "https://drupal.org/project/commerce_product_tax",
             "support": {
                 "source": "https://git.drupalcode.org/project/commerce_product_tax"
             }
@@ -2562,16 +2562,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.4.5",
+            "version": "9.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "23b4d51ee5bd8b506a97bd21c5635ce18b7abd76"
+                "reference": "a5c83e4ac0d8eb46f06a97a8b85bcbfa08a70701"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/23b4d51ee5bd8b506a97bd21c5635ce18b7abd76",
-                "reference": "23b4d51ee5bd8b506a97bd21c5635ce18b7abd76",
+                "url": "https://api.github.com/repos/drupal/core/zipball/a5c83e4ac0d8eb46f06a97a8b85bcbfa08a70701",
+                "reference": "a5c83e4ac0d8eb46f06a97a8b85bcbfa08a70701",
                 "shasum": ""
             },
             "require": {
@@ -2723,13 +2723,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/9.4.5"
+                "source": "https://github.com/drupal/core/tree/9.4.6"
             },
-            "time": "2022-08-03T16:33:29+00:00"
+            "time": "2022-09-20T13:22:39+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "9.4.5",
+            "version": "9.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -2773,13 +2773,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.4.5"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.4.6"
             },
             "time": "2022-06-19T16:14:23+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "9.4.5",
+            "version": "9.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -2814,22 +2814,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-project-message/tree/9.4.5"
+                "source": "https://github.com/drupal/core-project-message/tree/9.5.0-beta1"
             },
             "time": "2022-02-24T17:40:53+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "9.4.5",
+            "version": "9.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "a809ecbcfb7c8737c93159cf48246e040efdaf47"
+                "reference": "d8b7fa96de13d4e7c9ec3c5d9769cc87b74d7986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/a809ecbcfb7c8737c93159cf48246e040efdaf47",
-                "reference": "a809ecbcfb7c8737c93159cf48246e040efdaf47",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/d8b7fa96de13d4e7c9ec3c5d9769cc87b74d7986",
+                "reference": "d8b7fa96de13d4e7c9ec3c5d9769cc87b74d7986",
                 "shasum": ""
             },
             "require": {
@@ -2838,7 +2838,7 @@
                 "doctrine/annotations": "~1.13.2",
                 "doctrine/lexer": "~1.2.3",
                 "doctrine/reflection": "~1.2.3",
-                "drupal/core": "9.4.5",
+                "drupal/core": "9.4.6",
                 "egulias/email-validator": "~3.2",
                 "guzzlehttp/guzzle": "~6.5.8",
                 "guzzlehttp/promises": "~1.5.1",
@@ -2900,9 +2900,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/9.4.5"
+                "source": "https://github.com/drupal/core-recommended/tree/9.4.6"
             },
-            "time": "2022-08-03T16:33:29+00:00"
+            "time": "2022-09-20T13:22:39+00:00"
         },
         {
             "name": "drupal/csv_serialization",
@@ -3296,10 +3296,6 @@
                 {
                     "name": "mrfelton",
                     "homepage": "https://www.drupal.org/user/305669"
-                },
-                {
-                    "name": "pratik_kamble",
-                    "homepage": "https://www.drupal.org/user/3204909"
                 }
             ],
             "description": "Adds a color indicator for the different environments.",
@@ -3484,17 +3480,17 @@
         },
         {
             "name": "drupal/inline_entity_form",
-            "version": "1.0.0-rc13",
+            "version": "1.0.0-rc14",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/inline_entity_form.git",
-                "reference": "8.x-1.0-rc13"
+                "reference": "8.x-1.0-rc14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-rc13.zip",
-                "reference": "8.x-1.0-rc13",
-                "shasum": "c6c4881409bc78da6815b0ef20fa5743def78833"
+                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-rc14.zip",
+                "reference": "8.x-1.0-rc14",
+                "shasum": "2c9efd73332acfba43fe9b29e78e508ddc9d3664"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10",
@@ -3506,8 +3502,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc13",
-                    "datestamp": "1663108794",
+                    "version": "8.x-1.0-rc14",
+                    "datestamp": "1663701306",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -4842,20 +4838,20 @@
         },
         {
             "name": "drupal/xmlsitemap",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/xmlsitemap.git",
-                "reference": "8.x-1.3"
+                "reference": "8.x-1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "a2a20c5aab5682cc369d095cd2e21d67fc46df9b"
+                "url": "https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "cd010ebdfbdb5b4d51d9fa96bbebd3b310021a1f"
             },
             "require": {
-                "drupal/core": "^9",
+                "drupal/core": "^9.3 || ^10",
                 "ext-xmlwriter": "*"
             },
             "require-dev": {
@@ -4869,8 +4865,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1658327425",
+                    "version": "8.x-1.4",
+                    "datestamp": "1663795747",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4878,7 +4874,7 @@
                 },
                 "drush": {
                     "services": {
-                        "drush.services.yml": "^9 || ^10"
+                        "drush.services.yml": "^10 || ^11"
                     }
                 }
             },

@@ -90,7 +90,7 @@ class RunExport implements RunExportInterface {
     // $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 1.');
 
     // Runs the export.
-    $message .= $this->optibackOrderExport->export();
+    $this->optibackOrderExport->export();
 
     // Search for canceled orders and create {order_id}_calceled.csv
     // This is working but not in use for now.

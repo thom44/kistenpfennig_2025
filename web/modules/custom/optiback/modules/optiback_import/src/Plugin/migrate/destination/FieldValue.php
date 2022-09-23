@@ -74,6 +74,11 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
     $value = $row->getDestinationProperty('value');
     $valueHash = sha1(\serialize($value));
 
+    if ($entityId === false) {
+      // @todo: Add log message. SKU doesn't exist.
+      return NULL;
+    }
+
     $entity = $this->entityTypeManager
       ->getStorage($entityType)
       ->load($entityId);

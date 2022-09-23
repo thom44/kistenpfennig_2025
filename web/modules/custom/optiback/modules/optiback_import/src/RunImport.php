@@ -124,6 +124,12 @@ class RunImport implements RunImportInterface {
 
       // Runs all migrations.
       foreach ($migrations as $migration) {
+
+        // Sets the migration to idle, if it failed last time.
+        $cmd = $drush . ' migrate:reset-status ' . $migration;
+        $message .= $this->optibackHelper->shellExecWithError($cmd, 'Set the migration ' . $migration . ' to idle failed.');
+
+
         // Runs product migration.
         $cmd = $drush . ' migrate:import ' . $migration . ' --update';
 
