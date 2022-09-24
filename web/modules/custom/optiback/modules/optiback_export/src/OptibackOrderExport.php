@@ -80,6 +80,7 @@ class OptibackOrderExport {
       'Versand-Kosten',
       'Porto-Kosten',
       'Rechnungs-Rabatt in %',
+      'E-Mail',
       'Liefer-Adr. Anrede',
       'Liefer-Adr. Vorname',
       'Liefer-Adr. Nachname',
@@ -128,6 +129,7 @@ class OptibackOrderExport {
 
       $data = [];
       $pos_data = [];
+      $result = [];
 
       $export = $order->get('field_export')->getValue()[0]['value'];
 
@@ -204,27 +206,42 @@ class OptibackOrderExport {
    */
   private function buildOrderRow(Order $order) {
 
-   $adjustment_data = $this->getAdjustmentData($order);
-   //$discount = $this->getDiscountData($order);
+    $payment_gateway_label = '';
+    $payment_id = '';
 
-    // @todo: Get payment data.
-    $payment = '';
-    $payment_id = 0;
+    $adjustment_data = $this->getAdjustmentData($order);
+    //$discount = $this->getDiscountData($order);
 
-   $profiles = $order->collectProfiles();
-   if (isset($profiles['shipping'])) {
-     $shipping = $this->getProfileData($profiles['shipping']);
-   }
-   if (isset($profiles['billing'])) {
-     $billing = $this->getProfileData($profiles['billing']);
-   }
+    if (isset($order->get('payment_gateway')->getValue()[0]['target_id'])) {
+      $payment_gateway = $order->get('payment_gateway')[0]->entity;
+      $payment_gateway_label = $order->get('payment_gateway')[0]->entity->label();
+    }
 
-   // The data key's not relevant. The order must fit to the header.
-   $data = [
+    // Retrieve the payment remote id.
+    $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
+    $payments = $payment_storage->loadMultipleByOrder($order);
+    // The first payment.
+    $first = key($payments);
+    if (isset($payments[$first])) {
+      $payment = $payments[$first];
+      $payment_id = $payment->getRemoteId();
+    }
+
+    $profiles = $order->collectProfiles();
+    if (isset($profiles['shipping'])) {
+      $shipping = $this->getProfileData($profiles['shipping']);
+    }
+    if (isset($profiles['billing'])) {
+      $billing = $this->getProfileData($profiles['billing']);
+    }
+
+    // The data key's not relevant. The order must fit to the header.
+    $data = [
      'order_id'             => $order->id(),
      'shipping_cost'        => $adjustment_data['shipping_cost'], // float in EUR
      'porto_cost'           => 0, // Not available in Drupal Order.
      'order_discount'       => 0, // $discount['percentage'], // Float in percentage
+     'E-Mail'               => $order->getEmail(),
      'shipping_salutation'  => $shipping['salutation'],
      'shipping_first_name'  => $shipping['first_name'],
      'shipping_last_name'   => $shipping['last_name'],
@@ -241,9 +258,9 @@ class OptibackOrderExport {
      'billing_country'      => $billing['country'],
      'billing_post_code'    => $billing['post_code'],
      'billing_city'         => $billing['city'],
-     'payment_gateway'      => $payment,
+     'payment_gateway'      => $payment_gateway_label,
      'payment_id'           => $payment_id,
-   ];
+    ];
 
    return $data;
  }
@@ -275,6 +292,10 @@ class OptibackOrderExport {
 
     $product_variation = $order_item->getPurchasedEntity();
 
+    if ($product_variation === NULL) {
+      return $data;
+    }
+
     // This is the gross (Brutto) price.
     $price = $product_variation->getPrice()->getNumber();
 
@@ -290,6 +311,7 @@ class OptibackOrderExport {
      * Gets the product discount.
     */
     $discount = $this->getDiscountData($order_item);
+    $discount_val = floatval($discount['percentage']);
 
     // The data key's not relevant. The order must fit to the header.
     $data = [
@@ -297,7 +319,7 @@ class OptibackOrderExport {
       'sku'       => $sku, // Optiback integer
       'quantity'  => number_format($quantity, 2, ',',''), // Optiback float
       'price'     => number_format($price, 3, ',',''), // Optiback float, 3 digit
-      'discount'  => number_format($discount['percentage'], 2, ',',''), // Optiback float
+      'discount'  => number_format($discount_val, 2, ',',''), // Optiback float
       'total' => number_format($total, 2, ',',''), // Optiback float, 2 digit
     ];
 
@@ -422,6 +444,8 @@ class OptibackOrderExport {
    * Creates csv file.
    */
   public function createCsvFile($header, $data, $filename) {
+    $result = [];
+
     // Start using PHP's built in file handler functions to create a temporary file.
     $handle = fopen('php://temp', 'w+');
 
