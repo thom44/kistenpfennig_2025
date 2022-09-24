@@ -287,3 +287,12 @@ body.path-cart {
     border-color: $dgrau !important;
     }
   }
+
+fieldset.checkout-pane-payment-information {
+  legend span.fieldset-legend {
+      display: none;
+      }
+  .fieldset-wrapper legend span.fieldset-legend  {
+    display: block;
+    }
+  }
