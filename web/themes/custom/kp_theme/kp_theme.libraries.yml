@@ -7,6 +7,7 @@ global-styling:
       css/global.css: {}
       css/colors.css: {}
       css/media.css: {}
+      css/justifiedGallery.min.css: {}
       fontawesome/css/all.min.css: {}
       fontawesome/css/fontawesome.min.css: {}
       fontawesome/css/brands.min.css: {}
@@ -39,6 +40,8 @@ color.preview:
 jshelpers:
   js:
     js/jshelpers.js: {}
+    js/jquery.justifiedGallery.min.js: {}
+    js/justifyConfig.js: {}
   dependencies:
     - core/jquery
 fonts:
