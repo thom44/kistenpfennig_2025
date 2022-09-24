@@ -5,7 +5,7 @@
   $('.field--name-field-gallery').justifiedGallery({
     rowHeight : 320,
     maxRowHeight : 320,
-    lastRow : 'nojustify',
+    lastRow : 'justify',
     margins : 3
   });
 
