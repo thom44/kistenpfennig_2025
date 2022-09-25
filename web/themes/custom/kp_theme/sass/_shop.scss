@@ -7,7 +7,6 @@ body.path-product {
   h1.title {
     text-align: left;
     margin-bottom: 20px;
-    font-size: 40px;
     font-weight: 400;
     }
   }
@@ -115,7 +114,6 @@ body.path-cart {
   input.button--add-to-cart {
     background-color: $dgrau;
     border: none;
-    margin: 10px 0 0 53px;
     }
   input.form-control {
     max-width: 187px;
@@ -123,6 +121,11 @@ body.path-cart {
     }
   input.form-number {
     @include form-elmnt-white;
+    max-width: 80px;
+    height: 34px;
+    }
+  div.js-form-type-number {
+    text-align: center;
     }
   }
 
@@ -130,7 +133,7 @@ body.path-cart {
   .views-field-title {
     text-align: center;
     font-style: italic;
-    font-size: 20px;
+    font-size: 17px;
     a {
       color: $kpnav;
       text-decoration: none;
@@ -153,17 +156,30 @@ body.path-cart {
     border: none;
     }
   .form-actions {
-    display: inline;
+    text-align: center;
+    input.button--add-to-cart {
+      margin-top: 10px;
+      }
     }
   .field--type-commerce-price {
     display: none;
+    }
+  .views-field-field-product-image {
+    text-align: center;
+    ul.list-group {
+      li.list-group-item {
+        padding: 0;
+        img {
+          max-width: 100%;
+          height: auto;
+          }
+        }
+      }
     }
   }
 
 .field--name-quantity {
   display: inline;
-  margin: 0 8px 0 0;
-  float: left;
   .form-control {
     border: none;
     }
@@ -188,12 +204,6 @@ body.path-cart {
   display: inline-block;
   }
 
-
-.fotorama {
-  .fotorama__stage {
-    margin-bottom: 30px;
-    }
-  }
 
 .targetDiv {
   display: none;
@@ -237,27 +247,6 @@ body.path-cart {
     }
   }
 
-.fotorama__wrap--css3 .fotorama__stage,
-.fotorama__fullscreen-icon,
-.fotorama__stage__shaft {
-  transition: none !important;
-  transform: none !important;
-  webkit-transform: none !important;
-  }
-
-.fotorama__fullscreen-icon {
-  top: 0;
-  left: 0;
-  opacity: 1 !important;
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  background-image: none;
-  }
-
-.fotorama__arr {
-  z-index: 1000;
-  }
 
 .commerce-checkout-flow-multistep-default {
   margin-top: 20px;
@@ -294,5 +283,19 @@ fieldset.checkout-pane-payment-information {
       }
   .fieldset-wrapper legend span.fieldset-legend  {
     display: block;
+    }
+  }
+
+body.path-product {
+  form.commerce-order-item-add-to-cart-form {
+    div.form-type-number {
+      text-align: left;
+      }
+    }
+  .photoswipe-gallery {
+    img {
+      max-width: 100%;
+      height: auto;
+      }
     }
   }

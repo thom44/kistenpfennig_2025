@@ -29,9 +29,9 @@
   {# {{- product|without('variation_attributes') -}} #}
   <div class="product-wrapper">
   <div class="row">
-    <div class="col-md-7">{{ product.field_product_image }}</div>
+    <div class="col-md-7 col-sm-12">{{ product.field_product_image }}</div>
 
-    <div class="col-md-5">
+    <div class="col-md-5 col-sm-12">
     <div>{{ product|without('field_product_image','field_nutritive_value','body','field_ingredient','field_allergene','field_header') }}</div>
     <div class="buttons">
       <a  class="showSingle active" target="1">Beschreibung</a>
