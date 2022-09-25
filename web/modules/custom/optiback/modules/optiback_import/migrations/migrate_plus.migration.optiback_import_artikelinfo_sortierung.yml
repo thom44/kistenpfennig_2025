@@ -1,5 +1,5 @@
-id: optiback_import_artikelinfo_title
-label: 'Optiback Artikelinfo Inventurhinweise => Node Title'
+id: optiback_import_artikelinfo_sortierung
+label: 'Optiback Artikelinfo Inventurhinweise => Shop Sortierung'
 migration_tags:
   - optiback_import
 source:
@@ -46,7 +46,7 @@ process:
     default_value: commerce_product
   field_name:
     plugin: default_value
-    default_value: title
+    default_value: field_sort
   entity_id:
     plugin: get_id_from_sku
     source: SKU

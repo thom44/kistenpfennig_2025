@@ -159,7 +159,7 @@ source:
 
 process:
   sku: SKU
-  title: artikel_kurz
+  title: artikel_bez_1
   # 2. Zuordnung von Variation zu Product in
   # commerce_product_variation_field_data.product_id
   # Erst bei 2. Migration kann die Zuordnung zum Produkt eingetragen werden.

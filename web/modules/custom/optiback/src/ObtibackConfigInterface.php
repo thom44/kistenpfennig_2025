@@ -147,12 +147,12 @@ interface ObtibackConfigInterface {
   /**
    * The Drupal tax_rate key.
    */
-  const DRUPAL_TAX_DE_19 = 'default|cb66c91d-1ac6-4e64-9a9f-af14f1b8dcf1';
+  const DRUPAL_TAX_DE_19 = 'default|690008f4-db2c-4382-86ce-dbe9a6032f97';
 
   /**
    * The Drupal tax_rate key.
    */
-  const DRUPAL_TAX_DE_7 = 'default|9b0ae25c-0e66-41bd-b54a-6c6411869634';
+  const DRUPAL_TAX_DE_7 = 'default|cb25a5eb-5c48-4243-a111-59d0ecb2219b';
 
   /**
    * The number of weeks the backup should be kept.

@@ -73,6 +73,7 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
     $fieldName = $row->getDestinationProperty('field_name');
     $value = $row->getDestinationProperty('value');
     $valueHash = sha1(\serialize($value));
+    $key = 'value';
 
     if ($entityId === false) {
       // @todo: Add log message. SKU doesn't exist.
@@ -84,6 +85,10 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
       ->load($entityId);
     $currentValue = $entity->get($fieldName)->getValue();
 
+    if (isset($currentValue[0])) {
+      $key = key($currentValue[0]);
+    }
+
     $long_field = [
       'field_ingredient',
       'field_allergene',
@@ -93,7 +98,7 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
       $currentValue[0]['format'] = 'full_html';
     }
     // Encodes all characters in Value.
-    $currentValue[0]['value'] = utf8_encode($value);
+    $currentValue[0][$key] = utf8_encode($value);
 
     $entity->get($fieldName)->setValue($currentValue);
 

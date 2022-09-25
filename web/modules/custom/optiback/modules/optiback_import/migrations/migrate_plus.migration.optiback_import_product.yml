@@ -158,7 +158,7 @@ source:
       label: 'Nährwert Wasser'
 
 process:
-  title: SKU
+  title: artikel_bez_1
   # Anlegen der Zuordnung der ProduktVariation in
   # commerce_product__variations.product_id
   # Damit wird der Datensatz erzeugt.
@@ -188,11 +188,11 @@ process:
   #    plugin: process_field_sort
   #    source: listenrang
 
-  # Sets taxonoy reference to the warengruppen number (Optiback).
+  # Sets taxonomy reference to the warengruppen number (Optiback).
   field_shop_category:
     -
       plugin: process_shop_cat
-      source: warengrp_nr
+      source: bestellgrp_nr
 
   field_nutritive_value/0:
     plugin: default_value
