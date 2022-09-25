@@ -26,7 +26,7 @@
 <article{{ attributes }}>
   {{ title_prefix }}
   {{ title_suffix }}
-  {{- product|without('variation_attributes') -}}
+  {{- product|without('variation_attributes','field_optiback_unit','field_optiback_weight') -}}
   {#
   <div class="row" style="border: 3px solid fuchsia;">
     <div class="col-md-7">{{ product.field_product_image }}</div>
