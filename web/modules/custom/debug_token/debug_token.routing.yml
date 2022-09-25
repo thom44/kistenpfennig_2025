@@ -1,0 +1,7 @@
+example.content:
+  path: '/debug'
+  defaults:
+    _controller: '\Drupal\debug_token\Controller\DebugToken::content'
+    _title: 'Run token'
+  requirements:
+    _permission: 'access content'

@@ -115,7 +115,7 @@ class RunImport implements RunImportInterface {
       $migrations = [
         'optiback_import_product_variation',
         'optiback_import_product',
-        'optiback_import_artikelinfo_title',
+        'optiback_import_artikelinfo_sortierung',
         'optiback_import_artikelinfo_body',
         'optiback_import_artikelinfo_header',
         'optiback_import_artikelinfo_inhaltstoffe',
