@@ -62,6 +62,15 @@
   #main {
     max-width: 516px;
     }
+  body.path-shop {
+    .main-content .section {
+      padding-top: 0;
+      }
+    .sidebar .block {
+      margin-bottom: 0;
+      }
+    }
+
   p.to-shop {
     top: -220px;
     img.shp-btn {
