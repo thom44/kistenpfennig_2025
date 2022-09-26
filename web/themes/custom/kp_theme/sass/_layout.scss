@@ -14,13 +14,15 @@ h1.title {
   font-size: 30px;
   }
 
-a.shp-lnk {
+a.shp-lnk,
+.content a {
   color: #d4021d;
   text-decoration: none;
   font-weight: bold;
   }
 
-a.shp-lnk:hover {
+a.shp-lnk:hover,
+.content a:hover {
   text-decoration: underline;
   color: #d4021d;
   }
@@ -74,8 +76,37 @@ a.shp-lnk:hover {
   background-image: url('../graphics/box-arrow-right.svg');
   }
 
-#login-block-icon a span.icn  {
-  background-image: url('../graphics/box-arrow-in-right.svg');
+#login-block-icon {
+  a span.icn {
+    position: relative;
+    top: 5px;
+    background-image: url('../graphics/box-arrow-in-right.svg');
+    }
+  }
+
+form.user-login-form {
+  max-width: 500px;
+  .btn-primary {
+    background-color: #d4021d;
+    border: none;
+    }
+  }
+
+
+body.path-user {
+  .main-content {
+    text-align: center;
+    }
+  .tabs {
+    text-align: center;
+    display: inline-block;
+    }
+  .content {
+    text-align: center;
+    form.user-login-form {
+      display: inline-block;
+      }
+    }
   }
 
 #page {
