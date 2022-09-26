@@ -14,6 +14,17 @@ h1.title {
   font-size: 30px;
   }
 
+a.shp-lnk {
+  color: #d4021d;
+  text-decoration: none;
+  font-weight: bold;
+  }
+
+a.shp-lnk:hover {
+  text-decoration: underline;
+  color: #d4021d;
+  }
+
 .wlw-cart-block__icon {
   margin-right: 5px;
   img {
@@ -35,7 +46,8 @@ h1.title {
   }
 
 #profile-block-icon,
-#logout-block-icon
+#logout-block-icon,
+#login-block-icon
  {
   a {
     span.icn {
@@ -53,10 +65,17 @@ h1.title {
   background-image: url('../graphics/person-circle.svg');
   }
 
-#logout-block-icon a span.icn {
-  background-image: url('../graphics/box-arrow-in-right.svg');
+#logout-block-icon a span.icn,
+#login-block-icon a span.icn {
   position: relative;
-  top: 4px;
+  }
+
+#logout-block-icon a span.icn {
+  background-image: url('../graphics/box-arrow-right.svg');
+  }
+
+#login-block-icon a span.icn  {
+  background-image: url('../graphics/box-arrow-in-right.svg');
   }
 
 #page {
@@ -68,6 +87,7 @@ h1.title {
   }
 
 .main-content {
+  position: relative;
   .section {
     padding-top: 50px;
     padding-left: 15px;
@@ -102,6 +122,16 @@ h1.title {
     }
   }
 
+.sidebar_first {
+  .menu--shop-navigation {
+    ul.nav {
+      display: block;
+      li.nav-item {
+
+        }
+      }
+    }
+  }
 
 body.page-node-6,
 body.page-node-7 {
@@ -120,9 +150,21 @@ body.page-node-7 {
     }
   }
 
+p.to-shop {
+  position: absolute;
+  right: 15px;
+  top: -440px;
+  display: inline-block;
+  img.shp-btn {
+    width: 143px;
+    height: auto;
+    }
+  }
+
 .region-headerbanner {
+  position: relative;
   .block {
-    max-height: 350px;
+    max-height: 420px;
     overflow: hidden;
     img {
       width: 100%;

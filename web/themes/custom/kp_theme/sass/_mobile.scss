@@ -3,6 +3,12 @@
   #main {
     max-width: 1116px;
     }
+  p.to-shop {
+    top: -400px;
+    img.shp-btn {
+      width: 125px;
+      }
+    }
   .view-filialuebersicht {
     .views-row {
       .views-field-field-filialbild {
@@ -33,8 +39,17 @@
   }
 
 @media screen and (max-width: 991px) {
+  body.path-product .main-content .section {
+    padding-top: 0;
+    }
   #main {
     max-width: 696px;
+    }
+  p.to-shop {
+    top: -300px;
+    img.shp-btn {
+      width: 125px;
+      }
     }
   body.path-shop {
     h1.title {
@@ -46,6 +61,12 @@
 @media screen and (max-width: 768px) {
   #main {
     max-width: 516px;
+    }
+  p.to-shop {
+    top: -220px;
+    img.shp-btn {
+      width: 100px;
+      }
     }
   .fotorama {
     margin-bottom: 30px;
@@ -74,6 +95,13 @@
   body {
     background-image: none;
     background-color: #e7e6e6;
+    }
+  p.to-shop {
+    top: -200px;
+    right: 0;
+    img.shp-btn {
+      width: 80px;
+      }
     }
   }
 
