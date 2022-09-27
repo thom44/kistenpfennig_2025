@@ -46,6 +46,7 @@
         "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/views_bootstrap": "^4.0",
         "drupal/views_data_export": "^1.1",
+        "drupal/webform": "^6.1",
         "drupal/xmlsitemap": "^1.1",
         "drush/drush": "^11.0"
     },
