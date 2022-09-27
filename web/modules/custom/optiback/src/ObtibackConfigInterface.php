@@ -14,6 +14,11 @@ namespace Drupal\optiback;
 interface ObtibackConfigInterface {
 
   /**
+   * PHP Version path to run scripts on production server.
+   */
+  const PHP_PATH = '/usr/bin/php8.1';
+
+  /**
    * The db user.
    */
   const DB_USER = 'db11130752-d9';
@@ -31,7 +36,7 @@ interface ObtibackConfigInterface {
   /**
    * The path to drush.
    */
-  const DRUSH = 'php ../vendor/drush/drush/drush';
+  const DRUSH = PHP_PATH . ' ../vendor/drush/drush/drush';
 
   /**
    * The db user.
