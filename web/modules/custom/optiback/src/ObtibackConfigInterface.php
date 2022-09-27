@@ -36,7 +36,7 @@ interface ObtibackConfigInterface {
   /**
    * The path to drush.
    */
-  const DRUSH = PHP_PATH . ' ../vendor/drush/drush/drush';
+  const DRUSH = ObtibackConfigInterface::PHP_PATH . ' ../vendor/drush/drush/drush';
 
   /**
    * The db user.
