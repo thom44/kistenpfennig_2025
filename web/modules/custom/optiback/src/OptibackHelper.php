@@ -23,7 +23,10 @@ class OptibackHelper implements OptibackHelperInterface {
     }
 
     // Run database backup.
-    $cmd = 'mysqldump -u ' . $db_user . ' -p' . $db_pwd . ' ' . $db_name . ' > ' . $backup_dir . '/' . $db_name . '_' . date("Y-m-d") . '.sql';
+    // Hosteurope needs -no-tablespaces otherwise we get this error.
+    // mysqldump: Error: 'Access denied; you need (at least one of) the PROCESS
+    // privilege(s) for this operation' when trying to dump tablespaces
+    $cmd = 'mysqldump -u ' . $db_user . ' -p' . $db_pwd . ' -no-tablespaces ' . $db_name . ' > ' . $backup_dir . '/' . $db_name . '_' . date("Y-m-d") . '.sql';
 
     return $this->shellExecWithError($cmd, 'The mysqldump failed.');
   }

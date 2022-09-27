@@ -97,6 +97,10 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
     if (in_array($fieldName,$long_field)) {
       $currentValue[0]['format'] = 'full_html';
     }
+
+    // nl2br not working.
+    $value = str_replace(array("\\r\\n", "\\r", "\\n"), "<br />", $value);
+
     // Encodes all characters in Value.
     $currentValue[0][$key] = utf8_encode($value);
 

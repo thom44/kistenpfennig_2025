@@ -84,8 +84,12 @@ class ProcessInvoice implements ProcessInvoiceInterface {
   public function run() {
 
     $message = '';
+    $dir = scandir(ObtibackConfigInterface::OPTIBACK_INVOICE);
 
-    $invoices = array_diff(scandir(ObtibackConfigInterface::OPTIBACK_INVOICE), array('..', '.'));
+    if (!is_array($dir)) {
+      return $this->t('No invoices found in ' . ObtibackConfigInterface::OPTIBACK_INVOICE);
+    }
+    $invoices = array_diff($dir, array('..', '.'));
 
     foreach ($invoices as $invoice) {
 
