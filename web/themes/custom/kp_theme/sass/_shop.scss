@@ -89,9 +89,22 @@ body.path-cart {
       list-style: none;
       margin: 5px 0 5px 0;
       padding: 0;
+      &.menu-item--active-trail a:focus,
+      &.menu-item--active-trail a:active {
+        color: $kprot;
+        }
+      &.menu-item--active-trail a.nav-link {
+        color: $kprot;
+        }
       a {
         margin: 0;
         padding: 0;
+        &.nav-link {
+          color: #3D415C;
+          }
+        &:hover {
+          color: $kprot;
+          }
         }
       ul.menu {
         margin: 0;
@@ -111,6 +124,9 @@ body.path-cart {
   input.button--add-to-cart {
     background-color: $dgrau;
     border: none;
+    &:hover {
+      background-color: $kprot;
+      }
     }
   input.form-control {
     max-width: 187px;

@@ -65,6 +65,9 @@ a.shp-lnk:hover,
 
 #profile-block-icon a span.icn {
   background-image: url('../graphics/person-circle.svg');
+  &:hover {
+    background-image: url('../graphics/person-circle-red.svg');
+    }
   }
 
 #logout-block-icon a span.icn,
@@ -74,6 +77,9 @@ a.shp-lnk:hover,
 
 #logout-block-icon a span.icn {
   background-image: url('../graphics/box-arrow-right.svg');
+  &:hover {
+    background-image: url('../graphics/box-arrow-right-red.svg');
+    }
   }
 
 #login-block-icon {
@@ -81,6 +87,9 @@ a.shp-lnk:hover,
     position: relative;
     top: 5px;
     background-image: url('../graphics/box-arrow-in-right.svg');
+    &:hover {
+      background-image: url('../graphics/box-arrow-in-right-red.svg');
+      }
     }
   }
 

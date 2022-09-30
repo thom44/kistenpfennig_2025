@@ -4,9 +4,16 @@
     justify-content: space-around;
     li {
       font-size: 18px;
+      &.active a {
+        color: $kprot;
+
+        }
       a {
         color: #3D415C;
         text-transform: uppercase;
+        &:hover {
+          color: $kprot;
+          }
         }
       }
     }
