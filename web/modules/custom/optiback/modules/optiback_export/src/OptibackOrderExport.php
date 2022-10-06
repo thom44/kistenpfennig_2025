@@ -242,23 +242,23 @@ class OptibackOrderExport {
      'porto_cost'           => 0, // Not available in Drupal Order.
      'order_discount'       => 0, // $discount['percentage'], // Float in percentage
      'E-Mail'               => $order->getEmail(),
-     'shipping_salutation'  => $shipping['salutation'],
-     'shipping_first_name'  => $shipping['first_name'],
-     'shipping_last_name'   => $shipping['last_name'],
-     'shipping_company'     => $shipping['company'],
-     'shipping_street'      => $shipping['street'],
-     'shipping_country'     => $shipping['country'],
-     'shipping_post_code'   => $shipping['post_code'],
-     'shipping_city'        => $shipping['city'],
-     'billing_salutation'   => $billing['salutation'],
-     'billing_first_name'   => $billing['first_name'],
-     'billing_last_name'    => $billing['last_name'],
-     'billing_company'      => $billing['company'],
-     'billing_street'       => $billing['street'],
-     'billing_country'      => $billing['country'],
-     'billing_post_code'    => $billing['post_code'],
-     'billing_city'         => $billing['city'],
-     'payment_gateway'      => $payment_gateway_label,
+     'shipping_salutation'  => $this->cleanString($shipping['salutation']),
+     'shipping_first_name'  => $this->cleanString($shipping['first_name']),
+     'shipping_last_name'   => $this->cleanString($shipping['last_name']),
+     'shipping_company'     => $this->cleanString($shipping['company']),
+     'shipping_street'      => $this->cleanString($shipping['street']),
+     'shipping_country'     => $this->cleanString($shipping['country']),
+     'shipping_post_code'   => $this->cleanString($shipping['post_code']),
+     'shipping_city'        => $this->cleanString($shipping['city']),
+     'billing_salutation'   => $this->cleanString($billing['salutation']),
+     'billing_first_name'   => $this->cleanString($billing['first_name']),
+     'billing_last_name'    => $this->cleanString($billing['last_name']),
+     'billing_company'      => $this->cleanString($billing['company']),
+     'billing_street'       => $this->cleanString($billing['street']),
+     'billing_country'      => $this->cleanString($billing['country']),
+     'billing_post_code'    => $this->cleanString($billing['post_code']),
+     'billing_city'         => $this->cleanString($billing['city']),
+     'payment_gateway'      => $this->cleanString($payment_gateway_label),
      'payment_id'           => $payment_id,
     ];
 
@@ -361,6 +361,8 @@ class OptibackOrderExport {
    */
   public function getDiscountData($entiy) {
 
+    $percentage = 0;
+
     // Possible discount values.
     $data = [
       'percentage' => 0,
@@ -451,11 +453,14 @@ class OptibackOrderExport {
 
     // Add the header as the first line of the CSV.
     // We use tab delimiter \t.
-    fputcsv($handle, $header, "\t");
+    //fputcsv($handle, $header, "\t"," ");
+    // Solution without enclosure which not possible with fputcsv.
+    fwrite($handle, implode("\t", $header)."\n");
 
     foreach ($data as $row) {
       // Add the data we exported to the next line of the CSV>
-      fputcsv($handle, array_values($row), "\t");
+      //fputcsv($handle, array_values($row), "\t");
+      fwrite($handle, implode("\t", $row)."\n");
     }
 
     // Reset where we are in the CSV.
@@ -469,5 +474,12 @@ class OptibackOrderExport {
     fclose($handle);
 
     return $result;
+  }
+
+  /**
+   * Callback funktion: Ceans string value.
+   */
+  public function cleanString($string) {
+    return trim($string);
   }
 }
