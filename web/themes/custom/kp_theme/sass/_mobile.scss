@@ -18,6 +18,18 @@
         }
       }
     }
+  body.page-node-34 .sort-container {
+    form.webform-submission-schnellbewerbung-form {
+      .js-form-item-geschlecht,
+      .js-form-item-geburtsdatum,
+      .js-form-item-vorname,
+      .js-form-item-nachname,
+      .js-form-item-adressdata-address-2,
+      .js-form-item-adressdata-city {
+        width: 48.5%;
+        }
+      }
+    }
   }
 
 @media screen and (max-width: 1199px) {
@@ -35,6 +47,18 @@
     }
   .navbar-nav {
     margin-left: 10px;
+    }
+  body.page-node-34 .sort-container {
+    form.webform-submission-schnellbewerbung-form {
+      .js-form-item-geschlecht,
+      .js-form-item-geburtsdatum,
+      .js-form-item-vorname,
+      .js-form-item-nachname,
+      .js-form-item-adressdata-address-2,
+      .js-form-item-adressdata-city {
+        width: 48.4%;
+        }
+      }
     }
   }
 
@@ -54,6 +78,11 @@
   body.path-shop {
     h1.title {
       text-align: center;
+      }
+    }
+  body.page-node-34 .sort-container {
+    form.webform-submission-schnellbewerbung-form {
+      max-width: 100%;
       }
     }
   }
@@ -110,6 +139,25 @@
     right: 0;
     img.shp-btn {
       width: 80px;
+      }
+    }
+  body.page-node-34 .sort-container {
+    text-align: left;
+    form.webform-submission-schnellbewerbung-form {
+      max-width: 100%;
+      .js-form-item-geschlecht,
+      .js-form-item-geburtsdatum,
+      .js-form-item-vorname,
+      .js-form-item-nachname,
+      .js-form-item-adressdata-address-2,
+      .js-form-item-adressdata-city {
+        width: 100%;
+        }
+      .js-form-item-geschlecht,
+      .js-form-item-vorname,
+      .js-form-item-adressdata-address-2 {
+        margin-right: 0;
+        }
       }
     }
   }

@@ -243,6 +243,36 @@ body.node--type-filiale {
   border: none !important;
   }
 
+body.page-node-34 .sort-container {
+  display: block;
+  text-align: center;
+  form.webform-submission-schnellbewerbung-form {
+    max-width: 50%;
+    text-align: left;
+    margin: auto;
+    #edit-name.mb-3 {
+      margin-bottom: 0 !important;
+      }
+    .js-form-item-geschlecht,
+    .js-form-item-geburtsdatum,
+    .js-form-item-vorname,
+    .js-form-item-nachname,
+    .js-form-item-adressdata-address-2,
+    .js-form-item-adressdata-city {
+      width: 48.6%;
+      display: inline-block;
+      }
+    .js-form-item-geschlecht,
+    .js-form-item-vorname,
+    .js-form-item-adressdata-address-2 {
+      margin-right: 2%;
+      }
+    .webform-address--wrapper {
+      margin-top: 0;
+      }
+    }
+  }
+
 .site-footer {
   position: fixed;
   bottom: 0;
