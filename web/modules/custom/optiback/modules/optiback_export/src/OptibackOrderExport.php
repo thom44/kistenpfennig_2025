@@ -463,6 +463,9 @@ class OptibackOrderExport {
       fwrite($handle, implode("\t", $row)."\n");
     }
 
+    // Add's linebreak at the end of the file.
+    fwrite($handle, PHP_EOL);
+
     // Reset where we are in the CSV.
     rewind($handle);
 
@@ -480,6 +483,11 @@ class OptibackOrderExport {
    * Callback funktion: Ceans string value.
    */
   public function cleanString($string) {
-    return trim($string);
+
+    $string = trim($string);
+
+    $targetString = iconv( mb_detect_encoding( $string ), 'Windows-1252//TRANSLIT', $string );
+
+    return $targetString;
   }
 }
