@@ -8,9 +8,10 @@ namespace Drupal\optiback;
 interface OptibackHelperInterface {
 
   /**
+   * @param $env
    * @return mixed
    */
-  public function dbBackup();
+  public function dbBackup($env = 'prod');
 
   /**
    * @param $cmd
