@@ -142,7 +142,7 @@ interface ObtibackConfigInterface {
   /**
    * The email address for error notification.
    */
-  const EMAIL_TO = 'thom@licht.local';
+  const EMAIL_TO = 'info@thomas-schuh.com';
 
     /**
      * The bbc email address for error notification.
