@@ -1,9 +1,0 @@
-name: WLW Course
-type: module
-description: 'Provides functionality for course products.'
-package: WLW Shop
-core_version_requirement: ^8 || ^9
-dependencies:
-  - commerce:commerce
-  - commerce:commerce_product
-  - wlw_contract:wlw_contract

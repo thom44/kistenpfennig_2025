@@ -1,8 +1,0 @@
-name: WLW Checkout
-type: module
-description: 'Provides extra functionality for WLW checkout.'
-package: WLW Shop
-core_version_requirement: ^8 || ^9
-dependencies:
-  - commerce:commerce
-  - profile:profile

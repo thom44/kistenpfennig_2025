@@ -1,5 +1,0 @@
-iban-field:
-  version: 1.x
-  js:
-    js/jquery.maskedinput.min.js: {}
-    js/wlw_sepa_payment.iban_form.js: {}

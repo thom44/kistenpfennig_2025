@@ -1,5 +1,0 @@
-name: WLW Contract
-type: module
-description: 'Provides a helper service for course contracts.'
-package: WLW Shop
-core_version_requirement: ^8 || ^9

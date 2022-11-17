@@ -1,7 +1,0 @@
-name: WLW Order Mail Log
-type: module
-description: 'Provides mail logging for each order.'
-package: WLW Shop
-core_version_requirement: ^8 || ^9
-dependencies:
-  - commerce:commerce_order

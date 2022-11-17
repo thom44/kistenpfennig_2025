@@ -1,5 +1,0 @@
-services:
-  wlw_product_list.product_list_builder:
-    class: Drupal\wlw_product_list\ProductListBuilder
-    arguments: ['@entity_type.manager','@path.alias_manager','@wlw_product.price_formatter_helper','@database','@language_manager','@renderer']
-

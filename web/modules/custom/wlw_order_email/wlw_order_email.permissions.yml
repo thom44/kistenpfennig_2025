@@ -1,4 +1,0 @@
-'send order emails':
-  title: 'Send order emails'
-  description: 'Use UI to send emails to customer.'
-  'restrict access': TRUE

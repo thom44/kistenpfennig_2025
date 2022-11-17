@@ -1,5 +1,0 @@
-services:
-  wlw_contract.contract_files:
-    class: Drupal\wlw_contract\ContractFiles
-    arguments: ['@entity_type.manager', '@messenger']
-

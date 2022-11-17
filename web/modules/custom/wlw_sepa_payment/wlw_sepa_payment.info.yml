@@ -1,7 +1,0 @@
-name: WLW SEPA Payment
-type: module
-description: Provides Commerce integration for the SEPA Direct Debit Scheme (SEPA Lastschrift) Gateway.
-core_version_requirement: ^8 || ^9
-package: WLW Shop
-dependencies:
-  - commerce:commerce_payment

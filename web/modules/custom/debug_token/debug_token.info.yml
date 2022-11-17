@@ -1,4 +1,0 @@
-name: Debug Token
-type: module
-description: 'debugging'
-core_version_requirement: ^8 || ^9

@@ -1,6 +1,0 @@
-entity-print-styling:
-  version: VERSION
-  css:
-    theme:
-      css/wlw_invoice.entityprint-invoice.css: {}
-
