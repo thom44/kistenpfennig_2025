@@ -30,6 +30,12 @@
         }
       }
     }
+  body.page-node-34 .node__content {
+      img.apply {
+        top: 580px;
+        left: 120px;
+        }
+      }
   }
 
 @media screen and (max-width: 1199px) {
@@ -60,6 +66,12 @@
         }
       }
     }
+  body.page-node-34 .node__content {
+      img.apply {
+        top: 550px;
+        left: 80px;
+        }
+      }
   }
 
 @media screen and (max-width: 991px) {
@@ -83,6 +95,13 @@
   body.page-node-34 .sort-container {
     form.webform-submission-schnellbewerbung-form {
       max-width: 100%;
+      }
+    }
+  body.page-node-34 .node__content {
+    img.apply {
+      max-width: 160px;
+      top: 460px;
+      left: 0;
       }
     }
   }
@@ -127,6 +146,13 @@
       margin-bottom: 0 !important;
       }
     }
+  body.page-node-34 .node__content {
+    img.apply {
+      max-width: 160px;
+      top: 480px;
+      left: -20px;
+      }
+    }
   }
 
 @media screen and (max-width: 575px) {
@@ -158,6 +184,11 @@
       .js-form-item-adressdata-address-2 {
         margin-right: 0;
         }
+      }
+    }
+  body.page-node-34 .node__content {
+    img.apply {
+      display: none;
       }
     }
   }
