@@ -2,7 +2,7 @@
 
 namespace Drupal\optiback_export;
 
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Messenger\Messenger;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\optiback\OptibackHelperInterface;
@@ -37,18 +37,18 @@ class RunExport implements RunExportInterface {
   protected $optibackHelper;
 
   /**
-   * The optiback logger service.
+   * The optiback messenger service.
    *
    * @var \Drupal\optiback\OptibackLoggerInterface
    */
-  protected $optibackLogger;
+  protected $optibackmessenger;
 
   /**
-   * The logger service.
+   * The messenger service.
    *
-   * @var Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
+   * @var Drupal\Core\Messenger $messenger;
    */
-  protected $logger;
+  protected $messenger;
 
   /**
    * {@inheritDoc}
@@ -56,14 +56,14 @@ class RunExport implements RunExportInterface {
   public function __construct(
     OptibackOrderExport $optiback_order_export,
     OptibackHelperInterface $optiback_helper,
-    OptibackLoggerInterface $optiback_logger,
-    LoggerChannelFactoryInterface $logger,
+    OptibackLoggerInterface $optiback_messenger,
+    Messenger $messenger,
     OptibackCancelOrder $optiback_cancel_order
   ) {
     $this->optibackOrderExport = $optiback_order_export;
     $this->optibackHelper = $optiback_helper;
-    $this->optibackLogger = $optiback_logger;
-    $this->logger = $logger;
+    $this->optibackmessenger = $optiback_messenger;
+    $this->messenger = $messenger;
     $this->optibackCancelOrder = $optiback_cancel_order;
   }
 
@@ -101,21 +101,21 @@ class RunExport implements RunExportInterface {
     // $cmd = $drush . ' state:set system.maintenance_mode 0';
     // $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
 
-    $this->optibackLogger->addLog($message, 'status');
+    $this->optibackmessenger->addLog($message, 'status');
 
     $params = [
       'subject' => 'Drupal Optiback Export',
       'body' => 'Meldungen beim Drupal Export<br>' . $message,
     ];
 
-    $mail = $this->optibackLogger->sendMail($params);
+    $mail = $this->optibackmessenger->sendMail($params);
 
     if ($mail) {
       $message .= $this->t('The optiback export email was send to the site owner.');
-      $this->logger->get('optiback_export')->info($message);
+      $this->messenger->get('optiback_export')->info($message);
     } else {
       $message .= $this->t('The optiback export email could not be send to the site owner.');
-      $this->logger->get('optiback_export')->error($message);
+      $this->messenger->get('optiback_export')->error($message);
     }
 
 
