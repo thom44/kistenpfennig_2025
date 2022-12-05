@@ -162,5 +162,5 @@ interface ObtibackConfigInterface {
   /**
    * The number of weeks the backup should be kept.
    */
-  const KEEP_BACKUP = '21';
+  const KEEP_BACKUP = '3';
 }

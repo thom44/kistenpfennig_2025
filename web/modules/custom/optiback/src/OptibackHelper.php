@@ -51,13 +51,13 @@ class OptibackHelper implements OptibackHelperInterface {
     $message = '';
 
     // Run database backup.
-    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '/*.sql -mtime +' . ObtibackConfigInterface::KEEP_BACKUP . ' -exec rm {} \;';
+    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '*.sql -mtime +' . ObtibackConfigInterface::KEEP_BACKUP . ' -exec rm {} \;';
 
     $message .= $this->shellExecWithError($cmd, 'The .sql backup cleanup failed.');
 
 
     // Run directory backup.
-    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '/*.tar.gz -mtime +' . ObtibackConfigInterface::KEEP_BACKUP . ' -exec rm {} \;';
+    $cmd = 'find ' . ObtibackConfigInterface::OPTIBACK_BAK . '*.tar.gz -mtime +' . ObtibackConfigInterface::KEEP_BACKUP . ' -exec rm {} \;';
 
     $message .= $this->shellExecWithError($cmd, 'The .tar.gz backup cleanup failed.');
 
