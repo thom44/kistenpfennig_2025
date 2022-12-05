@@ -2,7 +2,7 @@
 
 namespace Drupal\optiback_export;
 
-use Drupal\Core\Messenger\Messenger;
+use Drupal\Core\Logger\LoggerChannelFactory;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\optiback\OptibackHelperInterface;
@@ -46,9 +46,9 @@ class RunExport implements RunExportInterface {
   /**
    * The messenger service.
    *
-   * @var Drupal\Core\Messenger $messenger;
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryr $logger;
    */
-  protected $messenger;
+  protected $logger;
 
   /**
    * {@inheritDoc}
@@ -57,13 +57,13 @@ class RunExport implements RunExportInterface {
     OptibackOrderExport $optiback_order_export,
     OptibackHelperInterface $optiback_helper,
     OptibackLoggerInterface $optiback_messenger,
-    Messenger $messenger,
+    LoggerChannelFactory $logger,
     OptibackCancelOrder $optiback_cancel_order
   ) {
     $this->optibackOrderExport = $optiback_order_export;
     $this->optibackHelper = $optiback_helper;
     $this->optibackmessenger = $optiback_messenger;
-    $this->messenger = $messenger;
+    $this->logger = $logger;
     $this->optibackCancelOrder = $optiback_cancel_order;
   }
 
@@ -112,10 +112,10 @@ class RunExport implements RunExportInterface {
 
     if ($mail) {
       $message .= $this->t('The optiback export email was send to the site owner.');
-      $this->messenger->get('optiback_export')->info($message);
+      $this->logger->get('optiback_export')->info($message);
     } else {
       $message .= $this->t('The optiback export email could not be send to the site owner.');
-      $this->messenger->get('optiback_export')->error($message);
+      $this->logger->get('optiback_export')->error($message);
     }
 
 
