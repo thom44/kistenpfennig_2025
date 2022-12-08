@@ -417,6 +417,9 @@ class OptibackOrderExport {
     if ($profile->hasField('field_last_name')) {
       $data['last_name'] = $profile->get('field_last_name')->getValue()[0]['value'];
     }
+    if ($profile->hasField('field_company')) {
+      $data['company'] = $profile->get('field_company')->getValue()[0]['value'];
+    }
 
     $addresses = $profile->get('address')->getValue();
 
@@ -433,9 +436,6 @@ class OptibackOrderExport {
       }
       if (isset($address['address_line1'])) {
         $data['street'] = $address['address_line1'];
-      }
-      if (isset($address['company'])) {
-        $data['company'] = $address['company'];
       }
     }
 
