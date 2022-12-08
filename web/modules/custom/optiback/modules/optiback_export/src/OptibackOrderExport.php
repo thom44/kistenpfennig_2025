@@ -417,7 +417,7 @@ class OptibackOrderExport {
     if ($profile->hasField('field_last_name')) {
       $data['last_name'] = $profile->get('field_last_name')->getValue()[0]['value'];
     }
-    if ($profile->hasField('field_company')) {
+    if ($profile->hasField('field_company') && isset($profile->get('field_company')->getValue()[0])) {
       $data['company'] = $profile->get('field_company')->getValue()[0]['value'];
     }
 
