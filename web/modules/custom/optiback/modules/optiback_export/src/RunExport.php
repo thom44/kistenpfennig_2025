@@ -101,6 +101,8 @@ class RunExport implements RunExportInterface {
     // $cmd = $drush . ' state:set system.maintenance_mode 0';
     // $message .= $this->optibackHelper->shellExecWithError($cmd, 'The site could not set to maintenance_mode 0.');
 
+    $message .= $this->optibackHelper->backupCleanup();
+
     $this->optibackmessenger->addLog($message, 'status');
 
     $params = [
@@ -117,9 +119,6 @@ class RunExport implements RunExportInterface {
       $message .= $this->t('The optiback export email could not be send to the site owner.');
       $this->logger->get('optiback_export')->error($message);
     }
-
-
-    $message .= $this->optibackHelper->backupCleanup();
 
     return $message;
   }
