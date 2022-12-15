@@ -76,6 +76,16 @@ class RunExport implements RunExportInterface {
 
     // Here we run the complete export pipeline.
 
+    // @note: Optiback save this file only during processing orders.
+    $filename = ObtibackConfigInterface::OPTIBACK_IN . '/optimo.txt';
+
+    if (file_exists($filename)) {
+      // Skip the process to prevent conflicts with optiback.
+      $message .= $this->t('The optiback export was skipped because ' . $filename  . ' is in in-directiory.');
+      $this->logger->get('optiback_export')->warning($message);
+      return $message;
+    }
+
     // Backup /in directory
     $message .= $this->optibackHelper->dirBackup(ObtibackConfigInterface::OPTIBACK_IN, 'OPTIBACK_IN');
 
