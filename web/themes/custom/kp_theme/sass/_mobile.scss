@@ -80,6 +80,12 @@
     }
   #main {
     max-width: 696px;
+    img.btn-fly {
+      right: 50px;
+      top: -62px;
+      max-width: 100px;
+      height: auto;
+      }
     }
   p.to-shop {
     top: -300px;
@@ -156,6 +162,14 @@
   }
 
 @media screen and (max-width: 575px) {
+  #main {
+    img.btn-fly {
+      right: 20px;
+      top: -40px;
+      max-width: 70px;
+      height: auto;
+      }
+    }
   body {
     background-image: none;
     background-color: #e7e6e6;

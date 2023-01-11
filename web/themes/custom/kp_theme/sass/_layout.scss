@@ -124,6 +124,18 @@ body.path-user {
 
 #main {
   max-width: 1296px;
+  position: relative;
+  img.btn-fly {
+    position: absolute;
+    right: 75px;
+    top: -120px;
+    transform: rotate(10deg);
+    display: none;
+    }
+  }
+
+body.path-frontpage #main img.btn-fly {
+  display: block;
   }
 
 .main-content {
