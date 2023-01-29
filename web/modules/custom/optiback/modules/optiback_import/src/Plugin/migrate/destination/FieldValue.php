@@ -72,8 +72,9 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
     $entityId = $row->getDestinationProperty('entity_id');
     $fieldName = $row->getDestinationProperty('field_name');
     $value = $row->getDestinationProperty('value');
+    // @var: $key should contain value|target_id dependes on fieldtype.
+    $key= $row->getDestinationProperty('key');
     $valueHash = sha1(\serialize($value));
-    $key = 'value';
 
     if ($entityId === false) {
       // @todo: Add log message. SKU doesn't exist.

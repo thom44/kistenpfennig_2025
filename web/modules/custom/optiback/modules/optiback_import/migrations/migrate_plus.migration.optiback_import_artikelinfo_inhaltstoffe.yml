@@ -55,6 +55,9 @@ process:
       plugin: skip_on_empty
       method: row
       source: text
+  key:
+    plugin: default_value
+    default_value: value
 
 destination:
   plugin: field_value

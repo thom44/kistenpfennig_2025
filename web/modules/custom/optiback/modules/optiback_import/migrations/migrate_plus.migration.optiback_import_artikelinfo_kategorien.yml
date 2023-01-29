@@ -54,6 +54,9 @@ process:
     -
       plugin: process_shop_cat
       source: text
+  key:
+    plugin: default_value
+    default_value: target_id
 
 destination:
   plugin: field_value
