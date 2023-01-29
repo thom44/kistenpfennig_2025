@@ -189,10 +189,10 @@ process:
   #    source: listenrang
 
   # Sets taxonomy reference to the warengruppen number (Optiback).
-  field_shop_category:
-    -
-      plugin: process_shop_cat
-      source: bestellgrp_nr
+  #field_shop_category:
+  #  -
+  #    plugin: process_shop_cat
+  #    source: bestellgrp_nr
 
   field_nutritive_value/0:
     plugin: default_value
