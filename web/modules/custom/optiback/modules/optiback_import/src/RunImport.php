@@ -112,6 +112,11 @@ class RunImport implements RunImportInterface {
       $query->condition('status', 1);
       $query->execute();
 
+      // Run cache clear to conclude unpublish unused products.
+      $cmd = $drush . ' cr';
+
+      $message .= $this->optibackHelper->shellExecWithError($cmd, 'Cache clear after unpublish products.');
+
       $migrations = [
         'optiback_import_product_variation',
         'optiback_import_product',
