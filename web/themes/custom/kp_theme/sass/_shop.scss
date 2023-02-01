@@ -122,10 +122,12 @@ body.path-cart {
     color: $kpnav;
     }
   input.button--add-to-cart {
-    background-color: $dgrau;
-    border: none;
+    background-color: white;
+    border: 1px solid $dgrau;
+    color: $dgrau;
     &:hover {
       background-color: $kprot;
+      color: white;
       }
     }
   input.form-control {
