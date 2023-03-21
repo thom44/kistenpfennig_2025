@@ -2,15 +2,31 @@
 /*  **********  FORMULARE  **********  */
 
 
-.webform-button--submit.btn-primary {
+.webform-button--submit.btn-primary, {
   max-width: 200px;
   background-color: $kprot;
   border: none;
+  margin: auto;
   }
 
 #edit-further-details {
   background-color: #dddddd;
   padding: 15px;
+  }
+
+form.webform-submission-schnellbewerbung-paragraph-38-form {
+  .form-actions {
+    text-align: center;
+    .webform-button--submit {
+      background-color: $kprot;
+      color: white;
+      font-weight: 600;
+      max-width: 200px;
+      &:hover {
+        opacity: 0.8;
+        }
+      }
+    }
   }
 
 /*  **********  /FORMULARE  *********  */
