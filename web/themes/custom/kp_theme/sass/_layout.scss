@@ -254,6 +254,19 @@ body.node--type-filiale {
         }
       }
     }
+  .show-me-the-way {
+    color: white;
+    background-color: $kprot;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem 0.375rem 1.9rem;
+    display: inline-block;
+    margin: 20px auto auto auto;
+    font-weight: 300;
+    background-image: url('../graphics/icon-route.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 14px;
+    }
   }
 
 .menu--shop-navigation {
