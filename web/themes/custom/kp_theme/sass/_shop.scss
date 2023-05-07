@@ -307,9 +307,21 @@ body.path-product {
       }
     }
   .photoswipe-gallery {
-    img {
-      max-width: 100%;
-      height: auto;
+    .field__item {
+      img {
+        max-width: 100%;
+        height: auto;
+        }
+      &:nth-of-type(2) {
+        margin-right: 15px;
+        }
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        max-width: 237px;
+        height: auto;
+        overflow: hidden;
+        display: inline-block;
+        }
       }
     }
   }
