@@ -301,6 +301,9 @@ fieldset.checkout-pane-payment-information {
   }
 
 body.path-product {
+  .main-content .section {
+    padding-top: 6px;
+    }
   form.commerce-order-item-add-to-cart-form {
     div.form-type-number {
       text-align: left;
@@ -323,5 +326,19 @@ body.path-product {
         display: inline-block;
         }
       }
+    }
+  }
+
+.fourteen-thirty {
+  margin-bottom: 30px;
+  img {
+    width: 75px;
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+    }
+  p {
+    padding-top: 19px;
+    font-weight: 600;
     }
   }
