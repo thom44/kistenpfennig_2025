@@ -36,6 +36,13 @@
         left: 120px;
         }
       }
+
+  .fourteen-thirty {
+    padding-left: 29px;
+    .right {
+      width: 700px;
+      }
+    }
   }
 
 @media screen and (max-width: 1199px) {
@@ -72,6 +79,12 @@
         left: 80px;
         }
       }
+
+  #block-customcartblock,
+  #block-meinprofil,
+  #block-logouticon {
+    top: -50px;
+    }
   }
 
 @media screen and (max-width: 991px) {

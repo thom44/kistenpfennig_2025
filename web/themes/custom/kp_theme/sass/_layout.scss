@@ -47,6 +47,31 @@ a.shp-lnk:hover,
     }
   }
 
+#block-vierzehndreissig {
+  float: left;
+  /* background-color: #eeeeee; */
+  max-width: 1100px;
+  }
+
+#block-customcartblock,
+#block-meinprofil,
+#block-logouticon {
+  position: absolute;
+  top: 6px;
+  }
+
+#block-logouticon {
+  right: 20px;
+  }
+
+#block-meinprofil {
+  right: 75px;
+  }
+
+#block-customcartblock {
+  right: 130px;
+  }
+
 #profile-block-icon,
 #logout-block-icon,
 #login-block-icon
@@ -157,8 +182,8 @@ body.path-frontpage #main img.btn-fly {
   }
 
 .region-subheader {
+  position: relative;
   padding-bottom: 15px;
-  text-align: right;
   padding-right: 30px;
   &.row {
     display: block;
