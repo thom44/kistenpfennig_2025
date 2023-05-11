@@ -6,7 +6,6 @@
       font-size: 18px;
       &.active a {
         color: $kprot;
-
         }
       a {
         color: #3D415C;
@@ -19,6 +18,25 @@
     }
   }
 
+.sidebar_first {
+  .menu--shop-navigation {
+    ul.nav {
+      li.menu-item--active-trail a {
+        &.nav-link {
+          color: $dgrau;
+          }
+        &.active {
+          color: $kprot;
+          }
+        }
+      }
+    ul.menu {
+      li.nav-item a {
+        color: $dgrau;
+        }
+      }
+    }
+  }
 
 .navbar-toggler {
   box-shadow: none !important;

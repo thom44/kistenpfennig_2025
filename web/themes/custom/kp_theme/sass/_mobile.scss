@@ -100,6 +100,27 @@
       height: auto;
       }
     }
+  .fourteen-thirty {
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 0;
+    .left {
+      float: none;
+      display: block;
+      img {
+        margin-right: 10px;
+        }
+      }
+    .right {
+      float: none;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      p {
+        margin-bottom: 0;
+        }
+      }
+    }
   p.to-shop {
     top: -300px;
     img.shp-btn {
