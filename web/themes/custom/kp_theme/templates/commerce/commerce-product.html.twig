@@ -39,7 +39,9 @@
     </div><!-- /.buttons -->
 
       <div id="div1" class="targetDiv">{{ product.field_header }} {{ product.body }} {{ product.field_ingredient }} {{ product.field_allergene }}</div>
+      {% if product.field_nutritive_value %}
       <div id="div2" class="targetDiv">{{ product.field_nutritive_value }}</div>
+      {% endif %}
     </div>
 
   </div>
