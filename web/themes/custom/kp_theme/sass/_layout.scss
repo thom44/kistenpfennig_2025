@@ -55,22 +55,24 @@ a.shp-lnk:hover,
 
 #block-customcartblock,
 #block-meinprofil,
-#block-logouticon {
+#block-logouticon,
+#block-loginicon {
   position: absolute;
   top: 6px;
   z-index: 100;
   }
 
-#block-logouticon {
+#block-logouticon,
+#block-loginicon {
   right: 20px;
   }
 
 #block-meinprofil {
-  right: 75px;
+  right: 130px;
   }
 
 #block-customcartblock {
-  right: 130px;
+  right: 75px;
   }
 
 #profile-block-icon,
