@@ -79,12 +79,13 @@
         left: 80px;
         }
       }
-
-  #block-customcartblock,
   #block-meinprofil,
   #block-logouticon,
   #block-loginicon {
     top: -50px;
+    }
+  #block-customcartblock {
+    top: -48px;
     }
   }
 
@@ -194,6 +195,9 @@
       left: -70px;
       }
     }
+  body.path-cart .view-commerce-cart-form .form-actions .form-submit {
+    margin-bottom: 20px;
+    }
   }
 
 @media screen and (max-width: 575px) {
@@ -250,7 +254,8 @@
     }
 
   #block-customcartblock {
-    top: -55px;
+    top: -47px;
+    height: 30px;
     right: 95px;
     .wlw-cart-block__text {
       font-size: 0.9rem;
