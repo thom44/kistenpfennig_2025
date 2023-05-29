@@ -240,6 +240,35 @@
       display: none;
       }
     }
+  #block-logouticon,
+  #block-loginicon {
+    right: 0;
+    }
+
+  #block-meinprofil {
+    right: 45px;
+    }
+
+  #block-customcartblock {
+    top: -55px;
+    right: 95px;
+    .wlw-cart-block__text {
+      font-size: 0.9rem;
+      }
+    }
+
+  #block-customcartblock {
+    img {
+      max-height: 26px;
+      width: auto;
+      }
+    }
+  #profile-block-icon a span.icn,
+  #logout-block-icon a span.icn,
+  #login-block-icon a span.icn {
+    background-size: 28px auto;
+    }
+
   }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
