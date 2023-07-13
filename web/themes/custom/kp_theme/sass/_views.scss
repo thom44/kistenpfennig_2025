@@ -14,8 +14,13 @@
         }
       }
       .views-field-field-plz-ort,
-      .views-field-field-strasse {
+      .views-field-field-strasse,
+      .views-field-field-ergaenzung {
         text-align: center;
         }
+      .views-field-field-ergaenzung {
+        text-transform: uppercase;
+        color: $kprot;
+      }
     }
   }
