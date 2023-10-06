@@ -49,7 +49,6 @@ tmp
 #/web/themes/custom/mtc_theme/css/style.css
 #/web/themes/custom/mtc_theme/css/style.min.css
 
-.DS_Store
 web/.csslintrc
 web/.eslintignore
 web/.eslintrc.json
