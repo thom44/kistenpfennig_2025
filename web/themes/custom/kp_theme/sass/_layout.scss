@@ -171,9 +171,18 @@ body.path-user {
     display: none;
     z-index: 10;
     }
+  img.btn-shp {
+    position: absolute;
+    right: 245px;
+    top: -119px;
+    transform: rotate(10deg);
+    display: none;
+    z-index: 11;
+    }
   }
 
-body.path-frontpage #main img.btn-fly {
+body.path-frontpage #main img.btn-fly,
+body.path-frontpage #main img.btn-shp  {
   display: block;
   }
 
