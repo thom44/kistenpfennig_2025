@@ -2,7 +2,7 @@ name: Optiback
 type: module
 description: 'Optiback Schnittstelle.'
 package: Optiback
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - commerce:commerce
   - optiback_export:optiback_export
