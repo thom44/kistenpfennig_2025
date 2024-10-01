@@ -16,7 +16,7 @@ interface ObtibackConfigInterface {
   /**
    * PHP Version path to run scripts on production server.
    */
-  const PHP_PATH = '/usr/bin/php8.1';
+  const PHP_PATH = '/usr/bin/php8.2';
 
   /**
    * The db user.

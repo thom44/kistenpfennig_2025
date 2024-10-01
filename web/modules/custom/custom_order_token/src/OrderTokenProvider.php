@@ -19,7 +19,7 @@ class OrderTokenProvider {
   /**
    * The config factory service.
    *
-   * @var Drupal\Core\Config\ConfigFactoryInterface;
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
 
@@ -33,28 +33,28 @@ class OrderTokenProvider {
   /**
    * The renderer service.
    *
-   * @var \Drupal\Core\Render\Renderer $renderer
+   * @var \Drupal\Core\Render\Renderer
    */
   protected $renderer;
 
   /**
    * The token service.
    *
-   * @var Drupal\Core\Utility\Token
+   * @var \Drupal\Core\Utility\Token
    */
   protected $token;
 
   /**
    * The profile view builder.
    *
-   * @var \Drupal\profile\ProfileViewBuilder $profileViewBuilder
+   * @var \Drupal\profile\ProfileViewBuilder
    */
   protected $profileViewBuilder;
 
   /**
    * The order object.
    *
-   * @var $order
+   * @var \Drupal\commerce_order\Entity\OrderInterface
    */
   protected $order;
 
@@ -88,14 +88,10 @@ class OrderTokenProvider {
   }
 
   /**
-   * Sets the order object.
-   *
-   * @param \Drupal\commerce_order\Entity\OrderInterface $order
+   * {@inheritdoc}
    */
   protected function setOrder(OrderInterface $order) {
-    if (!isset($order)) {
       $this->order = $order;
-    }
   }
 
   /**
@@ -145,7 +141,7 @@ class OrderTokenProvider {
   public function getPaymentMethodLabel(OrderInterface $order) {
 
     $payment_gateway = $order->get('payment_gateway');
-    $gateway = $payment_gateway->getValue('target_id')[0]['target_id'];
+    $gateway = $payment_gateway->getValue()[0]['target_id'];
 
     $config_key = 'commerce_payment.commerce_payment_gateway.' . $gateway;
     $config = $this->configFactory->get($config_key);
@@ -202,6 +198,7 @@ class OrderTokenProvider {
     $totals = [];
     $order_items_data = [];
     $tax_rate_value = 0;
+    $field_tax_rate = NULL;
 
     $items = $order->getItems();
 
@@ -233,7 +230,7 @@ class OrderTokenProvider {
 
       // Prepares price Netto and tax amount.
       $price = $order_item->getTotalPrice();
-      $price_value = $price->getNumber();
+      $price_value = floatval($price->getNumber());
       $currency_code = $price->getCurrencyCode();
 
       $tax_percentage = $tax_rate_value * 100;

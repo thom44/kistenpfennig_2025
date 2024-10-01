@@ -8,6 +8,13 @@ use Drupal\custom_mail_ui\MailHelperInterface;
 class OptibackLogger implements OptibackLoggerInterface {
 
   /**
+   * The mail helper service.
+   *
+   * @var \Drupal\custom_mail_ui\MailHelperInterface
+   */
+  protected $mailHelper;
+
+  /**
    * The logger service.
    *
    * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
@@ -29,10 +36,7 @@ class OptibackLogger implements OptibackLoggerInterface {
   /**
    * {@inheritdoc}
    */
-  public function __construct(
-    MailHelperInterface $mail_helper,
-    LoggerChannelFactoryInterface $logger
-  ) {
+  public function __construct(MailHelperInterface $mail_helper, LoggerChannelFactoryInterface $logger) {
     $this->mailHelper = $mail_helper;
     $this->logger = $logger;
   }

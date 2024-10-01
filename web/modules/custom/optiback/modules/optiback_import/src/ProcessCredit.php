@@ -5,6 +5,7 @@
 
 namespace Drupal\optiback_import;
 
+use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -30,28 +31,28 @@ class ProcessCredit implements ProcessCreditInterface {
   /**
    * The logger service.
    *
-   * @var Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
 
   /**
    * The file repository service.
    *
-   * @var Drupal\file\FileRepositoryInterface $fileRepo
+   * @var \Drupal\file\FileRepositoryInterface
    */
   protected $fileRepo;
 
   /**
    * The mime type guesser service.
    *
-   * @var Drupal\Core\File\MimeType\MimeTypeGuesser $mimeTypeGuesser
+   * @var \Drupal\Core\File\MimeType\MimeTypeGuesser
    */
   protected $mimeTypeGuesser;
 
   /**
    * The order token provider service.
    *
-   * @var \Drupal\custom_order_token\OrderTokenProvider;
+   * @var \Drupal\custom_order_token\OrderTokenProvider
    */
   protected $orderTokenProvider;
 
@@ -95,8 +96,9 @@ class ProcessCredit implements ProcessCreditInterface {
 
         $order = $this->entityTypeManager->getStorage('commerce_order')->load($order_id);
 
-        if (!$order) {
-          continue;
+        if (!$order instanceof OrderInterface) {
+          \Drupal::logger('optiback_import')->error('Order with ID @id is not a valid order entity.', ['@id' => $order_id]);
+          return; // Exit the method early if the order is invalid.
         }
 
         // Checks if the credit is already processed.
@@ -139,7 +141,7 @@ class ProcessCredit implements ProcessCreditInterface {
         if (!file_exists($dest_path)) {
           $message .= $this->t('The file :file could not be copied to drupal private path. :log',[
             ':file' => $prefix . $credit,
-            ':log'  => $log,
+            ':log'  => $dest_path,
           ]);
           $this->logger->get('optiback_import')->warning($message);
           continue;

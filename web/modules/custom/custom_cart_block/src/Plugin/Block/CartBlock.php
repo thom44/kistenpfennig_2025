@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Extension\ExtensionPathResolver;
 
 /**
  * Provides a cart block.
@@ -45,6 +46,13 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
   protected $priceFormatterHelper;
 
   /**
+   * The extension path resolver service.
+   *
+   * @var \Drupal\Core\Extension\ExtensionPathResolver
+   */
+  protected $extensionPathResolver;
+
+  /**
    * Constructs a new CartBlock.
    *
    * @param array $configuration
@@ -58,25 +66,39 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, CartProviderInterface $cart_provider, EntityTypeManagerInterface $entity_type_manager, PriceFormatterHelper $price_formatter_helper) {
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    CartProviderInterface $cart_provider,
+    EntityTypeManagerInterface $entity_type_manager,
+    PriceFormatterHelper $price_formatter_helper,
+    ExtensionPathResolver $extension_path_resolver
+  ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->cartProvider = $cart_provider;
     $this->entityTypeManager = $entity_type_manager;
     $this->priceFormatterHelper = $price_formatter_helper;
+    $this->extensionPathResolver = $extension_path_resolver;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(
+    ContainerInterface $container,
+    array $configuration,
+    $plugin_id,
+    $plugin_definition) {
     return new static(
       $configuration,
       $plugin_id,
       $plugin_definition,
       $container->get('commerce_cart.cart_provider'),
       $container->get('entity_type.manager'),
-      $container->get('custom_product.price_formatter_helper')
+      $container->get('custom_product.price_formatter_helper'),
+      $container->get('extension.path.resolver')
     );
   }
 
@@ -90,10 +112,10 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
     $cachable_metadata = new CacheableMetadata();
     $cachable_metadata->addCacheContexts(['user', 'session']);
 
-    /** @var \Drupal\commerce_order\Entity\OrderInterface[] $carts */
+    /** @var \Drupal\commerce_cart\CartProviderInterface */
     $carts = $this->cartProvider->getCarts();
     $carts = array_filter($carts, function ($cart) {
-      /** @var \Drupal\commerce_order\Entity\OrderInterface $cart */
+      /** @var \Drupal\commerce_order\Entity\OrderInterface */
       // There is a chance the cart may have converted from a draft order, but
       // is still in session. Such as just completing check out. So we verify
       // that the cart is still a cart.
@@ -136,7 +158,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
       '#theme' => 'custom_commerce_cart_block',
       '#icon' => [
         '#theme' => 'image',
-        '#uri' => drupal_get_path('module', 'custom_cart_block') . '/icons/' . $icon,
+        '#uri' => $this->extensionPathResolver->getPath('module', 'custom_cart_block') . '/icons/' . $icon,
         '#alt' => $this->t('Shopping cart'),
       ],
       '#count' => $count,

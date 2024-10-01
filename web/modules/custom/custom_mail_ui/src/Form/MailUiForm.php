@@ -33,7 +33,7 @@ class MailUiForm extends ConfigFormBase {
   /**
    * The token tree builder service.
    *
-   * @var
+   * @var \Drupal\token\TreeBuilderInterface
    */
   protected $tokenTreeBuilder;
 
@@ -45,14 +45,7 @@ class MailUiForm extends ConfigFormBase {
   protected $emailKeys;
 
   /**
-   * Constructs a \Drupal\user\AccountSettingsForm object.
-   *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The factory for configuration objects.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
-   *   The module handler.
-   * @param \Drupal\user\RoleStorageInterface $role_storage
-   *   The role storage.
+   * {@inheritdoc}
    */
   public function __construct(ConfigFactoryInterface $config_factory, TreeBuilderInterface $token_tree_builder) {
     parent::__construct($config_factory);

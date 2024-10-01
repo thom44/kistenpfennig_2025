@@ -43,21 +43,7 @@ class OrderSetToPaidSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Validates the order after it is full paid.
-   *   The order has to be saved first, that the place transition is fully
-   *   completed. Thats why we can only validate the order after the order
-   *   entity is saved.
-   *   Problems with other events:
-   *   - We can not use commerce_order.order.paid event, because it breaks the
-   *     process and orders stay as cart.
-   *   - We can not use commerce_order.place.post_transition event, because it
-   *     doesn't work.
-   *   - We can not use commerce_order.commerce_order.presave event, because the
-   *     order will not completly places and the EventSubscribers for place
-   *     transition not triggered.
-   *
-   * @param \Drupal\state_machine\Event\WorkflowTransitionEvent $event
-   *   The event we subscribed to.
+   * {@inheritdoc}
    */
   public function setStateIfPaid(OrderEvent $event) {
 

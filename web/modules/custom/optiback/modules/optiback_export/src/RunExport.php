@@ -46,7 +46,7 @@ class RunExport implements RunExportInterface {
   /**
    * The messenger service.
    *
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryr $logger;
+   * @var \Drupal\Core\Logger\LoggerChannelFactory
    */
   protected $logger;
 

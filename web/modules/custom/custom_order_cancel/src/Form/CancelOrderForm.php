@@ -20,7 +20,7 @@ class CancelOrderForm extends FormBase {
   /**
    * The current order.
    *
-   * @var: Drupal\Commerce
+   * @var \Drupal\commerce_order\Entity\OrderInterface
    */
   protected $order;
 
@@ -145,7 +145,7 @@ class CancelOrderForm extends FormBase {
     $params = [
       'subject' => 'Bestellung ' . $order_id . ' wurde storniert',
       'body' => $message,
-      'from' => $order->getStore()->getEmail(),
+      'from' => $this->order->getStore()->getEmail(),
     ];
 
     $this->mailHelper->sendMail('custom_order_cancel', 'custom_order_cancel_notification', $to, 'de', $params);

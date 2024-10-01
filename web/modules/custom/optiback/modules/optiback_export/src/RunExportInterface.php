@@ -8,12 +8,8 @@ namespace Drupal\optiback_export;
 interface RunExportInterface {
 
   /**
-   * Starts the export.
-   *
-   * @param (optional) string $env
-   *  The environment dev skips backups.
-   *
-   * @return boolish TRUE|FALSE
+   * @param $env
+   * @return mixed
    */
   public function run($env = 'prod');
 

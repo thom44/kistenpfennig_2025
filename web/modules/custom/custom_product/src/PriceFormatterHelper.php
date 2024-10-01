@@ -14,21 +14,21 @@ class PriceFormatterHelper implements PriceFormatterHelperInterface {
   /**
    * The EntityTypeManager provider.
    *
-   * @var Drupal\Core\Entity\EntityTypeManager
+   * @var \Drupal\Core\Entity\EntityTypeManager
    */
   protected $entityTypeManager;
 
   /**
    * The renderer service.
    *
-   * @var $renderer
+   * @var \Drupal\Core\Render\Renderer
    */
   protected $renderer;
 
   /**
    * The config factory service.
    *
-   * @var $configFactory
+   * @var \Drupal\Core\Config\ConfigFactory
    */
   protected $configFactory;
 

@@ -2,7 +2,7 @@ name: Custom Order Token
 type: module
 description: 'Provides missing token in commerce_order token group.'
 package: Custom Shop
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - token:token
   - commerce:commerce_order

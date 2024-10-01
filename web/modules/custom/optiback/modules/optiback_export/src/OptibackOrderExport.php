@@ -2,17 +2,22 @@
 
 namespace Drupal\optiback_export;
 
+use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\commerce_product\Entity\ProductVariation;
+use Drupal\commerce_product\Entity\ProductVariationInterface;
 use Drupal\custom_mail_ui\MailHelperInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_order\Entity\OrderItem;
-use Drupal\commerce_promotion\Entity\Promotion;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\profile\Entity\Profile;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\optiback\OptibackLoggerInterface;
+use Drupal\commerce_payment\Entity\PaymentGatewayInterface;
+use Drupal\commerce_payment\Entity\PaymentInterface;
+use function PHPUnit\Framework\isInstanceOf;
 
 class OptibackOrderExport {
 
@@ -35,7 +40,7 @@ class OptibackOrderExport {
   /**
    * The logger service.
    *
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
 
@@ -66,13 +71,13 @@ class OptibackOrderExport {
    */
   public function export() {
 
+    $result = NULL;
+    $error = FALSE;
+    $pos_data = [];
+
     // First we remove all csv export files, to export only new ones.
     // This is done by optiback.
     //array_map('unlink', glob(ObtibackConfigInterface::OPTIBACK_IN . '/*.csv'));
-
-    $error = FALSE;
-
-    $pos_data = [];
 
     // The csv AuKopf_ file header.
     $header = [
@@ -126,6 +131,10 @@ class OptibackOrderExport {
       );
 
     foreach ($orders as $order) {
+
+      if (!$order instanceof OrderInterface) {
+        continue;
+      }
 
       $data = [];
       $pos_data = [];
@@ -193,89 +202,92 @@ class OptibackOrderExport {
   }
 
   /**
-   * Fetches data and builds AuKopf CSV row.
-   *
-   * @param \Drupal\commerce_order\Entity\Order;
-   *   Commerce Order.
-   *
-   * @return array
-   *   Row data.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * {@inheritdoc}
    */
   private function buildOrderRow(Order $order) {
 
+    $data = [];
+    $shipping = NULL;
+    $billing = NULL;
     $payment_gateway_label = '';
-    $payment_id = '';
+    $payment_id = NULL;
 
     $adjustment_data = $this->getAdjustmentData($order);
-    //$discount = $this->getDiscountData($order);
 
-    if (isset($order->get('payment_gateway')->getValue()[0]['target_id'])) {
-      $payment_gateway = $order->get('payment_gateway')[0]->entity;
-      $payment_gateway_label = $order->get('payment_gateway')[0]->entity->label();
-    }
+    if (!$order->get('payment_gateway')->isEmpty()) {
 
-    // Retrieve the payment remote id.
-    $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
-    $payments = $payment_storage->loadMultipleByOrder($order);
-    // The first payment.
-    $first = key($payments);
-    if (isset($payments[$first])) {
-      $payment = $payments[$first];
-      $payment_id = $payment->getRemoteId();
-    }
+      $payment_gateway_item = $order->get('payment_gateway')->first();
 
-    $profiles = $order->collectProfiles();
-    if (isset($profiles['shipping'])) {
-      $shipping = $this->getProfileData($profiles['shipping']);
-    }
-    if (isset($profiles['billing'])) {
-      $billing = $this->getProfileData($profiles['billing']);
-    }
+      // Check if there is a valid target_id (entity reference).
+      if (!empty($payment_gateway_item->getValue()['target_id'])) {
+        // Load the payment gateway entity using the entityTypeManager.
+        $payment_gateway = $this->entityTypeManager->getStorage('commerce_payment_gateway')
+          ->load($payment_gateway_item->getValue()['target_id']);
 
-    // The data key's not relevant. The order must fit to the header.
-    $data = [
-     'order_id'             => $order->id(),
-     'shipping_cost'        => $adjustment_data['shipping_cost'], // float in EUR
-     'porto_cost'           => 0, // Not available in Drupal Order.
-     'order_discount'       => 0, // $discount['percentage'], // Float in percentage
-     'E-Mail'               => $order->getEmail(),
-     'shipping_salutation'  => $this->cleanString($shipping['salutation']),
-     'shipping_first_name'  => $this->cleanString($shipping['first_name']),
-     'shipping_last_name'   => $this->cleanString($shipping['last_name']),
-     'shipping_company'     => $this->cleanString($shipping['company']),
-     'shipping_street'      => $this->cleanString($shipping['street']),
-     'shipping_country'     => $this->cleanString($shipping['country']),
-     'shipping_post_code'   => $this->cleanString($shipping['post_code']),
-     'shipping_city'        => $this->cleanString($shipping['city']),
-     'billing_salutation'   => $this->cleanString($billing['salutation']),
-     'billing_first_name'   => $this->cleanString($billing['first_name']),
-     'billing_last_name'    => $this->cleanString($billing['last_name']),
-     'billing_company'      => $this->cleanString($billing['company']),
-     'billing_street'       => $this->cleanString($billing['street']),
-     'billing_country'      => $this->cleanString($billing['country']),
-     'billing_post_code'    => $this->cleanString($billing['post_code']),
-     'billing_city'         => $this->cleanString($billing['city']),
-     'payment_gateway'      => $this->cleanString($payment_gateway_label),
-     'payment_id'           => $payment_id,
-    ];
+        if ($payment_gateway instanceof PaymentGatewayInterface) {
+          $payment_gateway_label = $payment_gateway->label();
+          $payment_id = $payment_gateway->id();
+        }
+
+        // Retrieve the payment remote id.
+        $payment_storage = $this->entityTypeManager->getStorage('commerce_payment');
+        $payments = $payment_storage->loadByProperties(['order_id' => $order->id()]);
+        $payment = reset($payments);
+
+        if ($payment instanceof PaymentInterface) {
+          $payment_id = $payment->get('remote_id')->value;
+        }
+
+        $profiles = $order->collectProfiles();
+        if (isset($profiles['shipping'])) {
+          $shipping = $this->getProfileData($profiles['shipping']);
+        }
+        if (isset($profiles['billing'])) {
+          $billing = $this->getProfileData($profiles['billing']);
+        }
+
+        // The data key's not relevant. The order must fit to the header.
+        $data = [
+          'order_id'             => $order->id(),
+          'shipping_cost'        => $adjustment_data['shipping_cost'], // float in EUR
+          'porto_cost'           => 0, // Not available in Drupal Order.
+          'order_discount'       => 0, // $discount['percentage'], // Float in percentage
+          'E-Mail'               => $order->getEmail(),
+          'shipping_salutation'  => $this->cleanString($shipping['salutation']),
+          'shipping_first_name'  => $this->cleanString($shipping['first_name']),
+          'shipping_last_name'   => $this->cleanString($shipping['last_name']),
+          'shipping_company'     => $this->cleanString($shipping['company']),
+          'shipping_street'      => $this->cleanString($shipping['street']),
+          'shipping_country'     => $this->cleanString($shipping['country']),
+          'shipping_post_code'   => $this->cleanString($shipping['post_code']),
+          'shipping_city'        => $this->cleanString($shipping['city']),
+          'billing_salutation'   => $this->cleanString($billing['salutation']),
+          'billing_first_name'   => $this->cleanString($billing['first_name']),
+          'billing_last_name'    => $this->cleanString($billing['last_name']),
+          'billing_company'      => $this->cleanString($billing['company']),
+          'billing_street'       => $this->cleanString($billing['street']),
+          'billing_country'      => $this->cleanString($billing['country']),
+          'billing_post_code'    => $this->cleanString($billing['post_code']),
+          'billing_city'         => $this->cleanString($billing['city']),
+          'payment_gateway'      => $this->cleanString($payment_gateway_label),
+          'payment_id'           => $payment_id,
+        ];
+
+      } else {
+        // Handle the case where the payment gateway is not a valid entity.
+        \Drupal::logger('optiback_export')->error('Invalid payment gateway for order @order_id.', ['@order_id' => $order->id()]);
+      }
+    } else {
+      // Handle the case where the payment_gateway field is empty.
+      \Drupal::logger('optiback_export')->warning('Payment gateway field is empty for order @order_id.', ['@order_id' => $order->id()]);
+    }
 
    return $data;
  }
 
   /**
-   * Fetches data and builds Position CSV row.
-   *
-   * @param \Drupal\commerce_order\Entity\Order;
-   *   Commerce Order.
-   *
+   * @param \Drupal\commerce_order\Entity\OrderItem $order_item
    * @return array
-   *   Row data.
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   private function buildPositionRow(OrderItem $order_item) {
 
@@ -292,7 +304,8 @@ class OptibackOrderExport {
 
     $product_variation = $order_item->getPurchasedEntity();
 
-    if ($product_variation === NULL) {
+    // Check if the purchased entity is a ProductVariation.
+    if (!$product_variation instanceof ProductVariationInterface) {
       return $data;
     }
 

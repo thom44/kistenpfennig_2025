@@ -27,31 +27,26 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
   /**
    * The order token provider service.
    *
-   * @var \Drupal\custom_order_token\OrderTokenProvider $orderTokenProvider
+   * @var \Drupal\custom_order_token\OrderTokenProvider
    */
   protected $orderTokenProvider;
 
   /**
    * The mail handler.
    *
-   * @var \Drupal\commerce\mailHelperInterface
+   * @var \Drupal\custom_mail_ui\MailHelperInterface
    */
   protected $mailHelper;
 
   /**
    * The messenger service.
    *
-   * @var Drupal\Core\Messenger $messenger;
+   * @var \Drupal\Core\Messenger\Messenger
    */
   protected $messenger;
 
   /**
-   * DefaultOrderReceiptSubscriber constructor.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   * @param \Drupal\custom_order_token\OrderTokenProvider $order_token_provider
-   * @param \Drupal\custom_mail_ui\mailHelperInterface $mail_handler
-   * @param \Drupal\Core\Messenger\Messenger $messenger
+   * {@inheritdoc}
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -74,14 +69,11 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Sends an order receipt email.
-   *
-   * @param \Drupal\state_machine\Event\WorkflowTransitionEvent $event
-   *   The event we subscribed to.
+   * {@inheritdoc}
    */
   public function sendOrderReceipt(WorkflowTransitionEvent $event) {
 
-    /** @var \Drupal\commerce_order\Entity\OrderInterface $order */
+    /** @var \Drupal\commerce_order\Entity\OrderInterface */
     $order = $event->getEntity();
 
     // Process only default orders.
@@ -95,7 +87,7 @@ class DefaultOrderReceiptSubscriber implements EventSubscriberInterface {
 
     // Gets order type for order type configurations.
     $order_type_storage = $this->entityTypeManager->getStorage('commerce_order_type');
-    /** @var \Drupal\commerce_order\Entity\OrderTypeInterface $order_type */
+    /** @var \Drupal\commerce_order\Entity\OrderTypeInterface */
     $order_type = $order_type_storage->load($order->bundle());
 
     // Checks if email should be send.

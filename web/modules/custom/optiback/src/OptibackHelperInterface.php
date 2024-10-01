@@ -20,4 +20,22 @@ interface OptibackHelperInterface {
    */
   public function shellExecWithError($cmd, $message);
 
+  /**
+   * @param $directory
+   * @param $name
+   * @return mixed
+   */
+  public function dirBackup($directory, $name = '');
+
+  /**
+   * @return mixed
+   */
+  public function backupCleanup();
+
+  /**
+   * @param $filename
+   * @param $delimiter
+   * @return mixed
+   */
+  public function csvToArray($filename, $delimiter);
 }

@@ -2,4 +2,4 @@ name: Custom Table Formatter
 type: module
 description: 'Provides a FieldFormatter to display multiple textfield key, values as table.'
 package: Custom
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10

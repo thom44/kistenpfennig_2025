@@ -4,11 +4,15 @@
  * @file A module which provide extra funcionallity for commerce_promotions.
  */
 
+use Drupal\commerce_promotion\Entity\PromotionInterface;
+
 /**
  * Implements hook_form_FORM_ID_alter().
  * FormId: commerce_checkout_flow_multistep_default
  */
 function custom_promotion_form_commerce_checkout_flow_multistep_default_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $coupons = [];
 
   if($form['#step_id'] === 'order_information') {
 
@@ -28,27 +32,34 @@ function custom_promotion_form_commerce_checkout_flow_multistep_default_alter(&$
 
       foreach ($promotions as $promotion) {
 
-        $coupons = $promotion->getCoupons();
+        if ($promotion instanceof PromotionInterface) {
+          $coupons = $promotion->getCoupons();
 
-        foreach ($coupons as $coupon) {
+          foreach ($coupons as $coupon) {
 
-          if (trim($coupon_code) == trim($coupon->getCode())) {
+            if (trim($coupon_code) == trim($coupon->getCode())) {
 
-            $promotion_name = $promotion->get('display_name')
-              ->getValue()[0]['value'];
-            $promotion_desc = $promotion->get('description')
-              ->getValue()[0]['value'];
+              $promotion_name = $promotion->get('display_name')
+                ->getValue()[0]['value'];
+              $promotion_desc = $promotion->get('description')
+                ->getValue()[0]['value'];
 
-            if ($promotion_name) {
-              // Creates a info container on top of coupon redemption inline form.
-              $form['sidebar']['coupon_redemption']['form']['promotion_info'] = [
-                '#type' => 'inline_template',
-                '#template' => '<div class="promotion-info"><h2>' . $promotion_name . '</h2><div class="promotion-info-desc">' . $promotion_desc . '</div></div>',
-                '#weight' => -1,
-              ];
+              if ($promotion_name) {
+                // Creates a info container on top of coupon redemption inline form.
+                $form['sidebar']['coupon_redemption']['form']['promotion_info'] = [
+                  '#type' => 'inline_template',
+                  '#template' => '<div class="promotion-info"><h2>' . $promotion_name . '</h2><div class="promotion-info-desc">' . $promotion_desc . '</div></div>',
+                  '#weight' => -1,
+                ];
+              }
             }
           }
+
+        } else {
+          // Handle the case where $promotion is not a Promotion entity.
+          \Drupal::logger('custom_promotions')->error('The provided promotion is not of type PromotionInterface.');
         }
+
       }
     }
   }

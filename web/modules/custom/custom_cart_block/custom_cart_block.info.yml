@@ -2,7 +2,7 @@ name: Custom Cart Block
 type: module
 description: 'Provides a custom cart block with items and total display.'
 package: Custom Shop
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - commerce:commerce_cart
   - custom_product:custom_product

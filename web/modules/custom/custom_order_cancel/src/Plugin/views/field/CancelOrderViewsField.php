@@ -18,7 +18,7 @@ use Drupal\Core\Form\FormBuilder;
 class CancelOrderViewsField extends FieldPluginBase {
 
   /**
-   * @var $formBuilder Drupal\Core\Form\FormBuilder
+   * @var \Drupal\Core\Form\FormBuilder
    */
   protected $formBuilder;
 

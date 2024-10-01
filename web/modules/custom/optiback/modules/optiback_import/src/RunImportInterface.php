@@ -10,12 +10,12 @@ interface RunImportInterface {
   /**
    * Starts the import.
    *
-   * @param (optional) boolean $env
+   * @param string $env
    *  The environment dev skips backups.
-   * @param (optional) string $options
+   * @param array $options
    *  The options product|invoice|tracking.
    *
-   * @return boolish TRUE|FALSE
+   * @return string
    */
   public function run($env = 'prod', $options = []);
 

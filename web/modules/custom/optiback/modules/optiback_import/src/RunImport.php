@@ -46,7 +46,7 @@ class RunImport implements RunImportInterface {
   /**
    * The logger service.
    *
-   * @var Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
 
@@ -80,13 +80,11 @@ class RunImport implements RunImportInterface {
   public function run($env = 'prod', $options = ['product' => TRUE,'invoice' => TRUE,'tracking' => TRUE]) {
 
     // Here we run the complete import pipeline.
-
     $message = '';
     $migrations = [];
 
     // Backup /in directory
     $message .= $this->optibackHelper->dirBackup(ObtibackConfigInterface::OPTIBACK_OUT, 'OPTIBACK_OUT');
-
 
     if ($env == 'dev') {
       $drush = ObtibackConfigInterface::DEV_DRUSH;

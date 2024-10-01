@@ -12,6 +12,8 @@ use Drupal\custom_mail_ui\MailHelperInterface;
 use Drupal\optiback\ObtibackConfigInterface;
 use Drupal\custom_order_token\OrderTokenProvider;
 use Drupal\optiback\OptibackHelperInterface;
+use Drupal\commerce_order\Entity\OrderInterface;
+use function PHPUnit\Framework\assertInstanceOf;
 
 
 class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
@@ -28,14 +30,14 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
   /**
    * The logger service.
    *
-   * @var Drupal\Core\Logger\LoggerChannelFactoryInterface $logger;
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
 
   /**
    * The order token provider service.
    *
-   * @var \Drupal\wlw_order_token\OrderTokenProvider $orderTokenProvider
+   * @var \Drupal\custom_order_token\OrderTokenProvider
    */
   protected $orderTokenProvider;
 
@@ -86,10 +88,12 @@ class ProcessTrackingNumber implements ProcessTrackingNumberInterface {
 
       if (is_numeric($order_id)) {
 
+        /* @var \Drupal\commerce\Entity\OrderInterface */
         $order = $this->entityTypeManager->getStorage('commerce_order')->load($order_id);
 
-        if (!$order) {
-          continue;
+        if (!$order instanceof OrderInterface) {
+          \Drupal::logger('optiback_import')->error('Order with ID @id is not a valid order entity.', ['@id' => $order_id]);
+          return; // Exit the method early if the order is invalid.
         }
 
         // Checks if the order has already a tracking number.

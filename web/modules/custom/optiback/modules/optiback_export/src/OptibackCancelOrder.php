@@ -2,6 +2,7 @@
 
 namespace Drupal\optiback_export;
 
+use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\custom_mail_ui\MailHelperInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -75,6 +76,7 @@ class OptibackCancelOrder {
     //array_map('unlink', glob(ObtibackConfigInterface::OPTIBACK_IN . '/*.csv'));
 
     $error = FALSE;
+    $result = NULL;
 
     // The csv {order_id}_{status}.csv file header.
     $header = [
@@ -95,6 +97,10 @@ class OptibackCancelOrder {
       );
 
     foreach ($orders as $order) {
+
+      if (!$order instanceof OrderInterface) {
+        continue;
+      }
 
       $export = $order->get('field_export')->getValue()[0]['value'];
 

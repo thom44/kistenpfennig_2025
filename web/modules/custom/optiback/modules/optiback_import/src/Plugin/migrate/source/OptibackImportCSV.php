@@ -334,7 +334,8 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     // Character encoding of the string fields.
     foreach ($items as $item) {
       $raw = $row->getSourceProperty($item);
-      $encoded = utf8_encode($raw);
+
+      $encoded = mb_convert_encoding($raw, 'UTF-8', 'auto');
       $row->setSourceProperty($item, $encoded);
     }
 

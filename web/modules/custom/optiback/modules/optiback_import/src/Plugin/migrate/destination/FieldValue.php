@@ -8,6 +8,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Row;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 
 /**
  * Provides a field value destination plugin.
@@ -68,6 +69,7 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
    * {@inheritdoc}
    */
   public function import(Row $row, array $old_destination_id_values = []) {
+
     $entityType = $row->getDestinationProperty('entity_type');
     $entityId = $row->getDestinationProperty('entity_id');
     $fieldName = $row->getDestinationProperty('field_name');
@@ -84,37 +86,46 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
     $entity = $this->entityTypeManager
       ->getStorage($entityType)
       ->load($entityId);
-    $currentValue = $entity->get($fieldName)->getValue();
 
-    if (isset($currentValue[0])) {
-      $key = key($currentValue[0]);
+    if (!$entity instanceof ContentEntityInterface) {
+      return;
     }
 
-    $long_field = [
-      'field_ingredient',
-      'field_allergene',
-      'body'
+    if ($entity->hasField($fieldName)) {
+
+      $currentValue = $entity->get($fieldName)->getValue();
+
+      if (isset($currentValue[0])) {
+        $key = key($currentValue[0]);
+      }
+
+      $long_field = [
+        'field_ingredient',
+        'field_allergene',
+        'body'
       ];
-    if (in_array($fieldName,$long_field)) {
-      $currentValue[0]['format'] = 'full_html';
+      if (in_array($fieldName, $long_field)) {
+        $currentValue[0]['format'] = 'full_html';
+      }
+
+      // nl2br not working.
+      $value = str_replace(array("\\r\\n", "\\r", "\\n"), "<br />", $value);
+
+      // Encodes all characters in Value.
+      $currentValue[0][$key] = mb_convert_encoding($value, 'UTF-8', 'auto');
+
+      $entity->get($fieldName)->setValue($currentValue);
+
+      $entity->save();
+
+      return [
+        $entityType,
+        $entityId,
+        $fieldName,
+        $valueHash,
+      ];
     }
-
-    // nl2br not working.
-    $value = str_replace(array("\\r\\n", "\\r", "\\n"), "<br />", $value);
-
-    // Encodes all characters in Value.
-    $currentValue[0][$key] = utf8_encode($value);
-
-    $entity->get($fieldName)->setValue($currentValue);
-
-    $entity->save();
-
-    return [
-      $entityType,
-      $entityId,
-      $fieldName,
-      $valueHash,
-    ];
+    return FALSE;
   }
 
   /**
@@ -122,6 +133,7 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
    */
   public function fields(MigrationInterface $migration = NULL) {
     // @todo Define the fields available on destination.
+    return [];
   }
 
   /**

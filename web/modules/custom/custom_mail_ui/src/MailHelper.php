@@ -13,29 +13,26 @@ class MailHelper implements MailHelperInterface {
   /**
    * The config factory service.
    *
-   * @var Drupal\Core\Config\ConfigFactoryInterface;
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
    */
   protected $configFactory;
 
   /**
    * The token service.
    *
-   * @var Drupal\Core\Utility\Token
+   * @var \Drupal\Core\Utility\Token
    */
   protected $token;
 
   /**
    * The file manager service.
    *
-   * @var \Drupal\Core\File\FileSystem;
+   * @var \Drupal\Core\File\FileSystem
    */
   protected $fileSystem;
 
   /**
-   * MailHelper constructor.
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   * @param \Drupal\Core\Utility\Token $token
-   * @param \Drupal\commerce\MailHandler $mail_handler
+   * {@inheritdoc}
    */
   public function __construct(
     ConfigFactoryInterface $config_factory,
