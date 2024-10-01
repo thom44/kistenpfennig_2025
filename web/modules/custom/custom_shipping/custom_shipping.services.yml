@@ -1,6 +1,0 @@
-services:
-  custom_shipping.shipping_order_processor:
-    class: Drupal\custom_shipping\ShippingProcessor
-    arguments: ['@commerce_shipping.order_manager', '@commerce_shipping.shipment_manager']
-    tags:
-      - { name: commerce_order.order_processor, priority: 300 }
