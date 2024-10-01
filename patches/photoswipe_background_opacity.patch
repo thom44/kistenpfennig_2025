@@ -1,0 +1,14 @@
+diff --git a/js/photoswipe.jquery.js b/js/photoswipe.jquery.js
+index cdb4dff..de63468 100644
+--- a/js/photoswipe.jquery.js
++++ b/js/photoswipe.jquery.js
+@@ -107,6 +107,9 @@
+       // define gallery index (for URL)
+       options.galleryUID = galleryElement.data('pswp-uid');
+
++      // Custom setting - patched
++      options.bgOpacity = "0.8";
++
+       // Add zoom animation function:
+       options.getThumbBoundsFn = function (index) {
+         var tn = galleryElement.find('a.photoswipe:eq(' + index + ') img');
