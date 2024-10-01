@@ -58,3 +58,4 @@ web/INSTALL.txt
 web/README.txt
 web/robots.txt
 web/web.config
+/.gitattributes
