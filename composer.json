@@ -53,6 +53,7 @@
         "drupal/webform": "^6.1",
         "drupal/xls_serialization": "^1.2",
         "drupal/xmlsitemap": "^1.1",
+        "drush/drush": "^13.2",
         "oomphinc/composer-installers-extender": "^2.0"
     },
     "conflict": {
