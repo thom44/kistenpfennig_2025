@@ -65,6 +65,16 @@ class AddString extends ProcessPluginBase {
 
     if (!empty($value)) {
       $string = $this->configuration['string'] ?? '';
+      // @todo: 0,1 Values should not become ,1.
+
+      $value = trim($value);
+
+      // Check if the value starts with a comma
+      if (strpos($value, ',') === 0) {
+        // Prepend "0," if the string starts with a comma
+        $value = '0' . $value;
+      }
+
       $d9_value = $value . $string;
     } else {
       $d9_value = '-';
