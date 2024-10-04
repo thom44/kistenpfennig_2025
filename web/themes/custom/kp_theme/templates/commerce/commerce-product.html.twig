@@ -35,11 +35,11 @@
     <div>{{ product|without('field_product_image','field_nutritive_value','body','field_ingredient','field_allergene','field_header') }}</div>
     <div class="buttons">
       <a  class="showSingle active" target="1">Beschreibung</a>
-      <!-- <a  class="showSingle" target="2">Nährstoffe</a> -->
+      <a  class="showSingle" target="2">Nährstoffe</a>
     </div><!-- /.buttons -->
 
       <div id="div1" class="targetDiv">{{ product.field_header }} {{ product.body }} {{ product.field_ingredient }} {{ product.field_allergene }}</div>
-      <!-- <div id="div2" class="targetDiv"> --> {# {{ product.field_nutritive_value }} #} <!-- </div> -->
+      <div id="div2" class="targetDiv"> {{ product.field_nutritive_value }} </div>
     </div>
 
   </div>
