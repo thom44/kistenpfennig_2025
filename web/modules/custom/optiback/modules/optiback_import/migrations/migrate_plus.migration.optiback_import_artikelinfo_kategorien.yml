@@ -13,7 +13,7 @@ source:
   # Field enclosure. Double quotation marks (") by default.
   #enclosure: ''
   ids:
-    - SKU
+    - ArtNr
   # Here we identify the columns of interest in the source file.
   # Each numeric key is the 0-based index of the column.
   # For each column, the key below is the field name assigned to
@@ -23,16 +23,16 @@ source:
   info_art_to_process: 23 #Getreidemischung
   fields:
     0:
-      name: SKU
-      label: 'Artikel-Nr.'
+      name: ArtNr
+      label: 'ArtNr'
     1:
-      name: sprache
+      name: Sprachkennzeichen
       label: 'Sprachkennzeichen'
     2:
-      name: info_art
-      label: 'Info-Art.'
+      name: Info-Art
+      label: 'Info-Art'
     3:
-      name: text
+      name: Text
       label: 'Text'
 
 process:
@@ -49,11 +49,11 @@ process:
     default_value: field_shop_category
   entity_id:
     plugin: get_id_from_sku
-    source: SKU
+    source: ArtNr
   value:
     -
       plugin: process_shop_cat
-      source: text
+      source: Text
   key:
     plugin: default_value
     default_value: target_id

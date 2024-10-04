@@ -13,7 +13,7 @@ source:
   # Field enclosure. Double quotation marks (") by default.
   #enclosure: ''
   ids:
-    - SKU
+    - ArtNr
   # Here we identify the columns of interest in the source file.
   # Each numeric key is the 0-based index of the column.
   # For each column, the key below is the field name assigned to
@@ -22,150 +22,150 @@ source:
   # migration UI.
   fields:
     0:
-      name: SKU
-      label: 'Artikel-Nr.'
+      name: ArtNr
+      label: 'ArtNr'
     1:
-      name: artikel_kurz
-      label: 'Artikel-Kurzbezeichnung'
+      name: ArtKurbez
+      label: 'ArtKurbez'
     2:
-      name: artikel_bez_1
-      label: 'Bezeichnung 1'
+      name: ArtBez1
+      label: 'ArtBez1'
     3:
-      name: artikel_bez_2
-      label: 'Bezeichnung 2'
+      name: ArtBez2
+      label: 'ArtBez2'
     4:
-      name: ean_nummer
-      label: 'EAN-Nummer'
+      name: EAN
+      label: 'EAN'
     5:
-      name: gruppe_nr
-      label: 'Artikelgrp.-Nr.'
+      name: AgNr
+      label: 'AgNr'
     6:
-      name: gruppe_name
-      label: 'Artikelgrp.-Bez.'
+      name: AgBez
+      label: 'AgBez'
     7:
-      name: warengrp_nr
-      label: 'Warengrp.-Nr'
+      name: WgNr
+      label: 'WgNr'
     8:
-      name: warengrp_name
-      label: 'Warengrp.- Bez'
+      name: WgBez
+      label: 'WgBez'
     9:
-      name: bestellgrp_nr
-      label: 'Bestellgruppen-Nr.'
+      name: BestGrpNr
+      label: 'BestGrpNr'
     10:
-      name: bestellgrp_name
-      label: 'Bestellgruppen-Bez.'
+      name: BestGrpBez
+      label: 'BestGrpBez'
     11:
-      name: listenrang
-      label: 'Listenrang'
+      name: ListRang
+      label: 'ListRang'
     12:
-      name: vertriebs_einheit
-      label: 'Vertriebs-Einheit'
+      name: VertrEH
+      label: 'VertrEH'
     13:
-      name: verpackung_einheit
-      label: 'Verpackung-Einheit'
+      name: VerpackEH
+      label: 'VerpackEH'
     14:
-      name: vertr_einheiten_zwang
-      label: 'Vertr.-Einheiten-Zwang'
+      name: VertrEhZwang
+      label: 'VertrEhZwang'
     15:
-      name: masseinheit_bestellung
-      label: 'Maßeinheit (Bestellung)'
+      name: MsEhBez
+      label: 'MsEhBez'
     16:
-      name: preiseinheit
-      label: 'Preiseinheit'
+      name: PreisEhBez
+      label: 'PreisEhBez'
     17:
-      name: preis_inkl
-      label: 'Preis inkl. Mwst'
+      name: LvkB
+      label: 'LvkB'
     18:
-      name: preis_excl
-      label: 'Preis excl. Mwst'
+      name: LvkN
+      label: 'LvkN'
     19:
-      name: mwst_satz
-      label: 'MwSt.-Satz'
+      name: MwstSatz
+      label: 'MwstSatz'
     20:
-      name: stueckgewicht
-      label: 'Stückgewicht'
+      name: StueckGew
+      label: 'StueckGew'
     21:
-      name: alg_soja
-      label: 'Allergen Soja '
+      name: AlgSoja
+      label: 'AlgSoja'
     22:
-      name: alg_eier
-      label: 'Allergen Eier'
+      name: AlgEier
+      label: 'AlgEier'
     23:
-      name: alg_fisch
-      label: 'Allergen Fisch'
+      name: AlgFisch
+      label: 'AlgFisch'
     24:
-      name: alg_milchpr
-      label: 'Allergen Milchprodukte'
+      name: AlgMilch
+      label: 'AlgMilch'
     25:
-      name: alg_lupinen
-      label: 'Allergen Lupinen'
+      name: AlgLupinen
+      label: 'AlgLupinen'
     26:
-      name: alg_sellerie
-      label: 'Allergen Sellerie'
+      name: AlgSellerie
+      label: 'AlgSellerie'
     27:
-      name: alg_gluten
-      label: 'Allergen Gluten'
+      name: AlgGluten
+      label: 'AlgGluten'
     28:
-      name: alg_senf
-      label: 'Allergen Senf'
+      name: AlgSenf
+      label: 'AlgSenf'
     29:
-      name: alg_erdnuesse
-      label: 'Allergen Erdnüsse'
+      name: AlgErdnuss
+      label: 'AlgErdnuss'
     30:
-      name: alg_weichtiere
-      label: 'Allergen Weichtiere'
+      name: AlgWeichtiere
+      label: 'AlgWeichtiere'
     31:
-      name: alg_schalenfruechte
-      label: 'Allergen Schalenfrüchte'
+      name: AlgSchalenfr
+      label: 'AlgSchalenfr'
     32:
-      name: alg_sulfite
-      label: 'Allergen Sulfite'
+      name: AlgSulfite
+      label: 'AlgSulfite'
     33:
-      name: alg_krebstiere
-      label: 'Allergen Krebstiere'
+      name: AlgKrebstiere
+      label: 'AlgKrebstiere'
     34:
-      name: alg_sesamsamen
-      label: 'Allergen Sesamsamen'
+      name: AlgSesam
+      label: 'AlgSesam'
     35:
-      name: nw_kcal
-      label: 'Nährwert Kcal'
+      name: NwKcal
+      label: 'NwKcal'
     36:
-      name: nw_energy_kj
-      label: 'Nährwert Energy KJ'
+      name: NwKj
+      label: 'NwKj'
     37:
-      name: nw_fett
-      label: 'Nährwert Fett'
+      name: NwFett
+      label: 'NwFett'
     38:
-      name: nw_fettsauren
-      label: 'Nährwert Fettsäuren'
+      name: NwFettSaeuren
+      label: 'NwFettSaeuren'
     39:
-      name: nw_kohlenhydrate
-      label: 'Nährwert Kohlenhydrate'
+      name: NwKohlenhyd
+      label: 'NwKohlenhyd'
     40:
-      name: nw_zucker
-      label: 'Nährwert Zucker'
+      name: NwZucker
+      label: 'NwZucker'
     41:
-      name: nw_eiweiss
-      label: 'Nährwert Eiweiß'
+      name: NwEiweiss
+      label: 'NwEiweiss'
     42:
-      name: nw_ballaststoffe
-      label: 'Nährwert Ballaststoffe'
+      name: NwBallastst
+      label: 'NwBallastst'
     43:
-      name: nw_salt
-      label: 'Nährwert Salz'
+      name: NwSalz
+      label: 'NwSalz'
     44:
-      name: nw_wasser
-      label: 'Nährwert Wasser'
+      name: NwWasser
+      label: 'NwWasser'
 
 process:
-  title: artikel_bez_1
+  title: ArtBez1
   # Anlegen der Zuordnung der ProduktVariation in
   # commerce_product__variations.product_id
   # Damit wird der Datensatz erzeugt.
   variations:
     plugin: migration_lookup
     migration: optiback_import_product_variation
-    source: SKU
+    source: ArtNr
   uid:
     -
       plugin: default_value
@@ -186,13 +186,13 @@ process:
   #field_sort:
   #  -
   #    plugin: process_field_sort
-  #    source: listenrang
+  #    source: ListRang
 
   # Sets taxonomy reference to the warengruppen number (Optiback). nicht mehr verwendet.
   #field_shop_category:
   #  -
   #    plugin: process_shop_cat
-  #    source: bestellgrp_nr
+  #    source: BestGrpNr
 
   field_nutritive_value/0:
     plugin: default_value
@@ -200,7 +200,7 @@ process:
   field_nutritive_value/1:
     plugin: add_string
     string: ' kcal'
-    source: nw_kcal
+    source: NwKcal
 
   field_nutritive_value/2:
     plugin: default_value
@@ -208,7 +208,7 @@ process:
   field_nutritive_value/3:
     plugin: add_string
     string: ' kj'
-    source: nw_energy_kj
+    source: NwKj
 
   field_nutritive_value/4:
     plugin: default_value
@@ -216,7 +216,7 @@ process:
   field_nutritive_value/5:
     plugin: add_string
     string: ' g'
-    source: nw_fett
+    source: NwFett
 
   field_nutritive_value/6:
     plugin: default_value
@@ -224,7 +224,7 @@ process:
   field_nutritive_value/7:
     plugin: add_string
     string: ' g'
-    source: nw_fettsauren
+    source: NwFettSaeuren
 
   field_nutritive_value/8:
     plugin: default_value
@@ -232,7 +232,7 @@ process:
   field_nutritive_value/9:
     plugin: add_string
     string: ' g'
-    source: nw_kohlenhydrate
+    source: NwKohlenhyd
 
   field_nutritive_value/10:
     plugin: default_value
@@ -240,7 +240,7 @@ process:
   field_nutritive_value/11:
     plugin: add_string
     string: ' g'
-    source: nw_zucker
+    source: NwZucker
 
   field_nutritive_value/12:
     plugin: default_value
@@ -248,7 +248,7 @@ process:
   field_nutritive_value/13:
     plugin: add_string
     string: ' g'
-    source: nw_eiweiss
+    source: NwEiweiss
 
   field_nutritive_value/14:
     plugin: default_value
@@ -256,7 +256,7 @@ process:
   field_nutritive_value/15:
     plugin: add_string
     string: ' g'
-    source: nw_ballaststoffe
+    source: NwBallastst
 
   field_nutritive_value/16:
     plugin: default_value
@@ -264,7 +264,7 @@ process:
   field_nutritive_value/17:
     plugin: add_string
     string: ' g'
-    source: nw_salt
+    source: NwSalz
 
   field_nutritive_value/18:
     plugin: default_value
@@ -272,7 +272,7 @@ process:
   field_nutritive_value/19:
     plugin: add_string
     string: ' g'
-    source: nw_wasser
+    source: NwWasser
 
 destination:
   plugin: 'entity:commerce_product'

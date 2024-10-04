@@ -21,12 +21,12 @@ interface ObtibackConfigInterface {
   /**
    * The db user.
    */
-  const DB_USER = 'db11130752-d9';
+  const DB_USER = 'db11130752-d10';
 
   /**
    * The db user.
    */
-  const DB_NAME = 'db11130752-d9';
+  const DB_NAME = 'db11130752-d10';
 
   /**
    * The db user.
@@ -39,6 +39,11 @@ interface ObtibackConfigInterface {
   const DRUSH = ObtibackConfigInterface::PHP_PATH . ' ../vendor/drush/drush/drush';
 
   /**
+   * PHP Version path to run scripts on production server.
+   */
+  const DEV_PHP_PATH = '/usr/bin/php8.2';
+
+  /**
    * The db user.
    */
   const DEV_DB_USER = 'root';
@@ -46,7 +51,7 @@ interface ObtibackConfigInterface {
   /**
    * The db user.
    */
-  const DEV_DB_NAME = 'kd_kistenpfennig_d9';
+  const DEV_DB_NAME = 'kd_kistenpfennig_d10';
 
   /**
    * The db user.
@@ -56,7 +61,7 @@ interface ObtibackConfigInterface {
   /**
    * The path to drush.
    */
-  const DEV_DRUSH = 'drush';
+  const DEV_DRUSH = ObtibackConfigInterface::DEV_PHP_PATH . ' ../vendor/drush/drush/drush';
 
   /**
    * The relative path to the optiback directory.

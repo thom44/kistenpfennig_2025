@@ -221,6 +221,22 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
    */
   public function initializeIterator() {
     $header = $this->getReader()->getHeader();
+    foreach ($header as $column) {
+      if (!is_string($column)) {
+        throw new SyntaxError('The header record contains non-string column names.');
+      }
+    }
+    if ($this->configuration['fields']) {
+      $header = array_flip($this->fields());
+      // Ensure all keys are strings
+      $header = array_map('strval', array_keys($header));
+    }
+    return $this->getGenerator($this->getReader()->getRecords($header));
+  }
+
+  /*
+  public function initializeIterator() {
+    $header = $this->getReader()->getHeader();
     if ($this->configuration['fields']) {
       // If there is no header record, we need to flip description and name so
       // the name becomes the header record.
@@ -228,7 +244,7 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     }
     return $this->getGenerator($this->getReader()->getRecords($header));
   }
-
+*/
   /**
    * {@inheritdoc}
    */
@@ -244,6 +260,23 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
    * {@inheritdoc}
    */
   public function fields() {
+    if (empty($this->configuration['fields'])) {
+      $header = $this->getReader()->getHeader();
+      return array_combine($header, $header);
+    }
+
+    $fields = [];
+    foreach ($this->configuration['fields'] as $field) {
+      if (isset($field['name'])) {
+        // Ensure the field name is always a string and is used as both the key and value
+        $fields[$field['name']] = isset($field['label']) ? $field['label'] : (string) $field['name'];
+      }
+    }
+
+    return $fields;
+  }
+/*
+  public function fields() {
     // If fields are not defined, use the header record.
     if (empty($this->configuration['fields'])) {
       $header = $this->getReader()->getHeader();
@@ -255,7 +288,7 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     }
     return $fields;
   }
-
+*/
   /**
    * Get the generator.
    *
@@ -322,20 +355,36 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     $result = TRUE;
 
     $items = [
-      'artikel_kurz',
-      'artikel_bez_1',
-      'artikel_bez_2',
-      'gruppe_name',
-      'warengrp_name',
-      'bestellgrp_name',
-      'verpackung_einheit'
+      'ArtKurbez',
+      'ArtBez1',
+      'ArtBez2',
+      'AgBez',
+      'WgBez',
+      'BestGrpBez',
+      'VerpackEH'
     ];
+
+    $sku = $row->getSourceProperty('ArtNr');
+    if (empty($sku)) {
+      // Debug: Check the SKU value
+      \Drupal::logger('optiback_import')->debug('ArtNr value emptiy: ' . $row->getSourceProperty('ArtNr'));
+
+      // Skip this row if SKU is not set
+      return FALSE; // This will cause the row to be skipped
+    }
 
     // Character encoding of the string fields.
     foreach ($items as $item) {
       $raw = $row->getSourceProperty($item);
 
-      $encoded = mb_convert_encoding($raw, 'UTF-8', 'auto');
+      $encoding = mb_detect_encoding($raw, mb_detect_order(), true);
+      if ($encoding == 'UTF-8') {
+        $encoded = $raw;
+      } elseif ($encoding) {
+        $encoded = mb_convert_encoding($raw, 'UTF-8', $encoding);
+      } else {
+        $encoded = mb_convert_encoding($raw, 'UTF-8', 'ISO-8859-1');
+      }
       $row->setSourceProperty($item, $encoded);
     }
 
@@ -355,7 +404,7 @@ class OptibackImportCSV extends SourcePluginBase implements ConfigurableInterfac
     }
 
     // We compare the info-art value and skip if it not equal.
-    $info_art = $row->getSourceProperty('info_art');
+    $info_art = $row->getSourceProperty('Info-Art');
     $compare = $row->getSourceProperty('info_art_to_process');
     if ($info_art != $compare) {
       $result = FALSE;

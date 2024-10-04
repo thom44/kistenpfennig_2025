@@ -20,10 +20,10 @@ use Drupal\migrate\Row;
  * @see DrupalmigratePluginMigrateProcessInterface
  *
  * @MigrateProcessPlugin(
- *   id = "process_weight_number"
+ *   id = "process_weight_float"
  * )
  */
-class ProcessWeightNumber extends ProcessPluginBase {
+class ProcessWeightFloat extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
@@ -33,10 +33,9 @@ class ProcessWeightNumber extends ProcessPluginBase {
     $d8_value = NULL;
 
     if (isset($value) && $value != NULL) {
-      $d8_value = $value;
       // Transfoms weight to float format decimal with dot.
-      #$value = str_replace(',', '.', $value);
-      #$d8_value = floatval($value);
+      $value = str_replace(',', '.', $value);
+      $d8_value = floatval($value);
       // Alternative #$d8_value = number_format($value, 6,".","");
       //$d8_value = floatval($d8_value);
       //$d8_value = 5.55;

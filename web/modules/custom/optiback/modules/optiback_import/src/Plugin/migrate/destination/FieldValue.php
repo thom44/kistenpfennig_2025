@@ -112,7 +112,14 @@ class FieldValue extends DestinationBase implements ContainerFactoryPluginInterf
       $value = str_replace(array("\\r\\n", "\\r", "\\n"), "<br />", $value);
 
       // Encodes all characters in Value.
-      $currentValue[0][$key] = mb_convert_encoding($value, 'UTF-8', 'auto');
+      $encoding = mb_detect_encoding($value, mb_detect_order(), true);
+      if ($encoding == 'UTF-8') {
+        $currentValue[0][$key] = $value;
+      } elseif ($encoding) {
+        $currentValue[0][$key] = mb_convert_encoding($value, 'UTF-8', $encoding);
+      } else {
+        $currentValue[0][$key] = mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
+      }
 
       $entity->get($fieldName)->setValue($currentValue);
 
