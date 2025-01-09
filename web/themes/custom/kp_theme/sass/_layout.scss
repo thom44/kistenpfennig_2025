@@ -165,11 +165,13 @@ body.path-user {
   position: relative;
   img.btn-fly {
     position: absolute;
-    right: 75px;
+    left: 25px;
     top: -120px;
-    transform: rotate(10deg);
+    transform: rotate(-5deg);
     display: none;
     z-index: 10;
+    width: 142px;
+    height: auto;
     }
   img.btn-shp {
     position: absolute;
