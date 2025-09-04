@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb8a2a00527c52514bbf9b0e3253a33b",
+    "content-hash": "b837ac278fd6b01aa61b08385ceb6274",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4327,42 +4327,46 @@
         },
         {
             "name": "drupal/metatag",
-            "version": "1.26.0",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/metatag.git",
-                "reference": "8.x-1.26"
+                "reference": "2.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/metatag-8.x-1.26.zip",
-                "reference": "8.x-1.26",
-                "shasum": "afa4a37422748baa2f0c35b13961438668ef3be8"
+                "url": "https://ftp.drupal.org/files/projects/metatag-2.1.2.zip",
+                "reference": "2.1.2",
+                "shasum": "0ef6232c40a3b7a45ea40d033e124b9698941e9d"
             },
             "require": {
-                "drupal/core": "^9.3 || ^10",
-                "drupal/token": "^1.0"
+                "drupal/core": "^9.4 || ^10 || ^11",
+                "drupal/token": "^1.0",
+                "php": ">=8.0"
             },
             "require-dev": {
-                "drupal/devel": "^4.0 || ^5.0",
-                "drupal/hal": "^9 || ^1 || ^2",
+                "drupal/forum": "1.x-dev",
+                "drupal/hal": "^1 || ^2 || ^9",
                 "drupal/metatag_dc": "*",
                 "drupal/metatag_open_graph": "*",
-                "drupal/page_manager": "^4.0",
-                "drupal/panelizer": "^4.0",
+                "drupal/page_manager": "*",
                 "drupal/redirect": "^1.0",
-                "drupal/webprofiler": "^9 || ^10",
+                "ergebnis/composer-normalize": "*",
                 "mpyw/phpunit-patch-serializable-comparison": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.26",
-                    "datestamp": "1687856123",
+                    "version": "2.1.2",
+                    "datestamp": "1757006643",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "composer-normalize": {
+                    "indent-size": 2,
+                    "indent-style": "space"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5060,17 +5064,17 @@
         },
         {
             "name": "drupal/save_edit",
-            "version": "1.10.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/save_edit.git",
-                "reference": "8.x-1.10"
+                "reference": "2.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/save_edit-8.x-1.10.zip",
-                "reference": "8.x-1.10",
-                "shasum": "63fcd22402c73e275b8cbbbf79930be46c6d308b"
+                "url": "https://ftp.drupal.org/files/projects/save_edit-2.1.0.zip",
+                "reference": "2.1.0",
+                "shasum": "f9f2564b98d9459face86478c1a4e9e37334ef89"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
@@ -5078,8 +5082,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.10",
-                    "datestamp": "1752701683",
+                    "version": "2.1.0",
+                    "datestamp": "1752701893",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
