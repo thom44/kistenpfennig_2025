@@ -42,7 +42,6 @@
         "drupal/migrate_tools": "^6.0",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
-        "drupal/photoswipe": "^5.0",
         "drupal/redirect": "^1.7",
         "drupal/reroute_email": "^2.1",
         "drupal/save_edit": "^2.1",

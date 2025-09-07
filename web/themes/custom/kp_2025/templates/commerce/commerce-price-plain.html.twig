@@ -1,0 +1,15 @@
+{#
+/**
+ * @file
+ * Default theme implementation for displaying a price.
+ *
+ * Used by the 'commerce_price_plain' formatter.
+ * Available variables:
+ *   - number: The number.
+ *   - currency: The currency entity.
+ *
+ * @ingroup themeable
+ */
+#}
+<span class="price-value">{{ number|number_format(2, '.', ',') }} {{ currency.getSymbol }} </span>
+<span class="price-postfix">{{ 'inkl. MwSt'|t }}</span>
