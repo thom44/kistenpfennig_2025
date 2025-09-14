@@ -38,4 +38,17 @@ a.navbar-brand img {
   border-bottom: 2px solid #960018;
 }
 
+.views-field-field-header-image {
+  margin-bottom: 15px;
+}
+
+.views-field-field-bild-beschriftung .field-content {
+  padding-left: 15%;
+}
+.views-field-field-bild-beschriftung .field-content p {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 /*# sourceMappingURL=style.css.map */
