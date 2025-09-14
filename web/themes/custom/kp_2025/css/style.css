@@ -1,4 +1,41 @@
-/**
- * @file
- * Subtheme specific CSS.
- */
+@charset "UTF-8";
+a.navbar-brand img {
+  margin-top: 65px;
+  margin-bottom: 40px;
+  max-width: 220px;
+  height: auto;
+}
+
+#header .flexslider {
+  margin: 0;
+  border: none;
+}
+
+.region-over-the-top-right .menu--main {
+  margin-top: 132px;
+}
+.region-over-the-top-right .menu--main ul.navbar-nav {
+  display: flex;
+  flex-direction: row; /* überschreibt column */
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.region-over-the-top-right .menu--main ul.navbar-nav li {
+  flex: 1; /* optional: jeder gleich breit */
+  text-align: center;
+}
+.region-over-the-top-right .menu--main ul.navbar-nav li a.nav-link {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  padding: 0 0 3px 0;
+}
+.region-over-the-top-right .menu--main ul.navbar-nav li a.nav-link.active {
+  border-bottom: 2px solid #960018;
+}
+
+/*# sourceMappingURL=style.css.map */

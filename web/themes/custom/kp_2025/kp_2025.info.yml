@@ -7,15 +7,14 @@ base theme: bootstrap_barrio
 libraries:
   - kp_2025/bootstrap_cdn
   - kp_2025/global-styling
-  - kp_theme/jshelpers
 
 regions:
+  over_the_top_left: 'Over the top LEFT'
+  over_the_top_right: 'Over the top RIGHT'
   top_header: 'Top header'
-  top_header_form: 'Top header form'
   header: Header
   header_form: 'Header form'
   primary_menu: 'Primary menu'
-  secondary_menu: 'Secondary menu'
   page_top: 'Page top'
   page_bottom: 'Page bottom'
   highlighted: Highlighted

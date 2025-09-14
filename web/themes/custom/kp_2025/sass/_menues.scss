@@ -1,0 +1,31 @@
+
+@use 'colors';
+
+.region-over-the-top-right {
+  .menu--main {
+    margin-top: 132px;
+    ul.navbar-nav {
+      display: flex;
+      flex-direction: row; /* überschreibt column */
+      justify-content: space-between;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      li {
+        flex: 1; /* optional: jeder gleich breit */
+        text-align: center;
+        a.nav-link {
+          display: inline-block;
+          font-size: 1rem;
+          font-weight: bold;
+          color: black;
+          padding: 0 0 3px 0;
+          &.active {
+            border-bottom: 2px solid colors.$kp-rot;
+            }
+          }
+        }
+      }
+    }
+  }
