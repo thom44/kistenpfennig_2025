@@ -1,0 +1,79 @@
+@use 'colors';
+
+.views-field-field-header-image {
+  margin-bottom: 15px;
+  }
+
+.views-field-field-bild-beschriftung {
+  .field-content {
+    padding-left: 15%;
+    p {
+      color: #cccccc;
+      font-size: 0.9rem;
+      font-style: italic;
+      }
+    }
+  }
+
+.node .paragraph--type--area-50-50 {
+  position: relative;
+  .field--name-field-button-graphic,
+  .field--name-field-cartoon-graphic {
+    display: inline-block;
+    margin: 0;
+    position: absolute;
+    .field--type-image {
+      float: none;
+      margin: 0;
+      }
+    img {
+      margin: 0;
+      width: 100%;
+      height: auto;
+      }
+    }
+
+  .field--name-field-button-graphic {
+    width: 210px;
+    height: 210px;
+    top: calc(50% - 105px);
+    left: calc(50% - 105px);
+    z-index: 10;
+    }
+
+  .field--name-field-cartoon-graphic {
+    z-index: 11;
+    right: 0;
+    bottom: -150px;
+    }
+
+  .hell-blau-grau {
+    position: relative;
+    background-color: colors.$hell-blau-grau;
+    width: 100vw;
+    left: calc(-1 * (100vw - 100%) / 2);
+    .no-pad {
+      padding-right: 0;
+      }
+    .full-width-inner {
+      max-width: 1290px;
+      margin: auto;
+      position: relative;
+      }
+    }
+
+
+  .field--name-field-on-the-square-img.field--type-entity-reference {
+    margin: 0;
+    .field--type-image {
+      float: none;
+      margin: 0;
+      overflow: hidden;
+      img {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        }
+      }
+    }
+  }

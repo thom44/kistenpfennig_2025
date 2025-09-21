@@ -51,4 +51,64 @@ a.navbar-brand img {
   font-style: italic;
 }
 
+.node .paragraph--type--area-50-50 {
+  position: relative;
+}
+.node .paragraph--type--area-50-50 .field--name-field-button-graphic,
+.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic {
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+}
+.node .paragraph--type--area-50-50 .field--name-field-button-graphic .field--type-image,
+.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic .field--type-image {
+  float: none;
+  margin: 0;
+}
+.node .paragraph--type--area-50-50 .field--name-field-button-graphic img,
+.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+.node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+  width: 210px;
+  height: 210px;
+  top: calc(50% - 105px);
+  left: calc(50% - 105px);
+  z-index: 10;
+}
+.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic {
+  z-index: 11;
+  right: 0;
+  bottom: -150px;
+}
+.node .paragraph--type--area-50-50 .hell-blau-grau {
+  position: relative;
+  background-color: #C5C8DA;
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+}
+.node .paragraph--type--area-50-50 .hell-blau-grau .no-pad {
+  padding-right: 0;
+}
+.node .paragraph--type--area-50-50 .hell-blau-grau .full-width-inner {
+  max-width: 1290px;
+  margin: auto;
+  position: relative;
+}
+.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
+  margin: 0;
+}
+.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image {
+  float: none;
+  margin: 0;
+  overflow: hidden;
+}
+.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image img {
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
 /*# sourceMappingURL=style.css.map */
