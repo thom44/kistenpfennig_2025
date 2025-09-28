@@ -49,56 +49,11 @@
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
-
-    {% if paragraph.field_image_left_or_right.value == 'image_left' %}
-
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
-        {# Button-Grafik nur wenn vorhanden #}
-        {% if content.field_button_graphic is not empty %}
-          {{ content.field_button_graphic }}
-        {% endif %}
-        {# Cartoon-Grafik nur wenn vorhanden #}
-        {% if content.field_cartoon_graphic is not empty %}
-          {{ content.field_cartoon_graphic }}
-        {% endif %}
-
-        <div class="row">
-          {% if content.field_text_slogan is not empty %}
-            {{ content.field_text_slogan }}
-          {% endif %}
-          {% if content.field_on_the_square_img is not empty %}
-          <div class="col-md-6 no-pad">{{ content.field_on_the_square_img }}</div>
-          {% endif %}
-          <div class="col-md-6 no-pad">{{ content.field_bild_und_textinhalt }}</div>
-        </div>
-      </div>
-
-
-    {% elseif paragraph.field_image_left_or_right.value == 'image_right' %}
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
-
-      {# Button-Grafik nur wenn vorhanden #}
-      {% if content.field_button_graphic is not empty %}
-        {{ content.field_button_graphic }}
+      {% if paragraph.field_margin_or_not.value %}
+      <div class="textcntnt distance">{{ content }}</div>
+      {% else %}
+      <div class="textcntnt">{{ content }}</div>
       {% endif %}
-      {# Cartoon-Grafik nur wenn vorhanden #}
-      {% if content.field_cartoon_graphic is not empty %}
-        {{ content.field_cartoon_graphic }}
-      {% endif %}
-
-        {% if content.field_button_graphic is not empty %}
-          <div class="btn-graphic">
-            {{ content.field_button_graphic }}
-          </div>
-        {% endif %}
-
-        <div class="row">
-          <div class="col-md-6 no-pad">{{ content.field_bild_und_textinhalt }}</div>
-          <div class="col-md-6 no-pad">{{ content.field_on_the_square_img }}</div>
-        </div>
-      </div>
-    {% endif %}
-
     {% endblock %}
   </div>
 {% endblock paragraph %}

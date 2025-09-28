@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body {
+  font-size: 0.9rem;
+}
+
 a.navbar-brand img {
   margin-top: 65px;
   margin-bottom: 40px;
@@ -51,8 +55,62 @@ a.navbar-brand img {
   font-style: italic;
 }
 
+span.big {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 3rem;
+}
+span.big.red {
+  color: #960018;
+}
+span.big.black {
+  color: #000000;
+}
+span.big.itlc {
+  font-style: italic;
+}
+
+span.medium {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+span.medium.red {
+  color: #960018;
+}
+span.medium.itlc {
+  font-style: italic;
+}
+
+.career-wrapper {
+  margin-top: 70px;
+}
+.career-wrapper .graphic-left img,
+.career-wrapper .graphic-right img {
+  width: 240px;
+  height: auto;
+}
+.career-wrapper .graphic-right {
+  text-align: right;
+}
+.career-wrapper .graphic-right img {
+  transform: scaleX(-1);
+}
+.career-wrapper .cntnt {
+  text-align: center;
+}
+.career-wrapper a.career-btn {
+  background-color: #960018;
+  color: white;
+  font-size: 1.6rem;
+  padding: 0 30px 0 30px;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
 .node .paragraph--type--area-50-50 {
   position: relative;
+  margin-bottom: 70px;
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic,
 .node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic {
@@ -80,22 +138,22 @@ a.navbar-brand img {
 }
 .node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic {
   z-index: 11;
-  right: 0;
-  bottom: -150px;
+  right: 20px;
+  bottom: -130px;
+}
+.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic .field__item {
+  height: 360px;
+}
+.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic .field__item img {
+  max-height: 100%;
+  width: auto;
 }
 .node .paragraph--type--area-50-50 .hell-blau-grau {
   position: relative;
   background-color: #C5C8DA;
-  width: 100vw;
-  left: calc(-1 * (100vw - 100%) / 2);
 }
 .node .paragraph--type--area-50-50 .hell-blau-grau .no-pad {
   padding-right: 0;
-}
-.node .paragraph--type--area-50-50 .hell-blau-grau .full-width-inner {
-  max-width: 1290px;
-  margin: auto;
-  position: relative;
 }
 .node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
   margin: 0;
@@ -109,6 +167,123 @@ a.navbar-brand img {
   margin: 0;
   width: 100%;
   height: auto;
+}
+
+.node .paragraph--type--bild-oder-text {
+  position: relative;
+}
+.node .paragraph--type--bild-oder-text .field--type-image {
+  margin: 0;
+}
+.node .paragraph--type--bild-oder-text .field--type-entity-reference {
+  margin: 0;
+}
+.node .paragraph--type--bild-oder-text .field--name-field-button-graphic {
+  border: 1px solid blue;
+}
+.node .paragraph--type--bild-oder-text .field--name-field-button-graphic .field--type-image {
+  float: none;
+}
+.node .paragraph--type--bild-oder-text {
+  /*
+  .field--name-field-tile-text {
+    display: none;
+    }
+  .tile-wrapper:hover .field--name-field-media-image {
+    display: none;
+    }
+  .tile-wrapper:hover .field--name-field-tile-text {
+    display: block;
+    }
+  */
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover {
+  position: relative; /* wichtig für z-index */
+  display: inline-block; /* passt Größe automatisch an */
+  cursor: pointer;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-media-image,
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
+  transition: opacity 0.4s ease;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-media-image {
+  display: block;
+  opacity: 1;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
+  position: absolute; /* Text überlagert Bild */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 306px;
+  margin-bottom: 1em;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+  background-color: black;
+  color: white;
+  padding: 40px 20px 0 20px;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .top {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .bread {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .txt {
+  font-size: 0.8rem;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-media-image {
+  opacity: 0;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-tile-text,
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-btn-small .field--name-field-media-image {
+  opacity: 1;
+}
+.node .paragraph--type--bild-oder-text .field--name-field-btn-small .field__item {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: 11;
+  width: 80px;
+  height: 80px;
+}
+.node .paragraph--type--bild-oder-text .field--name-field-btn-small .field__item img {
+  margin: 0;
+  width: 100%;
+}
+
+.paragraph--type--textinhalt p.narrow,
+.paragraph--type--area-50-50 p.narrow {
+  max-width: 335px;
+  margin: auto;
+}
+.paragraph--type--textinhalt p.slogan,
+.paragraph--type--area-50-50 p.slogan {
+  text-align: center;
+  padding-top: 20%;
+}
+
+.paragraph--type--textinhalt .textcntnt.distance {
+  margin-bottom: 70px;
+}
+
+.paragraph--type--divide {
+  margin-top: 60px;
+  margin-bottom: 70px;
+  position: relative;
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+  text-indent: -9999px;
+  background-image: url("../images/trenner-karomuster.png");
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

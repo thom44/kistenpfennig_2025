@@ -50,55 +50,22 @@
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
 
-    {% if paragraph.field_image_left_or_right.value == 'image_left' %}
-
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
-        {# Button-Grafik nur wenn vorhanden #}
-        {% if content.field_button_graphic is not empty %}
-          {{ content.field_button_graphic }}
-        {% endif %}
-        {# Cartoon-Grafik nur wenn vorhanden #}
-        {% if content.field_cartoon_graphic is not empty %}
-          {{ content.field_cartoon_graphic }}
-        {% endif %}
-
-        <div class="row">
-          {% if content.field_text_slogan is not empty %}
-            {{ content.field_text_slogan }}
-          {% endif %}
-          {% if content.field_on_the_square_img is not empty %}
-          <div class="col-md-6 no-pad">{{ content.field_on_the_square_img }}</div>
-          {% endif %}
-          <div class="col-md-6 no-pad">{{ content.field_bild_und_textinhalt }}</div>
-        </div>
-      </div>
-
-
-    {% elseif paragraph.field_image_left_or_right.value == 'image_right' %}
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
-
-      {# Button-Grafik nur wenn vorhanden #}
-      {% if content.field_button_graphic is not empty %}
-        {{ content.field_button_graphic }}
+    {% if paragraph.field_add_hover_effect.value %}
+      <div class="tile-wrapper add-hover">
+      {% if content.field_btn_small is not empty %}
+        {{ content.field_btn_small }}
       {% endif %}
-      {# Cartoon-Grafik nur wenn vorhanden #}
-      {% if content.field_cartoon_graphic is not empty %}
-        {{ content.field_cartoon_graphic }}
-      {% endif %}
-
-        {% if content.field_button_graphic is not empty %}
-          <div class="btn-graphic">
-            {{ content.field_button_graphic }}
-          </div>
-        {% endif %}
-
-        <div class="row">
-          <div class="col-md-6 no-pad">{{ content.field_bild_und_textinhalt }}</div>
-          <div class="col-md-6 no-pad">{{ content.field_on_the_square_img }}</div>
-        </div>
-      </div>
+    {% else %}
+      <div class="tile-wrapper">
     {% endif %}
 
+    {% if content.field_tile_image is not empty %}
+      {{ content.field_tile_image }}
+    {% endif %}
+    {% if content.field_tile_text is not empty %}
+      {{ content.field_tile_text }}
+    {% endif %}
+    </div>
     {% endblock %}
   </div>
 {% endblock paragraph %}

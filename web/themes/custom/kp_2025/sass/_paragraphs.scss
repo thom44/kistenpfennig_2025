@@ -1,0 +1,180 @@
+@use 'colors';
+
+.node .paragraph--type--area-50-50 {
+  position: relative;
+  margin-bottom: 70px;
+  .field--name-field-button-graphic,
+  .field--name-field-cartoon-graphic {
+    display: inline-block;
+    margin: 0;
+    position: absolute;
+    .field--type-image {
+      float: none;
+      margin: 0;
+      }
+    img {
+      margin: 0;
+      width: 100%;
+      height: auto;
+      }
+    }
+  .field--name-field-button-graphic {
+    width: 210px;
+    height: 210px;
+    top: calc(50% - 105px);
+    left: calc(50% - 105px);
+    z-index: 10;
+    }
+  .field--name-field-cartoon-graphic {
+    z-index: 11;
+    right: 20px;
+    bottom: -130px;
+    .field__item {
+      height: 360px;
+      img {
+        max-height: 100%;
+        width: auto;
+        }
+      }
+    }
+  .hell-blau-grau {
+    position: relative;
+    background-color: colors.$hell-blau-grau;
+    .no-pad {
+      padding-right: 0;
+      }
+    }
+  .field--name-field-on-the-square-img.field--type-entity-reference {
+    margin: 0;
+    .field--type-image {
+      float: none;
+      margin: 0;
+      overflow: hidden;
+      img {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        }
+      }
+    }
+  }
+
+.node .paragraph--type--bild-oder-text {
+  position: relative;
+  .field--type-image {
+    margin: 0;
+    }
+  .field--type-entity-reference {
+    margin: 0;
+    }
+  .field--name-field-button-graphic {
+    border: 1px solid blue;
+    .field--type-image {
+      float: none;
+      }
+    }
+  /*
+  .field--name-field-tile-text {
+    display: none;
+    }
+  .tile-wrapper:hover .field--name-field-media-image {
+    display: none;
+    }
+  .tile-wrapper:hover .field--name-field-tile-text {
+    display: block;
+    }
+  */
+  .tile-wrapper.add-hover {
+    position: relative;       /* wichtig für z-index */
+    display: inline-block;    /* passt Größe automatisch an */
+    cursor: pointer;
+    }
+  .tile-wrapper.add-hover .field--name-field-media-image,
+  .tile-wrapper.add-hover .field--name-field-tile-text {
+    transition: opacity 0.4s ease;
+    }
+  .tile-wrapper.add-hover .field--name-field-media-image {
+    display: block;
+    opacity: 1;
+    }
+  .tile-wrapper.add-hover .field--name-field-tile-text {
+    position: absolute;       /* Text überlagert Bild */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 306px;
+    margin-bottom: 1em;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    padding: 40px 20px 0 20px;
+    .top {
+      font-size: 1.1rem;
+      font-weight: 300;
+      }
+    .bread {
+      font-size: 1.5rem;
+      font-weight: 600;
+      }
+    .txt {
+      font-size: 0.8rem;
+      }
+    }
+  .tile-wrapper.add-hover:hover .field--name-field-media-image {
+    opacity: 0;
+    }
+  .tile-wrapper.add-hover:hover .field--name-field-tile-text,
+  .tile-wrapper.add-hover:hover .field--name-field-btn-small .field--name-field-media-image  {
+    opacity: 1;
+    }
+  .field--name-field-btn-small {
+    .field__item {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      z-index: 11;
+      width: 80px;
+      height: 80px;
+      img {
+        margin: 0;
+        width: 100%;
+        }
+      }
+    }
+  }
+
+.paragraph--type--textinhalt,
+.paragraph--type--area-50-50 {
+  p.narrow {
+    max-width: 335px;
+    margin: auto;
+    }
+  p.slogan {
+    text-align: center;
+    padding-top: 20%;
+    }
+  }
+
+.paragraph--type--textinhalt {
+  .textcntnt.distance {
+    margin-bottom: 70px;
+    }
+  }
+
+.paragraph--type--divide {
+  margin-top: 60px;
+  margin-bottom: 70px;
+  position: relative;
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+  text-indent: -9999px;
+  background-image: url('../images/trenner-karomuster.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 100px;
+  }
