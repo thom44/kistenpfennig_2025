@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-family: "Jost";
 }
 
 a.navbar-brand img {
@@ -67,7 +68,8 @@ span.big.black {
   color: #000000;
 }
 span.big.itlc {
-  font-style: italic;
+  font-family: "Fraunces 72pt";
+  /* font-style: italic; */
 }
 
 span.medium {
@@ -78,7 +80,7 @@ span.medium.red {
   color: #960018;
 }
 span.medium.itlc {
-  font-style: italic;
+  font-family: "Fraunces 72pt";
 }
 
 .career-wrapper {
@@ -108,23 +110,31 @@ span.medium.itlc {
   margin-top: 20px;
 }
 
+.node .paragraph--type--area-50-50 .img-right-wrap {
+  max-width: 637px;
+}
 .node .paragraph--type--area-50-50 {
-  position: relative;
   margin-bottom: 70px;
 }
+.node .paragraph--type--area-50-50 .image-text {
+  position: relative;
+}
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic,
-.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic {
+.node .paragraph--type--area-50-50 .toon-left,
+.node .paragraph--type--area-50-50 .toon-right {
   display: inline-block;
   margin: 0;
   position: absolute;
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic .field--type-image,
-.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic .field--type-image {
+.node .paragraph--type--area-50-50 .toon-left .field--type-image,
+.node .paragraph--type--area-50-50 .toon-right .field--type-image {
   float: none;
   margin: 0;
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic img,
-.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic img {
+.node .paragraph--type--area-50-50 .toon-left img,
+.node .paragraph--type--area-50-50 .toon-right img {
   margin: 0;
   width: 100%;
   height: auto;
@@ -136,24 +146,40 @@ span.medium.itlc {
   left: calc(50% - 105px);
   z-index: 10;
 }
-.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic {
+.node .paragraph--type--area-50-50 .toon-right,
+.node .paragraph--type--area-50-50 .toon-left {
   z-index: 11;
-  right: 20px;
-  bottom: -130px;
 }
-.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic .field__item {
+.node .paragraph--type--area-50-50 .toon-right .field__item,
+.node .paragraph--type--area-50-50 .toon-left .field__item {
   height: 360px;
 }
-.node .paragraph--type--area-50-50 .field--name-field-cartoon-graphic .field__item img {
+.node .paragraph--type--area-50-50 .toon-right .field__item img,
+.node .paragraph--type--area-50-50 .toon-left .field__item img {
   max-height: 100%;
   width: auto;
 }
-.node .paragraph--type--area-50-50 .hell-blau-grau {
+.node .paragraph--type--area-50-50 .toon-right {
+  right: 20px;
+  bottom: -130px;
+}
+.node .paragraph--type--area-50-50 .toon-left {
+  left: 10px;
+  bottom: -130px;
+}
+.node .paragraph--type--area-50-50 .hell-blau-grau,
+.node .paragraph--type--area-50-50 .intensiv-gruen {
   position: relative;
+}
+.node .paragraph--type--area-50-50 .hell-blau-grau .no-pad,
+.node .paragraph--type--area-50-50 .intensiv-gruen .no-pad {
+  padding-right: 0;
+}
+.node .paragraph--type--area-50-50 .hell-blau-grau {
   background-color: #C5C8DA;
 }
-.node .paragraph--type--area-50-50 .hell-blau-grau .no-pad {
-  padding-right: 0;
+.node .paragraph--type--area-50-50 .intensiv-gruen {
+  background-color: #BFD563;
 }
 .node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
   margin: 0;
@@ -261,12 +287,12 @@ span.medium.itlc {
 .paragraph--type--textinhalt p.narrow,
 .paragraph--type--area-50-50 p.narrow {
   max-width: 335px;
-  margin: auto;
+  margin: 0 auto 1rem auto;
 }
 .paragraph--type--textinhalt p.slogan,
 .paragraph--type--area-50-50 p.slogan {
   text-align: center;
-  padding-top: 20%;
+  padding-top: 16%;
 }
 
 .paragraph--type--textinhalt .textcntnt.distance {

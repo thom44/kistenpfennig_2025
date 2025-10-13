@@ -1,10 +1,16 @@
 @use 'colors';
 
 .node .paragraph--type--area-50-50 {
-  position: relative;
+  .img-right-wrap {
+    max-width: 637px;
+    }
   margin-bottom: 70px;
+  .image-text {
+    position: relative;
+    }
   .field--name-field-button-graphic,
-  .field--name-field-cartoon-graphic {
+  .toon-left,
+  .toon-right {
     display: inline-block;
     margin: 0;
     position: absolute;
@@ -25,10 +31,10 @@
     left: calc(50% - 105px);
     z-index: 10;
     }
-  .field--name-field-cartoon-graphic {
+
+  .toon-right,
+  .toon-left {
     z-index: 11;
-    right: 20px;
-    bottom: -130px;
     .field__item {
       height: 360px;
       img {
@@ -37,13 +43,32 @@
         }
       }
     }
-  .hell-blau-grau {
+
+  .toon-right {
+    right: 20px;
+    bottom: -130px;
+    }
+
+  .toon-left {
+    left: 10px;
+    bottom: -130px;
+    }
+
+  .hell-blau-grau,
+  .intensiv-gruen {
     position: relative;
-    background-color: colors.$hell-blau-grau;
     .no-pad {
       padding-right: 0;
       }
     }
+
+  .hell-blau-grau {
+    background-color: colors.$hell-blau-grau;
+    }
+  .intensiv-gruen {
+    background-color: colors.$intensiv-gruen;
+    }
+
   .field--name-field-on-the-square-img.field--type-entity-reference {
     margin: 0;
     .field--type-image {
@@ -152,11 +177,11 @@
 .paragraph--type--area-50-50 {
   p.narrow {
     max-width: 335px;
-    margin: auto;
+    margin: 0 auto 1rem auto;
     }
   p.slogan {
     text-align: center;
-    padding-top: 20%;
+    padding-top: 16%;
     }
   }
 

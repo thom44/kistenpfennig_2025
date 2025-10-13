@@ -26,7 +26,8 @@ span.big {
     color: #000000;
     }
   &.itlc {
-    font-style: italic;
+    font-family: 'Fraunces 72pt';
+    /* font-style: italic; */
     }
   }
 
@@ -37,7 +38,7 @@ span.medium {
     color: colors.$kp-rot;
     }
   &.itlc {
-    font-style: italic;
+    font-family: 'Fraunces 72pt';
     }
   }
 
