@@ -1,0 +1,66 @@
+
+@media screen and (max-width: 1399px) {
+  .node .paragraph--type--area-50-50 .toon-right .field__item,
+  .node .paragraph--type--area-50-50 .toon-left .field__item {
+    height: 300px;
+    }
+  }
+
+@media screen and (max-width: 1199px) {
+  .node .paragraph--type--area-50-50 .toon-right,
+  .node .paragraph--type--area-50-50 .toon-left {
+    bottom: -108px;
+    .field__item {
+      height: 200px;
+      }
+    }
+  .field--name-field-bild-und-textinhalt p.slogan {
+    padding-top: 12%;
+    span.big {
+      font-size: 2.7rem;
+      line-height: 2.7rem;
+      }
+    }
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+    width: 160px;
+    height: 160px;
+    top: calc(50% - 80px);
+    left: calc(50% - 80px);
+    }
+  .paragraph--type--area-50-50 p.narrow {
+    max-width: 300px;
+    font-size: 0.9rem;
+    }
+  }
+
+@media screen and (max-width: 991px) {
+  .node .paragraph--type--area-50-50 .intensiv-gruen .no-pad {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    }
+  .intensiv-gruen {
+    padding-bottom: 2rem;
+    p.slogan {
+      text-align: left;
+      padding-left: 80px;
+      }
+    p.narrow {
+      max-width: 290px;
+      margin: 0 0 0 80px;
+      }
+    }
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+    width: 100px;
+    height: 100px;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    }
+  }
+
+@media screen and (max-width: 768px) {
+  .node .paragraph--type--area-50-50 .hell-blau-grau .no-pad {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    }
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+    top: calc(50% - 80px);
+    }
+  }
