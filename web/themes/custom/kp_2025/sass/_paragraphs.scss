@@ -57,7 +57,8 @@
     }
 
   .hell-blau-grau,
-  .intensiv-gruen {
+  .intensiv-gruen,
+  .pink {
     position: relative;
     /*
     .no-pad {
@@ -71,6 +72,9 @@
     }
   .intensiv-gruen {
     background-color: colors.$intensiv-gruen;
+    }
+  .pink {
+    background-color: colors.$pink;
     }
 
   .field--name-field-on-the-square-img.field--type-entity-reference {

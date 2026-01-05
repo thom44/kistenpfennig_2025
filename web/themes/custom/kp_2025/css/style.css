@@ -171,7 +171,8 @@ span.medium.itlc {
   bottom: -130px;
 }
 .node .paragraph--type--area-50-50 .hell-blau-grau,
-.node .paragraph--type--area-50-50 .intensiv-gruen {
+.node .paragraph--type--area-50-50 .intensiv-gruen,
+.node .paragraph--type--area-50-50 .pink {
   position: relative;
   /*
   .no-pad {
@@ -184,6 +185,9 @@ span.medium.itlc {
 }
 .node .paragraph--type--area-50-50 .intensiv-gruen {
   background-color: #BFD563;
+}
+.node .paragraph--type--area-50-50 .pink {
+  background-color: #CDA3BC;
 }
 .node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
   margin: 0;
