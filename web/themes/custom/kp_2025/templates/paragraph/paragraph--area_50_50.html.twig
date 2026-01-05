@@ -53,23 +53,28 @@
     {% if paragraph.field_image_left_or_right.value == 'image_left' %}
 
       <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
-        {# Button-Grafik nur wenn vorhanden #}
-        {% if content.field_button_graphic is not empty %}
-          {{ content.field_button_graphic }}
-        {% endif %}
+
 
         <div class="row">
           {% if content.field_text_slogan is not empty %}
             {{ content.field_text_slogan }}
           {% endif %}
           {% if content.field_on_the_square_img is not empty %}
-          <div class="col-md-6 no-pad">{{ content.field_on_the_square_img }}</div>
+          <div class="col-md-6 no-pad">
+            {{ content.field_on_the_square_img }}
+            {# Button-Grafik nur wenn vorhanden #}
+            {% set graphic = content.field_button_graphic|render %}
+            {% if graphic|striptags|trim %}
+            {{ graphic }}
+            {% endif %}
+          </div>
           {% endif %}
           <div class="col-md-6 no-pad image-text">
             {{ content.field_bild_und_textinhalt }}
             {# Cartoon-Grafik nur wenn vorhanden #}
-            {% if content.field_cartoon_graphic is not empty %}
-              <div class="toon-right">{{ content.field_cartoon_graphic }}</div>
+            {% set graphic = content.field_cartoon_graphic|render %}
+            {% if graphic|striptags|trim %}
+              <div class="toon-right">{{ graphic }}</div>
             {% endif %}
           </div>
         </div>
@@ -78,21 +83,28 @@
 
     {% elseif paragraph.field_image_left_or_right.value == 'image_right' %}
       <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
-      {# Button-Grafik nur wenn vorhanden #}
-      {% if content.field_button_graphic is not empty %}
-        {{ content.field_button_graphic }}
-      {% endif %}
 
         <div class="row">
           <div class="col-md-6 no-pad image-text">
             {{ content.field_bild_und_textinhalt }}
-            {# Cartoon-Grafik nur wenn vorhanden #}
-            {% if content.field_cartoon_graphic is not empty %}
-              <div class="toon-left">{{ content.field_cartoon_graphic }}</div>
+            {# Button-Grafik nur wenn vorhanden #}
+            {% set graphic = content.field_button_graphic|render %}
+            {% if graphic|striptags|trim %}
+            {{ graphic }}
             {% endif %}
+
+            {# Cartoon-Grafik nur wenn vorhanden #}
+            {% set graphic = content.field_cartoon_graphic|render %}
+            {% if graphic|striptags|trim %}
+              <div class="toon-left">{{ graphic }}</div>
+            {% endif %}
+
+
           </div>
           <div class="col-md-6 no-pad">
-            <div class="img-right-wrap">{{ content.field_on_the_square_img }}</div>
+            <div class="img-right-wrap">
+              {{ content.field_on_the_square_img }}
+            </div>
           </div>
         </div>
       </div>

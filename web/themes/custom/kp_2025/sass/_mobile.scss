@@ -2,7 +2,7 @@
 @media screen and (max-width: 1399px) {
   .node .paragraph--type--area-50-50 .toon-right .field__item,
   .node .paragraph--type--area-50-50 .toon-left .field__item {
-    height: 300px;
+    height: 280px;
     }
   }
 
@@ -15,10 +15,10 @@
       }
     }
   .field--name-field-bild-und-textinhalt p.slogan {
-    padding-top: 12%;
+    padding-top: 30px;
     span.big {
-      font-size: 2.7rem;
-      line-height: 2.7rem;
+      font-size: 2.5rem;
+      line-height: 2.5rem;
       }
     }
   .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
@@ -41,8 +41,18 @@
   .node .paragraph--type--area-50-50 .field--name-field-button-graphic img {
     width: 95%;
     }
+
+  .paragraph--type--textinhalt {
+    p.slogan {
+      padding-top: 30px;
+      }
+    .textcntnt.distance {
+      margin-bottom: 30px;
+      }
+    }
+
   .field--name-field-bild-und-textinhalt p.slogan {
-    padding-top: 8%;
+    padding-top: 30px;
     span.big {
       font-size: 2rem;
       line-height: 2rem;
@@ -72,10 +82,31 @@
   .career-wrapper .graphic-right img {
     max-width: 100%;
     }
+  span.big {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    }
+  span.medium {
+    font-size: 2.2rem;
+    line-height: 2.3rem;
+    }
   }
 
 @media screen and (max-width: 768px) {
+  .hell-blau-grau {
+    text-align: center;
+    .field--name-field-bild-und-textinhalt {
+      text-align: left;
+      }
+    }
+  .node .paragraph--type--area-50-50 .toon-right {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    }
   .intensiv-gruen {
+    padding-top: 30px;
     padding-bottom: 0;
     p.slogan {
       padding-left: 15px;
@@ -85,6 +116,10 @@
       margin: auto;
       padding: 15px;
       }
+    }
+  .field--name-field-bild-und-textinhalt p.slogan {
+    margin-top: 25px;
+    padding-top: 0;
     }
   .node .paragraph--type--area-50-50 .toon-left {
     position: relative;
@@ -96,13 +131,25 @@
       margin: auto;
       }
     }
+  .node .paragraph--type--bild-oder-text .field--name-field-btn-small .field__item {
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    }
   .node .paragraph--type--area-50-50 .img-right-wrap {
     max-width: none;
     }
-  .node .paragraph--type--area-50-50 .hell-blau-grau .no-pad {
-    padding-right: calc(var(--bs-gutter-x) * .5);
-    }
   .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
-    top: calc(50% - 80px);
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    margin-top: 25px;
+    }
+  }
+
+@media screen and (max-width: 576px) {
+  .hide {
+    display: none;
     }
   }
