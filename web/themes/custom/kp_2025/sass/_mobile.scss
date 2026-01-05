@@ -34,6 +34,20 @@
   }
 
 @media screen and (max-width: 991px) {
+  .node .paragraph--type--area-50-50 .toon-right .field__item,
+  .node .paragraph--type--area-50-50 .toon-left .field__item {
+    height: 180px;
+    }
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic img {
+    width: 95%;
+    }
+  .field--name-field-bild-und-textinhalt p.slogan {
+    padding-top: 8%;
+    span.big {
+      font-size: 2rem;
+      line-height: 2rem;
+      }
+    }
   .node .paragraph--type--area-50-50 .intensiv-gruen .no-pad {
     padding-right: calc(var(--bs-gutter-x) * .5);
     }
@@ -54,9 +68,37 @@
     top: calc(50% - 50px);
     left: calc(50% - 50px);
     }
+  .career-wrapper .graphic-left img,
+  .career-wrapper .graphic-right img {
+    max-width: 100%;
+    }
   }
 
 @media screen and (max-width: 768px) {
+  .intensiv-gruen {
+    padding-bottom: 0;
+    p.slogan {
+      padding-left: 15px;
+      }
+    p.narrow {
+      max-width: none;
+      margin: auto;
+      padding: 15px;
+      }
+    }
+  .node .paragraph--type--area-50-50 .toon-left {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    text-align: center;
+    display: block;
+    img {
+      margin: auto;
+      }
+    }
+  .node .paragraph--type--area-50-50 .img-right-wrap {
+    max-width: none;
+    }
   .node .paragraph--type--area-50-50 .hell-blau-grau .no-pad {
     padding-right: calc(var(--bs-gutter-x) * .5);
     }
