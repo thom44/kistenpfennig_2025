@@ -1,4 +1,6 @@
 
+@use 'colors';
+
 body {
   font-size: 1rem;
   font-family: 'Jost';
@@ -18,4 +20,45 @@ a.navbar-brand {
     margin: 0;
     border: none;
     }
+  }
+
+.site-footer {
+  background-color: white;
+  padding-bottom: 0;
+  }
+
+.site-footer__bottom {
+  border-top: 1px solid colors.$kp-rot;
+  background-color: white;
+  p,
+  .content a {
+    color: black;
+    text-decoration: none;
+    }
+  p.icns {
+    img {
+      width: 25px;
+      height: auto;
+      float: left;
+      margin-right: 15px;
+      }
+    &::after {
+      clear: both;
+      display: table;
+      content: '';
+      }
+    }
+  }
+
+.rock-bottom {
+  margin-top: 60px;
+  /*
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+  */
+  text-indent: -9999px;
+  background-image: url(../images/trenner-karomuster.png);
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 100px;
   }

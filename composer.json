@@ -37,6 +37,7 @@
         "drupal/flexslider": "^3.0@alpha",
         "drupal/jquery_ui_accordion": "^2.0",
         "drupal/leaflet": "^10.2",
+        "drupal/media_entity_instagram": "^4.0",
         "drupal/menu_link_attributes": "^1.2",
         "drupal/metatag": "^2.1",
         "drupal/migrate_tools": "^6.0",

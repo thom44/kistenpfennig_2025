@@ -61,13 +61,38 @@ span.medium {
   .cntnt {
     text-align: center;
     }
-  a.career-btn {
+  }
+
+a.career-btn {
+  color: white;
+  font-size: 1.6rem;
+  padding: 0 30px 0 30px;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 20px;
+  &.rot {
     background-color: colors.$kp-rot;
-    color: white;
-    font-size: 1.6rem;
-    padding: 0 30px 0 30px;
-    display: inline-block;
-    text-decoration: none;
-    margin-top: 20px;
+    }
+  &.schwarz {
+    background-color: black;
     }
   }
+
+.insta-wrapper {
+  .graphic-left,
+  .graphic-right {
+    text-align: center;
+    }
+  .graphic-left img {
+      width: 180px;
+      height: auto;
+      position: relative;
+      top: calc(50% - 90px);
+      }
+  .graphic-right img {
+      width: 270px;
+      height: auto;
+      position: relative;
+      top: calc(50% - 160px);
+      }
+    }

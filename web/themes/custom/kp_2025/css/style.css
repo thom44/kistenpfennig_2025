@@ -16,6 +16,45 @@ a.navbar-brand img {
   border: none;
 }
 
+.site-footer {
+  background-color: white;
+  padding-bottom: 0;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid #960018;
+  background-color: white;
+}
+.site-footer__bottom p,
+.site-footer__bottom .content a {
+  color: black;
+  text-decoration: none;
+}
+.site-footer__bottom p.icns img {
+  width: 25px;
+  height: auto;
+  float: left;
+  margin-right: 15px;
+}
+.site-footer__bottom p.icns::after {
+  clear: both;
+  display: table;
+  content: "";
+}
+
+.rock-bottom {
+  margin-top: 60px;
+  /*
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+  */
+  text-indent: -9999px;
+  background-image: url(../images/trenner-karomuster.png);
+  background-repeat: repeat-x;
+  background-size: contain;
+  height: 100px;
+}
+
 .region-over-the-top-right .menu--main {
   margin-top: 132px;
 }
@@ -101,14 +140,37 @@ span.medium.itlc {
 .career-wrapper .cntnt {
   text-align: center;
 }
-.career-wrapper a.career-btn {
-  background-color: #960018;
+
+a.career-btn {
   color: white;
   font-size: 1.6rem;
   padding: 0 30px 0 30px;
   display: inline-block;
   text-decoration: none;
   margin-top: 20px;
+}
+a.career-btn.rot {
+  background-color: #960018;
+}
+a.career-btn.schwarz {
+  background-color: black;
+}
+
+.insta-wrapper .graphic-left,
+.insta-wrapper .graphic-right {
+  text-align: center;
+}
+.insta-wrapper .graphic-left img {
+  width: 180px;
+  height: auto;
+  position: relative;
+  top: calc(50% - 90px);
+}
+.insta-wrapper .graphic-right img {
+  width: 270px;
+  height: auto;
+  position: relative;
+  top: calc(50% - 160px);
 }
 
 .node .paragraph--type--area-50-50 .img-right-wrap {
@@ -352,6 +414,14 @@ span.medium.itlc {
     max-width: 300px;
     font-size: 0.9rem;
   }
+  .insta-wrapper .graphic-left img {
+    width: 120px;
+    top: calc(50% - 60px);
+  }
+  .insta-wrapper .graphic-right img {
+    width: 200px;
+    top: calc(50% - 130px);
+  }
 }
 @media screen and (max-width: 991px) {
   .node .paragraph--type--area-50-50 .toon-right .field__item,
@@ -406,19 +476,23 @@ span.medium.itlc {
     font-size: 2.2rem;
     line-height: 2.3rem;
   }
+  .insta-wrapper .graphic-left img {
+    width: 90px;
+    top: calc(50% - 45px);
+  }
+  .insta-wrapper .graphic-right img {
+    width: 160px;
+    top: calc(50% - 100px);
+  }
 }
 @media screen and (max-width: 768px) {
-  .hell-blau-grau {
+  .hell-blau-grau,
+  .pink {
     text-align: center;
   }
-  .hell-blau-grau .field--name-field-bild-und-textinhalt {
+  .hell-blau-grau .field--name-field-bild-und-textinhalt,
+  .pink .field--name-field-bild-und-textinhalt {
     text-align: left;
-  }
-  .node .paragraph--type--area-50-50 .toon-right {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
   }
   .intensiv-gruen {
     padding-top: 30px;
@@ -436,14 +510,17 @@ span.medium.itlc {
     margin-top: 25px;
     padding-top: 0;
   }
-  .node .paragraph--type--area-50-50 .toon-left {
+  .node .paragraph--type--area-50-50 .toon-left,
+  .node .paragraph--type--area-50-50 .toon-right {
     position: relative;
     top: auto;
     bottom: auto;
+    right: auto;
     text-align: center;
     display: block;
   }
-  .node .paragraph--type--area-50-50 .toon-left img {
+  .node .paragraph--type--area-50-50 .toon-left img,
+  .node .paragraph--type--area-50-50 .toon-right img {
     margin: auto;
   }
   .node .paragraph--type--bild-oder-text .field--name-field-btn-small .field__item {
@@ -460,6 +537,14 @@ span.medium.itlc {
     left: auto;
     bottom: auto;
     margin-top: 25px;
+  }
+  .insta-wrapper .graphic-left img {
+    width: 80px;
+    top: calc(50% - 40px);
+  }
+  .insta-wrapper .graphic-right img {
+    width: 140px;
+    top: calc(50% - 90px);
   }
 }
 @media screen and (max-width: 576px) {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64d9c2ef3704f97c7e0e883c79e8bda0",
+    "content-hash": "62472177e3a944a4cd2622b8666e5eaa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4263,6 +4263,77 @@
             "homepage": "https://www.drupal.org/project/symfony_mailer",
             "support": {
                 "source": "https://git.drupalcode.org/project/symfony_mailer"
+            }
+        },
+        {
+            "name": "drupal/media_entity_instagram",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_entity_instagram.git",
+                "reference": "4.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_entity_instagram-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "32188917e386cbb11c30afdfde8f13a17eb2f0f8"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.0",
+                    "datestamp": "1755775178",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Janez Urevc (slashrsm)",
+                    "homepage": "https://www.drupal.org/u/slashrsm",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Christian Fritsch (chr.fritsch)",
+                    "homepage": "https://www.drupal.org/u/chrfritsch",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Malina Randrianavony (designesse)",
+                    "homepage": "https://www.drupal.org/u/designesse",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Drupal Media Team",
+                    "homepage": "https://www.drupal.org/u/drupal-media-team",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Primoz Hmeljak (primsi)",
+                    "homepage": "https://www.drupal.org/u/primsi",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Media Entity Instagram provider.",
+            "homepage": "http://drupal.org/project/media_entity_instagram",
+            "keywords": [
+                "Drupal",
+                "Instagram",
+                "Media"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_entity_instagram",
+                "issues": "https://www.drupal.org/project/issues/media_entity_instagram"
             }
         },
         {
