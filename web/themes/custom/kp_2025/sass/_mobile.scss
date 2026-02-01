@@ -44,6 +44,14 @@
   }
 
 @media screen and (max-width: 991px) {
+  .region-over-the-top-right .menu--main {
+    margin-top: 0;
+    margin-bottom: 25px;
+    }
+  a.navbar-brand {
+    display: inline-block;
+    text-align: center;
+    }
   .node .paragraph--type--area-50-50 .toon-right .field__item,
   .node .paragraph--type--area-50-50 .toon-left .field__item {
     height: 180px;
@@ -113,6 +121,17 @@
   }
 
 @media screen and (max-width: 768px) {
+
+  .region-over-the-top-right .menu--main ul.navbar-nav,
+  .navigation.menu--main {
+    display: none;
+    }
+  .responsive-menu-toggle-wrapper.responsive-menu-toggle {
+    display: block;
+    }
+  a.navbar-brand img {
+    margin-bottom: 10px;
+    }
   .hell-blau-grau,
   .pink {
     text-align: center;
@@ -172,6 +191,10 @@
       width: 140px;
       top: calc(50% - 90px);
       }
+    }
+  .site-footer__bottom .block.block-block-content {
+    padding-left: 15px;
+    padding-right: 15px;
     }
   }
 

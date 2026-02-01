@@ -35,7 +35,5 @@ color.preview:
 jshelpers:
   js:
     js/jshelpers.js: {}
-    js/jquery.justifiedGallery.min.js: {}
-    js/justifyConfig.js: {}
   dependencies:
     - core/jquery

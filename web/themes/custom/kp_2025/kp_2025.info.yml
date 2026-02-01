@@ -7,6 +7,7 @@ base theme: bootstrap_barrio
 libraries:
   - kp_2025/bootstrap_cdn
   - kp_2025/global-styling
+  - kp_2025/jshelpers
 
 regions:
   over_the_top_left: 'Over the top LEFT'

@@ -41,6 +41,10 @@ a.navbar-brand img {
   display: table;
   content: "";
 }
+.site-footer__bottom p img {
+  max-width: 100%;
+  height: auto;
+}
 
 .rock-bottom {
   margin-top: 60px;
@@ -80,6 +84,10 @@ a.navbar-brand img {
 }
 .region-over-the-top-right .menu--main ul.navbar-nav li a.nav-link.active {
   border-bottom: 2px solid #960018;
+}
+
+.responsive-menu-toggle-icon:before, .responsive-menu-toggle-icon:after, .responsive-menu-toggle-icon span.icon {
+  background-color: black;
 }
 
 .views-field-field-header-image {
@@ -424,6 +432,14 @@ a.career-btn.schwarz {
   }
 }
 @media screen and (max-width: 991px) {
+  .region-over-the-top-right .menu--main {
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+  a.navbar-brand {
+    display: inline-block;
+    text-align: center;
+  }
   .node .paragraph--type--area-50-50 .toon-right .field__item,
   .node .paragraph--type--area-50-50 .toon-left .field__item {
     height: 180px;
@@ -486,6 +502,16 @@ a.career-btn.schwarz {
   }
 }
 @media screen and (max-width: 768px) {
+  .region-over-the-top-right .menu--main ul.navbar-nav,
+  .navigation.menu--main {
+    display: none;
+  }
+  .responsive-menu-toggle-wrapper.responsive-menu-toggle {
+    display: block;
+  }
+  a.navbar-brand img {
+    margin-bottom: 10px;
+  }
   .hell-blau-grau,
   .pink {
     text-align: center;
@@ -545,6 +571,10 @@ a.career-btn.schwarz {
   .insta-wrapper .graphic-right img {
     width: 140px;
     top: calc(50% - 90px);
+  }
+  .site-footer__bottom .block.block-block-content {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 @media screen and (max-width: 576px) {

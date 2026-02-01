@@ -33,3 +33,9 @@ kp_2025.extra:
   multipliers:
     - 1x
     - 2x
+kp_2025.menu:
+  label: wide
+  mediaQuery: 'all and (min-width: 769px)'
+  weight: 4
+  multipliers:
+    - 1x
