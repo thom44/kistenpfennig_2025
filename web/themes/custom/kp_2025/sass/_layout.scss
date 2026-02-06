@@ -22,6 +22,16 @@ a.navbar-brand {
     }
   }
 
+.width-config {
+  max-width: 70%;
+  margin: auto;
+  }
+
+.views-field-field-header-image img {
+  max-width: 100%;
+  height: auto;
+  }
+
 .site-footer {
   background-color: white;
   padding-bottom: 0;

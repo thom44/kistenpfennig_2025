@@ -16,6 +16,16 @@ a.navbar-brand img {
   border: none;
 }
 
+.width-config {
+  max-width: 70%;
+  margin: auto;
+}
+
+.views-field-field-header-image img {
+  max-width: 100%;
+  height: auto;
+}
+
 .site-footer {
   background-color: white;
   padding-bottom: 0;
@@ -179,6 +189,44 @@ a.career-btn.schwarz {
   height: auto;
   position: relative;
   top: calc(50% - 160px);
+}
+
+.hard-tiles {
+  background-color: #C5C8DA;
+}
+.hard-tiles .row {
+  margin: 0;
+  padding: 0;
+}
+.hard-tiles .col-md-4 {
+  margin: 0;
+  padding: 0;
+}
+.hard-tiles .col-md-4 .field--type-image {
+  margin: 0 !important;
+}
+.hard-tiles .col-md-4 .field--type-image img {
+  max-width: 100%;
+  height: auto;
+}
+.hard-tiles .image-block {
+  position: relative;
+}
+.hard-tiles .image-block .img-file img {
+  margin: 0;
+}
+.hard-tiles .image-block .img-caption {
+  width: 100%;
+  position: absolute;
+  bottom: 25px;
+  z-index: 5;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.hard-tiles .quotation {
+  padding-top: 50px;
 }
 
 .node .paragraph--type--area-50-50 .img-right-wrap {
