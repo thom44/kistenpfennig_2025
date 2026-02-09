@@ -50,64 +50,61 @@
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
 
-    {% if paragraph.field_image_left_or_right.value == 'image_left' %}
+<div class="hash-key-tiles">
+<div class="row">
 
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }}">
+    <div class="col-md-4">
+    <div class="image-block tile-1">
+      <div class="img-file clearfix">{{ content.field_toon_img.0 }}</div>
+      <div class="img-caption-1">{{ content.field_caption_1.0 }}</div>
+      <div class="img-caption-2">{{ content.field_caption_2.0 }}</div>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+    <div class="image-block tile-2">
+      <div class="img-file clearfix">{{ content.field_toon_img.1 }}</div>
+      <div class="img-caption-1">{{ content.field_caption_1.1 }}</div>
+      <div class="img-caption-2">{{ content.field_caption_2.1 }}</div>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+    <div class="image-block tile-3">
+      <div class="img-file clearfix">{{ content.field_toon_img.2 }}</div>
+      <div class="img-caption-1">{{ content.field_caption_1.2 }}</div>
+      <div class="img-caption-2">{{ content.field_caption_2.2 }}</div>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+    <div class="image-block tile-4">
+      <div class="img-file clearfix">{{ content.field_toon_img.3 }}</div>
+      <div class="img-caption-1">{{ content.field_caption_1.3 }}</div>
+      <div class="img-caption-2">{{ content.field_caption_2.3 }}</div>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+    <div class="image-block tile-5">
+      <div class="img-file clearfix">{{ content.field_toon_img.4 }}</div>
+      <div class="img-caption-1">{{ content.field_caption_1.4 }}</div>
+      <div class="img-caption-2">{{ content.field_caption_2.4 }}</div>
+    </div>
+    </div>
+
+    <div class="col-md-4">
+    <div class="image-block tile-6">
+      <div class="img-file clearfix">{{ content.field_toon_img.5 }}</div>
+    </div>
+    </div>
 
 
-        <div class="row">
-          {% if content.field_text_slogan is not empty %}
-            {{ content.field_text_slogan }}
-          {% endif %}
-          {% if content.field_on_the_square_img is not empty %}
-          <div class="col-md-6 no-pad">
-            {{ content.field_on_the_square_img }}
-            {# Button-Grafik nur wenn vorhanden #}
-            {% set graphic = content.field_button_graphic|render %}
-            {% if graphic|striptags|trim %}
-            {{ graphic }}
-            {% endif %}
-          </div>
-          {% endif %}
-          <div class="col-md-6 no-pad image-text">
-            {{ content.field_bild_und_textinhalt }}
-            {# Cartoon-Grafik nur wenn vorhanden #}
-            {% set graphic = content.field_cartoon_graphic|render %}
-            {% if graphic|striptags|trim %}
-              <div class="toon-right">{{ graphic }}</div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
+    </div>
 
+    </div>
+  </div>
 
-    {% elseif paragraph.field_image_left_or_right.value == 'image_right' %}
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }} img-right">
-
-        <div class="row">
-          <div class="col-md-6 image-text">
-            {{ content.field_bild_und_textinhalt }}
-            {# Button-Grafik nur wenn vorhanden #}
-            {% set graphic = content.field_button_graphic|render %}
-            {% if graphic|striptags|trim %}
-            {{ graphic }}
-            {% endif %}
-
-            {# Cartoon-Grafik nur wenn vorhanden #}
-            {% set graphic = content.field_cartoon_graphic|render %}
-            {% if graphic|striptags|trim %}
-              <div class="toon-left">{{ graphic }}</div>
-            {% endif %}
-
-          </div>
-          <div class="col-md-6 no-pad">
-            <div class="img-right-wrap">
-              {{ content.field_on_the_square_img }}
-            </div>
-          </div>
-        </div>
-      </div>
-    {% endif %}
 
     {% endblock %}
   </div>

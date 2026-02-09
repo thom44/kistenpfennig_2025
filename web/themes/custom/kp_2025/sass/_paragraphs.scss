@@ -5,11 +5,6 @@
     max-width: 637px;
     }
   margin-bottom: 70px;
-  /*
-  .image-text {
-    position: relative;
-    }
-  */
   .field--name-field-button-graphic,
   .toon-left,
   .toon-right {
@@ -44,6 +39,10 @@
         width: auto;
         }
       }
+    }
+
+  .img-right .field--name-field-button-graphic {
+    left: calc(50% - 92px);
     }
 
   .toon-right {
@@ -210,4 +209,95 @@
   background-repeat: repeat-x;
   background-size: contain;
   height: 100px;
+  }
+
+.paragraph--type--kacheln {
+  .hard-tiles {
+    background-color: colors.$hell-blau-grau;
+    .row {
+      margin: 0;
+      padding: 0;
+      }
+    .col-md-4 {
+      margin: 0;
+      padding: 0;
+      .field--type-image {
+        margin: 0 !important;
+        img {
+          max-width: 100%;
+          height: auto;
+          }
+        }
+      }
+    .image-block {
+      position: relative;
+      .img-file img {
+        margin: 0;
+        }
+      .img-caption {
+        width: 100%;
+        position: absolute;
+        bottom: 25px;
+        z-index: 5;
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        }
+      }
+    .quotation {
+      padding-top: 50px;
+      }
+    }
+  }
+
+
+.paragraph--type--hash-key-tiles {
+  .hash-key-tiles {
+    .row,
+    .col-md-4 {
+      margin: 0;
+      padding: 0;
+      .image-block {
+        text-align: center;
+        padding-bottom: 20px;
+        &.tile-1 {
+          border-right: 1px solid #960018;
+          border-bottom: 1px solid #960018;
+          }
+        &.tile-2 {
+          border-bottom: 1px solid #960018;
+          }
+        &.tile-3 {
+          border-left: 1px solid #960018;
+          border-bottom: 1px solid #960018;
+          }
+        &.tile-4 {
+          border-right: 1px solid #960018;
+          }
+        &.tile-5 {
+          border-right: 1px solid #960018;
+          }
+        &.tile-6 {
+          padding-top: 100px;
+          img {
+            height: 200px;
+            width: 200px;
+            }
+          }
+        .img-file {
+          display: inline-block;
+          img {
+            max-height: 320px;
+            width: auto;
+            }
+          }
+        .img-caption-1 {
+          color: colors.$kp-rot;
+          font-size: 1.2rem;
+          font-weight: 600;
+          }
+        }
+      }
+    }
   }

@@ -26,6 +26,52 @@ a.navbar-brand img {
   height: auto;
 }
 
+.paragraph--type--area-50-50 .no-pad {
+  padding-right: 0;
+}
+
+.img-txt-wrapper {
+  position: relative;
+}
+.img-txt-wrapper .big-img img {
+  width: 100%;
+  height: auto;
+}
+.img-txt-wrapper .red-k {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  z-index: 10;
+  top: calc(50% - 100px);
+  left: calc(50% - 80px);
+}
+.img-txt-wrapper .red-k img {
+  max-width: 100%;
+  height: auto;
+}
+.img-txt-wrapper .slogan-white {
+  position: absolute;
+  top: 62%;
+  color: white;
+  width: 100%;
+  text-align: center;
+  font-size: 2.2rem;
+  line-height: 2.4rem;
+}
+.img-txt-wrapper .slogan-white span.big-white {
+  font-weight: 600;
+}
+.img-txt-wrapper .slogan-white span.big-white.itlc {
+  font-family: "Fraunces 72pt";
+}
+.img-txt-wrapper .img-caption {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  font-size: 0.9rem;
+}
+
 .site-footer {
   background-color: white;
   padding-bottom: 0;
@@ -34,6 +80,10 @@ a.navbar-brand img {
 .site-footer__bottom {
   border-top: 1px solid #960018;
   background-color: white;
+  padding-top: 40px;
+}
+.site-footer__bottom .block {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
 }
 .site-footer__bottom p,
 .site-footer__bottom .content a {
@@ -191,54 +241,11 @@ a.career-btn.schwarz {
   top: calc(50% - 160px);
 }
 
-.hard-tiles {
-  background-color: #C5C8DA;
-}
-.hard-tiles .row {
-  margin: 0;
-  padding: 0;
-}
-.hard-tiles .col-md-4 {
-  margin: 0;
-  padding: 0;
-}
-.hard-tiles .col-md-4 .field--type-image {
-  margin: 0 !important;
-}
-.hard-tiles .col-md-4 .field--type-image img {
-  max-width: 100%;
-  height: auto;
-}
-.hard-tiles .image-block {
-  position: relative;
-}
-.hard-tiles .image-block .img-file img {
-  margin: 0;
-}
-.hard-tiles .image-block .img-caption {
-  width: 100%;
-  position: absolute;
-  bottom: 25px;
-  z-index: 5;
-  text-align: center;
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-.hard-tiles .quotation {
-  padding-top: 50px;
-}
-
 .node .paragraph--type--area-50-50 .img-right-wrap {
   max-width: 637px;
 }
 .node .paragraph--type--area-50-50 {
   margin-bottom: 70px;
-  /*
-  .image-text {
-    position: relative;
-    }
-  */
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic,
 .node .paragraph--type--area-50-50 .toon-left,
@@ -279,6 +286,9 @@ a.career-btn.schwarz {
 .node .paragraph--type--area-50-50 .toon-left .field__item img {
   max-height: 100%;
   width: auto;
+}
+.node .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic {
+  left: calc(50% - 92px);
 }
 .node .paragraph--type--area-50-50 .toon-right {
   right: 20px;
@@ -436,6 +446,101 @@ a.career-btn.schwarz {
   background-repeat: repeat-x;
   background-size: contain;
   height: 100px;
+}
+
+.paragraph--type--kacheln .hard-tiles {
+  background-color: #C5C8DA;
+}
+.paragraph--type--kacheln .hard-tiles .row {
+  margin: 0;
+  padding: 0;
+}
+.paragraph--type--kacheln .hard-tiles .col-md-4 {
+  margin: 0;
+  padding: 0;
+}
+.paragraph--type--kacheln .hard-tiles .col-md-4 .field--type-image {
+  margin: 0 !important;
+}
+.paragraph--type--kacheln .hard-tiles .col-md-4 .field--type-image img {
+  max-width: 100%;
+  height: auto;
+}
+.paragraph--type--kacheln .hard-tiles .image-block {
+  position: relative;
+}
+.paragraph--type--kacheln .hard-tiles .image-block .img-file img {
+  margin: 0;
+}
+.paragraph--type--kacheln .hard-tiles .image-block .img-caption {
+  width: 100%;
+  position: absolute;
+  bottom: 25px;
+  z-index: 5;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.paragraph--type--kacheln .hard-tiles .quotation {
+  padding-top: 50px;
+}
+
+.paragraph--type--hash-key-tiles .hash-key-tiles .row,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 {
+  margin: 0;
+  padding: 0;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-1,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-1 {
+  border-right: 1px solid #960018;
+  border-bottom: 1px solid #960018;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-2,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-2 {
+  border-bottom: 1px solid #960018;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-3,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-3 {
+  border-left: 1px solid #960018;
+  border-bottom: 1px solid #960018;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-4,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-4 {
+  border-right: 1px solid #960018;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-5,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-5 {
+  border-right: 1px solid #960018;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-6,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-6 {
+  padding-top: 100px;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-6 img,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-6 img {
+  height: 200px;
+  width: 200px;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block .img-file,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block .img-file {
+  display: inline-block;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block .img-file img,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block .img-file img {
+  max-height: 320px;
+  width: auto;
+}
+.paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block .img-caption-1,
+.paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block .img-caption-1 {
+  color: #960018;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 1399px) {
