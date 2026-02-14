@@ -36,6 +36,7 @@
         "drupal/field_group": "^3.2",
         "drupal/flexslider": "^3.0@alpha",
         "drupal/geofield": "^1.67",
+        "drupal/instagram_feeds_listing": "^1.0",
         "drupal/jquery_ui_accordion": "^2.0",
         "drupal/leaflet": "^10.2",
         "drupal/media_entity_instagram": "^4.0",
