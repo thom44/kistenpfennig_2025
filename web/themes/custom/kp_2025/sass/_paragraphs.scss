@@ -301,3 +301,76 @@
       }
     }
   }
+
+.views-row .views-field-field-sections::after {
+  margin-bottom: 50px;
+  clear: both;
+  display: table;
+  content: "";
+  }
+
+p.ohours,
+p.store-titel {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 7px;
+  }
+
+p.store-titel {
+  font-size: 1.4rem;
+  }
+
+.paragraph--type--opening-hours {
+  .opening-hours {
+    margin-bottom: 25px;
+    }
+  .opening-hours,
+  .opening-hours-2 {
+    display: grid;
+    grid-template-columns: 8rem auto;
+    gap: 0.5rem 1rem;
+    margin-bottom: 25px;
+    .day {
+      font-weight: 600;
+      }
+    }
+  .adresse {
+    margin-bottom: 40px;
+    }
+  .btn-route {
+    background-color: colors.$kp-rot;
+    color: white;
+    border: 0;
+    font-weight: 600;
+    font-size: 1.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    }
+  }
+
+.holiday-hours-grid {
+  display: grid;
+  grid-template-columns: 12rem auto;
+  gap: 0.5rem 1rem;
+  .holiday-info {
+    .holiday-name {
+      font-weight: 600;
+      }
+    .holiday-date {
+      font-size: 0.9em;
+      color: #555;
+      }
+    .holiday-time {
+      text-align: left;
+      }
+    }
+  }
+
+.holiday-header-wrapper {
+  margin-top: 25px;
+  .holiday-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    }
+  }

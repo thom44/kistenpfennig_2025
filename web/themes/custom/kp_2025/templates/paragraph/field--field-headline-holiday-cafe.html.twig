@@ -1,0 +1,11 @@
+{# field--field-headline-holiday-store.html.twig #}
+
+{% if items|length %}
+<div class="row">
+<div class="col-md-4 offset-md-4 col-sm-6 offset-sm-6 holiday-header-wrapper">
+  <p class="ohours holiday-heading">
+    Öffnungszeiten Café {{ items[0].content }}
+  </p>
+</div>
+</div>
+{% endif %}
