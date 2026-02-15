@@ -20,6 +20,9 @@ a.navbar-brand img {
   max-width: 70%;
   margin: auto;
 }
+.width-config.fresh {
+  margin-bottom: 50px;
+}
 
 .views-field-field-header-image img {
   max-width: 100%;
@@ -72,6 +75,15 @@ a.navbar-brand img {
   font-size: 0.9rem;
 }
 
+.toony-style {
+  max-width: 15%;
+  margin: 0 auto 40px auto;
+}
+.toony-style img {
+  width: 100%;
+  height: auto;
+}
+
 .site-footer {
   background-color: white;
   padding-bottom: 0;
@@ -84,6 +96,8 @@ a.navbar-brand img {
 }
 .site-footer__bottom .block {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  hyphens: auto;
 }
 .site-footer__bottom p,
 .site-footer__bottom .content a {
@@ -108,10 +122,6 @@ a.navbar-brand img {
 
 .rock-bottom {
   margin-top: 60px;
-  /*
-  width: 100vw;
-  left: calc(-1 * (100vw - 100%) / 2);
-  */
   text-indent: -9999px;
   background-image: url(../images/trenner-karomuster.png);
   background-repeat: repeat-x;
@@ -504,10 +514,10 @@ a.career-btn.schwarz {
 .paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-2,
 .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-2 {
   border-bottom: 1px solid #960018;
+  border-right: 1px solid #960018;
 }
 .paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-3,
 .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-3 {
-  border-left: 1px solid #960018;
   border-bottom: 1px solid #960018;
 }
 .paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-4,
@@ -541,6 +551,10 @@ a.career-btn.schwarz {
   color: #960018;
   font-size: 1.2rem;
   font-weight: 600;
+}
+
+.node .field--type-image {
+  margin: 0;
 }
 
 .views-row .views-field-field-sections::after {
@@ -586,6 +600,7 @@ p.store-titel {
   font-size: 1.4rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 30px;
 }
 
 .holiday-hours-grid {
@@ -723,6 +738,14 @@ p.store-titel {
     width: 160px;
     top: calc(50% - 100px);
   }
+  .img-txt-wrapper .red-k {
+    width: 120px;
+    top: calc(50% - 80px);
+    left: calc(50% - 60px);
+  }
+  .toony-style {
+    max-width: 20%;
+  }
 }
 @media screen and (max-width: 768px) {
   .region-over-the-top-right .menu--main ul.navbar-nav,
@@ -799,10 +822,79 @@ p.store-titel {
     padding-left: 15px;
     padding-right: 15px;
   }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-2 {
+    border-right: none;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-3 {
+    border-right: 1px solid #960018;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-4 {
+    border-bottom: 1px solid #960018;
+    border-right: none;
+  }
+  .img-txt-wrapper .red-k {
+    width: 70px;
+    top: calc(50% - 80px);
+    left: calc(50% - 35px);
+  }
+  .img-txt-wrapper .slogan-white {
+    font-size: 1.8rem;
+    line-height: 2rem;
+    top: 55%;
+  }
+  span.big {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+  }
+  .toony-style {
+    max-width: 27%;
+    margin: 0 auto 25px auto;
+  }
 }
 @media screen and (max-width: 576px) {
   .hide {
     display: none;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-1 {
+    border-right: none;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-2 {
+    border-right: none;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-3 {
+    border-right: none;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-4 {
+    border-bottom: 1px solid #960018;
+    border-right: none;
+  }
+  .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-5 {
+    border-right: none;
+    border-bottom: 1px solid #960018;
+  }
+  .paragraph--type--kacheln .field--name-field-media-image {
+    width: 100%;
+  }
+  .paragraph--type--kacheln .field--name-field-media-image img {
+    width: 100%;
+  }
+  .img-txt-wrapper .red-k {
+    width: 40px;
+    top: calc(50% - 60px);
+    left: calc(50% - 20px);
+  }
+  .img-txt-wrapper .slogan-white {
+    font-size: 1.3rem;
+    line-height: 1.2rem;
+    top: 45%;
+  }
+  .img-txt-wrapper .img-caption {
+    font-size: 0.8rem;
+    line-height: 1rem;
+    margin-bottom: 0;
+  }
+  .width-config {
+    max-width: 100%;
   }
 }
 

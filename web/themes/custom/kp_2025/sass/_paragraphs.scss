@@ -267,9 +267,9 @@
           }
         &.tile-2 {
           border-bottom: 1px solid #960018;
+          border-right: 1px solid #960018;
           }
         &.tile-3 {
-          border-left: 1px solid #960018;
           border-bottom: 1px solid #960018;
           }
         &.tile-4 {
@@ -300,6 +300,10 @@
         }
       }
     }
+  }
+
+.node .field--type-image {
+  margin: 0;
   }
 
 .views-row .views-field-field-sections::after {
@@ -345,6 +349,7 @@ p.store-titel {
     font-size: 1.4rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    margin-bottom: 30px;
     }
   }
 

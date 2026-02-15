@@ -118,10 +118,17 @@
       top: calc(50% - 100px);
       }
     }
+  .img-txt-wrapper .red-k {
+    width: 120px;
+    top: calc(50% - 80px);
+    left: calc(50% - 60px);
+    }
+  .toony-style {
+    max-width: 20%;
+    }
   }
 
 @media screen and (max-width: 768px) {
-
   .region-over-the-top-right .menu--main ul.navbar-nav,
   .navigation.menu--main {
     display: none;
@@ -196,10 +203,102 @@
     padding-left: 15px;
     padding-right: 15px;
     }
+
+  .paragraph--type--hash-key-tiles .hash-key-tiles {
+    .col-md-4 .image-block {
+      &.tile-1 {
+        }
+      &.tile-2 {
+        border-right: none;
+        }
+      &.tile-3 {
+        border-right: 1px solid #960018;
+        }
+      &.tile-4 {
+        border-bottom: 1px solid #960018;
+        border-right: none;
+        }
+      &.tile-5 {
+        }
+      &.tile-6 {
+        }
+      }
+    }
+  .img-txt-wrapper {
+    .red-k {
+      width: 70px;
+      top: calc(50% - 80px);
+      left: calc(50% - 35px);
+      }
+    .slogan-white {
+      font-size: 1.8rem;
+      line-height: 2rem;
+      top: 55%;
+      }
+    }
+  span.big {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+    }
+  .toony-style {
+    max-width: 27%;
+    margin: 0 auto 25px auto;
+    }
   }
 
 @media screen and (max-width: 576px) {
   .hide {
     display: none;
+    }
+  .paragraph--type--hash-key-tiles .hash-key-tiles {
+    .col-md-4 .image-block {
+      &.tile-1 {
+        border-right: none;
+        }
+      &.tile-2 {
+        border-right: none;
+        }
+      &.tile-3 {
+        border-right: none;
+        }
+      &.tile-4 {
+        border-bottom: 1px solid #960018;
+        border-right: none;
+        }
+      &.tile-5 {
+        border-right: none;
+        border-bottom: 1px solid #960018;
+        }
+      &.tile-6 {
+        }
+      }
+    }
+  .paragraph--type--kacheln {
+    .field--name-field-media-image {
+      width: 100%;
+      img {
+        width: 100%;
+        }
+      }
+    }
+  .img-txt-wrapper {
+    .red-k {
+      width: 40px;
+      top: calc(50% - 60px);
+      left: calc(50% - 20px);
+      }
+    .slogan-white {
+      font-size: 1.3rem;
+      line-height: 1.2rem;
+      top: 45%;
+      }
+    .img-caption {
+      font-size: 0.8rem;
+      line-height: 1rem;
+      margin-bottom: 0;
+      }
+    }
+  .width-config {
+    max-width: 100%;
     }
   }
