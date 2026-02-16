@@ -74,7 +74,7 @@
   <div class="opening-hours">
     {% for i in 0..6 %}
       <div class="day">{{ tage[i] }}</div>
-      <div class="time">{{ content.field_from_to[i] }} Uhr</div>
+      <div class="time">{{ content.field_from_to[i] }}</div>
     {% endfor %}
   </div>
 
@@ -84,7 +84,7 @@
   <div class="opening-hours-2">
     {% for i in 0..6 %}
       <div class="day">{{ tage[i] }}</div>
-            <div class="time">{{ content.field_opening_hours_cafe[i] }} Uhr</div>
+            <div class="time">{{ content.field_opening_hours_cafe[i] }}</div>
     {% endfor %}
   </div>
 {% endif %}
