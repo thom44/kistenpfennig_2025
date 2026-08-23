@@ -441,13 +441,20 @@ a.career-btn.schwarz {
 .paragraph--type--area-50-50 p.slogan {
   text-align: center;
   padding-top: 16%;
+  position: relative;
 }
 
 .paragraph--type--area-50-50 .img-right p.narrow {
   left: 12px;
 }
+.paragraph--type--area-50-50 .img-right p.slogan {
+  left: 12px;
+}
 
 .no-pad p.narrow {
+  left: -12px;
+}
+.no-pad p.slogan {
   left: -12px;
 }
 

@@ -190,6 +190,7 @@
   p.slogan {
     text-align: center;
     padding-top: 16%;
+    position: relative;
     }
   }
 
@@ -197,10 +198,16 @@
   p.narrow {
     left: 12px;
     }
+  p.slogan {
+    left: 12px;
+    }
   }
 
 .no-pad {
   p.narrow {
+    left: -12px;
+    }
+  p.slogan {
     left: -12px;
     }
   }
