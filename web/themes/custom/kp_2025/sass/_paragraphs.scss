@@ -184,11 +184,24 @@
 .paragraph--type--area-50-50 {
   p.narrow {
     max-width: 335px;
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 0 auto;
+    position: relative;
     }
   p.slogan {
     text-align: center;
     padding-top: 16%;
+    }
+  }
+
+.paragraph--type--area-50-50 .img-right {
+  p.narrow {
+    left: 12px;
+    }
+  }
+
+.no-pad {
+  p.narrow {
+    left: -12px;
     }
   }
 

@@ -186,7 +186,7 @@ span.big.black {
 }
 span.big.itlc {
   font-family: "Fraunces 72pt";
-  /* font-style: italic; */
+  font-style: italic;
 }
 
 span.medium {
@@ -199,6 +199,7 @@ span.medium.red {
 }
 span.medium.itlc {
   font-family: "Fraunces 72pt";
+  font-style: italic;
 }
 
 .career-wrapper {
@@ -433,12 +434,21 @@ a.career-btn.schwarz {
 .paragraph--type--textinhalt p.narrow,
 .paragraph--type--area-50-50 p.narrow {
   max-width: 335px;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 0 auto;
+  position: relative;
 }
 .paragraph--type--textinhalt p.slogan,
 .paragraph--type--area-50-50 p.slogan {
   text-align: center;
   padding-top: 16%;
+}
+
+.paragraph--type--area-50-50 .img-right p.narrow {
+  left: 12px;
+}
+
+.no-pad p.narrow {
+  left: -12px;
 }
 
 .paragraph--type--textinhalt .textcntnt.distance {
@@ -777,6 +787,10 @@ p.store-titel {
     max-width: none;
     margin: auto;
     padding: 15px;
+  }
+  .paragraph--type--area-50-50 .img-right p.narrow,
+  .no-pad p.narrow {
+    left: 0;
   }
   .field--name-field-bild-und-textinhalt p.slogan {
     margin-top: 25px;
