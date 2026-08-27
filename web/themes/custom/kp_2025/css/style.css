@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
   font-family: "Jost";
 }
 
@@ -434,7 +435,7 @@ a.career-btn.schwarz {
 .paragraph--type--textinhalt p.narrow,
 .paragraph--type--area-50-50 p.narrow {
   max-width: 400px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto 1rem auto;
   position: relative;
 }
 .paragraph--type--textinhalt p.slogan,
