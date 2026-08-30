@@ -23,6 +23,30 @@ a.navbar-brand {
     }
   }
 
+a.btn-fxd {
+  display: block;
+  width: 47px;
+  height: 47px;
+  position: fixed;
+  right: 0;
+  z-index: 99;
+  overflow: hidden;
+  &.jobs {
+    top: 420px;
+    }
+  &.insta {
+    top: 484px;
+    background-color: white;
+    border-left: 1px solid colors.$kp-rot;
+    border-top: 1px solid colors.$kp-rot;
+    border-bottom: 1px solid colors.$kp-rot;
+    }
+  img {
+    width: 100%;
+    height: 100%;
+    }
+  }
+
 .width-config {
   max-width: 70%;
   margin: auto;

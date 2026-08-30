@@ -17,6 +17,30 @@ a.navbar-brand img {
   border: none;
 }
 
+a.btn-fxd {
+  display: block;
+  width: 47px;
+  height: 47px;
+  position: fixed;
+  right: 0;
+  z-index: 99;
+  overflow: hidden;
+}
+a.btn-fxd.jobs {
+  top: 420px;
+}
+a.btn-fxd.insta {
+  top: 484px;
+  background-color: white;
+  border-left: 1px solid #960018;
+  border-top: 1px solid #960018;
+  border-bottom: 1px solid #960018;
+}
+a.btn-fxd img {
+  width: 100%;
+  height: 100%;
+}
+
 .width-config {
   max-width: 70%;
   margin: auto;
@@ -358,29 +382,18 @@ a.career-btn.schwarz {
 .node .paragraph--type--bild-oder-text .field--name-field-button-graphic .field--type-image {
   float: none;
 }
-.node .paragraph--type--bild-oder-text {
-  /*
-  .field--name-field-tile-text {
-    display: none;
-    }
-  .tile-wrapper:hover .field--name-field-media-image {
-    display: none;
-    }
-  .tile-wrapper:hover .field--name-field-tile-text {
-    display: block;
-    }
-  */
-}
 .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover {
   position: relative; /* wichtig für z-index */
   display: inline-block; /* passt Größe automatisch an */
   cursor: pointer;
 }
 .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-media-image,
-.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text,
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-btn-small {
   transition: opacity 0.4s ease;
 }
-.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-media-image {
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-media-image,
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-btn-small {
   display: block;
   opacity: 1;
 }
@@ -395,23 +408,27 @@ a.career-btn.schwarz {
   opacity: 0;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  z-index: 2;
-  background-color: black;
-  color: white;
+  z-index: 12;
+  background-color: white;
   padding: 40px 20px 0 20px;
 }
 .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .top {
   font-size: 1.1rem;
   font-weight: 300;
-}
-.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .bread {
-  font-size: 1.5rem;
-  font-weight: 600;
+  color: #960018;
 }
 .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .txt {
   font-size: 0.8rem;
+  color: black;
 }
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text .txt-red {
+  font-family: "Fraunces 72pt";
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #960018;
+}
+.node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-btn-small,
 .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover:hover .field--name-field-media-image {
   opacity: 0;
 }

@@ -73,6 +73,10 @@
 {% set sidebar_second_exists = page.sidebar_second|render|striptags('<img><video><audio><drupal-render-placeholder>')|trim is not empty %}
 
 {% block head %}
+
+<a href="https://karriere.kistenpfennig.net/" target="_blank" class="btn-fxd jobs"><img src="/themes/custom/kp_2025/images/btn-jobs.svg" /></a>
+<a href="https://www.instagram.com/kistenpfennigfamilienbaeckerei/" target="_blank" class="btn-fxd insta"><img src="/themes/custom/kp_2025/images/btn-insta.svg" /></a>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-3 col-md-12">{{ page.over_the_top_left }}</div>
