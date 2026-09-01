@@ -338,11 +338,6 @@ a.career-btn.schwarz {
 .node .paragraph--type--area-50-50 .intensiv-gruen,
 .node .paragraph--type--area-50-50 .pink {
   position: relative;
-  /*
-  .no-pad {
-    padding-right: 0;
-    }
-  */
 }
 .node .paragraph--type--area-50-50 .hell-blau-grau {
   background-color: #C5C8DA;
@@ -352,6 +347,10 @@ a.career-btn.schwarz {
 }
 .node .paragraph--type--area-50-50 .pink {
   background-color: #CDA3BC;
+}
+.node .paragraph--type--area-50-50 .area-cake .toon-right .field__item,
+.node .paragraph--type--area-50-50 .area-baguette .toon-right .field__item {
+  height: 300px;
 }
 .node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
   margin: 0;
