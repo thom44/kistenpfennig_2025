@@ -248,7 +248,7 @@ span.medium.itlc {
 a.career-btn {
   color: white;
   font-size: 1.6rem;
-  padding: 0 30px 0 30px;
+  padding: 10px 30px 10px 30px;
   display: inline-block;
   text-decoration: none;
   margin-top: 20px;
@@ -896,6 +896,10 @@ p.store-titel {
   .toony-style {
     max-width: 27%;
     margin: 0 auto 25px auto;
+  }
+  .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
+    max-height: none;
+    height: auto;
   }
 }
 @media screen and (max-width: 576px) {

@@ -254,6 +254,10 @@
     max-width: 27%;
     margin: 0 auto 25px auto;
     }
+  .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
+    max-height: none;
+    height: auto;
+    }
   }
 
 @media screen and (max-width: 576px) {
