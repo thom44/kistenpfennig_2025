@@ -53,6 +53,7 @@
     {% if paragraph.field_image_left_or_right.value == 'image_left' %}
 
       <div class="{{ content.field_farbwert.0['#markup']|clean_class }} {{ paragraph.field_css_class.value|clean_class }}">
+      {{ dump(paragraph.field_css_class) }}
 
         <div class="row">
           {% if content.field_text_slogan is not empty %}
@@ -81,7 +82,7 @@
 
 
     {% elseif paragraph.field_image_left_or_right.value == 'image_right' %}
-      <div class="{{ content.field_farbwert.0['#markup']|clean_class }} img-right">
+      <div class="{{ content.field_farbwert.0['#markup']|clean_class }} img-right {{ paragraph.field_css_class.value|clean_class }}">
 
         <div class="row">
           <div class="col-md-6 image-text">
