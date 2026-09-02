@@ -129,6 +129,11 @@ a.btn-fxd img {
   color: black;
   text-decoration: none;
 }
+.site-footer__bottom p:hover,
+.site-footer__bottom .content a:hover {
+  color: black;
+  text-decoration: underline;
+}
 .site-footer__bottom p.icns img {
   width: 25px;
   height: auto;

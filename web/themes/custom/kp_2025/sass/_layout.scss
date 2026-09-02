@@ -135,6 +135,10 @@ a.btn-fxd {
   .content a {
     color: black;
     text-decoration: none;
+    &:hover {
+      color: black;
+      text-decoration: underline; 
+      }
     }
   p.icns {
     img {
