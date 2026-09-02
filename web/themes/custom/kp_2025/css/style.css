@@ -564,10 +564,12 @@ a.career-btn.schwarz {
 .paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-4,
 .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-4 {
   border-right: 1px solid #960018;
+  padding-top: 30px;
 }
 .paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-5,
 .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-5 {
   border-right: 1px solid #960018;
+  padding-top: 30px;
 }
 .paragraph--type--hash-key-tiles .hash-key-tiles .row .image-block.tile-6,
 .paragraph--type--hash-key-tiles .hash-key-tiles .col-md-4 .image-block.tile-6 {
