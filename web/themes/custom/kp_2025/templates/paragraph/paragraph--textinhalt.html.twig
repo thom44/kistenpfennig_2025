@@ -47,7 +47,7 @@
   ]
 %}
 {% block paragraph %}
-  <div class="row">
+
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
       {% if paragraph.field_margin_or_not.value %}
@@ -57,5 +57,5 @@
       {% endif %}
     {% endblock %}
   </div>
-  </div>
+
 {% endblock paragraph %}
