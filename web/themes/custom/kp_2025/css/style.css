@@ -673,15 +673,18 @@ p.store-titel {
   border-right: 1px solid #960018;
   padding-right: 15px;
 }
+.interview.part1 .illu-mk {
+  max-height: 360px;
+  width: auto;
+}
 .interview .question {
   font-size: 1.4rem;
   line-height: 1.7rem;
   font-weight: 600;
   color: #960018;
 }
-.interview .illu-mk {
-  max-height: 360px;
-  width: auto;
+.interview .answer {
+  margin-bottom: 2.2rem;
 }
 
 @media screen and (max-width: 1399px) {

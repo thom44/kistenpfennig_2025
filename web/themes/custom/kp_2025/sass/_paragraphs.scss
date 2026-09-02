@@ -405,6 +405,10 @@ p.store-titel {
   &.part1 {
     border-right: 1px solid colors.$kp-rot;
     padding-right: 15px;
+    .illu-mk {
+      max-height: 360px;
+      width: auto;
+      }
     }
   .question {
     font-size: 1.4rem;
@@ -412,9 +416,7 @@ p.store-titel {
     font-weight: 600;
     color: colors.$kp-rot;
     }
-
-  .illu-mk {
-    max-height: 360px;
-    width: auto;
+  .answer {
+    margin-bottom: 2.2rem;
     }
   }
