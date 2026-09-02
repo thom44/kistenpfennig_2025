@@ -669,6 +669,21 @@ p.store-titel {
   margin-bottom: 1rem;
 }
 
+.interview.part1 {
+  border-right: 1px solid #960018;
+  padding-right: 15px;
+}
+.interview .question {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  font-weight: 600;
+  color: #960018;
+}
+.interview .illu-mk {
+  max-height: 360px;
+  width: auto;
+}
+
 @media screen and (max-width: 1399px) {
   .node .paragraph--type--area-50-50 .toon-right .field__item,
   .node .paragraph--type--area-50-50 .toon-left .field__item {
