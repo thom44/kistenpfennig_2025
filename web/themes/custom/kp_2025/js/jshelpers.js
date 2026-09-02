@@ -3,23 +3,25 @@
 
 // alert("Krass!");
 
-$('#ig-load').click(function(){
+$('#ig-load').click(function () {
 
-    // Embed-Code dynamisch einfügen
-    var embedHtml = '<div class="sk-instagram-feed" data-embed-id="25650054"></div>';
+    // Elfsight-Widget dynamisch einfügen
+    var embedHtml = '<div class="elfsight-app-ca88ea31-1f52-4f4e-b051-0282a1cb4f50" data-elfsight-app-lazy></div>';
     $('#ig-feed').html(embedHtml);
 
-    // Widget-Script nur einmal einfügen
-    if ($('#sociablekit-widget').length === 0) {
+    // Elfsight-Script nur einmal laden
+    if ($('#elfsight-platform').length === 0) {
         var s = document.createElement('script');
-        s.id = 'sociablekit-widget';
-        s.src = 'https://widgets.sociablekit.com/instagram-feed/widget.js';
+        s.id = 'elfsight-platform';
+        s.src = 'https://elfsightcdn.com/platform.js';
+        s.async = true;
         document.body.appendChild(s);
     }
 
-    // Placeholder ausblenden, Feed anzeigen
+    // Platzhalter ausblenden, Feed anzeigen
     $('#ig-placeholder').hide();
     $('#ig-feed').show();
+
 });
 
 })(jQuery);
