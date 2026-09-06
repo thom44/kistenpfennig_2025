@@ -50,22 +50,6 @@
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
 
-<div class="row">
-    <div class="col-md-4 col-sm-6">
-    {% if paragraph._referringItem is not empty %}
-      <p class="store-titel">{{ paragraph._referringItem.getParent().getParent().entity.label }}</p>
-    {% endif %}
-
-    {# Adresse #}
-    {% if content.field_adresse %}
-      <div class="adresse">
-        {{ content.field_adresse }}
-      </div>
-      <button class="btn-route">Route</button>
-    {% endif %}
-  </div>
-
-<div class="col-md-8 col-sm-6">
 
 {% set tage = ['Montag','Dienstag','Mitwoch','Donnerstag','Freitag','Samstag','Sonntag'] %}
 
@@ -89,8 +73,15 @@
   </div>
 {% endif %}
 
-</div>
-</div>
+{# Adresse #}
+{% if content.field_adresse %}
+  <div class="adresse">
+    {{ content.field_adresse }}
+  </div>
+{% endif %}
+
+<button class="btn-route">Route</button>
+
 
 
 

@@ -240,7 +240,7 @@ a.btn-fxd {
       border: none;
       background-color: colors.$kp-rot;
       color: white;
-      padding: 7px 15px 7px 15px;
+      padding: 7px 18px 7px 18px;
       font-size: 1.1rem;
       font-weight: 600;
       }
@@ -266,6 +266,48 @@ a.btn-fxd {
     }
   }
 
-
+.view-oeffnungszeiten {
+  h3 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    border-bottom: 1px solid black;
+    margin-bottom: 2rem;
+    line-height: 2.8rem;
+    cursor: pointer;
+    padding-right: 30px;
+    position: relative;
+    &::after {
+      content: '⌄';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.25s ease;
+      }
+    &.open::after {
+      transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  .opening-hours-content {
+    display: none;
+    flex-wrap: wrap;
+    &.is-open {
+      display: flex;
+      flex-wrap: wrap;
+      }
+    p.ohours {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      }
+    button.btn-route {
+      border: none;
+      background-color: colors.$kp-rot;
+      color: white;
+      padding: 7px 18px 7px 18px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      }
+    }
+  }
 
 /** /VIEWS  **/

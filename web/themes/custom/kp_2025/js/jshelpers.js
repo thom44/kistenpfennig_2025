@@ -36,4 +36,26 @@ $('#ig-load').click(function () {
   }
 })(jQuery, Drupal, once);
 
+
+(function ($, Drupal, once) {
+  Drupal.behaviors.openingHours = {
+    attach: function (context) {
+      $(once('opening-hours', '.view-oeffnungszeiten h3', context)).on('click', function () {
+        var content = $(this)
+          .next('.views-row')
+          .find('.opening-hours-content');
+          $(this).toggleClass('open');
+        if (content.is(':visible')) {
+          content.slideUp(250, function () {
+            content.removeClass('is-open');
+          });
+        } else {
+          content.addClass('is-open');
+          content.hide().slideDown(250);
+        }
+      });
+    }
+  };
+})(jQuery, Drupal, once);
+
 })(jQuery);
