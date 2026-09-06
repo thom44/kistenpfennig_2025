@@ -24,4 +24,16 @@ $('#ig-load').click(function () {
 
 });
 
+(function ($, Drupal, once) {
+  Drupal.behaviors.productDetails = {
+    attach: function (context) {
+      $(once('product-details', '.product-details-button', context)).on('click', function () {
+        $(this)
+          .closest('.product-teaser')
+          .toggleClass('details-open');
+      });
+    }
+  }
+})(jQuery, Drupal, once);
+
 })(jQuery);

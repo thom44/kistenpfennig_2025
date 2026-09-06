@@ -7,12 +7,12 @@
 
     {{ fields.view_commerce_product.content }}
 
-      <div class="product-title">
-        {{ fields.title.content }}
-      </div>
-
       <div class="product-price">
         {{ fields.price__number.content }}
+      </div>
+
+      <div class="product-title">
+        <p>{{ fields.title.content }}</p>
       </div>
 
       <div class="product-body">
@@ -23,10 +23,11 @@
     </div>
   </div>
 
+  <div class="btn-wrap">
   <button type="button" class="product-details-button">
     Details
   </button>
+  </div>
 
-  {{ fields.rendered_entity_1.content }}
-
+  <div class="form-stuff">{{ fields.rendered_entity_1.content }}</div>
 </div>
