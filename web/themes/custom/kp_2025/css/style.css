@@ -157,6 +157,39 @@ a.btn-fxd img {
 }
 
 /**  /SHOP STUFF  **/
+/** VIEWS  **/
+.alle-lebkuchen ul.list-group li {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+}
+.alle-lebkuchen ul.list-group li img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-media {
+  position: relative;
+}
+.product-media .product-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  background-color: white;
+  inset: 0;
+}
+.product-media .product-overlay > a {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: block;
+  font-size: 0;
+}
+
+/** /VIEWS  **/
 .region-over-the-top-right .menu--main {
   margin-top: 132px;
 }
@@ -186,6 +219,22 @@ a.btn-fxd img {
 
 .responsive-menu-toggle-icon:before, .responsive-menu-toggle-icon:after, .responsive-menu-toggle-icon span.icon {
   background-color: black;
+}
+
+.menu--shop-navigation {
+  text-align: center;
+}
+.menu--shop-navigation ul.nav {
+  display: inline-block;
+  margin: auto;
+}
+.menu--shop-navigation ul.nav li {
+  display: inline-block;
+  float: left;
+}
+.menu--shop-navigation ul.nav li a {
+  color: black;
+  font-weight: 600;
 }
 
 .views-field-field-header-image {

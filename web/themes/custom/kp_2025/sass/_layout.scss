@@ -161,9 +161,51 @@ a.btn-fxd {
   }
 
 /**  SHOP STUFF  **/
+
 .block-custom-commerce-cart img {
   height: 34px;
   width: auto;
   }
 
 /**  /SHOP STUFF  **/
+
+
+
+/** VIEWS  **/
+.alle-lebkuchen {
+  ul.list-group {
+    li {
+      display: inline-block;
+      position: relative;
+      padding: 0;
+      img {
+        max-width: 100%;
+        height: auto;
+        }
+      }
+    }
+  }
+  .product-media {
+    position: relative;;
+    .product-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.6;
+      top: 0;
+      left: 0;
+      background-color: white;
+      inset: 0;
+      > a {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        display: block;
+        font-size: 0;
+        }
+      }
+    }
+
+
+
+/** /VIEWS  **/

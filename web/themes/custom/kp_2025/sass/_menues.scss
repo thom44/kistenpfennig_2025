@@ -33,3 +33,19 @@
 .responsive-menu-toggle-icon:before, .responsive-menu-toggle-icon:after, .responsive-menu-toggle-icon span.icon {
   background-color: black;
   }
+
+.menu--shop-navigation {
+  text-align: center;
+  ul.nav {
+    display: inline-block;
+    margin: auto;
+    li {
+      display: inline-block;
+      float: left;
+      a {
+        color: black;
+        font-weight: 600;
+        }
+      }
+    }
+  }
