@@ -1,3 +1,4 @@
+
 <div class="opening-hours">
 
   <div class="row opening-hours-content">
@@ -9,9 +10,13 @@
     </div>
 
     <div class="col-md-7">
-      <div class="opening-hours-image">
-        {{ fields.field_galeriebild.content }}
+    <div class="opening-hours-image row">
+    {% for image in gallery_images %}
+      <div class="col-12 col-md-6 col-lg-6">
+        {{ image }}
       </div>
+    {% endfor %}
+  </div>
     </div>
 
   </div>

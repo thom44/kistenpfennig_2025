@@ -288,6 +288,11 @@ a.btn-fxd img {
   font-size: 1.1rem;
   font-weight: 600;
 }
+.view-oeffnungszeiten .opening-hours-content .opening-hours-image img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
 
 /** /VIEWS  **/
 .region-over-the-top-right .menu--main {

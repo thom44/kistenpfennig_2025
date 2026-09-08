@@ -32,3 +32,27 @@ function kp_2025_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   ];
 }
+
+
+function kp_2025_preprocess_views_view_fields(&$variables) {
+  if (
+    $variables['view']->id() === 'oeffnungszeiten' &&
+    $variables['view']->current_display === 'block_1'
+  ) {
+    $node = $variables['row']->_entity;
+
+    if ($node && $node->hasField('field_galeriebild')) {
+      $variables['gallery_images'] = [];
+
+      foreach ($node->get('field_galeriebild') as $item) {
+        $variables['gallery_images'][] = [
+          '#theme' => 'responsive_image_formatter',
+          '#item' => $item,
+          '#item_attributes' => [],
+          '#responsive_image_style_id' => 'square_medium_image',
+          '#url' => NULL,
+        ];
+      }
+    }
+  }
+}
