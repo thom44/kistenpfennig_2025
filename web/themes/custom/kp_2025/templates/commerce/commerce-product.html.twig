@@ -27,13 +27,9 @@
   {{ title_prefix }}
   {{ title_suffix }}
   {# {{- product|without('variation_attributes') -}} #}
-  <div class="product-wrapper">
+  <div class="product-wrapper" style="border: 1px solid fuchsia;">
   <div class="row">
-    <div class="col-lg-7 col-md-12">{{ product.field_product_image }}</div>
-
-    <div class="col-lg-5 col-md-12">
-    <div>{{ product|without('field_product_image','field_nutritive_value','body','field_ingredient','field_allergene','field_header') }}</div>
-
+    <div class="col-lg-3 col-md-12"><p><span class="medium red">{{ product_entity.title.value }}</span><br /><span class="medium red itlc">Lebkuchen</span></p>
 
     <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -86,8 +82,17 @@
     </div>
   </div>
 
-  </div>
-  </div>
+    </div>
+    <div class="col-lg-6 col-md-12">{{ product.field_product_image }}</div>
+
+    <div class="col-lg-3 col-md-12">
+      <div>{{ product|without('field_product_image','field_nutritive_value','body','field_ingredient','field_allergene','field_header') }}</div>
+
+
+
+
+  </div><!-- /.row -->
+  </div><!-- /.product-wrapper -->
 
 
 </article>
