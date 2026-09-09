@@ -253,6 +253,13 @@ a.btn-fxd img {
   border-bottom: 1px solid black;
   margin-bottom: 2rem;
   line-height: 2.8rem;
+  width: 55%;
+  text-transform: uppercase;
+}
+.view-oeffnungszeiten h3.open {
+  width: 100%;
+}
+.view-oeffnungszeiten h3 {
   cursor: pointer;
   padding-right: 30px;
   position: relative;
@@ -958,6 +965,9 @@ p.store-titel {
   .toony-style {
     max-width: 20%;
   }
+  .view-oeffnungszeiten h3 {
+    width: 70%;
+  }
 }
 @media screen and (max-width: 768px) {
   .region-over-the-top-right .menu--main ul.navbar-nav,
@@ -1074,6 +1084,9 @@ p.store-titel {
   .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
     max-height: none;
     height: auto;
+  }
+  .view-oeffnungszeiten h3 {
+    width: 90%;
   }
 }
 @media screen and (max-width: 576px) {

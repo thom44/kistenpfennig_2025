@@ -126,6 +126,11 @@
   .toony-style {
     max-width: 20%;
     }
+  .view-oeffnungszeiten {
+    h3 {
+      width: 70%;
+      }
+    }
   }
 
 @media screen and (max-width: 768px) {
@@ -258,6 +263,11 @@
   .node .paragraph--type--bild-oder-text .tile-wrapper.add-hover .field--name-field-tile-text {
     max-height: none;
     height: auto;
+    }
+  .view-oeffnungszeiten {
+    h3 {
+      width: 90%;
+      }
     }
   }
 

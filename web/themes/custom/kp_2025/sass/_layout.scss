@@ -273,6 +273,11 @@ a.btn-fxd {
     border-bottom: 1px solid black;
     margin-bottom: 2rem;
     line-height: 2.8rem;
+    width: 55%;
+    text-transform: uppercase;
+    &.open {
+      width: 100%;
+      }
     cursor: pointer;
     padding-right: 30px;
     position: relative;
