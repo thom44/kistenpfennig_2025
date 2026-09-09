@@ -3,7 +3,7 @@
 # This file must be located in drupal root directory.
 
 # Corrent php version
-PHP="/usr/bin/php8.4"
+PHP="/usr/bin/php8.3"
 COMPOSER="/is/htdocs/wp11130752_8O4HH60ZR4/bin/composer.phar"
 # LOCAL COMPOSER PATH:
 #COMPOSER="/usr/local/bin/composer"
