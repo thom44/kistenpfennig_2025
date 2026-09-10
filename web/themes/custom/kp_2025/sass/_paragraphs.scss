@@ -1,6 +1,7 @@
 @use 'colors';
 
-.node .paragraph--type--area-50-50 {
+.node .paragraph--type--area-50-50,
+.block .paragraph--type--area-50-50 {
   .img-right-wrap {
     max-width: 637px;
     }

@@ -218,15 +218,6 @@ a.btn-fxd img {
 .product-teaser .btn-wrap {
   text-align: center;
 }
-.product-teaser .btn-wrap button {
-  margin: 10px auto 10px auto;
-  border: none;
-  background-color: #960018;
-  color: white;
-  padding: 7px 18px 7px 18px;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
 .product-teaser .form-stuff {
   text-align: center;
 }
@@ -236,11 +227,6 @@ a.btn-fxd img {
 }
 .product-teaser .field--type-commerce-price {
   display: none;
-}
-.product-teaser .button--add-to-cart {
-  border-radius: 0;
-  background-color: #960018;
-  border: none;
 }
 .product-teaser.details-open .product-overlay {
   opacity: 1;
@@ -287,14 +273,6 @@ a.btn-fxd img {
   font-size: 1.4rem;
   margin-bottom: 1rem;
 }
-.view-oeffnungszeiten .opening-hours-content button.btn-route {
-  border: none;
-  background-color: #960018;
-  color: white;
-  padding: 7px 18px 7px 18px;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
 .view-oeffnungszeiten .opening-hours-content .opening-hours-image img {
   width: 100%;
   height: auto;
@@ -302,6 +280,41 @@ a.btn-fxd img {
 }
 
 /** /VIEWS  **/
+button.product-details-button,
+button.button--add-to-cart,
+a.btn-route,
+a.career-btn.rot,
+a.career-btn {
+  margin: 10px auto 10px auto;
+  border: none;
+  background-color: #960018;
+  color: white;
+  padding: 7px 20px 7px 20px;
+  font-size: 1.1rem;
+  border-radius: 0;
+  font-weight: 600;
+  display: inline-block;
+  text-decoration: none;
+}
+button.product-details-button.taste,
+button.button--add-to-cart.taste,
+a.btn-route.taste,
+a.career-btn.rot.taste,
+a.career-btn.taste {
+  font-size: 1.2rem;
+}
+button.product-details-button:hover,
+button.button--add-to-cart:hover,
+a.btn-route:hover,
+a.career-btn.rot:hover,
+a.career-btn:hover {
+  background-color: #720015;
+}
+
+a.career-btn.schwarz {
+  background-color: black;
+}
+
 .region-over-the-top-right .menu--main {
   margin-top: 132px;
 }
@@ -416,17 +429,6 @@ span.medium.itlc {
   color: white;
 }
 
-a.career-btn {
-  color: white;
-  font-size: 1.6rem;
-  padding: 10px 30px 10px 30px;
-  display: inline-block;
-  text-decoration: none;
-  margin-top: 20px;
-}
-a.career-btn.rot {
-  background-color: #960018;
-}
 a.career-btn.schwarz {
   background-color: black;
 }
@@ -448,33 +450,45 @@ a.career-btn.schwarz {
   top: calc(50% - 160px);
 }
 
-.node .paragraph--type--area-50-50 .img-right-wrap {
+.node .paragraph--type--area-50-50 .img-right-wrap,
+.block .paragraph--type--area-50-50 .img-right-wrap {
   max-width: 637px;
 }
-.node .paragraph--type--area-50-50 {
+.node .paragraph--type--area-50-50,
+.block .paragraph--type--area-50-50 {
   margin-bottom: 70px;
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic,
 .node .paragraph--type--area-50-50 .toon-left,
-.node .paragraph--type--area-50-50 .toon-right {
+.node .paragraph--type--area-50-50 .toon-right,
+.block .paragraph--type--area-50-50 .field--name-field-button-graphic,
+.block .paragraph--type--area-50-50 .toon-left,
+.block .paragraph--type--area-50-50 .toon-right {
   display: inline-block;
   margin: 0;
   position: absolute;
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic .field--type-image,
 .node .paragraph--type--area-50-50 .toon-left .field--type-image,
-.node .paragraph--type--area-50-50 .toon-right .field--type-image {
+.node .paragraph--type--area-50-50 .toon-right .field--type-image,
+.block .paragraph--type--area-50-50 .field--name-field-button-graphic .field--type-image,
+.block .paragraph--type--area-50-50 .toon-left .field--type-image,
+.block .paragraph--type--area-50-50 .toon-right .field--type-image {
   float: none;
   margin: 0;
 }
 .node .paragraph--type--area-50-50 .field--name-field-button-graphic img,
 .node .paragraph--type--area-50-50 .toon-left img,
-.node .paragraph--type--area-50-50 .toon-right img {
+.node .paragraph--type--area-50-50 .toon-right img,
+.block .paragraph--type--area-50-50 .field--name-field-button-graphic img,
+.block .paragraph--type--area-50-50 .toon-left img,
+.block .paragraph--type--area-50-50 .toon-right img {
   margin: 0;
   width: 100%;
   height: auto;
 }
-.node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+.node .paragraph--type--area-50-50 .field--name-field-button-graphic,
+.block .paragraph--type--area-50-50 .field--name-field-button-graphic {
   width: 184px;
   height: 184px;
   top: calc(50% - 93px);
@@ -482,56 +496,76 @@ a.career-btn.schwarz {
   z-index: 10;
 }
 .node .paragraph--type--area-50-50 .toon-right,
-.node .paragraph--type--area-50-50 .toon-left {
+.node .paragraph--type--area-50-50 .toon-left,
+.block .paragraph--type--area-50-50 .toon-right,
+.block .paragraph--type--area-50-50 .toon-left {
   z-index: 11;
 }
 .node .paragraph--type--area-50-50 .toon-right .field__item,
-.node .paragraph--type--area-50-50 .toon-left .field__item {
+.node .paragraph--type--area-50-50 .toon-left .field__item,
+.block .paragraph--type--area-50-50 .toon-right .field__item,
+.block .paragraph--type--area-50-50 .toon-left .field__item {
   height: 360px;
 }
 .node .paragraph--type--area-50-50 .toon-right .field__item img,
-.node .paragraph--type--area-50-50 .toon-left .field__item img {
+.node .paragraph--type--area-50-50 .toon-left .field__item img,
+.block .paragraph--type--area-50-50 .toon-right .field__item img,
+.block .paragraph--type--area-50-50 .toon-left .field__item img {
   max-height: 100%;
   width: auto;
 }
-.node .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic {
+.node .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic,
+.block .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic {
   left: calc(50% - 79px);
 }
-.node .paragraph--type--area-50-50 .toon-right {
+.node .paragraph--type--area-50-50 .toon-right,
+.block .paragraph--type--area-50-50 .toon-right {
   right: 20px;
   bottom: -130px;
 }
-.node .paragraph--type--area-50-50 .toon-left {
+.node .paragraph--type--area-50-50 .toon-left,
+.block .paragraph--type--area-50-50 .toon-left {
   left: 10px;
   bottom: -130px;
 }
 .node .paragraph--type--area-50-50 .hell-blau-grau,
 .node .paragraph--type--area-50-50 .intensiv-gruen,
-.node .paragraph--type--area-50-50 .pink {
+.node .paragraph--type--area-50-50 .pink,
+.block .paragraph--type--area-50-50 .hell-blau-grau,
+.block .paragraph--type--area-50-50 .intensiv-gruen,
+.block .paragraph--type--area-50-50 .pink {
   position: relative;
 }
-.node .paragraph--type--area-50-50 .hell-blau-grau {
+.node .paragraph--type--area-50-50 .hell-blau-grau,
+.block .paragraph--type--area-50-50 .hell-blau-grau {
   background-color: #C5C8DA;
 }
-.node .paragraph--type--area-50-50 .intensiv-gruen {
+.node .paragraph--type--area-50-50 .intensiv-gruen,
+.block .paragraph--type--area-50-50 .intensiv-gruen {
   background-color: #BFD563;
 }
-.node .paragraph--type--area-50-50 .pink {
+.node .paragraph--type--area-50-50 .pink,
+.block .paragraph--type--area-50-50 .pink {
   background-color: #CDA3BC;
 }
 .node .paragraph--type--area-50-50 .area-cake .toon-right .field__item,
-.node .paragraph--type--area-50-50 .area-baguette .toon-left .field__item {
+.node .paragraph--type--area-50-50 .area-baguette .toon-left .field__item,
+.block .paragraph--type--area-50-50 .area-cake .toon-right .field__item,
+.block .paragraph--type--area-50-50 .area-baguette .toon-left .field__item {
   height: 300px;
 }
-.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
+.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference,
+.block .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference {
   margin: 0;
 }
-.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image {
+.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image,
+.block .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image {
   float: none;
   margin: 0;
   overflow: hidden;
 }
-.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image img {
+.node .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image img,
+.block .paragraph--type--area-50-50 .field--name-field-on-the-square-img.field--type-entity-reference .field--type-image img {
   margin: 0;
   width: 100%;
   height: auto;
