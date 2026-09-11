@@ -58,4 +58,82 @@ $('#ig-load').click(function () {
   };
 })(jQuery, Drupal, once);
 
+// der Input Feld Code für Produkt/Warenkorb
+(function ($) {
+
+  // Quantity Buttons
+  Drupal.behaviors.quantityButtons = {
+    attach: function (context) {
+
+      $('#edit-quantity-0-value', context).each(function () {
+        const $input = $(this);
+
+        // Verhindert, dass die Buttons mehrfach erzeugt werden.
+        if ($input.parent().hasClass('quantity-controls')) {
+          return;
+        }
+
+        const $minus = $('<button>', {
+          type: 'button',
+          class: 'quantity-minus',
+          text: '−',
+          'aria-label': 'Anzahl verringern'
+        });
+
+        const $plus = $('<button>', {
+          type: 'button',
+          class: 'quantity-plus',
+          text: '+',
+          'aria-label': 'Anzahl erhöhen'
+        });
+
+        const $controls = $('<div>', {
+          class: 'quantity-controls'
+        });
+
+        // Input in unseren Wrapper packen.
+        $input.wrap($controls);
+
+        const $wrapper = $input.parent();
+
+        // Buttons links und rechts vom Input einfügen.
+        $wrapper.prepend($minus);
+        $wrapper.append($plus);
+
+        // Minus
+        $minus.on('click', function () {
+          const min = parseFloat($input.attr('min')) || 1;
+          const step = parseFloat($input.attr('step')) || 1;
+          const value = parseFloat($input.val()) || min;
+
+          $input
+            .val(Math.max(min, value - step))
+            .trigger('change');
+        });
+
+        // Plus
+        $plus.on('click', function () {
+          const step = parseFloat($input.attr('step')) || 1;
+          const value = parseFloat($input.val()) || 0;
+          const max = $input.attr('max');
+
+          let newValue = value + step;
+
+          if (max !== undefined && newValue > parseFloat(max)) {
+            newValue = parseFloat(max);
+          }
+
+          $input
+            .val(newValue)
+            .trigger('change');
+        });
+
+      });
+
+    }
+  };
+
+})(jQuery);
+// Ende des Input Felds Code
+
 })(jQuery);

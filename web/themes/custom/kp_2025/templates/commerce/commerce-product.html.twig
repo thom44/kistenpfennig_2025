@@ -27,23 +27,13 @@
   {{ title_prefix }}
   {{ title_suffix }}
   {# {{- product|without('variation_attributes') -}} #}
-  <div class="product-wrapper" style="border: 1px solid fuchsia;">
+  <div class="product-wrapper">
+  <div class="container">
   <div class="row">
     <div class="col-lg-3 col-md-12"><p><span class="medium red">{{ product_entity.title.value }}</span><br /><span class="medium red itlc">Lebkuchen</span></p>
-
+    {{ product.body }}
     <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Beschreibung
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          {{ product.field_header }} {{ product.body }}
-        </div>
-      </div>
-    </div>
+    
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -52,7 +42,7 @@
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          {{ product.field_nutritive_value }}
+          {{ product.field_header }} {{ product.field_nutritive_value }}
         </div>
       </div>
     </div>
@@ -92,6 +82,7 @@
 
 
   </div><!-- /.row -->
+  </div>
   </div><!-- /.product-wrapper -->
 
 

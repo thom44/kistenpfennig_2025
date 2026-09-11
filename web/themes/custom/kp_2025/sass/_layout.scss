@@ -172,6 +172,7 @@ a.btn-fxd {
 
 
 /** VIEWS  **/
+
 .alle-lebkuchen {
   ul.list-group {
     li {
@@ -331,3 +332,115 @@ a.career-btn {
 a.career-btn.schwarz {
   background-color: black;
   }
+
+
+/** SHOP  **/
+.product-wrapper {
+  position: relative;
+  width: 100vw;
+  left: calc(-1 * (100vw - 100%) / 2);
+  padding-top: 50px;
+  background-color: #F1F2F6;
+  .flexslider {
+    border: none;
+    }
+  .field--name-body {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    }
+  .accordion {
+    .accordion-item {
+      background-color: inherit;
+      border-left: none;
+      border-top: none;
+      border-right: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 0.9rem;
+      button.accordion-button {
+        background-color: inherit;
+        padding: 0 0 4px 0;
+        font-weight: 600;
+        &::after {
+          opacity: 0.3;
+          }
+        }
+      .accordion-body {
+        padding: 10px 0 15px 0;
+        }
+      }
+    }
+    .accordion-button:not(.collapsed) {
+      color: colors.$kp-rot;
+    }
+  }
+
+
+.field--type-commerce-price {
+  margin-top: 150px;
+  margin-bottom: 2rem;
+  span.price-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    }
+  }
+.commerce-order-item-add-to-cart-form {
+  .button--add-to-cart {
+    margin-top: 0;
+    margin-bottom: 0;
+    }
+
+  .js-form-type-number input.form-number {
+    width: 60px;
+    height: 38px;
+    padding: 0;
+    text-align: center;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    }
+
+  .quantity-controls {
+    display: flex;
+    align-items: stretch;
+    }
+
+  .quantity-controls .quantity-minus,
+  .quantity-controls .quantity-plus {
+    height: 38px;
+    width: 38px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: white;
+    }
+
+  .quantity-controls .quantity-minus {
+    border-right: 0;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    }
+
+  .quantity-controls .quantity-plus {
+    border-left: 0;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    }
+
+  .js-form-item-quantity-0-value label {
+    display: none;
+    }
+  }
+
+
+
+
+/** /SHOP  **/
