@@ -241,7 +241,6 @@ a.btn-fxd {
     text-align: center;
     input.form-number {
       width: 5rem;
-      margin: auto;
       }
     }
   .field--type-commerce-price {
@@ -346,6 +345,7 @@ a.career-btn.schwarz {
     }
   .field--name-body {
     font-size: 1.4rem;
+    line-height: 1.7rem;
     font-weight: bold;
     margin-bottom: 50px;
     }
@@ -370,20 +370,30 @@ a.career-btn.schwarz {
         }
       }
     }
-    .accordion-button:not(.collapsed) {
-      color: colors.$kp-rot;
+  .accordion-button:not(.collapsed) {
+    color: colors.$kp-rot;
     }
+  .product-additional-images {
+    img {
+      width: 100%;
+      height: auto;
+      }
+    }
+
+  .field--type-commerce-price {
+    margin-top: 150px;
+    margin-bottom: 2rem;
+    span.price-value {
+      font-size: 1.8rem;
+      font-weight: 600;
+      }
+    }
+
   }
 
 
-.field--type-commerce-price {
-  margin-top: 150px;
-  margin-bottom: 2rem;
-  span.price-value {
-    font-size: 1.8rem;
-    font-weight: 600;
-    }
-  }
+
+
 .commerce-order-item-add-to-cart-form {
   .button--add-to-cart {
     margin-top: 0;

@@ -223,7 +223,6 @@ a.btn-fxd img {
 }
 .product-teaser .form-stuff input.form-number {
   width: 5rem;
-  margin: auto;
 }
 .product-teaser .field--type-commerce-price {
   display: none;
@@ -332,6 +331,7 @@ a.career-btn.schwarz {
 }
 .product-wrapper .field--name-body {
   font-size: 1.4rem;
+  line-height: 1.7rem;
   font-weight: bold;
   margin-bottom: 50px;
 }
@@ -357,12 +357,15 @@ a.career-btn.schwarz {
 .product-wrapper .accordion-button:not(.collapsed) {
   color: #960018;
 }
-
-.field--type-commerce-price {
+.product-wrapper .product-additional-images img {
+  width: 100%;
+  height: auto;
+}
+.product-wrapper .field--type-commerce-price {
   margin-top: 150px;
   margin-bottom: 2rem;
 }
-.field--type-commerce-price span.price-value {
+.product-wrapper .field--type-commerce-price span.price-value {
   font-size: 1.8rem;
   font-weight: 600;
 }

@@ -65,7 +65,7 @@ $('#ig-load').click(function () {
   Drupal.behaviors.quantityButtons = {
     attach: function (context) {
 
-      $('#edit-quantity-0-value', context).each(function () {
+      $('input[name="quantity[0][value]"]', context).each(function () {
         const $input = $(this);
 
         // Verhindert, dass die Buttons mehrfach erzeugt werden.
@@ -87,14 +87,23 @@ $('#ig-load').click(function () {
           'aria-label': 'Anzahl erhöhen'
         });
 
+        // Innerer Wrapper für Minus, Input und Plus.
         const $controls = $('<div>', {
           class: 'quantity-controls'
         });
 
-        // Input in unseren Wrapper packen.
+        // Äußerer Wrapper zum Zentrieren.
+        const $outerWrapper = $('<div>', {
+          class: 'quantity-wrapper'
+        });
+
+        // Input in den Controls-Wrapper packen.
         $input.wrap($controls);
 
         const $wrapper = $input.parent();
+
+        // Controls in den äußeren Wrapper packen.
+        $wrapper.wrap($outerWrapper);
 
         // Buttons links und rechts vom Input einfügen.
         $wrapper.prepend($minus);
