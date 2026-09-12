@@ -185,7 +185,14 @@ a.btn-fxd {
         }
       }
     }
+  .commerce-order-item-add-to-cart-form {
+    .quantity-wrapper {
+      display: flex;
+      justify-content: center;
+      }
+    }
   }
+
   .product-media {
     position: relative;
     .product-overlay {
@@ -388,10 +395,7 @@ a.career-btn.schwarz {
       font-weight: 600;
       }
     }
-
   }
-
-
 
 
 .commerce-order-item-add-to-cart-form {

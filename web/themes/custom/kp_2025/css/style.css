@@ -167,6 +167,10 @@ a.btn-fxd img {
   max-width: 100%;
   height: auto;
 }
+.alle-lebkuchen .commerce-order-item-add-to-cart-form .quantity-wrapper {
+  display: flex;
+  justify-content: center;
+}
 
 .product-media {
   position: relative;
