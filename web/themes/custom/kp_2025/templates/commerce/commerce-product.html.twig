@@ -27,11 +27,14 @@
   {{ title_prefix }}
   {{ title_suffix }}
   {# {{- product|without('variation_attributes') -}} #}
+
   <div class="product-wrapper">
-  <div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-md-12"><p><span class="medium red">{{ product_entity.title.value }}</span><br /><span class="medium red itlc">Lebkuchen</span></p>
-    {{ product.body }}
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-12"><p><span class="medium red">{{ product_entity.title.value }}</span><br /><span class="medium red itlc">Lebkuchen</span></p>
+        {{ product.body }}
+
     <div class="accordion" id="accordionExample">
 
     <div class="accordion-item">
@@ -46,6 +49,7 @@
         </div>
       </div>
     </div>
+
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -58,6 +62,7 @@
         </div>
       </div>
     </div>
+
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -70,35 +75,37 @@
         </div>
       </div>
     </div>
-  </div>
 
-    </div>
+    </div><!-- /.accordion -->
+    </div><!-- /.col-lg-3 .col-md-12 -->
+
     <div class="col-lg-6 col-md-12">{{ product.field_product_image }}</div>
 
     <div class="col-lg-3 col-md-12">
       <div>{{ product|without('field_product_image','field_nutritive_value','body','field_ingredient','field_allergene','field_header') }}</div>
-
-
-
+    </div>
 
   </div><!-- /.row -->
-
-  <div class="row">
-  <div class="row product-additional-images">
-  <div class="col-md-4">
-    {{ product.field_product_image[1] }}
-  </div>
-  <div class="col-md-4">
-    {{ product.field_product_image[2] }}
-  </div>
-  <div class="col-md-4">
-    {{ product.field_product_image[3] }}
-  </div>
-</div>
-  </div>
-
-  </div>
+  </div><!-- /.container -->
   </div><!-- /.product-wrapper -->
+
+  <div class="container">
+  <div class="row product-additional-images">
+    <div class="col-md-4">
+      {{ product.field_product_image[1] }}
+    </div>
+    <div class="col-md-4">
+      {{ product.field_product_image[2] }}
+    </div>
+    <div class="col-md-4">
+      {{ product.field_product_image[3] }}
+    </div>
+  </div>
+  </div>
+
+
+
+
 
 
 </article>
