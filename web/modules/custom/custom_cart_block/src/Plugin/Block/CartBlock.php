@@ -126,7 +126,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
     $total = 0;
     $currency_code = '';
     $total_formatted = '';
-    $icon = 'cart-empty.svg';
+    $icon = 'icn-cart.webp';
 
     if (!empty($carts)) {
       foreach ($carts as $cart_id => $cart) {
@@ -148,7 +148,7 @@ class CartBlock extends BlockBase implements ContainerFactoryPluginInterface {
         'currency_code' => $currency_code,
       ];
       $total_formatted = $this->priceFormatterHelper->getFormattedPriceByAmount($total_summery, FALSE);
-      $icon = 'cart.svg';
+      $icon = 'icn-cart.webp';
     }
 
     return [

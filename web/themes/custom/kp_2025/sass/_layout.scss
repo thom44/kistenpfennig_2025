@@ -23,6 +23,10 @@ a.navbar-brand {
     }
   }
 
+.featured-top {
+  margin-top: 20px;
+  }
+
 a.btn-fxd {
   display: block;
   width: 47px;
@@ -381,12 +385,6 @@ a.career-btn.schwarz {
   .accordion-button:not(.collapsed) {
     color: colors.$kp-rot;
     }
-  .product-additional-images {
-    img {
-      width: 100%;
-      height: auto;
-      }
-    }
 
   .field--type-commerce-price {
     margin-top: 150px;
@@ -395,6 +393,13 @@ a.career-btn.schwarz {
       font-size: 1.8rem;
       font-weight: 600;
       }
+    }
+  }
+
+.product-additional-images {
+  img {
+    width: 100%;
+    height: auto;
     }
   }
 

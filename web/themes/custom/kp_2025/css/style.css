@@ -17,6 +17,10 @@ a.navbar-brand img {
   border: none;
 }
 
+.featured-top {
+  margin-top: 20px;
+}
+
 a.btn-fxd {
   display: block;
   width: 47px;
@@ -362,10 +366,6 @@ a.career-btn.schwarz {
 .product-wrapper .accordion-button:not(.collapsed) {
   color: #960018;
 }
-.product-wrapper .product-additional-images img {
-  width: 100%;
-  height: auto;
-}
 .product-wrapper .field--type-commerce-price {
   margin-top: 150px;
   margin-bottom: 2rem;
@@ -373,6 +373,11 @@ a.career-btn.schwarz {
 .product-wrapper .field--type-commerce-price span.price-value {
   font-size: 1.8rem;
   font-weight: 600;
+}
+
+.product-additional-images img {
+  width: 100%;
+  height: auto;
 }
 
 .commerce-order-item-add-to-cart-form .button--add-to-cart {
@@ -988,6 +993,89 @@ p.store-titel {
 }
 .interview .answer {
   margin-bottom: 2.2rem;
+}
+
+.block-custom-cart-block {
+  position: relative;
+}
+.block-custom-cart-block .wlw-cart-block__text,
+.block-custom-cart-block .wlw-cart-block,
+.block-custom-cart-block div {
+  display: inline-block;
+}
+.block-custom-cart-block {
+  width: auto !important;
+  float: left;
+  display: none;
+}
+.block-custom-cart-block span.wlw-cart-block__count {
+  position: absolute;
+  right: 0;
+  top: -3px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 0.6rem;
+  background-color: #960018;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+}
+.block-custom-cart-block a.wlw-cart-block__link {
+  color: #960018;
+  text-decoration: none;
+}
+
+#block-kp-2025-meinprofil-2 {
+  display: none;
+  float: left;
+  width: auto !important;
+}
+#block-kp-2025-meinprofil-2 div {
+  display: inline-block;
+}
+#block-kp-2025-meinprofil-2 a {
+  text-decoration: none;
+}
+#block-kp-2025-meinprofil-2 a span.icn {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-image: url("../images/icn-profile.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+#block-kp-2025-loginicon-2,
+#block-kp-2025-logouticon-2 {
+  display: none;
+  width: auto !important;
+  float: left;
+  line-height: 32px;
+}
+#block-kp-2025-loginicon-2 a,
+#block-kp-2025-logouticon-2 a {
+  text-decoration: none;
+  color: black;
+}
+#block-kp-2025-loginicon-2 a:hover,
+#block-kp-2025-logouticon-2 a:hover {
+  text-decoration: underline;
+}
+
+#block-kp-2025-loginicon-2 {
+  display: inline-block;
+}
+
+body.user-logged-in #block-kp-2025-loginicon-2 {
+  display: none;
+}
+body.user-logged-in .block-custom-cart-block,
+body.user-logged-in #block-kp-2025-meinprofil-2,
+body.user-logged-in #block-kp-2025-logouticon-2 {
+  display: inline-block;
 }
 
 @media screen and (max-width: 1399px) {
