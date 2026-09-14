@@ -16,32 +16,32 @@ interface ObtibackConfigInterface {
   /**
    * PHP Version path to run scripts on production server.
    */
-  const PHP_PATH = '/usr/bin/php8.2';
+  const PHP_PATH = '/usr/bin/php8.3';
 
   /**
    * The db user.
    */
-  const DB_USER = 'db11130752-d10';
+  const DB_USER = 'db11130752-2026';
 
   /**
    * The db user.
    */
-  const DB_NAME = 'db11130752-d10';
+  const DB_NAME = 'db11130752-2026';
 
   /**
    * The db user.
    */
-  const DB_PWD = 'Um-73FtQ3193j';
+  const DB_PWD = 'WRInklyJIZZ10!9';
 
   /**
    * The path to drush.
    */
-  const DRUSH = ObtibackConfigInterface::PHP_PATH . ' ../vendor/drush/drush/drush';
+  const DRUSH = ObtibackConfigInterface::PHP_PATH . ' ../vendor/drush/drush/drush.php';
 
   /**
    * PHP Version path to run scripts on production server.
    */
-  const DEV_PHP_PATH = '/usr/bin/php8.2';
+  const DEV_PHP_PATH = '/usr/bin/php8.3';
 
   /**
    * The db user.
@@ -51,7 +51,7 @@ interface ObtibackConfigInterface {
   /**
    * The db user.
    */
-  const DEV_DB_NAME = 'kd_kistenpfennig_d10';
+  const DEV_DB_NAME = 'kd_kistenpfennig';
 
   /**
    * The db user.
@@ -61,7 +61,7 @@ interface ObtibackConfigInterface {
   /**
    * The path to drush.
    */
-  const DEV_DRUSH = ObtibackConfigInterface::DEV_PHP_PATH . ' ../vendor/drush/drush/drush';
+  const DEV_DRUSH = ObtibackConfigInterface::DEV_PHP_PATH . ' ../vendor/drush/drush/drush.php';
 
   /**
    * The relative path to the optiback directory.
