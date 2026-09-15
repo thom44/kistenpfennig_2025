@@ -24,17 +24,69 @@ $('#ig-load').click(function () {
 
 });
 
+
+// Mega Script für die Overlays auf hover in der Produktübersicht View
+// ... und Verlinkung des Details Buttons in der Random View
 (function ($, Drupal, once) {
   Drupal.behaviors.productDetails = {
     attach: function (context) {
-      $(once('product-details', '.product-details-button', context)).on('click', function () {
-        $(this)
-          .closest('.product-teaser')
-          .toggleClass('details-open');
-      });
+
+      // Produkt-Overlay: Hover über das Bild
+      $(once('product-details', '.product-media', context))
+        .on('mouseenter', function () {
+          $(this)
+            .closest('.product-teaser')
+            .addClass('details-open');
+        })
+        .on('mouseleave', function () {
+          $(this)
+            .closest('.product-teaser')
+            .removeClass('details-open');
+        });
+
+      // Klick auf "Details" beim normalen Produkt
+      $(once('product-details-button', '.product-teaser .product-details-button', context))
+        .on('click', function () {
+          const url = $(this)
+            .closest('.product-teaser')
+            .find('.product-title a')
+            .attr('href');
+
+          if (url) {
+            window.location.href = url;
+          }
+        });
+
+      // Klick auf das Overlay beim normalen Produkt
+      $(once('product-details-overlay', '.product-overlay', context))
+        .on('click', function () {
+          const url = $(this)
+            .closest('.product-teaser')
+            .find('.product-title a')
+            .attr('href');
+
+          if (url) {
+            window.location.href = url;
+          }
+        });
+
+      // Klick auf "Details" bei der Random View
+      $(once('random-product-details', '.random-product .product-details-button', context))
+        .on('click', function () {
+          const url = $(this)
+            .closest('.random-product')
+            .find('.random-product-title a')
+            .attr('href');
+
+          if (url) {
+            window.location.href = url;
+          }
+        });
+
     }
-  }
+  };
 })(jQuery, Drupal, once);
+
 
 
 (function ($, Drupal, once) {
@@ -60,7 +112,6 @@ $('#ig-load').click(function () {
 
 // der Input Feld Code für Produkt/Warenkorb
 (function ($) {
-
   // Quantity Buttons
   Drupal.behaviors.quantityButtons = {
     attach: function (context) {

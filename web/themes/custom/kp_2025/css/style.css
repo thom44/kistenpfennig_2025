@@ -179,6 +179,9 @@ a.btn-fxd img {
 .product-media {
   position: relative;
 }
+.product-media .list-group-item img:hover {
+  cursor: pointer;
+}
 .product-media .product-overlay {
   /* display: none; */
   padding-left: 2.5rem;
@@ -195,6 +198,9 @@ a.btn-fxd img {
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
   z-index: 5;
+}
+.product-media .product-overlay:hover {
+  cursor: pointer;
 }
 .product-media .product-overlay > a {
   position: absolute;

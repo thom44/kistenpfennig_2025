@@ -56,3 +56,12 @@ function kp_2025_preprocess_views_view_fields(&$variables) {
     }
   }
 }
+
+
+function kp_2025_preprocess_page(&$variables) {
+  $block = \Drupal\block\Entity\Block::load('kp_2025_customcartblock_2');
+
+  if ($block) {
+    $variables['custom_cart_block'] = $block->getPlugin()->build();
+  }
+}
