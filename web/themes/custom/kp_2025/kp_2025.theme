@@ -68,6 +68,11 @@ function kp_2025_preprocess_page(&$variables) {
 
 
 function kp_2025_preprocess_commerce_product_variation(&$variables) {
+
+  if (\Drupal::routeMatch()->getRouteName() !== 'commerce_cart.page') {
+    return;
+  }
+
   $variation = $variables['product_variation_entity'];
 
   if ($variation && $variation->getProduct()) {
@@ -78,7 +83,7 @@ function kp_2025_preprocess_commerce_product_variation(&$variables) {
 
       $variables['product_image'] = [
         '#theme' => 'responsive_image',
-        '#responsive_image_style_id' => 'square_small_image',
+        '#responsive_image_style_id' => 'square_medium_image',
         '#uri' => $image->entity->getFileUri(),
         '#alt' => $image->alt,
         '#title' => $image->title,
