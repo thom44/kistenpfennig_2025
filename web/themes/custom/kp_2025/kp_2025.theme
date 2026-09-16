@@ -65,3 +65,24 @@ function kp_2025_preprocess_page(&$variables) {
     $variables['custom_cart_block'] = $block->getPlugin()->build();
   }
 }
+
+
+function kp_2025_preprocess_commerce_product_variation(&$variables) {
+  $variation = $variables['product_variation_entity'];
+
+  if ($variation && $variation->getProduct()) {
+    $product = $variation->getProduct();
+
+    if ($product->hasField('field_product_image') && !$product->get('field_product_image')->isEmpty()) {
+      $image = $product->get('field_product_image')->first();
+
+      $variables['product_image'] = [
+        '#theme' => 'responsive_image',
+        '#responsive_image_style_id' => 'square_small_image',
+        '#uri' => $image->entity->getFileUri(),
+        '#alt' => $image->alt,
+        '#title' => $image->title,
+      ];
+    }
+  }
+}

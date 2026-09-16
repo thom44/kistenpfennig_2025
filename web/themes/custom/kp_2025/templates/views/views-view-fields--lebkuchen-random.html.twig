@@ -1,6 +1,6 @@
 
 
-  <div class="random-product" style="border: 2px solid fuchsia;">
+  <div class="random-product">
 
     <div class="random-product-image">
       {{ fields.field_product_image.content }}
@@ -10,9 +10,6 @@
           {{ fields.title.content }}
         </div>
 
-        <div class="random-product-body">
-          {{ fields.body.content }}
-        </div>
       </div>
     </div>
 
@@ -21,7 +18,7 @@
       <div class="random-product-price">
         {{ fields.price__number.content }}
       </div>
-      
+
       <div class="btn-wrap">
         <button type="button" class="product-details-button">
           Details

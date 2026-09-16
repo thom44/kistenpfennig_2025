@@ -11,20 +11,6 @@
   width: auto !important;
   float: left;
   display: none;
-  span.wlw-cart-block__count {
-    position: absolute;
-    right: 0;
-    top: -3px;
-    display: block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    font-size: 0.6rem;
-    background-color: colors.$kp-rot;
-    border-radius: 50%;
-    text-align: center;
-    color: white;
-    }
   a.wlw-cart-block__link {
     color: colors.$kp-rot;
     text-decoration: none;
@@ -79,5 +65,119 @@ body.user-logged-in {
   #block-kp-2025-meinprofil-2,
   #block-kp-2025-logouticon-2 {
     display: inline-block;
+    }
+  }
+
+.cc-wrap,
+.block-custom-cart-block {
+  span.wlw-cart-block__count {
+    position: absolute;
+    right: 0;
+    top: -3px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 0.6rem;
+    background-color: colors.$kp-rot;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    }
+  }
+
+.cc-wrap {
+  width: 47px;
+  height: 47px;
+  border: 2px solid fuchsia;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid colors.$kp-rot;
+  text-align: center;
+  padding-top: 7px;
+  position: fixed;
+  right: 0;
+  top: 548px;
+  z-index: 95;
+  .wlw-cart-block__text {
+    span.wlw-cart-block__total {
+      display: none;
+      }
+    }
+  .wlw-cart-block__icon {
+    img {
+      width: 34px;
+      height: auto;
+      }
+    }
+  span.wlw-cart-block__count {
+    top: 2px;
+    }
+  }
+
+.cart-form {
+  .view-header h2 {
+    color: colors.$kp-rot;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 50px;
+    }
+  button.form-submit {
+    background-color: colors.$kp-rot;
+    border: none;
+    border-radius: 0;
+    font-weight: bold;
+    }
+  }
+
+
+
+.view-commerce-cart-form {
+  table {
+    th.views-field-purchased-entity,
+    th.views-field-unit-price__number,
+    th.views-field-edit-quantity,
+    th.views-field-remove-button,
+    th.views-field-total-price__number {
+      color: black;
+      }
+    tr {
+      background-color: white;
+      border-bottom: 1px solid colors.$kp-rot;
+      margin-bottom: 20px;
+      }
+    thead tr {
+      border-bottom: none;
+      }
+    td {
+      border: none;
+      background-color: white !important;
+      box-shadow: none;
+      padding-top: 30px;
+      .field--name-product-id {
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 1.4rem;
+          }
+        }
+      &.views-field-unit-price__number,
+      &.views-field-total-price__number {
+        font-size: 1.4rem;
+        }
+      &.views-field-total-price__number {
+        font-weight: 600;
+        }
+      .cart-product-image {
+        img {
+          max-width: 140px;
+          height: auto;
+          }
+        }
+      }
+    }
+  .order-total-line {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
     }
   }

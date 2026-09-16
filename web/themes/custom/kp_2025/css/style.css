@@ -20,6 +20,9 @@ a.navbar-brand img {
 .featured-top {
   margin-top: 20px;
 }
+.featured-top .region-featured-top {
+  padding-left: 10px;
+}
 
 a.btn-fxd {
   display: block;
@@ -290,6 +293,37 @@ a.btn-fxd img {
   width: 100%;
   height: auto;
   margin-bottom: 30px;
+}
+
+.random-lebkuchen {
+  text-align: center;
+}
+.random-lebkuchen h3 {
+  font-family: "Fraunces 72pt";
+  font-size: 2rem;
+  color: #960018;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.random-lebkuchen .random-product-image img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 25px;
+}
+.random-lebkuchen .random-product-image .random-product-title a {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.random-lebkuchen .random-product-price {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 /** /VIEWS  **/
@@ -1014,20 +1048,6 @@ p.store-titel {
   float: left;
   display: none;
 }
-.block-custom-cart-block span.wlw-cart-block__count {
-  position: absolute;
-  right: 0;
-  top: -3px;
-  display: block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  font-size: 0.6rem;
-  background-color: #960018;
-  border-radius: 50%;
-  text-align: center;
-  color: white;
-}
 .block-custom-cart-block a.wlw-cart-block__link {
   color: #960018;
   text-decoration: none;
@@ -1082,6 +1102,101 @@ body.user-logged-in .block-custom-cart-block,
 body.user-logged-in #block-kp-2025-meinprofil-2,
 body.user-logged-in #block-kp-2025-logouticon-2 {
   display: inline-block;
+}
+
+.cc-wrap span.wlw-cart-block__count,
+.block-custom-cart-block span.wlw-cart-block__count {
+  position: absolute;
+  right: 0;
+  top: -3px;
+  display: block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 0.6rem;
+  background-color: #960018;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+}
+
+.cc-wrap {
+  width: 47px;
+  height: 47px;
+  border: 2px solid fuchsia;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #960018;
+  text-align: center;
+  padding-top: 7px;
+  position: fixed;
+  right: 0;
+  top: 548px;
+  z-index: 95;
+}
+.cc-wrap .wlw-cart-block__text span.wlw-cart-block__total {
+  display: none;
+}
+.cc-wrap .wlw-cart-block__icon img {
+  width: 34px;
+  height: auto;
+}
+.cc-wrap span.wlw-cart-block__count {
+  top: 2px;
+}
+
+.cart-form .view-header h2 {
+  color: #960018;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+.cart-form button.form-submit {
+  background-color: #960018;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+}
+
+.view-commerce-cart-form table th.views-field-purchased-entity,
+.view-commerce-cart-form table th.views-field-unit-price__number,
+.view-commerce-cart-form table th.views-field-edit-quantity,
+.view-commerce-cart-form table th.views-field-remove-button,
+.view-commerce-cart-form table th.views-field-total-price__number {
+  color: black;
+}
+.view-commerce-cart-form table tr {
+  background-color: white;
+  border-bottom: 1px solid #960018;
+  margin-bottom: 20px;
+}
+.view-commerce-cart-form table thead tr {
+  border-bottom: none;
+}
+.view-commerce-cart-form table td {
+  border: none;
+  background-color: white !important;
+  box-shadow: none;
+  padding-top: 30px;
+}
+.view-commerce-cart-form table td .field--name-product-id a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.4rem;
+}
+.view-commerce-cart-form table td.views-field-unit-price__number, .view-commerce-cart-form table td.views-field-total-price__number {
+  font-size: 1.4rem;
+}
+.view-commerce-cart-form table td.views-field-total-price__number {
+  font-weight: 600;
+}
+.view-commerce-cart-form table td .cart-product-image img {
+  max-width: 140px;
+  height: auto;
+}
+.view-commerce-cart-form .order-total-line {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
 }
 
 @media screen and (max-width: 1399px) {
