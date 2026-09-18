@@ -110,16 +110,22 @@ $('#ig-load').click(function () {
   };
 })(jQuery, Drupal, once);
 
-// der Input Feld Code für Produkt/Warenkorb
+// der Input Feld Code für Produkt/Warenkorb '+/- Stuff'
 (function ($) {
-  // Quantity Buttons
+
   Drupal.behaviors.quantityButtons = {
     attach: function (context) {
+
+      /*
+       * =====================================================
+       * PRODUKTSEITE
+       * =====================================================
+       */
 
       $('input[name="quantity[0][value]"]', context).each(function () {
         const $input = $(this);
 
-        // Verhindert, dass die Buttons mehrfach erzeugt werden.
+        // Verhindert doppelte Buttons.
         if ($input.parent().hasClass('quantity-controls')) {
           return;
         }
@@ -138,27 +144,23 @@ $('#ig-load').click(function () {
           'aria-label': 'Anzahl erhöhen'
         });
 
-        // Innerer Wrapper für Minus, Input und Plus.
         const $controls = $('<div>', {
           class: 'quantity-controls'
         });
 
-        // Äußerer Wrapper zum Zentrieren.
         const $outerWrapper = $('<div>', {
           class: 'quantity-wrapper'
         });
 
-        // Input in den Controls-Wrapper packen.
         $input.wrap($controls);
 
         const $wrapper = $input.parent();
 
-        // Controls in den äußeren Wrapper packen.
         $wrapper.wrap($outerWrapper);
 
-        // Buttons links und rechts vom Input einfügen.
         $wrapper.prepend($minus);
         $wrapper.append($plus);
+
 
         // Minus
         $minus.on('click', function () {
@@ -170,6 +172,85 @@ $('#ig-load').click(function () {
             .val(Math.max(min, value - step))
             .trigger('change');
         });
+
+
+        // Plus
+        $plus.on('click', function () {
+          const step = parseFloat($input.attr('step')) || 1;
+          const value = parseFloat($input.val()) || 0;
+          const max = $input.attr('max');
+
+          let newValue = value + step;
+
+          if (max !== undefined && newValue > parseFloat(max)) {
+            newValue = parseFloat(max);
+          }
+
+          $input
+            .val(newValue)
+            .trigger('change');
+        });
+
+      });
+
+
+      /*
+       * =====================================================
+       * WARENKORB
+       * =====================================================
+       */
+
+      $('.quantity-edit-input', context).each(function () {
+        const $input = $(this);
+
+        // Verhindert doppelte Buttons.
+        if ($input.parent().hasClass('quantity-controls')) {
+          return;
+        }
+
+        const $minus = $('<button>', {
+          type: 'button',
+          class: 'quantity-minus',
+          text: '−',
+          'aria-label': 'Anzahl verringern'
+        });
+
+        const $plus = $('<button>', {
+          type: 'button',
+          class: 'quantity-plus',
+          text: '+',
+          'aria-label': 'Anzahl erhöhen'
+        });
+
+        const $controls = $('<div>', {
+          class: 'quantity-controls'
+        });
+
+        const $outerWrapper = $('<div>', {
+          class: 'quantity-wrapper'
+        });
+
+        $input.wrap($controls);
+
+        const $wrapper = $input.parent();
+
+        $wrapper.wrap($outerWrapper);
+
+        $wrapper.prepend($minus);
+        $wrapper.append($plus);
+
+
+        // Minus
+        $minus.on('click', function () {
+          const min = parseFloat($input.attr('min')) || 0;
+          const step = parseFloat($input.attr('step')) || 1;
+          const value = parseFloat($input.val()) || min;
+
+          $input
+            .val(Math.max(min, value - step))
+            .trigger('change');
+        });
+
 
         // Plus
         $plus.on('click', function () {

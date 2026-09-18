@@ -53,7 +53,6 @@
     {% if paragraph.field_image_left_or_right.value == 'image_left' %}
 
       <div class="{{ content.field_farbwert.0['#markup']|clean_class }} {{ paragraph.field_css_class.value|clean_class }}">
-      {{ dump(paragraph.field_css_class) }}
 
         <div class="row">
           {% if content.field_text_slogan is not empty %}

@@ -17,6 +17,10 @@
     }
   }
 
+.navigation.menu--shop-navigation {
+  margin-bottom: 50px;
+  }
+
 #block-kp-2025-meinprofil-2 {
   display: none;
   float: left;
@@ -180,4 +184,15 @@ body.user-logged-in {
     font-size: 1.4rem;
     margin-bottom: 14px;
     }
+  }
+
+  /* Mengensteuerung im Warenkorb */
+  .cart-form .quantity-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cart-form .quantity-controls {
+    display: flex;
+    align-items: stretch;
   }

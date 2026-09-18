@@ -19,9 +19,17 @@ a.navbar-brand img {
 
 .featured-top {
   margin-top: 20px;
+  margin-bottom: 50px;
 }
 .featured-top .region-featured-top {
   padding-left: 10px;
+}
+
+a {
+  color: #960018;
+}
+a:hover {
+  color: #720015;
 }
 
 a.btn-fxd {
@@ -155,6 +163,23 @@ a.btn-fxd img {
 .site-footer__bottom .content p a:hover {
   color: black;
   text-decoration: underline;
+}
+
+button.button {
+  background-color: #960018;
+  color: white;
+  padding: 7px 20px 7px 20px;
+  font-size: 1.1rem;
+  border-radius: 0;
+  font-weight: 600;
+  display: inline-block;
+  border: none;
+}
+
+input.form-control {
+  background-color: #EBD2D1;
+  border: none;
+  border-radius: 0;
 }
 
 /**  SHOP STUFF  **/
@@ -424,9 +449,18 @@ a.career-btn.schwarz {
   margin-top: 0;
   margin-bottom: 0;
 }
+.commerce-order-item-add-to-cart-form .quantity-controls {
+  display: flex;
+  align-items: stretch;
+}
+.commerce-order-item-add-to-cart-form .js-form-item-quantity-0-value label {
+  display: none;
+}
+
+.cart-form .js-form-type-number input.form-number,
 .commerce-order-item-add-to-cart-form .js-form-type-number input.form-number {
   width: 60px;
-  height: 38px;
+  height: 36px;
   padding: 0;
   text-align: center;
   border-radius: 0;
@@ -435,14 +469,11 @@ a.career-btn.schwarz {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-.commerce-order-item-add-to-cart-form .quantity-controls {
-  display: flex;
-  align-items: stretch;
-}
-.commerce-order-item-add-to-cart-form .quantity-controls .quantity-minus,
-.commerce-order-item-add-to-cart-form .quantity-controls .quantity-plus {
-  height: 38px;
-  width: 38px;
+
+.quantity-controls .quantity-minus,
+.quantity-controls .quantity-plus {
+  height: 36px;
+  width: 36px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -452,20 +483,19 @@ a.career-btn.schwarz {
   font-weight: 600;
   background-color: white;
 }
-.commerce-order-item-add-to-cart-form .quantity-controls .quantity-minus {
+
+.quantity-controls .quantity-minus {
   border-right: 0;
   border-left: 1px solid black;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
-.commerce-order-item-add-to-cart-form .quantity-controls .quantity-plus {
+
+.quantity-controls .quantity-plus {
   border-left: 0;
   border-right: 1px solid black;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-}
-.commerce-order-item-add-to-cart-form .js-form-item-quantity-0-value label {
-  display: none;
 }
 
 /** /SHOP  **/
@@ -1053,6 +1083,10 @@ p.store-titel {
   text-decoration: none;
 }
 
+.navigation.menu--shop-navigation {
+  margin-bottom: 50px;
+}
+
 #block-kp-2025-meinprofil-2 {
   display: none;
   float: left;
@@ -1197,6 +1231,17 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
 .view-commerce-cart-form .order-total-line {
   font-size: 1.4rem;
   margin-bottom: 14px;
+}
+
+/* Mengensteuerung im Warenkorb */
+.cart-form .quantity-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cart-form .quantity-controls {
+  display: flex;
+  align-items: stretch;
 }
 
 @media screen and (max-width: 1399px) {
