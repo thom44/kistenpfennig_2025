@@ -176,7 +176,7 @@ button.button {
   border: none;
 }
 
-input.form-control {
+.commerce-checkout-flow input.form-control {
   background-color: #EBD2D1;
   border: none;
   border-radius: 0;
