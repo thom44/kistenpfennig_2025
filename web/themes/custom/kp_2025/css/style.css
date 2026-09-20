@@ -846,7 +846,7 @@ a.career-btn.schwarz {
 .paragraph--type--textinhalt p.slogan,
 .paragraph--type--area-50-50 p.slogan {
   text-align: center;
-  padding-top: 16%;
+  padding-top: 50px;
   position: relative;
 }
 
@@ -1245,12 +1245,41 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
 }
 
 @media screen and (max-width: 1399px) {
-  .node .paragraph--type--area-50-50 .toon-right .field__item,
-  .node .paragraph--type--area-50-50 .toon-left .field__item {
-    height: 280px;
+  .node .paragraph--type--area-50-50 .area-cake .toon-right {
+    bottom: -134px;
+  }
+  .node .paragraph--type--area-50-50 .area-cake .toon-right .field__item {
+    height: 235px;
+  }
+  .node .paragraph--type--area-50-50 .area-baguette .toon-left {
+    bottom: -134px;
+  }
+  .node .paragraph--type--area-50-50 .area-baguette .toon-left .field__item {
+    height: 230px;
+  }
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+    width: 150px;
+    height: 150px;
+    top: calc(50% - 75px);
+    left: calc(50% - 75px);
+  }
+  .node .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic {
+    left: calc(50% - 64px);
   }
 }
 @media screen and (max-width: 1199px) {
+  .node .paragraph--type--area-50-50 .area-cake .toon-right {
+    bottom: -134px;
+  }
+  .node .paragraph--type--area-50-50 .area-cake .toon-right .field__item {
+    height: 200px;
+  }
+  .node .paragraph--type--area-50-50 .area-baguette .toon-left {
+    bottom: -145px;
+  }
+  .node .paragraph--type--area-50-50 .area-baguette .toon-left .field__item {
+    height: 200px;
+  }
   .node .paragraph--type--area-50-50 .toon-right,
   .node .paragraph--type--area-50-50 .toon-left {
     bottom: -108px;
@@ -1259,18 +1288,9 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   .node .paragraph--type--area-50-50 .toon-left .field__item {
     height: 200px;
   }
-  .field--name-field-bild-und-textinhalt p.slogan {
-    padding-top: 30px;
-  }
   .field--name-field-bild-und-textinhalt p.slogan span.big {
     font-size: 2.5rem;
     line-height: 2.5rem;
-  }
-  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
-    width: 160px;
-    height: 160px;
-    top: calc(50% - 80px);
-    left: calc(50% - 80px);
   }
   .paragraph--type--area-50-50 p.narrow {
     max-width: 300px;
@@ -1286,6 +1306,81 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   }
 }
 @media screen and (max-width: 991px) {
+  .hell-blau-grau,
+  .pink,
+  .intensiv-gruen {
+    text-align: center;
+  }
+  .hell-blau-grau .field--name-field-bild-und-textinhalt,
+  .pink .field--name-field-bild-und-textinhalt,
+  .intensiv-gruen .field--name-field-bild-und-textinhalt {
+    text-align: left;
+  }
+  .node .paragraph--type--area-50-50 .img-right-wrap {
+    max-width: none;
+  }
+  .paragraph--type--textinhalt p.narrow,
+  .paragraph--type--area-50-50 p.narrow,
+  .intensiv-gruen p.narrow {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    left: 0;
+  }
+  .txt-cntnt {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  body.page-node-133 .txt-cntnt {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .field--name-field-media-image {
+    width: 100%;
+  }
+  .field--name-field-media-image .field__item {
+    width: 100%;
+  }
+  .field--name-field-media-image .field__item img {
+    width: 100%;
+    height: auto;
+  }
+  .career-wrapper {
+    margin-top: 10px;
+  }
+  .paragraph--type--area-50-50 .no-pad {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+  }
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic,
+  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    margin-top: 25px;
+  }
+  .node .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic {
+    margin-top: 0;
+    margin-bottom: 25px;
+    left: auto;
+  }
+  .node .paragraph--type--area-50-50 .area-cake .toon-right,
+  .node .paragraph--type--area-50-50 .toon-left,
+  .node .paragraph--type--area-50-50 .area-baguette .toon-left {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+  }
+  .paragraph--type--textinhalt p.slogan,
+  .paragraph--type--area-50-50 p.slogan {
+    padding-top: 40px;
+  }
+  .node .paragraph--type--area-50-50 .img-right-wrap {
+    max-width: 100%;
+  }
   .region-over-the-top-right .menu--main {
     margin-top: 0;
     margin-bottom: 25px;
@@ -1298,17 +1393,11 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   .node .paragraph--type--area-50-50 .toon-left .field__item {
     height: 180px;
   }
-  .node .paragraph--type--area-50-50 .field--name-field-button-graphic img {
-    width: 95%;
-  }
   .paragraph--type--textinhalt p.slogan {
     padding-top: 30px;
   }
   .paragraph--type--textinhalt .textcntnt.distance {
     margin-bottom: 30px;
-  }
-  .field--name-field-bild-und-textinhalt p.slogan {
-    padding-top: 30px;
   }
   .field--name-field-bild-und-textinhalt p.slogan span.big {
     font-size: 2rem;
@@ -1317,22 +1406,8 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   .node .paragraph--type--area-50-50 .intensiv-gruen .no-pad {
     padding-right: calc(var(--bs-gutter-x) * 0.5);
   }
-  .intensiv-gruen {
-    padding-bottom: 2rem;
-  }
   .intensiv-gruen p.slogan {
-    text-align: left;
-    padding-left: 80px;
-  }
-  .intensiv-gruen p.narrow {
-    max-width: 290px;
-    margin: 0 0 0 80px;
-  }
-  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
-    width: 100px;
-    height: 100px;
-    top: calc(50% - 50px);
-    left: calc(50% - 50px);
+    text-align: center;
   }
   .career-wrapper .graphic-left img,
   .career-wrapper .graphic-right img {
@@ -1365,6 +1440,9 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   .view-oeffnungszeiten h3 {
     width: 70%;
   }
+  .interview.part1 .illu-mk {
+    max-height: 280px;
+  }
 }
 @media screen and (max-width: 768px) {
   .region-over-the-top-right .menu--main ul.navbar-nav,
@@ -1376,14 +1454,6 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   }
   a.navbar-brand img {
     margin-bottom: 10px;
-  }
-  .hell-blau-grau,
-  .pink {
-    text-align: center;
-  }
-  .hell-blau-grau .field--name-field-bild-und-textinhalt,
-  .pink .field--name-field-bild-und-textinhalt {
-    text-align: left;
   }
   .intensiv-gruen {
     padding-top: 30px;
@@ -1426,16 +1496,6 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
     left: 10px;
     width: 60px;
     height: 60px;
-  }
-  .node .paragraph--type--area-50-50 .img-right-wrap {
-    max-width: none;
-  }
-  .node .paragraph--type--area-50-50 .field--name-field-button-graphic {
-    position: relative;
-    top: auto;
-    left: auto;
-    bottom: auto;
-    margin-top: 25px;
   }
   .insta-wrapper .graphic-left img {
     width: 80px;
@@ -1484,6 +1544,17 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   }
   .view-oeffnungszeiten h3 {
     width: 90%;
+  }
+  .paragraph--type--kacheln .hard-tiles .quotation {
+    padding-bottom: 40px;
+  }
+  .interview.part1 {
+    border-right: none;
+    padding-right: 0;
+  }
+  body.page-node-133 .txt-cntnt {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 @media screen and (max-width: 576px) {

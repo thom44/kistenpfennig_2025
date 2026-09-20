@@ -59,7 +59,7 @@
             {{ content.field_text_slogan }}
           {% endif %}
           {% if content.field_on_the_square_img is not empty %}
-          <div class="col-md-6 no-pad">
+          <div class="col-lg-6 no-pad">
             {{ content.field_on_the_square_img }}
             {# Button-Grafik nur wenn vorhanden #}
             {% set graphic = content.field_button_graphic|render %}
@@ -68,8 +68,8 @@
             {% endif %}
           </div>
           {% endif %}
-          <div class="col-md-6 no-pad image-text">
-            {{ content.field_bild_und_textinhalt }}
+          <div class="col-lg-6 no-pad image-text">
+            <div class="txt-cntnt">{{ content.field_bild_und_textinhalt }}</div>
             {# Cartoon-Grafik nur wenn vorhanden #}
             {% set graphic = content.field_cartoon_graphic|render %}
             {% if graphic|striptags|trim %}
@@ -84,8 +84,8 @@
       <div class="{{ content.field_farbwert.0['#markup']|clean_class }} img-right {{ paragraph.field_css_class.value|clean_class }}">
 
         <div class="row">
-          <div class="col-md-6 image-text">
-            {{ content.field_bild_und_textinhalt }}
+          <div class="col-lg-6 image-text">
+            <div class="txt-cntnt">{{ content.field_bild_und_textinhalt }}</div>
             {# Button-Grafik nur wenn vorhanden #}
             {% set graphic = content.field_button_graphic|render %}
             {% if graphic|striptags|trim %}
@@ -99,7 +99,7 @@
             {% endif %}
 
           </div>
-          <div class="col-md-6 no-pad">
+          <div class="col-lg-6 no-pad">
             <div class="img-right-wrap">
               {{ content.field_on_the_square_img }}
             </div>
