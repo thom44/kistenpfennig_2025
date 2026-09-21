@@ -1233,6 +1233,18 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   margin-bottom: 14px;
 }
 
+.cart-form button.delete-order-item.form-submit {
+  background-image: url("../images/icn-trash-bin.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  font-size: 0;
+  display: inline-block;
+  height: 36px;
+  width: 42px;
+  background-color: transparent;
+}
+
 /* Mengensteuerung im Warenkorb */
 .cart-form .quantity-wrapper {
   display: flex;
@@ -1443,6 +1455,13 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   .interview.part1 .illu-mk {
     max-height: 280px;
   }
+  .toon-near-by {
+    max-height: 270px;
+    width: auto;
+  }
+  .product-wrapper .field--type-commerce-price {
+    margin-top: 0;
+  }
 }
 @media screen and (max-width: 768px) {
   .region-over-the-top-right .menu--main ul.navbar-nav,
@@ -1556,6 +1575,58 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
     padding-left: 40px;
     padding-right: 40px;
   }
+  .product-additional-images img {
+    margin-bottom: 20px;
+  }
+  .random-product {
+    margin-bottom: 70px;
+  }
+  .flexslider {
+    margin-bottom: 20px;
+  }
+  .product-wrapper .field--type-commerce-price {
+    margin-bottom: 1rem;
+  }
+  .cart-product-image {
+    max-width: 50px;
+    overflow: hidden;
+  }
+  .cart-product-image img {
+    width: 100%;
+    height: auto;
+  }
+  .view-commerce-cart-form table td .field--name-product-id a,
+  .view-commerce-cart-form table td.views-field-unit-price__number,
+  .view-commerce-cart-form table td.views-field-total-price__number,
+  .view-commerce-cart-form .order-total-line,
+  .quantity-controls .quantity-minus,
+  .quantity-controls .quantity-plus {
+    font-size: 1rem;
+  }
+  .quantity-controls .quantity-minus,
+  .quantity-controls .quantity-plus {
+    width: 22px;
+  }
+  .view-commerce-cart-form .order-total-line {
+    margin-bottom: 10px;
+  }
+  .cart-form .js-form-type-number input.form-number {
+    width: 40px;
+  }
+  button.button {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1rem;
+  }
+  a.btn-fxd.jobs {
+    top: 130px;
+  }
+  a.btn-fxd.insta {
+    top: 192px;
+  }
+  div.cc-wrap {
+    top: 257px;
+  }
 }
 @media screen and (max-width: 576px) {
   .hide {
@@ -1601,6 +1672,17 @@ body.user-logged-in #block-kp-2025-logouticon-2 {
   }
   .width-config {
     max-width: 100%;
+  }
+  .toon-near-by {
+    max-height: 200px;
+    width: auto;
+  }
+  .field--name-total-price {
+    margin-bottom: 40px;
+  }
+  .random-lebkuchen h3 {
+    margin-top: 50px;
+    margin-bottom: 25px;
   }
 }
 
