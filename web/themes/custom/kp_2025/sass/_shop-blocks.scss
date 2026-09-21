@@ -202,6 +202,10 @@ body.user-logged-in {
     justify-content: center;
   }
 
+  body.path-cart .cart-form .quantity-wrapper {
+    justify-content: left;
+    }
+
   .cart-form .quantity-controls {
     display: flex;
     align-items: stretch;
