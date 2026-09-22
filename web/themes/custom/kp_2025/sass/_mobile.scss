@@ -24,6 +24,15 @@
   .node .paragraph--type--area-50-50 .img-right .field--name-field-button-graphic {
     left: calc(50% - 64px);
     }
+  .paragraph--type--area-50-50 .lebkuchen-b2b-block {
+    margin-top: 0;
+    .field--name-field-button-graphic {
+      width: 120px;
+      height: 120px;
+      top: calc(50% - 60px);
+      left: calc(50% - 60px);
+      }
+    }
   }
 
 @media screen and (max-width: 1199px) {
@@ -491,5 +500,14 @@
   .random-lebkuchen h3 {
     margin-top: 50px;
     margin-bottom: 25px;
+    }
+  .paragraph--type--area-50-50 .lebkuchen-b2b-block {
+    margin-top: 0;
+    .field--name-field-button-graphic {
+      width: 120px;
+      height: 120px;
+      top: calc(50% - 190px);
+      left: calc(50% - 60px);
+      }
     }
   }
