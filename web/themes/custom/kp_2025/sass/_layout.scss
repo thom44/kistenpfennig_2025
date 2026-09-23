@@ -184,6 +184,10 @@ button.button {
   font-weight: 600;
   display: inline-block;
   border: none;
+  &:hover,
+  &:active {
+    background-color: #720015;
+    }
   }
 
 .commerce-checkout-flow {
@@ -536,3 +540,9 @@ a.career-btn.schwarz {
   }
 
 /** /SHOP  **/
+
+ul.nav-tabs {
+  li.nav-item a {
+    color: colors.$kp-rot;
+    }
+  }

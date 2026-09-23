@@ -197,16 +197,36 @@ body.user-logged-in {
   }
 
   /* Mengensteuerung im Warenkorb */
-  .cart-form .quantity-wrapper {
-    display: flex;
-    justify-content: center;
+.cart-form .quantity-wrapper {
+  display: flex;
+  justify-content: center;
   }
 
-  body.path-cart .cart-form .quantity-wrapper {
+body.path-cart .cart-form .quantity-wrapper {
     justify-content: left;
     }
 
-  .cart-form .quantity-controls {
-    display: flex;
-    align-items: stretch;
+.cart-form .quantity-controls {
+  display: flex;
+  align-items: stretch;
+  }
+
+.view-commerce-user-orders {
+  table.views-table {
+    thead th,
+    thead th a {
+      color: colors.$kp-rot;
+      &:hover {
+        text-decoration: none;
+        }
+      }
+    }
+  }
+
+.field--name-order-items {
+  table.views-table {
+    thead th {
+      color: colors.$kp-rot;
+      }
+    }
   }

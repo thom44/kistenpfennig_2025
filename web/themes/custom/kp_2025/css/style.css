@@ -175,6 +175,9 @@ button.button {
   display: inline-block;
   border: none;
 }
+button.button:hover, button.button:active {
+  background-color: #720015;
+}
 
 .commerce-checkout-flow input.form-control {
   background-color: #EBD2D1;
@@ -499,6 +502,10 @@ a.career-btn.schwarz {
 }
 
 /** /SHOP  **/
+ul.nav-tabs li.nav-item a {
+  color: #960018;
+}
+
 .region-over-the-top-right .menu--main {
   margin-top: 132px;
 }
@@ -1258,6 +1265,19 @@ body.path-cart .cart-form .quantity-wrapper {
 .cart-form .quantity-controls {
   display: flex;
   align-items: stretch;
+}
+
+.view-commerce-user-orders table.views-table thead th,
+.view-commerce-user-orders table.views-table thead th a {
+  color: #960018;
+}
+.view-commerce-user-orders table.views-table thead th:hover,
+.view-commerce-user-orders table.views-table thead th a:hover {
+  text-decoration: none;
+}
+
+.field--name-order-items table.views-table thead th {
+  color: #960018;
 }
 
 @media screen and (max-width: 1399px) {
