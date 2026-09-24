@@ -1011,6 +1011,9 @@ p.store-titel {
   font-size: 1.4rem;
 }
 
+.paragraph--type--opening-hours {
+  margin-bottom: 30px;
+}
 .paragraph--type--opening-hours .opening-hours {
   margin-bottom: 25px;
 }
@@ -1026,25 +1029,38 @@ p.store-titel {
   font-weight: 600;
 }
 .paragraph--type--opening-hours .adresse {
-  margin-bottom: 40px;
+  margin-bottom: 25px;
 }
 
+.paragraph--type--opening-hours-holyday-store .holiday-name {
+  font-weight: 600;
+}
+.paragraph--type--opening-hours-holyday-store .holiday-hours-grid {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 0.5rem 1rem;
+  margin-bottom: 15px;
+}
+
+/*
 .holiday-hours-grid {
   display: grid;
   grid-template-columns: 12rem auto;
   gap: 0.5rem 1rem;
-}
-.holiday-hours-grid .holiday-info .holiday-name {
-  font-weight: 600;
-}
-.holiday-hours-grid .holiday-info .holiday-date {
-  font-size: 0.9em;
-  color: #555;
-}
-.holiday-hours-grid .holiday-info .holiday-time {
-  text-align: left;
-}
-
+  .holiday-info {
+    .holiday-name {
+      font-weight: 600;
+      }
+    .holiday-date {
+      font-size: 0.9em;
+      color: #555;
+      }
+    .holiday-time {
+      text-align: left;
+      }
+    }
+  }
+*/
 .holiday-header-wrapper {
   margin-top: 25px;
 }

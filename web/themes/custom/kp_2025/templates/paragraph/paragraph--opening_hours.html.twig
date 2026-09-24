@@ -51,12 +51,12 @@
     {% block content %}
 
 
-{% set tage = ['Montag','Dienstag','Mitwoch','Donnerstag','Freitag','Samstag','Sonntag'] %}
+{% set tage = ['Montag - Freitag','Samstag','Sonntag'] %}
 
 {# Hauptöffnungszeiten #}
   <p class="ohours">Öffnungszeiten</p>
   <div class="opening-hours">
-    {% for i in 0..6 %}
+    {% for i in 0..2 %}
       <div class="day">{{ tage[i] }}</div>
       <div class="time">{{ content.field_from_to[i] }}</div>
     {% endfor %}
@@ -68,7 +68,7 @@
   <div class="opening-hours-2">
     {% for i in 0..6 %}
       <div class="day">{{ tage[i] }}</div>
-            <div class="time">{{ content.field_opening_hours_cafe[i] }}</div>
+      <div class="time">{{ content.field_opening_hours_cafe[i] }}</div>
     {% endfor %}
   </div>
 {% endif %}
