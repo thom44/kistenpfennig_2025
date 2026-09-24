@@ -66,7 +66,7 @@
 {% if paragraph.field_opening_hours_cafe|length %}
   <p class="ohours">Öffnungszeiten Café</p>
   <div class="opening-hours-2">
-    {% for i in 0..6 %}
+    {% for i in 0..2 %}
       <div class="day">{{ tage[i] }}</div>
       <div class="time">{{ content.field_opening_hours_cafe[i] }}</div>
     {% endfor %}
