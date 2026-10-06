@@ -20,7 +20,7 @@ source:
   # the data on import, to be used in field mappings below.
   # The label value is a user-friendly string for display by the
   # migration UI.
-  info_art_to_process: 15
+  info_art_to_process: 15 #Inventurhinweise
   fields:
     0:
       name: ArtNr
