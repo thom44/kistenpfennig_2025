@@ -33,6 +33,18 @@ function kp_2025_form_system_theme_settings_alter(&$form, FormStateInterface $fo
   ];
 }
 
+function kp_2025_preprocess_html(&$variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  if ($route_name === 'commerce_checkout.form') {
+    $step = \Drupal::routeMatch()->getParameter('step');
+
+    if ($step) {
+      $variables['attributes']['class'][] = 'checkout-step-' . $step;
+    }
+  }
+}
+
 
 function kp_2025_preprocess_views_view_fields(&$variables) {
   if (
