@@ -1,66 +1,16 @@
 <?php
-
 /**
- * @file A module which provide extra funcionallity for commerce_promotions.
+ * @file
+ * Provides custom functionality for Commerce Promotions.
  */
 
-use Drupal\commerce_promotion\Entity\PromotionInterface;
-
 /**
- * Implements hook_form_FORM_ID_alter().
- * FormId: commerce_checkout_flow_multistep_default
+ * Implements hook_commerce_inline_form_info_alter().
  */
-function custom_promotion_form_commerce_checkout_flow_multistep_default_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-
-  $coupons = [];
-
-  if($form['#step_id'] === 'order_information') {
-
-    $input = $form_state->getUserInput();
-
-    if (!isset($input['sidebar']['coupon_redemption']['form']['code'])) {
-      return;
-    }
-
-    $coupon_code = $input['sidebar']['coupon_redemption']['form']['code'];
-
-    if ($coupon_code) {
-
-      $entity_type_manager = \Drupal::service('entity_type.manager');
-
-      $promotions = $entity_type_manager->getStorage('commerce_promotion')->loadMultiple();
-
-      foreach ($promotions as $promotion) {
-
-        if ($promotion instanceof PromotionInterface) {
-          $coupons = $promotion->getCoupons();
-
-          foreach ($coupons as $coupon) {
-
-            if (trim($coupon_code) == trim($coupon->getCode())) {
-
-              $promotion_name = $promotion->get('display_name')
-                ->getValue()[0]['value'];
-              $promotion_desc = $promotion->get('description')
-                ->getValue()[0]['value'];
-
-              if ($promotion_name) {
-                // Creates a info container on top of coupon redemption inline form.
-                $form['sidebar']['coupon_redemption']['form']['promotion_info'] = [
-                  '#type' => 'inline_template',
-                  '#template' => '<div class="promotion-info"><h2>' . $promotion_name . '</h2><div class="promotion-info-desc">' . $promotion_desc . '</div></div>',
-                  '#weight' => -1,
-                ];
-              }
-            }
-          }
-
-        } else {
-          // Handle the case where $promotion is not a Promotion entity.
-          \Drupal::logger('custom_promotions')->error('The provided promotion is not of type PromotionInterface.');
-        }
-
-      }
-    }
+function custom_promotion_commerce_inline_form_info_alter(array &$definitions) {
+  if (isset($definitions['coupon_redemption'])) {
+    $definitions['coupon_redemption']['class'] =
+      \Drupal\custom_promotion\Plugin\Commerce\InlineForm\CustomCouponRedemption::class;
   }
 }
+
